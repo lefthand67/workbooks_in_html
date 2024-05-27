@@ -54,7 +54,6 @@ profile_default/
 ipython_config.py
 
 # html and pdf
-*.html
 *.css
 *.pdf
 
