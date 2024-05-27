@@ -7670,7 +7670,11 @@ a.anchor-link {
 </tr>
 <tr>
 <td><code>find &lt;mount_point&gt; -xdev -inum &lt;inode&gt; -print</code></td>
-<td>find the file by its inode number</td>
+<td>find the file by its inode number; the <code>-xdev</code> option restricts the search to the filesystem containing the starting point</td>
+</tr>
+<tr>
+<td><code>find &lt;mount_point&gt; -inum &lt;inode&gt; 2&gt;/dev/null</code></td>
+<td>find the file by its inode number in all mounted filesystems within the <code>mount_point</code></td>
 </tr>
 <tr>
 <td><code>ln -s</code></td>
@@ -7681,7 +7685,7 @@ a.anchor-link {
 <td></td>
 </tr>
 <tr>
-<td><code>chmod &lt;option&gt; &lt;fname&gt;</code></td>
+<td><code>chmod &lt;option&gt; &lt;file_name&gt;</code></td>
 <td>Change the permission on a file or directory where <code>option</code> is:</td>
 </tr>
 <tr>
@@ -7689,8 +7693,8 @@ a.anchor-link {
 <td><code>r</code>ead, <code>w</code>rite, e<code>x</code>ecute for an owner (<code>40</code> and <code>4</code> for group and others, respectively)</td>
 </tr>
 <tr>
-<td><code>ugo+/-</code></td>
-<td>owner, group, others (<code>ugo+r</code> will set read writes for each octet, <code>ugo-r</code> removes this right)</td>
+<td><code>ugo+/-</code> and <code>a</code></td>
+<td>owner, group, others (<code>ugo+r</code> will set read writes for each octet, <code>ugo-r</code> removes this right) and <code>a</code> for "all"</td>
 </tr>
 <tr>
 <td><code>4000</code>, <code>2000</code></td>
@@ -7702,55 +7706,51 @@ a.anchor-link {
 </tr>
 <tr>
 <td><code>5</code></td>
-<td><code>4</code>+<code>1</code> combination on a directory allows to list the files</td>
+<td><code>4</code>+<code>1</code> combination on 1) a <em>directory</em> allows to list the files, 2) a <em>script</em> allows to execute it</td>
 </tr>
 <tr>
 <td><code>3</code></td>
 <td><code>2</code>+<code>1</code> combination on a directory allows files to be created, deleted, and renamed within the directory</td>
 </tr>
 <tr>
-<td><strong>Ownership</strong></td>
+<td><code>chmod --reference=filea fileb</code></td>
+<td>copy permissions from <code>filea</code> to <code>fileb</code></td>
+</tr>
+<tr>
+<td><code>chmod &lt;permission_bites&gt; -R &lt;file_name&gt;</code></td>
+<td>change permissions recursively; see <a href="#chmod">chmod</a></td>
+</tr>
+<tr>
+<td><code>find &lt;dir&gt; -type f -exec chmod a-x {} ';'</code></td>
+<td><code>find</code> to select only the regular files for adding/removing executable writes recursively</td>
+</tr>
+<tr>
+<td><strong>9. Ownership</strong></td>
 <td></td>
 </tr>
 <tr>
-<td><code>chown</code></td>
+<td><code>chown &lt;new_owner&gt; &lt;file_name&gt;</code></td>
 <td>change ownership</td>
 </tr>
 <tr>
-<td><strong>Disks</strong></td>
+<td><code>chown &lt;user&gt;:&lt;group&gt; &lt;file_name&gt;</code></td>
+<td>change ownership of the user and the group at once</td>
+</tr>
+<tr>
+<td><code>chgrp &lt;new_group&gt; &lt;file_name&gt;</code></td>
+<td>change ownership</td>
+</tr>
+<tr>
+<td><strong>10. Bonus flags</strong></td>
 <td></td>
 </tr>
 <tr>
-<td><code>lsblk \| grep disk</code></td>
-<td>list disks</td>
+<td><code>lsattr</code></td>
+<td>list file attributes on a Linux second extended file system</td>
 </tr>
 <tr>
-<td><code>parted -l</code> (<code>quit</code>)</td>
-<td>list disks and partitions</td>
-</tr>
-<tr>
-<td><code>parted /dev/sdX</code> -&gt; <code>print</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>parted /dev/sdX</code> -&gt; <code>mklabel gpt</code></td>
-<td>create mbr or gpt partition table</td>
-</tr>
-<tr>
-<td>(parted) <code>mkpart primary ext4 &lt;start of disk&gt; &lt;end of disk&gt;</code></td>
-<td>create a partition</td>
-</tr>
-<tr>
-<td><code>mkfs -t ext4 /dev/sdX</code></td>
-<td>format disk</td>
-</tr>
-<tr>
-<td><code>parted mount /dev/sdX &lt;name_of_partition&gt;</code></td>
-<td>mount a new drive</td>
-</tr>
-<tr>
-<td><code>blkid</code></td>
-<td>check <code>uuid</code> (universally unique id) of partitions</td>
+<td><code>chattr</code></td>
+<td>change file attributes on a Linux file system</td>
 </tr>
 </tbody>
 </table>
@@ -9344,17 +9344,18 @@ When you create a symbolic link with a relative path, the link itself stores the
 <p>Nine permission bits determine what operations can be performed on a file and by whom. Traditional UNIX does not allow permissions to be set per user (although all systems now support access control lists of one sort or another).</p>
 <p>Instead, three sets of permissions define access for</p>
 <ul>
-<li>the owner of the file,</li>
-<li>the group owners of the file, and</li>
-<li>everyone else (in that order).</li>
+<li>the owner (<code>u</code>ser) of the file,</li>
+<li>the <code>g</code>roup owners of the file, and</li>
+<li>everyone else (<code>o</code>ther)</li>
 </ul>
+<p>(in that order).</p>
 <p>If you think of the owner as “the user” and everyone else as “other,” you can remember the order of
 the permission sets by thinking of the name H<strong>ugo</strong>. <strong>u</strong>, <strong>g</strong>, and <strong>o</strong> are also the letter codes used by the mnemonic version of <code>chmod</code>.</p>
 <p>Each set has three bits:</p>
 <table>
 <thead>
 <tr>
-<th>bit</th>
+<th>mnemonic syntax</th>
 <th>octal number</th>
 </tr>
 </thead>
@@ -9371,9 +9372,14 @@ the permission sets by thinking of the name H<strong>ugo</strong>. <strong>u</st
 <td>e<code>x</code>ecute bit</td>
 <td>1</td>
 </tr>
+<tr>
+<td><code>a</code>ll</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <p>(in that order)</p>
+<p>So, <code>777</code> is the same as <code>rwxrwxrwx</code>.</p>
 <p>It’s convenient to discuss file permissions in terms of octal (base 8) numbers because each digit of an octal number represents three bits and each group of permission bits consists of three bits.</p>
 <p>The topmost three bits with octal values of</p>
 <ul>
@@ -9478,9 +9484,9 @@ the permission sets by thinking of the name H<strong>ugo</strong>. <strong>u</st
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>For a directory, the <em>execute bit</em> (often called the “search” or “scan” bit in this context) allows the directory to be entered or passed through as a pathname is evaluated, but not to have its contents listed.</p>
 <ul>
-<li><p>The combination of <em>read and execute</em> bits allows the contents of the directory to be listed.</p>
+<li><p>The combination of <em><code>r</code>ead and e<code>x</code>ecute</em> bits allows the contents of the directory to be listed.</p>
 </li>
-<li><p>The combination of <em>write and execute</em> bits allows files to be created, deleted, and renamed within the directory.</p>
+<li><p>The combination of <em><code>w</code>rite and e<code>x</code>ecute</em> bits allows files to be created, deleted, and renamed within the directory.</p>
 </li>
 </ul>
 </div>
@@ -9555,13 +9561,39 @@ the permission sets by thinking of the name H<strong>ugo</strong>. <strong>u</st
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=aaea1b7e-54d5-4247-8727-dcb9f5af8789">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="On-a-script">On a script<a class="anchor-link" href="#On-a-script">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8a9b7301-4972-4772-aa96-74b8dc9576d5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>For a shell script, it would need both
+permission turned on. For the script to be run by an interpreter, it must be opened and read like a text file. Binary files are executed directly by the kernel and therefore do not need read permission turned on.</p>
+<ul>
+<li><code>r</code>ead and e<code>x</code>ecute</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e35ebc15-b2cd-4c06-ab09-2d2e1356424e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="The-setuid-and-setgid-bits">The <code>setuid</code> and <code>setgid</code> bits<a class="anchor-link" href="#The-setuid-and-setgid-bits">¶</a></h2>
+<h2 id="The-setuid-and-setgid-bits">The <code>s</code>et<code>u</code>id and <code>s</code>et<code>g</code>id bits<a class="anchor-link" href="#The-setuid-and-setgid-bits">¶</a></h2>
 </div>
 </div>
 </div>
@@ -10248,7 +10280,7 @@ mount<span class="w"> </span><span class="p">|</span><span class="w"> </span>gre
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="The-sticky-bit">The sticky bit<a class="anchor-link" href="#The-sticky-bit">¶</a></h2>
+<h2 id="The-sticky-bit">The s<code>t</code>icky bit<a class="anchor-link" href="#The-sticky-bit">¶</a></h2>
 </div>
 </div>
 </div>
@@ -10434,6 +10466,458 @@ rm<span class="w"> </span>-rf<span class="w"> </span><span class="nv">$our_dir</
 </li>
 </ul>
 <hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=04de12f2-a592-4699-981c-d9b976611c8b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="chmod"><code>chmod</code><a class="anchor-link" href="#chmod">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8e4a9b25-9ad7-4f5e-b972-c91743c49612">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>change the permissions on a file,</li>
+<li>only the owner of the file and the superuser can change a file’s permissions.</li>
+</ul>
+<p>You can use either mnemonic or octal syntax:</p>
+<center>
+Examples of chmod’s mnemonic syntax
+</center>
+<table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>u+w</code></td>
+<td>Adds write permission for the owner of the file</td>
+</tr>
+<tr>
+<td><code>ug=rw,o=r</code></td>
+<td>Gives r/w permission to owner and group, and read permission to others</td>
+</tr>
+<tr>
+<td><code>a-x</code></td>
+<td>Removes execute permission for all categories (owner/group/other)</td>
+</tr>
+<tr>
+<td><code>ug=srx,o=</code></td>
+<td>Makes setuid/setgid and gives r/x permission to only owner and group</td>
+</tr>
+<tr>
+<td><code>g=u</code></td>
+<td>Makes the group permissions be the same as the owner permissions</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c2a866d7-1a3d-4146-9301-86c97d4ccd8e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Octal syntax:</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=db8be659-8a4f-4ba0-a4f3-633deccc6249">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp
+
+<span class="nv">fname</span><span class="o">=</span><span class="s1">'test.txt'</span>
+touch<span class="w"> </span><span class="nv">$fname</span>
+ls<span class="w"> </span>-l<span class="w"> </span><span class="nv">$fname</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Let's change permissions:"</span>
+chmod<span class="w"> </span><span class="m">660</span><span class="w"> </span><span class="nv">$fname</span>
+ls<span class="w"> </span>-l<span class="w"> </span><span class="nv">$fname</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Let's add setuid bit"</span>
+chmod<span class="w"> </span><span class="m">4660</span><span class="w"> </span><span class="nv">$fname</span>
+ls<span class="w"> </span>-l<span class="w"> </span><span class="nv">$fname</span>
+
+rm<span class="w"> </span>-f<span class="w"> </span><span class="nv">$fname</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>-rw-r--r-- 1 commi commi 0 May 26 01:47 test.txt
+Let's change permissions:
+-rw-rw---- 1 commi commi 0 May 26 01:47 test.txt
+Let's add setuid bit
+-rwSrw---- 1 commi commi 0 May 26 01:47 <span class="ansi-white-fg ansi-red-bg">test.txt</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6681432c-1546-4649-8063-260cbeb10b0b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="--reference"><code>--reference</code><a class="anchor-link" href="#--reference">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8341c68c-aa18-47a8-963e-f6f2fc7358e4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>On Linux systems, you can also specify the modes to be assigned by copying them from an existing file. For example, <code>chmod --reference=filea fileb</code> makes <code>fileb</code>’s mode the same as <code>filea</code>’s.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3ba7fd68-b6f6-48af-94f7-26128a07b57d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp
+
+<span class="nv">fname</span><span class="o">=</span><span class="s1">'test.txt'</span>
+<span class="nv">fname2</span><span class="o">=</span><span class="s1">'test2.txt'</span>
+touch<span class="w"> </span><span class="nv">$fname</span>
+touch<span class="w"> </span><span class="nv">$fname2</span>
+
+ls<span class="w"> </span>-l<span class="w"> </span><span class="nv">$fname</span>
+ls<span class="w"> </span>-l<span class="w"> </span><span class="nv">$fname2</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Let's change permissions to </span><span class="nv">$fname</span><span class="s2">:"</span>
+chmod<span class="w"> </span><span class="m">660</span><span class="w"> </span><span class="nv">$fname</span>
+ls<span class="w"> </span>-l<span class="w"> </span><span class="nv">$fname</span>
+ls<span class="w"> </span>-l<span class="w"> </span><span class="nv">$fname2</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"And apply the same permissions on </span><span class="nv">$fname2</span><span class="s2"> by copying them from </span><span class="nv">$fname</span><span class="s2">:"</span>
+chmod<span class="w"> </span>--reference<span class="o">=</span><span class="nv">$fname</span><span class="w"> </span><span class="nv">$fname2</span>
+ls<span class="w"> </span>-l<span class="w"> </span><span class="nv">$fname</span>
+ls<span class="w"> </span>-l<span class="w"> </span><span class="nv">$fname2</span>
+
+rm<span class="w"> </span>-f<span class="w"> </span><span class="nv">$fname</span>
+rm<span class="w"> </span>-f<span class="w"> </span><span class="nv">$fname2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>-rw-r--r-- 1 commi commi 0 May 26 01:58 test.txt
+-rw-r--r-- 1 commi commi 0 May 26 01:58 test2.txt
+Let's change permissions to test.txt:
+-rw-rw---- 1 commi commi 0 May 26 01:58 test.txt
+-rw-r--r-- 1 commi commi 0 May 26 01:58 test2.txt
+And apply the same permissions on test2.txt by copying them from test.txt:
+-rw-rw---- 1 commi commi 0 May 26 01:58 test.txt
+-rw-rw---- 1 commi commi 0 May 26 01:58 test2.txt
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dc541f15-da7a-416e-92c8-a67fea3f9679">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="-R-%7C-recursive"><code>-R</code> | recursive<a class="anchor-link" href="#-R-%7C-recursive">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=af4749ea-bcb4-4c16-8606-1a54a7448ef8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>With the <code>-R</code> option, <code>chmod</code> recursively updates the file permissions within a directory. However, this feature is trickier than it looks because the enclosed files and directories may not share the same attributes; for example, some might be executable files; others, text files. Mnemonic syntax is particularly useful with <code>‐R</code> because it preserves bits whose values you don’t set explicitly. For example,</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>g+w<span class="w"> </span>mydir
+</pre></div>
+<p>adds group write permission to <code>mydir</code> and all its contents without messing up the execute bits of directories and programs.</p>
+<p>If you want to adjust execute bits, be wary of <code>chmod -R</code>. It’s blind to the fact that the execute bit has a different interpretation on a directory than it does on a flat file. Therefore, <code>chmod -R a-x</code> probably won’t do what you intend. Use find to select only the regular files:</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>find<span class="w"> </span>mydir<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span>a-x<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="s1">';'</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cc620899-c0a9-4db7-a6a8-cd08fb7f30ec">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="umask"><code>umask</code><a class="anchor-link" href="#umask">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3f457653-48b6-4749-a62c-80d20248f6f1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>assign default permissions</li>
+</ul>
+<p>You can use the built-in shell command <code>umask</code> to influence the default permissions given to the files you create. Every process has its own <code>umask</code> attribute; the shell’s built-in <code>umask</code> command sets the shell’s own <code>umask</code>, which is then inherited by commands that you run.</p>
+<p>The <code>umask</code> is specified as a three-digit octal value that represents the permissions <em>to take away</em>. When a file is created, its permissions are set to whatever the creating program requests minus whatever the <code>umask</code> forbids. Thus, the individual digits of the <code>umask</code> allow the permissions shown in Table 5.5.</p>
+<center>
+    Permission encoding for <code>umask</code>
+</center>
+<table>
+<thead>
+<tr>
+<th>Octal</th>
+<th>Binary</th>
+<th>Perms</th>
+<th>Octal</th>
+<th>Binary</th>
+<th>Perms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>000</td>
+<td>---</td>
+<td>4</td>
+<td>100</td>
+<td>r--</td>
+</tr>
+<tr>
+<td>1</td>
+<td>001</td>
+<td>--x</td>
+<td>5</td>
+<td>101</td>
+<td>r-x</td>
+</tr>
+<tr>
+<td>2</td>
+<td>010</td>
+<td>-w-</td>
+<td>6</td>
+<td>110</td>
+<td>rw-</td>
+</tr>
+<tr>
+<td>3</td>
+<td>011</td>
+<td>-wx</td>
+<td>7</td>
+<td>111</td>
+<td>rwx</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9b156e63-1565-4116-b638-313db87307d6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span><span class="nb">type</span><span class="w"> </span><span class="nb">umask</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>umask is a shell builtin
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=397ecd83-8809-4d4f-9ce0-5b9f18981978">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The default <code>umask</code> value is often <code>022</code>, which denies write permission to the group and world but allows read permission.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e5bfcb24-efb1-4700-bd6b-29b50df78614">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span><span class="nb">umask</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>0022
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0eb0e20b-4d1d-41cd-983a-883d940d291a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Linux-bonus-flags">Linux bonus flags<a class="anchor-link" href="#Linux-bonus-flags">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39debf67-80f3-4a74-9844-f603f499c3e8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Linux defines a set of supplemental flags that can be set on files to request special handling. For example, the <code>a</code> flag makes a file append-only, and the <code>i</code> flag makes it immutable and undeletable.</p>
+<p>Flags have binary values, so they are either present or absent for a given file. The underlying filesystem implementation must support the corresponding feature, so not all flags can be used on all filesystem types. In addition, some flags are experimental, unimplemented, or read-only.</p>
+<p>Linux uses the commands <code>lsattr</code> and <code>chattr</code> to view and change file attributes. Table 5.6 lists some of the more mainstream flags.</p>
+<center>
+    Linux file attribute flags
+</center>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>FS$^a$</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A</code></td>
+<td>a</td>
+<td>Never update access time (st_atime ; for performance)</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>XBE</td>
+<td>Allow writing only in append mode$^b$</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>XBE</td>
+<td>Disable copy-on-write updates</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>B</td>
+<td>Compress contents</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>B</td>
+<td>Force directory updates to be written synchronously</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>BE</td>
+<td>Do not back up; backup utilities should ignore this file</td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td>XBE</td>
+<td>Make file immutable and undeletable</td>
+</tr>
+<tr>
+<td><code>j</code></td>
+<td>XBE</td>
+<td>Keep a journal for data changes as well as metadata</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>E</td>
+<td>Force changes to be written synchronously (no buffering)</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>XBE</td>
+<td>Avoid data compression if it is the default</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>a. X = XFS, B = Btrfs, E = ext3 and ext4</li>
+<li>b. Can be set only by root</li>
+</ul>
 </div>
 </div>
 </div>

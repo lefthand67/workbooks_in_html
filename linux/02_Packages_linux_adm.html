@@ -7507,7 +7507,8 @@ a.anchor-link {
 <table>
 <thead>
 <tr>
-<th>Bash</th>
+<th>Debian</th>
+<th>Fedora</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -7515,34 +7516,45 @@ a.anchor-link {
 <tr>
 <td><strong>Find the local package</strong></td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td><code>locate</code></td>
+<td></td>
 <td>list files in databases that match a pattern (<code>updatedb</code> for updating the local database)</td>
 </tr>
 <tr>
 <td><code>which</code></td>
+<td></td>
 <td>locate a command</td>
 </tr>
 <tr>
 <td><code>whereis</code></td>
+<td></td>
 <td>locate the binary, source, and manual page files for a command</td>
 </tr>
 <tr>
 <td><code>dpkg -l \| grep &lt;appname&gt;</code></td>
+<td></td>
 <td>find the name of the app you're looking for</td>
 </tr>
 <tr>
-<td><code>redhat$ rpm -q python</code></td>
+<td><code>dpkg-query -l &lt;package_name&gt;</code></td>
+<td><code>rpm -q &lt;package_name&gt;</code></td>
 <td>check directly for the package’s presence</td>
 </tr>
 <tr>
-<td><code>debian$ dpkg -l \| grep python</code></td>
+<td><strong>Upgrade packages</strong></td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>/var/run/reboot-required</code></td>
+<td><code>needs-restarting -r</code></td>
+<td>info whether the upgraded packages need restart</td>
 </tr>
 </tbody>
 </table>
-<p><code>dpkg-query -l &lt;package_name&gt;</code></p>
 </div>
 </div>
 </div>
@@ -7932,31 +7944,31 @@ A star (*) next to a name means that the command is disabled.
 </thead>
 <tbody>
 <tr>
-<td><code>$ sudo dpkg --install packagename</code></td>
+<td><code>dpkg --install packagename</code></td>
 <td>To install a package:</td>
 </tr>
 <tr>
-<td><code>$ sudo dpkg --update-avail packagename</code></td>
+<td><code>dpkg --update-avail packagename</code></td>
 <td>To update a package saved locally:</td>
 </tr>
 <tr>
-<td><code>$ sudo dpkg --remove packagename</code></td>
+<td><code>dpkg --remove packagename</code></td>
 <td>To remove a package:</td>
 </tr>
 <tr>
-<td><code>$ sudo dpkg --purge packagename</code></td>
+<td><code>dpkg --purge packagename</code></td>
 <td>To purge a package, which removes the package and all files belonging to the package:</td>
 </tr>
 <tr>
-<td><code>$ sudo dpkg --list</code></td>
+<td><code>dpkg --list</code></td>
 <td>To get a list of packages installed:</td>
 </tr>
 <tr>
-<td><code>$ sudo dpkg --listfiles packagename</code></td>
+<td><code>dpkg --listfiles packagename</code></td>
 <td>To get a list of all files belonging to or associated with a package:</td>
 </tr>
 <tr>
-<td><code>$ sudo dpkg -contents packagename</code></td>
+<td><code>dpkg -contents packagename</code></td>
 <td>To list the contents of a new package:</td>
 </tr>
 </tbody>
@@ -7968,6 +7980,54 @@ A star (*) next to a name means that the command is disabled.
 <li><p><strong>dpkg-query</strong>: A back-end tool for querying .deb files for information.</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4ccd3070-631f-418f-8f7f-fa30b16d71b1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="/var/run/reboot-required"><code>/var/run/reboot-required</code><a class="anchor-link" href="#/var/run/reboot-required">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d0fbbfca-1046-49d8-91b6-379a49a9594e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><em>ChatGPT:</em><br/>
+The <code>/var/run/reboot-required</code> file is typically found in Debian-based systems (like Ubuntu) but not in Fedora-based systems. Here's a bit more detail on each:</p>
+<ol>
+<li><p><strong>Debian-based Systems</strong>
+In Debian-based systems, the <code>/var/run/reboot-required</code> file is commonly used by the package management system to signal that a reboot is required. For example, after certain system updates (such as a new kernel or critical library update), this file is created to indicate that the system needs to be rebooted to apply the updates fully.</p>
+</li>
+<li><p><strong>Fedora-based Systems</strong>
+In Fedora and other Red Hat-based systems (like CentOS or RHEL), there is no standard file like <code>/var/run/reboot-required</code>. Instead, Fedora might use different mechanisms or rely on package management tools to notify the user about the necessity of a reboot.</p>
+</li>
+</ol>
+<p><strong>Alternative for Fedora</strong></p>
+<p>For similar functionality in Fedora, you might need to use different methods or create custom scripts. For instance, you could use the <code>needs-restarting</code> command from the <code>yum-utils</code> package, which can help determine if a reboot is needed:</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>needs-restarting<span class="w"> </span>-r
+</pre></div>
+<p>This command checks whether any running processes are using files that have been updated on disk (e.g., after a package update) and returns a message if a reboot is required.</p>
+<p><strong>Custom Monitoring for Fedora</strong></p>
+<p>If you want to replicate the functionality of <code>/var/run/reboot-required</code> in Fedora, you could set up a script that checks the output of <code>needs-restarting -r</code> and creates a file like <code>/var/run/reboot-required</code> if a reboot is needed. Here’s a simple example of such a script:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="k">if</span><span class="w"> </span>sudo<span class="w"> </span>needs-restarting<span class="w"> </span>-r<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s1">'Reboot is required'</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>sudo<span class="w"> </span>touch<span class="w"> </span>/var/run/reboot-required
+<span class="k">else</span>
+<span class="w">    </span>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/var/run/reboot-required
+<span class="k">fi</span>
+</pre></div>
+<p>You could then run this script as a cron job to periodically check and create the file as needed.</p>
+<p>In summary, while the <code>/var/run/reboot-required</code> file is standard in Debian-based systems, Fedora uses different methods for reboot notifications. However, with custom scripts and tools like <code>needs-restarting</code>, you can achieve similar monitoring functionality in Fedora.</p>
 </div>
 </div>
 </div>

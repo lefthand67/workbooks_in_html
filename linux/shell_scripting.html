@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Vim_Tutorial</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>shell_scripting</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7476,1686 +7476,178 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f6dceb13-bcfd-476a-a958-9be07e0d9a08">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bdbee943-d2e8-40fc-8cc7-b4e4217e0399">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="VIM-TUTORIAL">VIM TUTORIAL<a class="anchor-link" href="#VIM-TUTORIAL">¶</a></h1>
+<h1 id="SHELL-SCRIPTING">SHELL SCRIPTING<a class="anchor-link" href="#SHELL-SCRIPTING">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eeeeee04-b7d8-45e1-8157-b1616ba73314">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c9a9b2d9-bc16-4f7f-a408-90c4d82f5a0c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>i</code></td>
-<td>Enter insert mode</td>
-</tr>
-<tr>
-<td><code>:</code></td>
-<td>Enter command mode</td>
-</tr>
-<tr>
-<td><code>R</code></td>
-<td>Enter replace mode</td>
-</tr>
-<tr>
-<td><code>v</code></td>
-<td>Enter visual mode (highlighting)</td>
-</tr>
-<tr>
-<td><code>V</code></td>
-<td>Enter visual line mode (highlighting lines)</td>
-</tr>
-<tr>
-<td><code>ctrl+V</code></td>
-<td>Enter visual mode - selected parts of the lines</td>
-</tr>
-<tr>
-<td><code>esc</code></td>
-<td>Return to normal mode from insert or replace mode</td>
-</tr>
-</tbody>
-</table>
-<p><code>Ctrl-[</code>|equivalent to pressing <code>Esc</code>
-|<code>esc+esc</code>|Return to normal mode from command or visual mode|</p>
+<h1 id="Sources">Sources<a class="anchor-link" href="#Sources">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=09de9d18-c7e2-437c-b8f9-242917bf593b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Interface">Interface<a class="anchor-link" href="#Interface">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ece7851f-19f9-42af-8321-a00b28c9bf29">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:set number</code></td>
-<td>line numbers</td>
-</tr>
-<tr>
-<td><code>:set relativenumber</code></td>
-<td>shows how many lines are from here</td>
-</tr>
-<tr>
-<td><code>:colorscheme</code> + tab</td>
-<td></td>
-</tr>
-<tr>
-<td><code>:set tabstop=4</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>set shiftwidth=4</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>:set autoindent</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Save these settings here:</p>
-<pre><code>vi ~/.vimrc
-# or
-vi /etc/vim/vimrc  # (globally for all users)
-</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=701e8724-a7ed-4c5a-a86b-63a18c58abb2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Terminal-in-vim"><b></b>Terminal in vim<a class="anchor-link" href="#Terminal-in-vim">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1dd66d82-ca2b-4751-afbc-277b1d84c8aa">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:terminal</code></td>
-<td>opens a terminal window</td>
-</tr>
-<tr>
-<td><code>:bel[ow] term[inal]</code></td>
-<td>opens a terminal in a lower half of the screen</td>
-</tr>
-<tr>
-<td><code>:bel[ow] vert[ical] term[inal]</code></td>
-<td>opens a terminal in the right half of the screen</td>
-</tr>
-<tr>
-<td><code>ctrl + w + w</code></td>
-<td>move from terminal to the doc</td>
-</tr>
-<tr>
-<td><code>ctrl + w  N</code></td>
-<td>starts a normal mode</td>
-</tr>
-<tr>
-<td><code>ctrl + w</code> :</td>
-<td>starts a command mode</td>
-</tr>
-<tr>
-<td><code>i</code></td>
-<td>starts an insert mode</td>
-</tr>
-</tbody>
-</table>
-<p><a href="https://gist.github.com/mahemoff/8967b5de067cffc67cec174cb3a9f49d">Source</a></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3eb4a2e7-04ab-48c0-a4b8-feabbcc80ce6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Open/save-files"><b></b>Open/save files<a class="anchor-link" href="#Open/save-files">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=60a6c61f-ca31-4e15-a109-80c88b2acd25">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Open files</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>$ vim +&lt;linenum&gt; &lt;fname&gt;</code></td>
-<td>open Vim with the cursor on a particular line</td>
-</tr>
-<tr>
-<td><code>:e /etc/passwd</code></td>
-<td>open the file in the vim session</td>
-</tr>
-<tr>
-<td><code>:e</code></td>
-<td>edit</td>
-</tr>
-<tr>
-<td><code>:vi scp://my-server//tmp/test.py</code></td>
-<td>connect to remote host</td>
-</tr>
-<tr>
-<td><strong>Save files</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>:w</code></td>
-<td>Save currently opened file (which was previously saved)</td>
-</tr>
-<tr>
-<td><code>:w &lt;newname&gt;</code></td>
-<td>Save a copy of the current ﬁle as <code>newname</code> but continue editing the current ﬁle</td>
-</tr>
-<tr>
-<td><code>:sav &lt;newname&gt;</code></td>
-<td>Save a copy of the current ﬁle as <code>newname</code> and edit <code>newname</code></td>
-</tr>
-<tr>
-<td><code>:w! &lt;newname&gt;</code></td>
-<td>Save file with overwrite option</td>
-</tr>
-<tr>
-<td><code>:up[date] &lt;newname&gt;</code></td>
-<td>Like <code>:w</code> but only save when the buffer has been modified</td>
-</tr>
-<tr>
-<td><code>:w !sudo tee %</code></td>
-<td>saving a file as a root</td>
-</tr>
-<tr>
-<td><code>:w !diff % -</code></td>
-<td>show the differences that have been made</td>
-</tr>
-<tr>
-<td><strong>Close files</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>:wq</code></td>
-<td>Save currently opened file and exit Vim (even if file is not changed)</td>
-</tr>
-<tr>
-<td><code>:x</code></td>
-<td>Exit Vim but write only when changes have been made</td>
-</tr>
-<tr>
-<td><code>ZZ</code></td>
-<td>Equivalent to <code>:x</code>, no <code>:</code> needed</td>
-</tr>
-<tr>
-<td><code>:q!</code></td>
-<td>Close a ﬁle without saving</td>
-</tr>
-<tr>
-<td><code>:qa</code></td>
-<td>Exit all open files in current Vim session</td>
-</tr>
-<tr>
-<td><code>:wqa</code></td>
-<td>Save all currently opened buffers and exit Vim</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=729cdde7-4f31-4574-846d-cae83f94552e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="SSH-connections">SSH connections<a class="anchor-link" href="#SSH-connections">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=255494db-c180-4754-aefe-3193366ded6f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Configure ssh key authentication and make changes to the <code>~/.ssh/config</code> file where write the absolute path to the private key.</p>
-<div class="highlight"><pre><span></span>Host<span class="w"> </span>my-server
-<span class="w">    </span>HostName<span class="w"> </span>my_server_hostname
-<span class="w">    </span>Port<span class="w"> </span>my_port_number
-<span class="w">    </span>User<span class="w"> </span>my_username
-<span class="w">    </span>IdentityFile<span class="w"> </span>/path/to/my/private/key
-</pre></div>
-<p>When it is done, you can connect edit server's files in your client's vim editor. To open the file or directory, use this command:</p>
-<div class="highlight"><pre><span></span>:vi<span class="w"> </span>scp://my-server//tmp/test.py
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=495e4128-0645-44ea-a912-fc38520ae625">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="netrw"><code>netrw</code><a class="anchor-link" href="#netrw">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ce0d7620-7997-4279-9ee7-b491289ec30c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>key</th>
-<th>desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:e .</code></td>
-<td>open the current directory</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=66951886-aa03-4740-8c60-b683ae009ea8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a href="https://thevaluable.dev/vim-browsing-remote-netrw/">https://thevaluable.dev/vim-browsing-remote-netrw/</a></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8af9e77d-c153-4859-ba76-145adae8804e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Search"><b></b>Search<a class="anchor-link" href="#Search">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db814105-b9af-48ae-b6af-b6f5fd64daa6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Exact matching</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>/\&lt;record\&gt;</code></td>
-<td>search for the exact word "record"; <code>\&lt;</code> and <code>\&gt;</code> indicate word boundaries</td>
-</tr>
-<tr>
-<td><code>*</code></td>
-<td>exact search of the cursored word</td>
-</tr>
-<tr>
-<td><code>#</code></td>
-<td>backwards exact search of the cursored word</td>
-</tr>
-<tr>
-<td><strong>Not exact matching</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>/word</code></td>
-<td>forward search a word</td>
-</tr>
-<tr>
-<td><code>?word</code></td>
-<td>backward search for a word</td>
-</tr>
-<tr>
-<td><code>g*</code></td>
-<td>not exact matching of the cursored word</td>
-</tr>
-<tr>
-<td><code>g#</code></td>
-<td>backwards search, not exact matching of the cursored word</td>
-</tr>
-<tr>
-<td><code>/ + ctrl-r ctrl-w</code></td>
-<td>copy the cursored word into a search bar</td>
-</tr>
-<tr>
-<td><strong>Navigating search</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>n</code></td>
-<td>jump to the next found word in the search direction</td>
-</tr>
-<tr>
-<td><code>N</code></td>
-<td>jump to the previous found word in the opposite direction</td>
-</tr>
-<tr>
-<td><code>ggn</code></td>
-<td>first occurence of the search</td>
-</tr>
-<tr>
-<td><code>GN</code></td>
-<td>last occurence of the search</td>
-</tr>
-<tr>
-<td><strong>Regex</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>:g/re/p</code></td>
-<td><code>g</code> searches for a line with <code>re</code> pattern and <code>p</code>rints out the result</td>
-</tr>
-<tr>
-<td><code>:g/re/s/word/new_word/g</code></td>
-<td><code>g</code> searches for a line with <code>re</code> pattern and executes the substitute command</td>
-</tr>
-<tr>
-<td><strong>Misc</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>/</code></td>
-<td>search for the last searched pattern</td>
-</tr>
-<tr>
-<td><code>5/</code></td>
-<td>jump to the 5th occurence of the last searched pattern</td>
-</tr>
-<tr>
-<td><code>6*</code></td>
-<td>jump to the 6th occurence of the cursored word</td>
-</tr>
-<tr>
-<td><code>m\&lt;letter&gt;</code></td>
-<td>marked points: if you type <code>&lt;letter&gt;</code> you will jump to that point from anywhere</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3d2daa0b-2004-4443-8cb0-4d0047a20f71">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Navigation"><b></b>Navigation<a class="anchor-link" href="#Navigation">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8f51772e-5a79-4c4a-bf46-698e21741a98">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="In-the-file">In the file<a class="anchor-link" href="#In-the-file">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c91c470b-0f97-4aa0-b898-2749f124707d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Arrows</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>j</code></td>
-<td>arrow <code>down</code></td>
-</tr>
-<tr>
-<td><code>k</code></td>
-<td>arrow <code>up</code></td>
-</tr>
-<tr>
-<td><code>h</code></td>
-<td>arrow <code>left</code></td>
-</tr>
-<tr>
-<td><code>l</code></td>
-<td>arrow <code>right</code></td>
-</tr>
-<tr>
-<td><strong>Entire file</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>Ctrl+F</code></td>
-<td>Move the cursor forward one screen</td>
-</tr>
-<tr>
-<td><code>Ctrl+B</code></td>
-<td>Move the cursor backward one screen</td>
-</tr>
-<tr>
-<td><code>Ctrl+D</code></td>
-<td>Move the cursor forward half a screen</td>
-</tr>
-<tr>
-<td><code>Ctrl+U</code></td>
-<td>Move the cursor backward half a screen</td>
-</tr>
-<tr>
-<td><code>gg</code></td>
-<td>go to the beginning of the file, good game</td>
-</tr>
-<tr>
-<td><code>G</code></td>
-<td>go to the end of the file</td>
-</tr>
-<tr>
-<td><code>zz</code></td>
-<td>center the screen</td>
-</tr>
-<tr>
-<td><strong>Previous position</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>''</code></td>
-<td>jumping to and fro between previous and current positions</td>
-</tr>
-<tr>
-<td><code>ctrl+O</code></td>
-<td>jump back to the previous cursor position in the jump list</td>
-</tr>
-<tr>
-<td><code>ctrl+I</code></td>
-<td>jump forward in the jump list, returning to positions after using <code>Ctrl-O</code></td>
-</tr>
-<tr>
-<td><strong>Window that you see</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>H</code></td>
-<td>Move cursor to first (highest) line in current window</td>
-</tr>
-<tr>
-<td><code>L</code></td>
-<td>Move cursor to the lowest line in current window</td>
-</tr>
-<tr>
-<td><code>M</code></td>
-<td>Move cursor to the middle of the current window</td>
-</tr>
-<tr>
-<td><strong>Still cursor</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>Ctrl+E</code></td>
-<td>Scroll the window down one line without moving the cursor</td>
-</tr>
-<tr>
-<td><code>Ctrl+Y</code></td>
-<td>Scroll the window up one line without moving the cursor</td>
-</tr>
-<tr>
-<td><strong>Navigate between tags</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>Ctrl+]</code></td>
-<td>Press the link</td>
-</tr>
-<tr>
-<td><code>Ctrl+T</code></td>
-<td>Return back to the previous location</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cea03d36-0256-44b1-9fcb-702737f2641d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Between-words-in-a-file">Between words in a file<a class="anchor-link" href="#Between-words-in-a-file">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1843ef42-9136-4f6f-bf0e-42751dbb9bc2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Navigation in the file</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>w</code></td>
-<td>jump to the next word separated by different signs, like space and hyphen</td>
-</tr>
-<tr>
-<td><code>W</code></td>
-<td>jump to the next word separated by symbols excluding hyphen</td>
-</tr>
-<tr>
-<td><code>e</code></td>
-<td>end of the word</td>
-</tr>
-<tr>
-<td><code>E</code></td>
-<td>end of the word without counting hyphens</td>
-</tr>
-<tr>
-<td><code>b</code></td>
-<td>jump to the previous word separated by different signs, like space and hyphen</td>
-</tr>
-<tr>
-<td><code>B</code></td>
-<td>jump to the previous word by symbols excluding hyphen</td>
-</tr>
-<tr>
-<td><code>ge</code></td>
-<td>jump back to the last character in the word</td>
-</tr>
-<tr>
-<td><code>0</code></td>
-<td>beginning of the line</td>
-</tr>
-<tr>
-<td><code>$</code></td>
-<td>end of the line</td>
-</tr>
-<tr>
-<td><code>{</code></td>
-<td>Go to the beginning of the current paragraph</td>
-</tr>
-<tr>
-<td><code>}</code></td>
-<td>Go to the end of the current paragraph</td>
-</tr>
-<tr>
-<td><code>%</code></td>
-<td>jumping between opening and closing brackets</td>
-</tr>
-<tr>
-<td><code>t</code>&lt;symbol&gt;</td>
-<td>navigate before the symbol</td>
-</tr>
-<tr>
-<td><code>f</code>&lt;symbol&gt;</td>
-<td>navigate to the symbol</td>
-</tr>
-<tr>
-<td><code>T</code>&lt;symbol&gt;</td>
-<td>navigate before the symbol backwards</td>
-</tr>
-<tr>
-<td><code>F</code>&lt;symbol&gt;</td>
-<td>navigate to the symbol backwards</td>
-</tr>
-</tbody>
-</table>
-<p>Combinations:</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>number</code> + arrow <code>up</code>/<code>down</code></td>
-<td>go <code>number</code> lines <code>up</code>/<code>down</code></td>
-</tr>
-<tr>
-<td><code>number</code> + arrow <code>left</code>/<code>right</code></td>
-<td>go <code>number</code> symbols <code>left</code>/<code>right</code></td>
-</tr>
-<tr>
-<td><code>numberG</code> or <code>:number</code></td>
-<td>go to the specific line</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a8cb569c-ac71-47f2-bf57-293178695be9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Between-files-(buffers)">Between files (buffers)<a class="anchor-link" href="#Between-files-(buffers)">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=87238921-c8e6-40b2-8377-d59200878888">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:ls</code></td>
-<td>list all opened buffers</td>
-</tr>
-<tr>
-<td><code>:bp</code></td>
-<td>previous buffer</td>
-</tr>
-<tr>
-<td><code>:bn</code></td>
-<td>next buffer</td>
-</tr>
-<tr>
-<td><code>:bn</code></td>
-<td>(<code>n</code> a number) move to <code>n</code>'th buffer</td>
-</tr>
-<tr>
-<td><code>:3b</code></td>
-<td>open buffer with the listed (<code>:ls</code>) number 3</td>
-</tr>
-<tr>
-<td><code>:b &lt;filename-part&gt;</code></td>
-<td>with tab-key providing auto-completion</td>
-</tr>
-<tr>
-<td><code>:tab sball</code></td>
-<td>change all buffers to tab view</td>
-</tr>
-<tr>
-<td><code>:bw</code></td>
-<td>buffer wipe, remove a buffer</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><code>%</code> refers to the file currently visible</li>
-<li><code>#</code> refers to the alternate file</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9220245c-00b4-4eff-bce7-7080648a2768">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Sessions">Sessions<a class="anchor-link" href="#Sessions">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5e96053f-d50f-443e-b27b-e3d605993e47">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Key|Desc
--|-
-|<code>:mksession! ~/today.ses</code>|save session|
-|<code>vim -S ~/today.ses</code>|open the saved session|</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=80007eed-be05-479a-b833-d1b1481c333a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Tabs">Tabs<a class="anchor-link" href="#Tabs">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=31318d0d-c46f-4546-8109-5d92e4dd78d9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:tabnew fname</code></td>
-<td>open a new tab</td>
-</tr>
-<tr>
-<td><code>:tabp</code></td>
-<td>move to the next tab</td>
-</tr>
-<tr>
-<td><code>gt</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>:tabn</code></td>
-<td>move to the previous tab</td>
-</tr>
-<tr>
-<td><code>gT</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>:q</code></td>
-<td>close a tab</td>
-</tr>
-<tr>
-<td><code>:tabfirst</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>:tablast</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>:tabmove number</code></td>
-<td>move tab to a new position</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=caaba983-05a5-4307-b96e-b19d76951fa1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Split-screen">Split screen<a class="anchor-link" href="#Split-screen">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c38ccfe1-6dc8-44af-916a-cebbbafc8e90">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:sp &lt;fpath&gt;</code></td>
-<td>horizontal split</td>
-</tr>
-<tr>
-<td><code>:bel vert sp &lt;fpath&gt;</code></td>
-<td>open a new file in the <em>right</em> half of the current tab</td>
-</tr>
-<tr>
-<td><code>:vs &lt;fpath&gt;</code> or <code>:vsp &lt;fpath&gt;</code></td>
-<td>open a new file in the <em>left</em> half of the screen</td>
-</tr>
-</tbody>
-</table>
-<p>Use <code>ctrl+W</code> to navigate between opened files.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a4b9f324-3db4-45f2-86ac-29a0644f2304">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Editing-files"><b></b>Editing files<a class="anchor-link" href="#Editing-files">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=54ff2d35-045f-43d0-a919-79af063d002e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Command-mode">Command mode<a class="anchor-link" href="#Command-mode">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2355f844-1934-4be6-8a17-26137417b6dd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Command</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:reg</code></td>
-<td>history of actions</td>
-</tr>
-<tr>
-<td><code>:help ex-cmd-index</code></td>
-<td>list of the command mode commands</td>
-</tr>
-<tr>
-<td><strong>Add text from other files</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>:r file.txt</code></td>
-<td>Insert the file file.txt below the cursor in current buffer</td>
-</tr>
-<tr>
-<td><code>:0r file.txt</code></td>
-<td>Insert the file file.txt before the first line</td>
-</tr>
-<tr>
-<td><code>:r!sed -n 2,8p file.txt</code></td>
-<td>Insert lines 2 to 8 from file file.txt below the cursor</td>
-</tr>
-<tr>
-<td><code>:r !ls</code></td>
-<td>Insert a directory listing below the cursor</td>
-</tr>
-<tr>
-<td><code>:11,12d</code></td>
-<td>cut lines from 11 to 12 (included)</td>
-</tr>
-<tr>
-<td><strong>Replace</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>:s/word/new_word/</code></td>
-<td>replace first word "word" in the line</td>
-</tr>
-<tr>
-<td><code>:s/word/new_word/g</code></td>
-<td>replace each occurence (<code>g</code>lobally) in the current line</td>
-</tr>
-<tr>
-<td><code>:s/word/new_word/gc</code></td>
-<td>replace only desired occurences in the current line (<code>c</code>onfirmation)</td>
-</tr>
-<tr>
-<td><code>:s/word/new_word/gc</code></td>
-<td>replace only desired occurences in the current line (<code>c</code>onfirmation)</td>
-</tr>
-<tr>
-<td><code>:3,5s/word/new_word/g</code></td>
-<td>replace each occurence of the string in the lines range 3-5 (included)</td>
-</tr>
-<tr>
-<td><code>:.,+2s/word/new_word/g</code></td>
-<td>replace each occurence of the string in the lines from current (<code>.</code>) and next 2</td>
-</tr>
-<tr>
-<td><code>:3;+2s/word/new_word/g</code></td>
-<td>replace each occurence of the string in the lines from 3rd to +2 (included, note: <code>;</code>)</td>
-</tr>
-<tr>
-<td><code>:s//new_word/g</code></td>
-<td>replace each occurence of the selected word (pointed in the text) in the line</td>
-</tr>
-<tr>
-<td><code>:%s/word/new_word/g</code></td>
-<td>replace each occurence of the string in every line (<code>%</code>)</td>
-</tr>
-<tr>
-<td><code>:s/word/new_word/g</code></td>
-<td>replace each occurence of the string in the selected area</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>:"\&lt;line number&gt;p</code></td>
-<td>restore the line from <code>reg</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="Replace-a-word">Replace a word<a class="anchor-link" href="#Replace-a-word">¶</a></h3><p><code>$ :s/&lt;search_term&gt;/&lt;replace_term&gt;/option</code>:</p>
-<ul>
-<li><code>S</code>: stands for substitute</li>
-<li><code>search_term</code>: the word you want to search and replace</li>
-<li><code>replace_term</code>: the word with which you want to replace it with</li>
-<li><code>Option</code>: c (for confirmation), g (replace all occurrence in one line), i (for ignoring the case)</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7c1340bb-6915-4719-a531-2c6c2fd64334">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Insert-mode">Insert mode<a class="anchor-link" href="#Insert-mode">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2fe85d3f-e48c-450e-b72b-d1de84de9879">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Inserting Text</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>i</code></td>
-<td>Insert text before the cursor.</td>
-</tr>
-<tr>
-<td><code>I</code></td>
-<td>Insert text at the beginning of the line.</td>
-</tr>
-<tr>
-<td><code>a</code></td>
-<td>Append text after the cursor.</td>
-</tr>
-<tr>
-<td><code>A</code></td>
-<td>Append text at the end of the line.</td>
-</tr>
-<tr>
-<td><code>o</code></td>
-<td>Open a new line below the current line.</td>
-</tr>
-<tr>
-<td><code>O</code></td>
-<td>Open a new line above the current line.</td>
-</tr>
-<tr>
-<td><code>Ctrl+V</code></td>
-<td>Insert the next character literally.</td>
-</tr>
-<tr>
-<td><strong>Deleting Text</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>Backspace</code></td>
-<td>Delete the character before the cursor.</td>
-</tr>
-<tr>
-<td><code>Ctrl+H</code></td>
-<td>Delete previous character; Same as Backspace.</td>
-</tr>
-<tr>
-<td><code>Ctrl+W</code></td>
-<td>Delete the word before the cursor (equivalent to<code>db</code> in Normal mode).</td>
-</tr>
-<tr>
-<td><code>Ctrl+U</code></td>
-<td>Delete the text before the cursor (equivalent to <code>d0</code> in Normal mode).</td>
-</tr>
-<tr>
-<td><code>Ctrl+T</code></td>
-<td>Indent the line or the selected text.</td>
-</tr>
-<tr>
-<td><strong>Miscellaneous</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>Esc</code></td>
-<td>Exit insert mode and return to normal mode.</td>
-</tr>
-<tr>
-<td><code>Ctrl+O</code></td>
-<td>Temporarily switch to normal mode for executing one command, then return to insert mode.</td>
-</tr>
-<tr>
-<td><code>Ctrl+R</code></td>
-<td>Redo the last change.</td>
-</tr>
-<tr>
-<td><code>Ctrl+L</code></td>
-<td>Redraw the screen.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2c9f1670-5b07-450c-97d3-d967076d6ade">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Normal-mode">Normal mode<a class="anchor-link" href="#Normal-mode">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6733d9fe-28c1-4410-a2a2-58c9e364d9fa">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Basic-commands">Basic commands<a class="anchor-link" href="#Basic-commands">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=865760b1-bf71-4861-ba0f-60f47622f148">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Undo/Redo</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>u</code></td>
-<td>undo an action (like ctrl+Z)</td>
-</tr>
-<tr>
-<td><code>ctrl+R</code></td>
-<td>redo, i.e. return an undone action</td>
-</tr>
-<tr>
-<td><strong>Delete and cut</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>x</code></td>
-<td>Delete the character under the cursor</td>
-</tr>
-<tr>
-<td><code>d</code></td>
-<td>cut</td>
-</tr>
-<tr>
-<td><code>dd</code></td>
-<td>cut a whole line</td>
-</tr>
-<tr>
-<td><code>D</code></td>
-<td>cut the rest of the line</td>
-</tr>
-<tr>
-<td><code>c</code></td>
-<td>cut a symbol using arrows and insert mode</td>
-</tr>
-<tr>
-<td><code>cc</code></td>
-<td>cut a line and insert mode</td>
-</tr>
-<tr>
-<td><code>C</code></td>
-<td>cut the rest of the line and insert mode</td>
-</tr>
-<tr>
-<td><strong>Copy</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>y</code></td>
-<td>yanking, i.e. copying</td>
-</tr>
-<tr>
-<td><code>yy</code> or <code>Y</code></td>
-<td>copy a whole line</td>
-</tr>
-<tr>
-<td><strong>Paste</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>p</code></td>
-<td>paste after</td>
-</tr>
-<tr>
-<td><code>P</code></td>
-<td>paste before</td>
-</tr>
-<tr>
-<td><strong>Uppercase</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>gUl</code> or <code>~</code></td>
-<td>Capitalize the letter under the cursor</td>
-</tr>
-<tr>
-<td><code>gUw</code></td>
-<td>Uppercase the word from the cursor</td>
-</tr>
-<tr>
-<td><code>gUiw</code></td>
-<td>Uppercase the entire word</td>
-</tr>
-<tr>
-<td><code>%s/\&lt;./\u&amp;/g</code></td>
-<td>Capitalize first letter of each word in a selection, see <a href="https://stackoverflow.com/questions/17440659/capitalize-first-letter-of-each-word-in-a-selection-using-vim">here</a></td>
-</tr>
-<tr>
-<td><strong>Lowercase</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>gul</code></td>
-<td>Lowercase the letter under the cursor</td>
-</tr>
-<tr>
-<td><code>guw</code></td>
-<td>Lowercase the word from the cursor</td>
-</tr>
-<tr>
-<td><code>guiw</code></td>
-<td>Lowercase the entire word</td>
-</tr>
-<tr>
-<td><strong>Etc</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>r</code></td>
-<td>replace a symbol</td>
-</tr>
-<tr>
-<td><code>m</code></td>
-<td>move</td>
-</tr>
-<tr>
-<td><code>.</code></td>
-<td>repeat the last command</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3d18ad4-4c95-44a9-bff8-80db7a47d8c2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Indent-lines">Indent lines<a class="anchor-link" href="#Indent-lines">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc605ebb-d780-4986-8871-cc8de8152019">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>S</code></td>
-<td>in normal mode, starts an insert mode with the corrected indent line</td>
-</tr>
-<tr>
-<td><code>&gt;&gt;</code></td>
-<td>indent to the right</td>
-</tr>
-<tr>
-<td><code>&lt;&lt;</code></td>
-<td>indent to the left</td>
-</tr>
-<tr>
-<td><code>==</code></td>
-<td>indent to the right in the brackets</td>
-</tr>
-<tr>
-<td><code>5&gt;&gt;</code></td>
-<td>indent 5 lines</td>
-</tr>
-<tr>
-<td><code>vjj&gt;</code></td>
-<td>indent 3 lines, using visual mode</td>
-</tr>
-<tr>
-<td>put cursor on the brace and <code>&gt;%</code></td>
-<td>indent a curly-braces block</td>
-</tr>
-<tr>
-<td><code>&gt;iB</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>[p</code></td>
-<td>align the indent of a copied block in its new location</td>
-</tr>
-<tr>
-<td><code>gg=G</code></td>
-<td>correctly indent all file</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=01100fe0-dcfb-4766-abaf-dad4344a4786">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Combos">Combos<a class="anchor-link" href="#Combos">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6ff9aee8-2201-45ca-86dd-67621abf34bb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>"0p</code></td>
-<td>paste the last copied item (if you <code>yy</code> and then <code>dd</code> but want to paste <code>yy</code>)</td>
-</tr>
-<tr>
-<td><code>xp</code></td>
-<td>swap the current character with the one before it.</td>
-</tr>
-<tr>
-<td><code>ciw</code></td>
-<td>change a full word ("change in a word")</td>
-</tr>
-<tr>
-<td><code>ci"</code></td>
-<td>change the contents between the quote marks</td>
-</tr>
-<tr>
-<td><code>ci(</code></td>
-<td>change in the patentheses</td>
-</tr>
-<tr>
-<td><strong>Cut</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>dw</code></td>
-<td>delete a word from the point you are now</td>
-</tr>
-<tr>
-<td><code>5dw</code></td>
-<td>delete 5 words  from the point you are now</td>
-</tr>
-<tr>
-<td><code>diw</code></td>
-<td>delete a full word when you are in the middle of it</td>
-</tr>
-<tr>
-<td><code>d0</code></td>
-<td>delete from here to the beginning of the line</td>
-</tr>
-<tr>
-<td><code>d$</code></td>
-<td>delete from here to the end of the line</td>
-</tr>
-<tr>
-<td><code>d%</code></td>
-<td>delete all the content in the brackets including them</td>
-</tr>
-<tr>
-<td><code>db</code></td>
-<td>cut the previous word</td>
-</tr>
-<tr>
-<td><code>dib</code></td>
-<td>cut the cursored word</td>
-</tr>
-<tr>
-<td><code>dG</code></td>
-<td>cut till the end of the document</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f6a7af0c-86fa-44aa-af7e-48bc392d6515">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Surround"><a href="https://github.com/tpope/vim-surround">Surround</a><a class="anchor-link" href="#Surround">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7c1cf73f-4db8-4dd6-b5c5-e41111a8c292">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Surround</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>ysiw]</code></td>
-<td>surround a cursored word with [] without spaces (<code>iw</code> is a text object)</td>
-</tr>
-<tr>
-<td><code>ysiw[</code></td>
-<td>surround a cursored word with [] with spaces</td>
-</tr>
-<tr>
-<td><strong>Change surrounding</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>cs])</code></td>
-<td>change <code>[]</code> to <code>()</code> with no spaces in one word</td>
-</tr>
-<tr>
-<td><code>yss)</code></td>
-<td>wrap the entire line in parentheses</td>
-</tr>
-<tr>
-<td><strong>Remove wrapping</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>ds)</code></td>
-<td>remove <code>()</code> around the word</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=65dbf1ff-3863-4752-b454-e436d725f30e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Visual-mode">Visual mode<a class="anchor-link" href="#Visual-mode">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=61b7dcd3-332a-48f4-892d-63dc2c09736c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Basic-commands">Basic commands<a class="anchor-link" href="#Basic-commands">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6db4a435-bd21-44fe-a28d-8983d7b5a456">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>v</code></td>
-<td>enter visual mode</td>
-</tr>
-<tr>
-<td><code>V</code></td>
-<td>enter visual line mode</td>
-</tr>
-<tr>
-<td><code>ctrl ^ V</code></td>
-<td>enter visual mode of multiselection (like <code>alt</code> in Jupyter)</td>
-</tr>
-<tr>
-<td><code>escape escape</code></td>
-<td>leave visual mode</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=08e1c9d7-c546-48c7-a707-112be9f2bf71">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Editing-many-lines-at-one-time">Editing many lines at one time<a class="anchor-link" href="#Editing-many-lines-at-one-time">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f037236b-c2f2-4ba9-9646-af22267273f5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=298fcbd3-867d-4d71-8faf-c273f90d1d30">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ol>
-<li><code>ctrl ^ V</code> - start select</li>
-<li><code>shift ^ I</code> - type in any text</li>
-<li><code>esc esc</code> - apply to all selected lines</li>
+<li>Arnold Robbins, Nelson H. F. Beebe "Classic Shell Scripting", May 2005, ISBN: 9780596555269</li>
 </ol>
-<p><a href="https://stackoverflow.com/questions/12399572/vim-how-to-insert-in-visual-block-mode">Source</a></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a802f9ab-0083-40c5-a202-ecc1fb52b328">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8a39ac8e-7175-448e-8d0e-3365ef867326">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="0.-Preliminaries">0. Preliminaries<a class="anchor-link" href="#0.-Preliminaries">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fc8fd31a-9396-4f23-b7e7-6d2624ce8ef8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><em>ChatGPT:</em><br/>
+Yes, shell scripting is essential for many DevOps positions. Here’s why shell scripting is crucial in the DevOps field, along with some specific scenarios where it is particularly beneficial:</p>
+<p><strong>Why Shell Scripting is Important for DevOps</strong></p>
+<ol>
+<li><p><strong>Automation of Routine Tasks</strong>:</p>
+<ul>
+<li>DevOps involves a lot of repetitive tasks like deployments, backups, log rotation, and monitoring. Shell scripts can automate these tasks, saving time and reducing human error.</li>
+</ul>
+</li>
+<li><p><strong>System Administration</strong>:</p>
+<ul>
+<li>Shell scripts are used to manage servers, including starting/stopping services, managing system configurations, and handling user permissions.</li>
+</ul>
+</li>
+<li><p><strong>CI/CD Pipelines</strong>:</p>
+<ul>
+<li>Continuous Integration and Continuous Deployment pipelines often involve a series of shell commands to build, test, and deploy applications. Shell scripting helps in orchestrating these commands efficiently.</li>
+</ul>
+</li>
+<li><p><strong>Configuration Management</strong>:</p>
+<ul>
+<li>Tools like Ansible, Puppet, and Chef often utilize shell scripting to perform low-level system configuration tasks.</li>
+</ul>
+</li>
+<li><p><strong>Environment Setup</strong>:</p>
+<ul>
+<li>Setting up development, testing, and production environments often requires running a series of shell commands to install software, configure settings, and ensure that the environment is ready for use.</li>
+</ul>
+</li>
+<li><p><strong>Monitoring and Logging</strong>:</p>
+<ul>
+<li>Shell scripts can be used to monitor system performance, collect logs, and alert the team when certain thresholds are exceeded.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Specific Scenarios Where Shell Scripting is Used in DevOps</strong></p>
+<ol>
+<li><p><strong>Deployments</strong>:</p>
+<ul>
+<li>Automating the deployment of applications to various environments (development, staging, production) often involves shell scripts that handle tasks such as copying files, restarting services, and running database migrations.</li>
+</ul>
+</li>
+<li><p><strong>System Health Checks</strong>:</p>
+<ul>
+<li>Scripts that check the status of services, disk space usage, memory utilization, and other system metrics. These scripts can be run at regular intervals and alert the team if something goes wrong.</li>
+</ul>
+</li>
+<li><p><strong>Backup and Restore</strong>:</p>
+<ul>
+<li>Automating the process of backing up databases and important files, and restoring them when needed. Shell scripts can schedule these tasks to run at specific times using cron jobs.</li>
+</ul>
+</li>
+<li><p><strong>Log Management</strong>:</p>
+<ul>
+<li>Rotating, compressing, and archiving log files to ensure that logs do not consume too much disk space. Shell scripts can also parse logs and extract relevant information for further analysis.</li>
+</ul>
+</li>
+<li><p><strong>Environment Variables and Configuration Files</strong>:</p>
+<ul>
+<li>Managing environment variables and configuration files for different environments. Shell scripts can be used to ensure that the correct configurations are applied in each environment.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Integration with Other DevOps Tools</strong></p>
+<p>While shell scripting is fundamental, it often works in tandem with other DevOps tools:</p>
+<ul>
+<li><strong>Docker</strong>: Shell scripts can be used to build, tag, and push Docker images, as well as to run containers.</li>
+<li><strong>Kubernetes</strong>: Shell scripts can interact with <code>kubectl</code> to manage Kubernetes clusters and deployments.</li>
+<li><strong>Jenkins</strong>: Shell scripting is frequently used within Jenkins pipelines to perform build and deployment steps.</li>
+<li><strong>Terraform</strong>: While Terraform uses its own language, shell scripts can be used for provisioning resources that Terraform does not directly support.</li>
+</ul>
+<p><strong>Conclusion</strong></p>
+<p>Shell scripting is a vital skill for DevOps professionals because it enables the automation of a wide range of tasks, from system administration to deployment and monitoring. While other scripting and programming languages (like Python) are also valuable, shell scripting is often the quickest and most direct way to interact with the Unix/Linux operating systems and DevOps tools. Learning shell scripting will make you more effective in a DevOps role by enabling you to automate and streamline your workflows.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dffaf1cd-e50a-404a-bfbd-1c84e150e72c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="1.-Background"><b></b>1. Background<a class="anchor-link" href="#1.-Background">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9536005f-1df7-4a13-aa43-f07107dbfe1c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="1.2-Software-Tools-Principles">1.2 Software Tools Principles<a class="anchor-link" href="#1.2-Software-Tools-Principles">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=642c1e9f-66b4-41ca-a661-aa0ba8ea14cd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol>
+<li>Do one thing well</li>
+<li>Process lines of text, not binary</li>
+<li>Use regular expressions (BRE, ERE)</li>
+<li>Default to standard I/O</li>
+<li>Don't be chatty</li>
+<li>Generate the same output format accepted as input</li>
+<li>Let someone else do the hard part</li>
+<li>Detour to build specialized tools</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2d140c31-dba6-4783-8471-d630f7ddd346">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9165,7 +7657,7 @@ vi /etc/vim/vimrc  # (globally for all users)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=07ce609c-963e-4fd9-a13d-cb281fd75de6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b96dd60d-039a-4faa-be2b-25919d160797">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9175,7 +7667,7 @@ vi /etc/vim/vimrc  # (globally for all users)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=623c9055-ddce-4442-aa19-853dbb529d86">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1673724d-3a86-4586-8bf5-b341fbedd500">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9185,7 +7677,7 @@ vi /etc/vim/vimrc  # (globally for all users)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f788fe63-1769-4f39-9440-ca6bafb1646f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3dd6920f-309a-4b5b-a4a4-6ebe0f44a510">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9195,7 +7687,7 @@ vi /etc/vim/vimrc  # (globally for all users)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8a19a863-c098-4172-b0f2-d1935d06038b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5d94f104-67d2-473d-85f3-5dd1ee8313d5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9205,7 +7697,7 @@ vi /etc/vim/vimrc  # (globally for all users)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c54f6641-4634-497b-b2ff-320baee7b3fe">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=84e057ac-a575-493a-8d7b-ed060db63dc4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9215,7 +7707,7 @@ vi /etc/vim/vimrc  # (globally for all users)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=14a7fb66-ba9f-4016-b9be-bba6baf884cf">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f0ff47b1-6773-4cb4-bcd0-05d463f1eb10">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9225,7 +7717,7 @@ vi /etc/vim/vimrc  # (globally for all users)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d19ab79b-962c-44aa-bc18-c28c5212d1e9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=76c97f8c-d12d-4e5c-baab-1977696d80f8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9235,7 +7727,7 @@ vi /etc/vim/vimrc  # (globally for all users)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fb95d8ac-3798-414f-8498-848739ec0b11">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2483bc82-91d1-43e9-9ae8-64ba48c123a1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9244,899 +7736,553 @@ vi /etc/vim/vimrc  # (globally for all users)
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=534f0cb2-1aa1-4f84-b421-b2566b972cf7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2c098611-265d-45f3-af9b-188fa5b57f82">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3914c6e5-d45c-4c1f-a799-805027471f45">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9d77b24b-665d-4e86-b707-59a4a8c82169">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7d1316f9-a5b4-457d-90f4-6133fd242488">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
 </div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8dbb8938-a033-47e5-9cbf-1ac2908daacf">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=60971074-5bb3-427b-8002-f0f794d8295c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=46aacc62-03ca-405a-96ca-cdebc70da290">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b8c370dc-b460-4af8-8a47-b82d80691264">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3711e3e-79a2-4cbe-b562-34b098765d8c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=dc400219-ab4d-4e3e-8c35-3ec4411940fa">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=90cf3c82-1045-4854-8825-76a8b4c823db">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8de4f16d-efd4-4f3d-8f5e-f4d64158a5dd">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9bfc492b-d351-4b06-af21-3459aa0f1fc1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=91fb1434-2d76-4bc5-be42-6656c66b1a4a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cfd6fcfe-639a-457c-b602-2c05e75fe28a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=fb3f7ab8-4e4d-4000-bb78-1af6f0dba1a4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=830d5605-a85a-4795-9390-8422bb97c740">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4da793ca-a4b1-4e52-8576-f3b03b8802d6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9fead4ed-3813-46f6-bf0d-fe6a1c775a99">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3f24494a-d29b-4fba-b5f8-536eae6acf73">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=00903dbd-44f2-436a-96af-c6c8a63e84dc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4ab61571-e8ec-4daf-9ed4-dddac2e24ff4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=818f6de9-d35f-4550-b96d-a27140bef8e2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1b9acb53-a3d0-4652-acce-65e9c69e14c7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a1a6ccc7-6d7a-453e-bd72-d08027a3411f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9660bd5a-b27d-43cc-9388-7cd287683db8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ce1ccfa-3f03-464c-974d-70a93d03c584">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=72239fd9-e41f-43a1-9f67-d1962575ddbf">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9cd348c8-a4af-4a37-b08f-983f5ede8c43">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=fff5731f-4167-4a16-8f47-f872e62db6a2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2ec8c005-3e61-4937-a184-bec9eef97b4b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=afd092ec-235b-4791-b5eb-359bd428510d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e7bcada2-0a2b-4c6b-a775-c99b248162e9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=76c242ee-27ae-4da0-a2c3-56c089e9ffec">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=43463e74-fb22-49a3-9b1a-d8947315ef4d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7bdf826b-06b1-4fd9-8e4c-a8b8f72a5ae8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d8738ce6-7863-4832-8de2-db0c41a30c0f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2e569aae-2031-4210-8718-b83b65a4b8aa">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=33179071-45c9-435b-a266-2cf9d89a4c79">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=68ade170-339d-42da-83a7-2b51f115a699">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd45fdfa-1fef-4654-9d1d-5e82fe05845a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7379859d-6780-41bc-8c3e-c219d07c78d3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=41598c5c-58a1-4396-927d-a8b7111232ae">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c403135b-6ca3-400b-be51-685592ab30dd">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=de0037ed-1dde-4dae-8585-5748e3319352">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=819c91f1-09fa-4c35-9a4d-e3b1d6f4440b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3e70665-e417-44b3-9c02-26d2bfe16d71">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=570fc134-d16e-425a-bd97-dafd55caa493">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0ca6c287-8bd4-4845-86e6-fe9e5c8915e6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=82b9eb1d-2489-4687-8604-75e170b08f66">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=36efb52b-0482-4dce-bbf4-43817b0ab056">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=04722947-76b0-4518-a675-daf4ecb09bfe">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5cba651b-a209-4427-bd85-9a05f74d48d6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d9aa7559-2907-4166-9fd8-e072f451d4f4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8312c782-f2b1-461c-8d12-5981592c10c5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e25f9dea-ac2f-4cf4-b5e0-458b156c2c16">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1965d95f-9eef-4093-b793-76132410fa8e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4fb2fec3-2b86-4963-af50-284d7395851e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=50cca693-7e9e-41a3-9cc5-c878c41c76a3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=be15d9c8-1457-4d5c-b1fb-3b7c258f44ae">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd886d5d-ab42-4f76-82e7-9e43b761a8ba">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=06481580-1288-4aea-868d-e8aba50c31ce">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d67890b5-be1b-4253-b7a0-224886fb9058">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8e51c41f-d30c-4170-bc54-8281bd11449c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c021b8db-3f2b-4692-a416-6ce1dd810978">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0b00d5c2-0148-48c6-84a0-fb059300f463">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=979a22b5-3a75-429a-aaa9-465e788ac9db">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=edbd6c67-7c62-4ce9-8625-12a6b1f0d119">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=09919cd5-5523-4418-99db-950bfc0ebe3f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d1bdd3b5-8ef7-4b80-898a-2831134ed5ec">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9332469e-8fa2-41fa-a335-5a96656d96c7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=aa1ea567-651b-4d1d-8a21-df476d11a35b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0a4ca358-5956-4849-9f66-bbefc1c03008">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5112dc1a-3a84-4f49-896e-2fe45c3da7c8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1bdb569d-808f-47c5-b94d-e5026301a5d7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4b44a715-8cce-4c66-9864-9f6e289bb697">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=25e1d4e9-e763-4a5c-af08-0dd3cc5f05b8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7254808c-d607-4d92-a790-e50f4eb2d751">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c3fca0e7-ae03-4b20-b507-488ee9b9b0ea">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ad4b03ab-9b23-4c1f-bf08-0bba5f20712e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e4144777-fd96-4a72-86aa-b5455a4d7019">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=93a1a088-fad5-4584-82c2-ac2ef286c995">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6a846e85-3e3f-420d-91b2-b4ad3bb2ce97">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a2e7da08-f647-4bfb-b1eb-8b3830f330d4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e4c41123-1ed0-4c7e-b6a4-295751f1be51">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7a0e0c79-c4f6-49c7-9616-e983e3d559dc">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e5f7c996-3594-47a6-8dbd-dc8315c4b937">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6bf5e664-eb16-4397-87eb-c09dad0e6f1f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a8619a29-aaed-4cc4-afae-543f48e0f348">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c52f5df5-42e5-4232-9036-5703252b3052">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=37b8514f-02d7-4597-a41e-0441cca49c36">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8cad8358-2147-405a-8a3a-b4a7c6cc7d31">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cd8e8192-b075-4fcf-b20b-e2898b1cd746">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=916a0dbd-9465-43f6-b85f-5c443380bd5a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7228379e-1012-44d5-8052-52ce5e86786b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=75c433c5-a6b3-4e4c-9df7-ccc9c0aeabd6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc87b287-a443-4f19-bc6d-283ef9d5ff85">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9af53cf6-df4f-45b6-b7d1-91c62120deab">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a49b77f7-df18-4122-a151-96d86012d11d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ae333620-8f75-4ec1-95b7-63f5f86ac029">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e75bda7e-202d-4762-8346-bed6ffc3749b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=343fd612-4b64-4ab7-a038-2cb8585ae63c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=509c6476-e8d1-4bb1-b9f2-3c041c18c899">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d56a19b5-24ab-4dd9-b98b-8cc77737bcf5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a20c4696-78fb-4354-8e4b-eb49cafca4ab">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6a825717-9455-4afc-ae85-c6db8f3279de">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=15ef825a-8f9a-41a8-bb8a-f5bb73782c8c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f1771638-3ff4-4d5e-a007-eb6521c3a08a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a9485765-5f9b-4bd2-a37a-5b0271dc77fe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6d8a7e06-499f-4e32-8d5a-37e81ababe8a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5f727afd-5102-4dc4-9557-b5dd90eec828">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e93d85da-a8ba-46c6-814c-fb9d34e47e6e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4fb2c44d-efbd-4086-8a68-0cc03a0b95cf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=72cbd2f5-febf-412e-969c-fda766a5a08d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8cc82f91-34d0-4815-b0c8-6e1af8df3718">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=574b21fb-0566-4486-bf90-89d1399d6147">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=87234b50-3f1a-4aaa-9945-bd3001c8443d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9ebc2ec9-1ab9-49d4-a71c-61bc3d5d1d40">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
 </div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
