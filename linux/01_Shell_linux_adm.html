@@ -7482,7 +7482,34 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="GNU/Linux---Administration">GNU/Linux - Administration<a class="anchor-link" href="#GNU/Linux---Administration">¶</a></h1>
+<h1 id="1.-GNU/Linux---Shell">1. GNU/Linux - Shell<a class="anchor-link" href="#1.-GNU/Linux---Shell">¶</a></h1>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ad4ee292-de0a-4e72-b782-3ae1050b1faa">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>cat<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'PRETTY*'</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre><span class="ansi-red-intense-fg ansi-bold">PRETTY</span>_NAME="Debian GNU/Linux 12 (bookworm)"
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -7504,19 +7531,26 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Books:</p>
+<p><strong>Books:</strong></p>
 <ol>
 <li>"Unix and Linux System Administration Handbook" by Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley, and Dan Mackin</li>
 <li>"Linux Bible" by Christopher Negus</li>
+<li>"Classic Shell Scripting" by Arnold Robbins and Nelson H.F. Beebe</li>
 </ol>
-<p>Courses:</p>
+<p><strong>Courses:</strong></p>
 <ol>
 <li>Codio Course <a href="https://www.coursera.org/specializations/unix-and-bash-for-beginners#courses">"Unix and Bash for Beginners Specialization"</a></li>
 </ol>
-<p>ChatGPT</p>
-<p><em>Not used yet:</em></p>
+<p><strong>History:</strong></p>
 <ol>
-<li>"Classic Shell Scripting" by Arnold Robbins and Nelson H.F. Beebe</li>
+<li>UNIX: <a href="https://unix.org/what_is_unix/history_timeline.html">History and Timeline</a></li>
+<li><a href="https://www.bell-labs.com/institute/blog/invention-unix/">The invention of Unix</a></li>
+</ol>
+<p><strong>ChatGPT</strong></p>
+<center>
+<i>Not used yet:</i>
+</center>
+<ol>
 <li>"<a href="https://www.linuxcommand.org/tlcl.php">The Linux Command Line</a>" by William E. Shotts, Jr.</li>
 </ol>
 <p>Linux Development:</p>
@@ -7527,11 +7561,6 @@ a.anchor-link {
 <li>"Linux System Programming: Talking Directly to the Kernel and C Library" by Robert Love</li>
 <li>"The Art of Unix Programming" by Eric S. Raymond</li>
 </ol>
-<p>History:</p>
-<ul>
-<li>UNIX: <a href="https://unix.org/what_is_unix/history_timeline.html">History and Timeline</a></li>
-<li><a href="https://www.bell-labs.com/institute/blog/invention-unix/">The invention of Unix</a></li>
-</ul>
 </div>
 </div>
 </div>
@@ -7570,44 +7599,6 @@ a.anchor-link {
 <li>Storage space is usually quoted in power-of-10 units, but</li>
 <li>block and page sizes are in fact powers of 2.</li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d6c3fc1c-e5ae-4a75-8510-cde0f42b8cb5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.-Shell"><b></b>1. Shell<a class="anchor-link" href="#1.-Shell">¶</a></h1>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=596f354e-05e2-482a-80ad-b40be088ae44">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>whatis<span class="w"> </span>which
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>which (1)            - locate a command
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -8536,7 +8527,7 @@ drwxr-xr-x  4 commi commi     4096 Dec 16 21:48  <span class="ansi-blue-intense-
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>./Docs
+<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>~/Documents
 </pre></div>
 </div>
 </div>
@@ -8549,10 +8540,17 @@ drwxr-xr-x  4 commi commi     4096 Dec 16 21:48  <span class="ansi-blue-intense-
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>alt-kworkstation-10.1-alt-kworkstation-ru-RU.pdf
-fhs-3.0.pdf
-unix_cli.txt
-UnixProgrammingTools_Stanford.pdf
+<pre><span class="ansi-blue-intense-fg ansi-bold">all</span>/
+debian-12.2.0-amd64-netinst.iso
+Fedora-Server-dvd-x86_64-39-1.5.iso
+FreeBSD-14.0-RELEASE-amd64-disc1.iso
+<span class="ansi-blue-intense-fg ansi-bold">golden_dict_dictionaries</span>/
+<span class="ansi-magenta-intense-fg ansi-bold">photo_2022-08-06_22-47-38.jpg</span>
+<span class="ansi-magenta-intense-fg ansi-bold">photo_2023-10-27_16-11-31.jpg</span>
+<span class="ansi-cyan-fg">radios.xspf</span>
+ru-ru_windows_10_consumer_editions_version_22h2_updated_sep_2023_x64_dvd_4cde879b.iso
+ru_windows_7_professional_with_sp1_vl_build_x64_dvd_u_677774.iso
+ubuntu-22.04.3-desktop-amd64.iso
 </pre>
 </div>
 </div>
@@ -9501,7 +9499,7 @@ Fri Apr 19 01:15:55 AM +05 2024
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <blockquote>
-<p>Note: Some people disable the history feature for the root user by setting the <code>HISTFILE</code> shell variable to <code>/dev/null</code> or settin <code>HISTSIZE</code> to <code>0</code>. This prevents information about the root user’s activities from potentially being exploited. If you are an administrative user with root privileges, you may want to consider emptying your file upon exiting as well for the same reasons.</p>
+<p>Note: Some people disable the history feature for the root user by setting the <code>HISTFILE</code> shell variable to <code>/dev/null</code> or setting <code>HISTSIZE</code> to <code>0</code>. This prevents information about the root user’s activities from potentially being exploited. If you are an administrative user with root privileges, you may want to consider emptying your file upon exiting as well for the same reasons.</p>
 </blockquote>
 </div>
 </div>
@@ -10225,6 +10223,18 @@ And I am 36 years old.
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=796e46a4-f0e4-430b-9de2-eaffc006ac52">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
+<p><em>ChatGPT:</em></p>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=27484f6b-c7b2-4652-a150-126080d5a23d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -10236,14 +10246,13 @@ And I am 36 years old.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fbc8c6e9-a07e-485b-ae1c-8f5e680b4706">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c54103e8-6590-4734-97cc-fac1cbddd1f4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><em>ChatGPT:</em><br/>
-The <code>PROMPT_COMMAND</code> mechanism is implemented at the shell level. When Bash is about to display a new prompt, it checks the value of the <code>PROMPT_COMMAND</code> variable. If this variable is set and contains a command, Bash executes that command before displaying the prompt.</p>
+<p>The <code>PROMPT_COMMAND</code> mechanism is implemented at the shell level. When Bash is about to display a new prompt, it checks the value of the <code>PROMPT_COMMAND</code> variable. If this variable is set and contains a command, Bash executes that command before displaying the prompt.</p>
 <p>Internally, Bash has a loop that continuously reads and executes commands. When it encounters the <code>PROMPT_COMMAND</code> variable during this loop, it executes the command stored in <code>PROMPT_COMMAND</code> just before displaying the new prompt.</p>
 <p>Here's a simplified overview of how it might work programmatically:</p>
 <ol>
@@ -10274,8 +10283,7 @@ The <code>PROMPT_COMMAND</code> mechanism is implemented at the shell level. Whe
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><em>ChatGPT:</em><br/>
-The <code>TMOUT</code> environment variable in Bash controls the auto-logout feature for an idle shell session. When set, it specifies the number of seconds the shell will wait for input before automatically logging out the user.</p>
+<p>The <code>TMOUT</code> environment variable in Bash controls the auto-logout feature for an idle shell session. When set, it specifies the number of seconds the shell will wait for input before automatically logging out the user.</p>
 <p>Let's say you want to set a timeout of <code>300</code> seconds (5 minutes). You can set the <code>TMOUT</code> variable like this:</p>
 <div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">TMOUT</span><span class="o">=</span><span class="m">300</span>
 </pre></div>
@@ -10288,6 +10296,7 @@ The <code>TMOUT</code> environment variable in Bash controls the auto-logout fea
 <blockquote>
 <p>Note: This feature is particularly useful for security purposes, especially on systems where you want to minimize the risk of unauthorized access to unattended or idle shell sessions.</p>
 </blockquote>
+<hr/>
 </div>
 </div>
 </div>
@@ -10324,7 +10333,7 @@ $<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><s
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-bash"><pre><span></span><span class="nb">alias</span>
@@ -10343,11 +10352,12 @@ $<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><s
 <pre>alias bat='batcat'
 alias dir='dir --color=auto'
 alias grep='grep --color=auto'
-alias ls='ls --color=auto'
+alias ls='ls -F --color=auto'
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
+alias rm='rm -i'
 </pre>
 </div>
 </div>
@@ -10645,7 +10655,7 @@ ls<span class="w"> </span><span class="m">1</span>*
 <div class="highlight"><pre><span></span>vi<span class="w"> </span>~/.bashrc
 
 <span class="c1"># Set a colored prompt with short working directory format</span>
-<span class="nv">PS1</span><span class="o">=</span><span class="s1">'\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '</span>
+<span class="nv">PS1</span><span class="o">=</span><span class="s1">'\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\☭ '</span>
 :wq
 
 <span class="nb">source</span><span class="w"> </span>~/.bashrc
@@ -10859,10 +10869,10 @@ ls<span class="w"> </span><span class="m">1</span>*
 </ul>
 <p>Here's a basic template for setting the PS1 variable:</p>
 <div class="highlight"><pre><span></span><span class="nv">PS1</span><span class="o">=</span><span class="s1">'\u@\h:\W\$ '</span>
-☭٭<span class="w"> </span>
+٭☭
 🟊
 </pre></div>
-<p>This would result in a prompt like <code>username@hostname:directory$ </code>. You can modify this template by including any of the components mentioned above and customizing the appearance using color codes.</p>
+<p>This would result in a prompt like <code>username@hostname:directory☭ </code>. You can modify this template by including any of the components mentioned above and customizing the appearance using color codes.</p>
 <p>Keep in mind that changes made to the <code>PS1</code> variable only affect the current shell session. To make the changes permanent, you'll need to add the modified PS1 variable to your shell configuration file (<code>~/.bashrc</code> for Bash) so that it's applied every time you open a new terminal session.</p>
 </div>
 </div>
@@ -11210,7 +11220,7 @@ fi
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>If you only want to modify the <code>PATH</code> for a specific user, you can add the line to the</p>
-<div class="highlight"><pre><span></span>-<span class="w"> </span><span class="sb">`</span><span class="nv">$HOME</span>/.bashrc<span class="sb">`</span>
+<div class="highlight"><pre><span></span><span class="nv">$HOME</span>/.bashrc
 </pre></div>
 <p>(If it is not there, see also: <code>/$HOME/.profile</code> or<code>/$HOME/.bash_profile</code>).</p>
 <p>Keep in mind that these files are specific to individual users, whereas the <code>/etc/profile</code> file applies to the entire system.</p>
@@ -11222,7 +11232,7 @@ fi
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-bash"><pre><span></span>cat<span class="w"> </span><span class="nv">$HOME</span>/.bashrc
@@ -11257,7 +11267,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
-HISTFILESIZE=10000	# default 2000
+HISTFILESIZE=500	# default 2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -11315,17 +11325,17 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors &amp;&amp; eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
+    alias ls='ls -F --color=auto'
+    alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
+    alias grep='grep --color=auto'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 #alias ll='ls -l'
@@ -11344,37 +11354,53 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+#if ! shopt -oq posix; then
+#  if [ -f /usr/share/bash-completion/bash_completion ]; then
+#    . /usr/share/bash-completion/bash_completion
+#  elif [ -f /etc/bash_completion ]; then
+#    . /etc/bash_completion
+#  fi
+#fi
 
-# Set a shorter prompt in Bash
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
-
+# PATH
 
 # Created by `pipx` on 2023-08-27 20:58:39
 #export PATH="$PATH:/home/commi/.local/bin"
 
-# add my own scripts
-#export PATH="$PATH:$HOME/myscripts"
-
 #export PATH=/snap/bin:$PATH
+
+
+##### MY SETTINGS @#######
+
+# add my own scripts to PATH
+export PATH="$PATH:$HOME/bin"
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:/usr/include/postgresql
+
+# Set a shorter prompt in Bash
+#PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$ '
+#PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]🟊 '
+#PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]٭☭ '
+#PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[01;31m\]☭\[\033[00m\] '
+PS1='\[\033[1;32m\]\u@\h\[\033[0m\]:\[\033[1;34m\]\W☭\[\033[0m\] '
+#PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;31m\]\W☭\[\033[00m\] '
+#PS1='\[\033[1;32m\]\u@\h\[\033[0m\]:\[\033[1;34m\]\W\[\033[33;41m\]☭ \[\033[0m\] '
+
+# set vi as the default for commands edititng
+#set -o vi
+
+alias rm='rm -i'
+alias bat='batcat'
+alias reboot='sudo reboot'
+alias poweroff='sudo poweroff'
+
+
+#source ./venv/venv3.12/bin/activate
+echo $(awk -F '"' '/^NAME/{print $2}' /etc/os-release) $(date +%Y\ %b\ %d\ %a\ %R)
+
+# path to un spider dir
+export un='/home/commi/Yandex.Disk/it_working/projects/_not4git/un_votes/spiders/'
 </pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=062b9bf7-eff4-47db-8137-4c347bd80cd2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>

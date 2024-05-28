@@ -7482,18 +7482,34 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="GNU/Linux---Administration">GNU/Linux - Administration<a class="anchor-link" href="#GNU/Linux---Administration">¶</a></h1>
+<h1 id="4.-GNU/Linux---Filesystem---File-Tree">4. GNU/Linux - Filesystem - File Tree<a class="anchor-link" href="#4.-GNU/Linux---Filesystem---File-Tree">¶</a></h1>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=70b8f90c-8ff5-4bf9-82ad-c60cd6fc1822">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bfb113cd-27e4-4478-8ec0-b3b9c658cd37">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="4.-Filesystem---File-Tree"><b></b>4. Filesystem - File Tree<a class="anchor-link" href="#4.-Filesystem---File-Tree">¶</a></h1>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>cat<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'PRETTY*'</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre><span class="ansi-red-intense-fg ansi-bold">PRETTY</span>_NAME="Debian GNU/Linux 12 (bookworm)"
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -7752,6 +7768,26 @@ a.anchor-link {
 <td><code>chattr</code></td>
 <td>change file attributes on a Linux file system</td>
 </tr>
+<tr>
+<td><strong>11. ACLs</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>getfacl &lt;file_name&gt;</code></td>
+<td>get file access control lists</td>
+</tr>
+<tr>
+<td><code>getfacl --omit-header &lt;file_name</code></td>
+<td>print the permissions without a comment-like header</td>
+</tr>
+<tr>
+<td><code>setfacl</code></td>
+<td>set file access control lists</td>
+</tr>
+<tr>
+<td><code>setfacl -m group:staff:r-- &lt;file_name&gt;</code></td>
+<td>set a new permission rule on a group in the ACL</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -7923,7 +7959,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="4.1-Introduction">4.1 Introduction<a class="anchor-link" href="#4.1-Introduction">¶</a></h1>
+<h1 id="4.1-Introduction"><b></b>4.1 Introduction<a class="anchor-link" href="#4.1-Introduction">¶</a></h1>
 </div>
 </div>
 </div>
@@ -7954,7 +7990,7 @@ resources.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="4.2-Filesystem-structure">4.2 Filesystem structure<a class="anchor-link" href="#4.2-Filesystem-structure">¶</a></h1>
+<h1 id="4.2-Filesystem-structure"><b></b>4.2 Filesystem structure<a class="anchor-link" href="#4.2-Filesystem-structure">¶</a></h1>
 </div>
 </div>
 </div>
@@ -8063,7 +8099,7 @@ resources.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="4.3-Filesystem-mounting-and-unmounting">4.3 Filesystem mounting and unmounting<a class="anchor-link" href="#4.3-Filesystem-mounting-and-unmounting">¶</a></h1>
+<h1 id="4.3-Filesystem-mounting-and-unmounting"><b></b>4.3 Filesystem mounting and unmounting<a class="anchor-link" href="#4.3-Filesystem-mounting-and-unmounting">¶</a></h1>
 </div>
 </div>
 </div>
@@ -8336,7 +8372,7 @@ commi       2650  0.0  0.0  10908  1856 pts/2    Ss   May05   0:00 /bin/bash
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="4.4-File-Types">4.4 File Types<a class="anchor-link" href="#4.4-File-Types">¶</a></h1>
+<h1 id="4.4-File-Types"><b></b>4.4 File Types<a class="anchor-link" href="#4.4-File-Types">¶</a></h1>
 </div>
 </div>
 </div>
@@ -9252,13 +9288,918 @@ When you create a symbolic link with a relative path, the link itself stores the
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7a1d34f6-6b21-4413-8690-c41737a56e62">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="4.5-List-and-Inspect-Files-and-Directories"><b></b>4.5 List and Inspect Files and Directories<a class="anchor-link" href="#4.5-List-and-Inspect-Files-and-Directories">¶</a></h1>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9cce17b9-1f6e-456f-b4a8-148b25a019cc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span><span class="nb">alias</span><span class="w"> </span>ls
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>alias ls='ls -F --color=auto'
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d4d6a0a2-9c17-48b9-b308-b600c2747827">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Colors are saved in <code>$LS_COLORS</code> variable:</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=91d2ca82-5733-4fd0-8fd8-e6174a52585d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$LS_COLORS</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1b20c6f2-8ae1-45d0-8d47-9ddaf789334c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="On-a-regular-file-or-dir">On a regular file or dir<a class="anchor-link" href="#On-a-regular-file-or-dir">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd26e359-13ca-4667-8a30-747aae70c031">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="ls--la"><code>ls -la</code><a class="anchor-link" href="#ls--la">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=061744e2-d35d-4320-b4ec-914aad8866bb">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-la<span class="w"> </span>./Codio_course
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>total 6804
+drwxr-xr-x 4 commi commi    4096 May  6 00:45 <span class="ansi-blue-intense-fg ansi-bold">.</span>/
+drwxr-xr-x 5 commi commi    4096 May 10 17:06 <span class="ansi-blue-intense-fg ansi-bold">..</span>/
+-rw-r--r-- 1 commi commi  412500 Aug 26  2023 01_Welcome_to_Unix.pdf
+-rw-r--r-- 1 commi commi  472985 Aug 26  2023 02_File_and_Directory_Operations.pdf
+-rw-r--r-- 1 commi commi  651280 Aug 26  2023 03_Redirecting_Output_and_Finding_Files.pdf
+-rw-r--r-- 1 commi commi  625639 Aug 26  2023 04_File_Editors.pdf
+-rw-r--r-- 1 commi commi  575441 Aug 26  2023 05_File_Hierarchy_System_FHS.pdf
+-rw-r--r-- 1 commi commi  156657 Aug 26  2023 06_Storage_Concepts.pdf
+drwxr-xr-x 3 commi commi    4096 Aug 26  2023 <span class="ansi-blue-intense-fg ansi-bold">data</span>/
+drwxr-xr-x 2 commi commi    4096 Dec 16 03:53 <span class="ansi-blue-intense-fg ansi-bold">.ipynb_checkpoints</span>/
+-rw-r--r-- 1 commi commi 1194763 May  6 00:45 UNIX_AND_BASH_FOR_BEGINNERS.ipynb
+-rw-r--r-- 1 commi commi 2845991 Jan 16 01:44 Unix_cropped.pdf
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1cf39e39-375a-4a2b-9cdc-9333b5363756">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Displaying a long list (<code>-l</code> option) of the contents of your home directory shows you more about file sizes and directories. Adding the all files option (<code>-a</code>) displays hidden files, that is the files that begin with a dot <code>.</code>.</p>
+<ul>
+<li>The <code>total</code> line shows the total amount of disk space used by the files in the list (6792 kilobytes in this example).</li>
+<li>Each directory begins with a <code>d</code> and each file begins with a dash (<code>-</code>).<ul>
+<li>Directories such as the current directory (<code>.</code>) and the parent directory (<code>..</code>) — the directory above the current directory — are noted as directories by the letter <code>d</code> at the beginning of each entry, these are hard links.</li>
+</ul>
+</li>
+<li>The next nine characters are the three sets of <a href="#The-permission-bits">permission bits</a>. The order is owner-group-other, and the order of bits within each set is read-write-execute. Although these bits have only binary values, ls shows them symbolically with the letters r , w, and x for read, write, and execute. In this case, the owner has all permissions on the file and everyone else has read and execute permission.</li>
+<li>Next column is the <a href="#Hard-links">hard links</a> count:<ul>
+<li>All directories have at least two hard links: the link with the name of the directory itself and the link from the special file called <code>.</code> inside the directory itself;</li>
+<li>Each subdirectory has a hard link to the parent directory, so the number of the parent directory's hard link is incremented by one (check the example below).</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a3827794-49ca-4c4e-95a3-444b1b5df855">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-la<span class="w"> </span>./Codio_course<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'^d'</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre><span class="ansi-red-intense-fg ansi-bold">d</span>rwxr-xr-x 4 commi commi    4096 May  6 00:45 ./
+<span class="ansi-red-intense-fg ansi-bold">d</span>rwxr-xr-x 5 commi commi    4096 May 22 02:36 ../
+<span class="ansi-red-intense-fg ansi-bold">d</span>rwxr-xr-x 3 commi commi    4096 Aug 26  2023 data/
+<span class="ansi-red-intense-fg ansi-bold">d</span>rwxr-xr-x 2 commi commi    4096 Dec 16 03:53 .ipynb_checkpoints/
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b84c303c-a775-4d9f-9074-d115b2a7156c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>See the number of <code>.</code> links and count: the directory itself + <code>.</code> + subdirs.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dfcbe048-060e-42d0-9cda-4bd499576845">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>The owner and group owner of the file:<ul>
+<li>The filesystem actually stores these as the user and group ID numbers rather than as names. If the text versions (names) can’t be determined, <code>ls</code> shows the fields as numbers. This might happen if the user or group that owns the file has been deleted from the <code>/etc/passwd</code> or <code>/etc/group</code> file. It could also suggest a problem with your LDAP database (if you use one).</li>
+</ul>
+</li>
+<li>The size of the file in bytes (use <code>-h</code> flag to see human view):<ul>
+<li>The number of characters shown for a directory (<code>4096</code> bytes in these examples) reflects the size of the file containing information about the directory. Although this number can grow above 4096 bytes for a directory that contains lots of files, this number doesn’t reflect the size of files contained in that directory.</li>
+</ul>
+</li>
+<li>The date and time of last (content) modification:<ul>
+<li>The format of the time and date column can vary. Instead of displaying “May 12,” the date might be displayed as “2019-05-12,” depending upon the distribution and the language setting (<code>LANG</code> variable).</li>
+</ul>
+</li>
+<li>The file and directory names are shown in the last column.</li>
+</ul>
+<p>More on permissions column:</p>
+<ul>
+<li>On occasion, instead of seeing the execute bit (<code>x</code>) set on an executable file, you may see an <code>s</code> in that spot instead. With an <code>s</code> appearing within either the owner (<code>-rwsr-xr-x</code>) or group (<code>-rwxr-sr-x</code>) permissions, or both (<code>-rwsr-sr-x</code>), the application can be run by any user, but ownership of the running process is assigned to the application’s user/group instead of that of the user launching the command. This is referred to as a <strong>set UID</strong> or <strong>set GID</strong> program, respectively. For example, the <code>mount</code> command has permissions set as <code>-rwsr-xr-x</code>. This allows any user to run <code>mount</code> to list mounted filesystems (although you still have to be root to use <code>mount</code> to actually mount filesystems from the command line, in most cases).</li>
+<li>If a <code>t</code> appears at the end of a directory, it indicates that the <strong>sticky bit</strong> is set for that directory (for example, <code>drwxrwxr-t</code>). By setting the sticky bit on a directory, the directory’s owner can allow other users and groups to add files to the directory but prevent users from deleting each other’s files in that directory.</li>
+<li>With a <code>set GID</code> assigned to a directory, any files created in that directory are assigned the same group as the directory’s group. (If you see a capital <code>S</code> or <code>T</code> instead of the execute bits on a directory, it means that the <code>set GID</code> or sticky bit permission, respectively, was set, but for some reason the execute bit was not also turned on.).</li>
+<li>If you see a plus <code>+</code> sign at the end of the permission bits (for example, <code>-rw-rw-r--+</code>), it means that extended attributes (<code>+</code>), such as <strong>Access Control Lists (ACLs)</strong>, are set on the file. A dot at the end (<code>.</code>) indicates that SELinux is set on the file.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5d570662-baf6-4a5f-a5f9-86e4e30f9dc2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="On-a-device-file">On a device file<a class="anchor-link" href="#On-a-device-file">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=36fef87e-8691-47e4-9660-37653725d246">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-l<span class="w"> </span>/dev/tty0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>crw--w---- 1 root tty 4, 0 May 20 14:28 <span class="ansi-yellow-intense-fg ansi-black-bg ansi-bold">/dev/tty0</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ca8b211b-9268-49bd-9efb-b09ecc58783e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Most fields are the same, but instead of a size in bytes, <code>ls</code> shows the <code>major</code> and <code>minor</code> device numbers. <code>/dev/tty0</code> is the first virtual console on this (Debian) system and is controlled by device driver <code>4</code> (the terminal driver). The dot at the end of the mode will indicate the absence of an access control list (ACL). Some systems show this by default and some don’t.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3694afef-7816-46e1-8e2e-e9da110ea136">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="On-hard-links">On hard links<a class="anchor-link" href="#On-hard-links">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b415868b-468a-4f87-8c57-beb4edc1ecdd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>You can use <code>ls -l</code> to see how many links to a given file exist.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1d2312e5-e321-4767-9c51-985dbd253a1a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="ls--i"><code>ls -i</code><a class="anchor-link" href="#ls--i">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8895aebc-b51d-464b-95d9-a8d9920d75f5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Also see <code>ls -i</code> (<code>-i, --inode</code> print the index number of each file), as this option is particularly helpful for identifying hard links. Hard links are not a distinct type of file. Instead of defining a separate “thing” called a hard link, the filesystem simply allows more than one directory entry to point to the same file. In addition to the file’s contents, the underlying attributes of the file (such as ownerships and permissions) are also shared.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bac0cc77-b8ec-45ac-b17f-d79419eba10a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-i<span class="w"> </span>04_Filesystem_linux_adm.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>1572933 04_Filesystem_linux_adm.ipynb
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=087c4569-e496-4a52-b5f6-4abaf4711eab">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-li<span class="w"> </span>04_Filesystem_linux_adm.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>1572933 -rw-r--r-- 1 commi commi 132709 May 22 03:32 04_Filesystem_linux_adm.ipynb
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=12860ac8-a694-4489-8ccb-a2e0ed00e181">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>find<span class="w"> </span>./<span class="w"> </span>-xdev<span class="w"> </span>-inum<span class="w"> </span><span class="m">1572933</span><span class="w"> </span>-print
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>./04_Filesystem_linux_adm.ipynb
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3d2dd5af-04d3-40ef-9846-b88b2b92a2df">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="stat"><code>stat</code><a class="anchor-link" href="#stat">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ecbc2fe5-ec52-4101-9daf-1d18bcd3e852">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>stat<span class="w"> </span>04_Filesystem_linux_adm.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>  File: 04_Filesystem_linux_adm.ipynb
+  Size: 426560    	Blocks: 840        IO Block: 4096   regular file
+Device: 8,4	Inode: 1572933     Links: 1
+Access: (0644/-rw-r--r--)  Uid: ( 1000/   commi)   Gid: ( 1000/   commi)
+Access: 2024-05-11 17:12:58.635559817 +0500
+Modify: 2024-05-11 17:12:58.619559778 +0500
+Change: 2024-05-11 17:12:58.619559778 +0500
+ Birth: 2024-05-01 01:13:11.529568397 +0500
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6258d71b-7e13-425c-9fbc-9ee72dffc10c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="file"><code>file</code><a class="anchor-link" href="#file">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0030675b-8162-42a5-a8bd-61b5e9d48736">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>file<span class="w"> </span>linux_adm.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>linux_adm.ipynb: JSON text data
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8b1e4123-28bb-4a7f-86cf-e72f2c9bda73">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>file<span class="w"> </span>/usr/include
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>/usr/include: directory
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=191402c4-0d47-4b85-91a4-168afe48dfc0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>file<span class="w"> </span>/vmlinuz
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>/vmlinuz: symbolic link to boot/vmlinuz-6.1.0-21-amd64
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9dce00bb-79db-45d4-9e42-f7236275bc59">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>file<span class="w"> </span>/bin/bash
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>/bin/bash: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=0b6b11360e339f231f17484da2c87d0d78554e31, for GNU/Linux 3.2.0, stripped
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57ce9907-751f-41df-a3a5-0fe3739fee65">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="ls--ld"><code>ls -ld</code><a class="anchor-link" href="#ls--ld">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=04ace89b-bf23-4c98-9b3c-70c37fc252c9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-ld<span class="w"> </span>linux_adm.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>-rw-r--r-- 1 commi commi 443362 May  6 00:59 linux_adm.ipynb
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e73828a0-7a1f-4b81-ae1d-f16620542829">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-ld<span class="w"> </span>/usr/include
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>drwxr-xr-x 53 root root 20480 May  4 03:34 <span class="ansi-blue-intense-fg ansi-bold">/usr/include</span>/
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1cd58040-4d5e-4bb8-b673-692e297d3936">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-ld<span class="w"> </span>/bin/bash
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>-rwxr-xr-x 1 root root 1265648 Apr 24  2023 <span class="ansi-green-intense-fg ansi-bold">/bin/bash</span>*
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=82b4d4db-f1cc-4618-878b-99d21d66b42d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-ld<span class="w"> </span>/vmlinuz
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>lrwxrwxrwx 1 root root 27 May  7 03:21 <span class="ansi-cyan-intense-fg ansi-bold">/vmlinuz</span> -&gt; boot/vmlinuz-6.1.0-21-amd64
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bf486fca-8994-4281-9429-557d52fa30aa">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="stat"><code>stat</code><a class="anchor-link" href="#stat">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ab6037a4-fea4-4d58-b0da-2de9641d3c27">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>stat<span class="w"> </span>linux_adm.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>  File: linux_adm.ipynb
+  Size: 443362    	Blocks: 872        IO Block: 4096   regular file
+Device: 8,4	Inode: 588861      Links: 1
+Access: (0644/-rw-r--r--)  Uid: ( 1000/   commi)   Gid: ( 1000/   commi)
+Access: 2024-05-10 17:31:31.065678475 +0500
+Modify: 2024-05-06 00:59:48.960648646 +0500
+Change: 2024-05-06 00:59:48.960648646 +0500
+ Birth: 2024-01-19 00:21:32.209971403 +0500
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=dd9a9583-54df-4bc7-aa75-a3119f2ff1f4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>stat<span class="w"> </span>/usr/include
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>  File: /usr/include
+  Size: 20480     	Blocks: 48         IO Block: 4096   directory
+Device: 8,2	Inode: 1571280     Links: 53
+Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2024-05-10 19:38:35.338150432 +0500
+Modify: 2024-05-04 03:34:16.810648706 +0500
+Change: 2024-05-04 03:34:16.810648706 +0500
+ Birth: 2023-12-16 02:23:17.946501502 +0500
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e3ee1ec2-4652-4330-8e52-2d8050c8cae0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>stat<span class="w"> </span>/vmlinuz
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>  File: /vmlinuz -&gt; boot/vmlinuz-6.1.0-21-amd64
+  Size: 27        	Blocks: 0          IO Block: 4096   symbolic link
+Device: 8,2	Inode: 42377       Links: 1
+Access: (0777/lrwxrwxrwx)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2024-05-11 16:55:55.323633814 +0500
+Modify: 2024-05-07 03:21:06.164747750 +0500
+Change: 2024-05-07 03:21:06.164747750 +0500
+ Birth: 2024-05-07 03:21:06.164747750 +0500
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b89deb34-853a-4ff8-ab2c-c99f1cade730">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>stat<span class="w"> </span>.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>  File: .
+  Size: 4096      	Blocks: 8          IO Block: 4096   directory
+Device: 8,4	Inode: 1572907     Links: 5
+Access: (0755/drwxr-xr-x)  Uid: ( 1000/   commi)   Gid: ( 1000/   commi)
+Access: 2024-05-11 16:57:26.569128840 +0500
+Modify: 2024-05-11 16:57:26.553128600 +0500
+Change: 2024-05-11 16:57:26.553128600 +0500
+ Birth: 2024-04-18 23:26:52.801832492 +0500
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3324eae2-a70d-49a0-9d67-18d1db43b93b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<center>
+<b>File-type encoding used by <code>ls</code></b>
+</center>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>File type</th>
+<th>Created by</th>
+<th>Removed by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-</code></td>
+<td>Regular file</td>
+<td>editors, cp, etc.</td>
+<td><code>rm</code></td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>Directory</td>
+<td><code>mkdir</code></td>
+<td><code>rmdir</code>, <code>rm -r</code></td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>Character device file</td>
+<td><code>mknod</code></td>
+<td><code>rm</code></td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>Block device file</td>
+<td><code>mknod</code></td>
+<td><code>rm</code></td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>Local domain socket</td>
+<td>socket system call</td>
+<td><code>rm</code></td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>Named pipe</td>
+<td><code>mknod</code></td>
+<td><code>rm</code></td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td>Symbolic link</td>
+<td><code>ln -s</code></td>
+<td><code>rm</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=147738dd-6065-44a4-aae1-9534ed2293dc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="4.5-File-Attributes">4.5 File Attributes<a class="anchor-link" href="#4.5-File-Attributes">¶</a></h1>
+<h1 id="4.6-File-Attributes"><b></b>4.6 File Attributes<a class="anchor-link" href="#4.6-File-Attributes">¶</a></h1>
 </div>
 </div>
 </div>
@@ -10841,7 +11782,7 @@ And apply the same permissions on test2.txt by copying them from test.txt:
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39debf67-80f3-4a74-9844-f603f499c3e8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4d7b6080-c410-4d23-b1e4-460398fc4a8c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10918,29 +11859,22 @@ And apply the same permissions on test2.txt by copying them from test.txt:
 <li>a. X = XFS, B = Btrfs, E = ext3 and ext4</li>
 <li>b. Can be set only by root</li>
 </ul>
+<p>The main thing to remember is that</p>
+<blockquote>
+<p>if a particular file seems to be behaving strangely, check it with <code>lsattr</code> to see if it has one or more flags enabled.</p>
+</blockquote>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0cdaa787-4a23-4c6c-b7ed-861f18531bb0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="4.6-List-and-Inspect-Files-and-Directories">4.6 List and Inspect Files and Directories<a class="anchor-link" href="#4.6-List-and-Inspect-Files-and-Directories">¶</a></h1>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9cce17b9-1f6e-456f-b4a8-148b25a019cc">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9a8be47e-3452-402b-b12b-a1d50067df32">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">alias</span><span class="w"> </span>ls
+<div class="highlight hl-bash"><pre><span></span>lsattr<span class="w"> </span>./04_Filesystem_linux_adm.ipynb
 </pre></div>
 </div>
 </div>
@@ -10953,24 +11887,13 @@ And apply the same permissions on test2.txt by copying them from test.txt:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>alias ls='ls -F --color=auto'
+<pre>--------------e------- ./04_Filesystem_linux_adm.ipynb
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1091f7ad-2ffe-46ec-8a72-5e53ca307253">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Colors are saved in <code>$LS_COLORS</code> variable:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=91d2ca82-5733-4fd0-8fd8-e6174a52585d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bc9355ed-82e3-4161-883a-80945992d200">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10978,7 +11901,7 @@ And apply the same permissions on test2.txt by copying them from test.txt:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$LS_COLORS</span>
+<div class="highlight hl-bash"><pre><span></span>lsattr<span class="w"> </span>-l<span class="w"> </span>./04_Filesystem_linux_adm.ipynb
 </pre></div>
 </div>
 </div>
@@ -10991,43 +11914,156 @@ And apply the same permissions on test2.txt by copying them from test.txt:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:
+<pre>./04_Filesystem_linux_adm.ipynb Extents
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0f841e2c-b42e-4f30-bf00-a1917e72c205">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=21ef128f-5fbd-4dd9-a2e7-094db808ec06">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="On-a-regular-file-or-dir">On a regular file or dir<a class="anchor-link" href="#On-a-regular-file-or-dir">¶</a></h2>
+<h3 id="A-flag"><code>A</code> flag<a class="anchor-link" href="#A-flag">¶</a></h3>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=439154e2-c738-4273-b009-f36615ec098a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=418daddc-2419-4d9e-8a0d-eee7ad167abc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="ls--la"><code>ls -la</code><a class="anchor-link" href="#ls--la">¶</a></h3>
+<p>Waiving maintenance of last-access times (the <code>A</code> flag) can boost performance in some situations. However, its value depends on the filesystem implementation and access pattern; you’ll have to do your own benchmarking. In addition, modern kernels now default to mounting filesystems with the relatime option, which minimizes updates to <code>st_atime</code> and makes the <code>A</code> flag largely obsolete.</p>
+<hr/>
+<p><em>ChatGPT</em>:<br/>
+<code>st_atime</code> is a field in the <code>stat</code> structure in Unix-like operating systems. It stands for "last access time" and records the last time a file was accessed (read).</p>
+<p>When a file is accessed, the <code>st_atime</code> attribute is updated to reflect this access. This can include activities such as reading the file content or executing a file.</p>
+<p><strong><code>relatime</code> Option:</strong></p>
+<p>Modern kernels often mount filesystems with the <code>relatime</code> (relative access time) option by default. This option reduces the frequency of updates to the <code>st_atime</code> attribute, thereby improving performance by minimizing unnecessary disk writes. Specifically, <code>relatime</code> updates <code>st_atime</code> only under the following conditions:</p>
+<ul>
+<li>If the previous access time is older than the modification time (<code>st_mtime</code>) or status change time (<code>st_ctime</code>).</li>
+<li>If the previous access time is more than 24 hours old.</li>
+</ul>
+<p><strong><code>A</code> Flag:</strong></p>
+<p>The <code>A</code> flag, when set, prevents the system from updating the <code>st_atime</code> attribute at all. This can further enhance performance, especially for applications that frequently read files but do not need to track access times.</p>
+<p><strong>Impact of <code>relatime</code> on the <code>A</code> Flag:</strong></p>
+<p>With the <code>relatime</code> option being the default in modern kernels, the frequent updates to <code>st_atime</code> are already minimized, making the explicit use of the <code>A</code> flag largely obsolete. This is because <code>relatime</code> strikes a balance between performance and the need to have relatively accurate access time records without the overhead of updating <code>st_atime</code> on every file access.</p>
+<p><strong>Summary:</strong></p>
+<ul>
+<li><strong><code>st_atime</code></strong>: Records the last access time of a file.</li>
+<li><strong><code>relatime</code></strong>: A mount option that reduces the frequency of <code>st_atime</code> updates.</li>
+<li><strong><code>A</code> Flag</strong>: Prevents <code>st_atime</code> updates entirely.</li>
+</ul>
+<p>In modern systems, due to the <code>relatime</code> mount option, the need to use the <code>A</code> flag for performance reasons is reduced.</p>
+<hr/>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=061744e2-d35d-4320-b4ec-914aad8866bb">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ae16f064-6546-4aeb-8503-e1d7d972f83f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="i-and-a-flag"><code>i</code> and <code>a</code> flag<a class="anchor-link" href="#i-and-a-flag">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39debf67-80f3-4a74-9844-f603f499c3e8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The immutable and append-only flags (<code>i</code> and <code>a</code>) were largely conceived as ways to make the system more resistant to tampering by hackers or hostile code. Unfortunately, they can confuse software and protect only against hackers that don’t know enough to use <code>chattr -ia</code>. Real-world experience has shown that these flags are more often used <em>by</em> hackers than against them.</p>
+<p>We have seen several cases in which admins have used the <code>i</code> (immutable) flag to prevent changes that would otherwise be imposed by a configuration management system such as Ansible or Salt. Needless to say, this hack creates confusion once the details have been forgotten and no one can figure out why configuration management isn’t working. <strong>Never do this</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3f98522b-ebcd-45c4-a59f-81b6d5a51a7a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="d-flag"><code>d</code> flag<a class="anchor-link" href="#d-flag">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9ef3f9ef-a5de-484d-b6b1-05b642ee9c43">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The “no backup” flag (<code>d</code>) is potentially of interest to administrators, but since it’s an advisory flag, make sure that your backup system honors it.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eb9a0967-8ee0-4f3c-a174-4298734d4289">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><code>D</code>, <code>j</code>, and <code>S</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a30fa7a3-5351-48a7-b24f-78ce3affc23b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Flags that affect journaling and write synchrony (<code>D</code>, <code>j</code>, and <code>S</code>) exist primarily to support databases. They are not of general use for administrators. All these options can reduce filesystem performance significantly. In addition, tampering with write synchrony has been known to confuse <code>fsck</code> on <code>ext*</code> filesystems.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=60c0518b-94dc-4ba3-98b6-694bec912694">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="ACLs---Access-Control-Lists">ACLs - Access Control Lists<a class="anchor-link" href="#ACLs---Access-Control-Lists">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9b968f6f-4c8c-4ef2-b3c5-4ae4c17c4a2c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Access control lists, aka ACLs, are a more powerful but also more complicated way of regulating access to files. Each file or directory can have an associated ACL that lists the permission rules to be applied to it. Each of the rules within an ACL is called an access control entry or ACE.</p>
+<p>ACLs have a niche, but it lies outside the mainstream of UNIX and Linux administration. ACLs exist primarily to facilitate Windows compatibility and to serve the needs of the small segment of enterprises that actually require ACL-level flexibility. They are not the shiny next generation of access control and are not intended to supplant the traditional model.</p>
+<p><em>So read the book "Unix and Linux System Administration Handbook" by Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley, and Dan Mackin, if you need ACLs</em> - VR.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=30d7bdb0-a221-4211-9a1c-a4254f891bbb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-la<span class="w"> </span>./Codio_course
+<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-l<span class="w"> </span>04_Filesystem_linux_adm.ipynb
 </pre></div>
 </div>
 </div>
@@ -11040,49 +12076,13 @@ And apply the same permissions on test2.txt by copying them from test.txt:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>total 6804
-drwxr-xr-x 4 commi commi    4096 May  6 00:45 <span class="ansi-blue-intense-fg ansi-bold">.</span>/
-drwxr-xr-x 5 commi commi    4096 May 10 17:06 <span class="ansi-blue-intense-fg ansi-bold">..</span>/
--rw-r--r-- 1 commi commi  412500 Aug 26  2023 01_Welcome_to_Unix.pdf
--rw-r--r-- 1 commi commi  472985 Aug 26  2023 02_File_and_Directory_Operations.pdf
--rw-r--r-- 1 commi commi  651280 Aug 26  2023 03_Redirecting_Output_and_Finding_Files.pdf
--rw-r--r-- 1 commi commi  625639 Aug 26  2023 04_File_Editors.pdf
--rw-r--r-- 1 commi commi  575441 Aug 26  2023 05_File_Hierarchy_System_FHS.pdf
--rw-r--r-- 1 commi commi  156657 Aug 26  2023 06_Storage_Concepts.pdf
-drwxr-xr-x 3 commi commi    4096 Aug 26  2023 <span class="ansi-blue-intense-fg ansi-bold">data</span>/
-drwxr-xr-x 2 commi commi    4096 Dec 16 03:53 <span class="ansi-blue-intense-fg ansi-bold">.ipynb_checkpoints</span>/
--rw-r--r-- 1 commi commi 1194763 May  6 00:45 UNIX_AND_BASH_FOR_BEGINNERS.ipynb
--rw-r--r-- 1 commi commi 2845991 Jan 16 01:44 Unix_cropped.pdf
+<pre>-rw-r--r-- 1 commi commi 154281 May 27 19:36 04_Filesystem_linux_adm.ipynb
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=07753520-f678-46f8-857e-f796c4795dca">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Displaying a long list (<code>-l</code> option) of the contents of your home directory shows you more about file sizes and directories. Adding the all files option (<code>-a</code>) displays hidden files, that is the files that begin with a dot <code>.</code>.</p>
-<ul>
-<li>The <code>total</code> line shows the total amount of disk space used by the files in the list (6792 kilobytes in this example).</li>
-<li>Each directory begins with a <code>d</code> and each file begins with a dash (<code>-</code>).<ul>
-<li>Directories such as the current directory (<code>.</code>) and the parent directory (<code>..</code>) — the directory above the current directory — are noted as directories by the letter <code>d</code> at the beginning of each entry, these are hard links.</li>
-</ul>
-</li>
-<li>The next nine characters are the three sets of <a href="#The-permission-bits">permission bits</a>. The order is owner-group-other, and the order of bits within each set is read-write-execute. Although these bits have only binary values, ls shows them symbolically with the letters r , w, and x for read, write, and execute. In this case, the owner has all permissions on the file and everyone else has read and execute permission.</li>
-<li>Next column is the <a href="#Hard-links">hard links</a> count:<ul>
-<li>All directories have at least two hard links: the link with the name of the directory itself and the link from the special file called <code>.</code> inside the directory itself;</li>
-<li>Each subdirectory has a hard link to the parent directory, so the number of the parent directory's hard link is incremented by one (check the example below).</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a3827794-49ca-4c4e-95a3-444b1b5df855">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=761b7c2f-9881-4dc1-a286-5926f7387fe2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11090,7 +12090,7 @@ drwxr-xr-x 2 commi commi    4096 Dec 16 03:53 <span class="ansi-blue-intense-fg 
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-la<span class="w"> </span>./Codio_course<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'^d'</span>
+<div class="highlight hl-bash"><pre><span></span>getfacl<span class="w"> </span>./04_Filesystem_linux_adm.ipynb
 </pre></div>
 </div>
 </div>
@@ -11103,289 +12103,19 @@ drwxr-xr-x 2 commi commi    4096 Dec 16 03:53 <span class="ansi-blue-intense-fg 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre><span class="ansi-red-intense-fg ansi-bold">d</span>rwxr-xr-x 4 commi commi    4096 May  6 00:45 ./
-<span class="ansi-red-intense-fg ansi-bold">d</span>rwxr-xr-x 5 commi commi    4096 May 22 02:36 ../
-<span class="ansi-red-intense-fg ansi-bold">d</span>rwxr-xr-x 3 commi commi    4096 Aug 26  2023 data/
-<span class="ansi-red-intense-fg ansi-bold">d</span>rwxr-xr-x 2 commi commi    4096 Dec 16 03:53 .ipynb_checkpoints/
+<pre># file: 04_Filesystem_linux_adm.ipynb
+# owner: commi
+# group: commi
+user::rw-
+group::r--
+other::r--
+
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=de48f6d4-1c8c-41f3-84cd-6ac057538e35">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>See the number of <code>.</code> links and count: the directory itself + <code>.</code> + subdirs.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b484e189-710b-43b5-bcca-61dd7db25f17">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li>The owner and group owner of the file:<ul>
-<li>The filesystem actually stores these as the user and group ID numbers rather than as names. If the text versions (names) can’t be determined, <code>ls</code> shows the fields as numbers. This might happen if the user or group that owns the file has been deleted from the <code>/etc/passwd</code> or <code>/etc/group</code> file. It could also suggest a problem with your LDAP database (if you use one).</li>
-</ul>
-</li>
-<li>The size of the file in bytes (use <code>-h</code> flag to see human view):<ul>
-<li>The number of characters shown for a directory (<code>4096</code> bytes in these examples) reflects the size of the file containing information about the directory. Although this number can grow above 4096 bytes for a directory that contains lots of files, this number doesn’t reflect the size of files contained in that directory.</li>
-</ul>
-</li>
-<li>The date and time of last (content) modification:<ul>
-<li>The format of the time and date column can vary. Instead of displaying “May 12,” the date might be displayed as “2019-05-12,” depending upon the distribution and the language setting (<code>LANG</code> variable).</li>
-</ul>
-</li>
-<li>The file and directory names are shown in the last column.</li>
-</ul>
-<p>More on permissions column:</p>
-<ul>
-<li>On occasion, instead of seeing the execute bit (<code>x</code>) set on an executable file, you may see an <code>s</code> in that spot instead. With an <code>s</code> appearing within either the owner (<code>-rwsr-xr-x</code>) or group (<code>-rwxr-sr-x</code>) permissions, or both (<code>-rwsr-sr-x</code>), the application can be run by any user, but ownership of the running process is assigned to the application’s user/group instead of that of the user launching the command. This is referred to as a <strong>set UID</strong> or <strong>set GID</strong> program, respectively. For example, the <code>mount</code> command has permissions set as <code>-rwsr-xr-x</code>. This allows any user to run <code>mount</code> to list mounted filesystems (although you still have to be root to use <code>mount</code> to actually mount filesystems from the command line, in most cases).</li>
-<li>If a <code>t</code> appears at the end of a directory, it indicates that the <strong>sticky bit</strong> is set for that directory (for example, <code>drwxrwxr-t</code>). By setting the sticky bit on a directory, the directory’s owner can allow other users and groups to add files to the directory but prevent users from deleting each other’s files in that directory.</li>
-<li>With a <code>set GID</code> assigned to a directory, any files created in that directory are assigned the same group as the directory’s group. (If you see a capital <code>S</code> or <code>T</code> instead of the execute bits on a directory, it means that the <code>set GID</code> or sticky bit permission, respectively, was set, but for some reason the execute bit was not also turned on.).</li>
-<li>If you see a plus <code>+</code> sign at the end of the permission bits (for example, <code>-rw-rw-r--+</code>), it means that extended attributes (<code>+</code>), such as <strong>Access Control Lists (ACLs)</strong>, are set on the file. A dot at the end (<code>.</code>) indicates that SELinux is set on the file.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cf6f3c28-0ee1-4d27-b8a6-834e8d344b8d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="On-a-device-file">On a device file<a class="anchor-link" href="#On-a-device-file">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=36fef87e-8691-47e4-9660-37653725d246">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-l<span class="w"> </span>/dev/tty0
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>crw--w---- 1 root tty 4, 0 May 20 14:28 <span class="ansi-yellow-intense-fg ansi-black-bg ansi-bold">/dev/tty0</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ee3fe145-553c-409a-89fe-3ab6c937ff38">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Most fields are the same, but instead of a size in bytes, <code>ls</code> shows the <code>major</code> and <code>minor</code> device numbers. <code>/dev/tty0</code> is the first virtual console on this (Debian) system and is controlled by device driver <code>4</code> (the terminal driver). The dot at the end of the mode will indicate the absence of an access control list (ACL). Some systems show this by default and some don’t.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=206e61fb-6142-4366-9552-2888c0ffe17e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="On-hard-links">On hard links<a class="anchor-link" href="#On-hard-links">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=74b2b00c-ef47-43c8-8a59-0006d3d2d2dc">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>You can use <code>ls -l</code> to see how many links to a given file exist.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0f8fa68a-3d3e-4b2c-8cff-95e0911a2f59">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="ls--i"><code>ls -i</code><a class="anchor-link" href="#ls--i">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f25abe1a-9075-4680-88c6-c685c4ac9b73">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Also see <code>ls -i</code> (<code>-i, --inode</code> print the index number of each file), as this option is particularly helpful for identifying hard links. Hard links are not a distinct type of file. Instead of defining a separate “thing” called a hard link, the filesystem simply allows more than one directory entry to point to the same file. In addition to the file’s contents, the underlying attributes of the file (such as ownerships and permissions) are also shared.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bac0cc77-b8ec-45ac-b17f-d79419eba10a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-i<span class="w"> </span>04_Filesystem_linux_adm.ipynb
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>1572933 04_Filesystem_linux_adm.ipynb
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=087c4569-e496-4a52-b5f6-4abaf4711eab">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-li<span class="w"> </span>04_Filesystem_linux_adm.ipynb
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>1572933 -rw-r--r-- 1 commi commi 132709 May 22 03:32 04_Filesystem_linux_adm.ipynb
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=12860ac8-a694-4489-8ccb-a2e0ed00e181">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>find<span class="w"> </span>./<span class="w"> </span>-xdev<span class="w"> </span>-inum<span class="w"> </span><span class="m">1572933</span><span class="w"> </span>-print
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>./04_Filesystem_linux_adm.ipynb
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=07387cf2-6e89-40df-aa5f-41d21403947f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="stat"><code>stat</code><a class="anchor-link" href="#stat">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ecbc2fe5-ec52-4101-9daf-1d18bcd3e852">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>stat<span class="w"> </span>04_Filesystem_linux_adm.ipynb
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  File: 04_Filesystem_linux_adm.ipynb
-  Size: 426560    	Blocks: 840        IO Block: 4096   regular file
-Device: 8,4	Inode: 1572933     Links: 1
-Access: (0644/-rw-r--r--)  Uid: ( 1000/   commi)   Gid: ( 1000/   commi)
-Access: 2024-05-11 17:12:58.635559817 +0500
-Modify: 2024-05-11 17:12:58.619559778 +0500
-Change: 2024-05-11 17:12:58.619559778 +0500
- Birth: 2024-05-01 01:13:11.529568397 +0500
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7b8ad2e7-5eea-4109-a643-c24c9f7f00cb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="file"><code>file</code><a class="anchor-link" href="#file">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0030675b-8162-42a5-a8bd-61b5e9d48736">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e28de4a1-63f3-448f-a8f5-6d12230d79a8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11393,7 +12123,7 @@ Change: 2024-05-11 17:12:58.619559778 +0500
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>file<span class="w"> </span>linux_adm.ipynb
+<div class="highlight hl-bash"><pre><span></span>getfacl<span class="w"> </span>--omit-header<span class="w"> </span>./04_Filesystem_linux_adm.ipynb
 </pre></div>
 </div>
 </div>
@@ -11406,727 +12136,12 @@ Change: 2024-05-11 17:12:58.619559778 +0500
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>linux_adm.ipynb: JSON text data
+<pre>user::rw-
+group::r--
+other::r--
+
 </pre>
 </div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8b1e4123-28bb-4a7f-86cf-e72f2c9bda73">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>file<span class="w"> </span>/usr/include
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/usr/include: directory
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=191402c4-0d47-4b85-91a4-168afe48dfc0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>file<span class="w"> </span>/vmlinuz
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/vmlinuz: symbolic link to boot/vmlinuz-6.1.0-21-amd64
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9dce00bb-79db-45d4-9e42-f7236275bc59">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>file<span class="w"> </span>/bin/bash
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/bin/bash: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=0b6b11360e339f231f17484da2c87d0d78554e31, for GNU/Linux 3.2.0, stripped
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b99c8794-f462-4483-8566-d3989f69aa48">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="ls--ld"><code>ls -ld</code><a class="anchor-link" href="#ls--ld">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=04ace89b-bf23-4c98-9b3c-70c37fc252c9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-ld<span class="w"> </span>linux_adm.ipynb
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>-rw-r--r-- 1 commi commi 443362 May  6 00:59 linux_adm.ipynb
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e73828a0-7a1f-4b81-ae1d-f16620542829">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-ld<span class="w"> </span>/usr/include
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>drwxr-xr-x 53 root root 20480 May  4 03:34 <span class="ansi-blue-intense-fg ansi-bold">/usr/include</span>/
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1cd58040-4d5e-4bb8-b673-692e297d3936">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-ld<span class="w"> </span>/bin/bash
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>-rwxr-xr-x 1 root root 1265648 Apr 24  2023 <span class="ansi-green-intense-fg ansi-bold">/bin/bash</span>*
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=82b4d4db-f1cc-4618-878b-99d21d66b42d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-ld<span class="w"> </span>/vmlinuz
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>lrwxrwxrwx 1 root root 27 May  7 03:21 <span class="ansi-cyan-intense-fg ansi-bold">/vmlinuz</span> -&gt; boot/vmlinuz-6.1.0-21-amd64
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=43304374-ec8e-40d7-a40a-eae597a037b4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="stat"><code>stat</code><a class="anchor-link" href="#stat">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ab6037a4-fea4-4d58-b0da-2de9641d3c27">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>stat<span class="w"> </span>linux_adm.ipynb
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  File: linux_adm.ipynb
-  Size: 443362    	Blocks: 872        IO Block: 4096   regular file
-Device: 8,4	Inode: 588861      Links: 1
-Access: (0644/-rw-r--r--)  Uid: ( 1000/   commi)   Gid: ( 1000/   commi)
-Access: 2024-05-10 17:31:31.065678475 +0500
-Modify: 2024-05-06 00:59:48.960648646 +0500
-Change: 2024-05-06 00:59:48.960648646 +0500
- Birth: 2024-01-19 00:21:32.209971403 +0500
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=dd9a9583-54df-4bc7-aa75-a3119f2ff1f4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>stat<span class="w"> </span>/usr/include
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  File: /usr/include
-  Size: 20480     	Blocks: 48         IO Block: 4096   directory
-Device: 8,2	Inode: 1571280     Links: 53
-Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
-Access: 2024-05-10 19:38:35.338150432 +0500
-Modify: 2024-05-04 03:34:16.810648706 +0500
-Change: 2024-05-04 03:34:16.810648706 +0500
- Birth: 2023-12-16 02:23:17.946501502 +0500
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e3ee1ec2-4652-4330-8e52-2d8050c8cae0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>stat<span class="w"> </span>/vmlinuz
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  File: /vmlinuz -&gt; boot/vmlinuz-6.1.0-21-amd64
-  Size: 27        	Blocks: 0          IO Block: 4096   symbolic link
-Device: 8,2	Inode: 42377       Links: 1
-Access: (0777/lrwxrwxrwx)  Uid: (    0/    root)   Gid: (    0/    root)
-Access: 2024-05-11 16:55:55.323633814 +0500
-Modify: 2024-05-07 03:21:06.164747750 +0500
-Change: 2024-05-07 03:21:06.164747750 +0500
- Birth: 2024-05-07 03:21:06.164747750 +0500
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b89deb34-853a-4ff8-ab2c-c99f1cade730">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>stat<span class="w"> </span>.
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  File: .
-  Size: 4096      	Blocks: 8          IO Block: 4096   directory
-Device: 8,4	Inode: 1572907     Links: 5
-Access: (0755/drwxr-xr-x)  Uid: ( 1000/   commi)   Gid: ( 1000/   commi)
-Access: 2024-05-11 16:57:26.569128840 +0500
-Modify: 2024-05-11 16:57:26.553128600 +0500
-Change: 2024-05-11 16:57:26.553128600 +0500
- Birth: 2024-04-18 23:26:52.801832492 +0500
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ec09fceb-cf45-4460-b3cd-efbb06fcdaf6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<center>
-<b>File-type encoding used by <code>ls</code></b>
-</center>
-<table>
-<thead>
-<tr>
-<th>Symbol</th>
-<th>File type</th>
-<th>Created by</th>
-<th>Removed by</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-</code></td>
-<td>Regular file</td>
-<td>editors, cp, etc.</td>
-<td><code>rm</code></td>
-</tr>
-<tr>
-<td><code>d</code></td>
-<td>Directory</td>
-<td><code>mkdir</code></td>
-<td><code>rmdir</code>, <code>rm -r</code></td>
-</tr>
-<tr>
-<td><code>c</code></td>
-<td>Character device file</td>
-<td><code>mknod</code></td>
-<td><code>rm</code></td>
-</tr>
-<tr>
-<td><code>b</code></td>
-<td>Block device file</td>
-<td><code>mknod</code></td>
-<td><code>rm</code></td>
-</tr>
-<tr>
-<td><code>s</code></td>
-<td>Local domain socket</td>
-<td>socket system call</td>
-<td><code>rm</code></td>
-</tr>
-<tr>
-<td><code>p</code></td>
-<td>Named pipe</td>
-<td><code>mknod</code></td>
-<td><code>rm</code></td>
-</tr>
-<tr>
-<td><code>l</code></td>
-<td>Symbolic link</td>
-<td><code>ln -s</code></td>
-<td><code>rm</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1f00c0fd-2bc8-4f39-83f2-d9bc7ea1bcf7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5934415d-fb38-4bf5-b770-f184a326f72d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9b776e78-b28a-4e7f-bf9c-7bb7e0ab4b0c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d463c931-05c9-49fd-85c6-8af3bfd861b1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c500c120-8a8b-4ffc-820e-94ca1d0e688d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1e44837d-72e2-4cdd-808e-a1918f5e4696">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a7d36b7c-ed4e-46c3-9791-16206d49b3f1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0dc5196c-0833-4582-a829-bda63cdced20">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=96168037-149a-4c21-aed5-fd44ad5b976b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0b71c713-5d2c-4e8e-8aea-d5604871808b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3ff2cc60-db78-41e2-9f16-3765008aebfe">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=df37737e-f538-44dd-9e0f-3beb4cf482c9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=310843ed-d5df-42f4-a14d-199684f7820d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=21d11781-553d-4a55-a021-321b8eae4323">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4dc42ba4-f790-46a5-8931-4052807c84bd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c98e1548-a5de-4757-bfed-f22bc0a0379d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=325d7bf0-7db6-46f5-af3b-409693fa707a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4c2b82a0-2a4b-48ff-aba2-40a2454ec048">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b1c41f78-8d4c-4f12-a5e2-9c7016aa634a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=152b8ced-77f7-48ea-9039-76a19b5a55ee">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=94f364e5-0433-47bb-811d-3a8f1cac2fdd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1eee56ee-c9c9-4320-a241-46139857d812">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9d8b9d7-61b0-43bb-90d5-b8a9f3790bd1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ea5bf4c8-f37f-4058-b56e-bfd1ec80dfe5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=796cbc84-d45a-4da8-adb0-87c46707faf8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2a8f24b1-0d82-4a98-b8f8-c4cf8324a8da">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=84d19597-3abb-4f5b-9219-5c295025a038">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2056cfe3-066a-4f81-bc0a-86475bcb806c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c1016bbf-91f3-475a-9190-82ce75676770">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b105cce2-7734-4ac6-9e36-c0f4ba0cc0c5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
