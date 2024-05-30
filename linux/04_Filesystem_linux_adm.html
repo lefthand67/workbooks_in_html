@@ -7605,7 +7605,7 @@ a.anchor-link {
 <td>color scheme for <code>ls</code> command</td>
 </tr>
 <tr>
-<td><strong>3. Inspect files</strong></td>
+<td><strong>3. Inspecting files</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7617,7 +7617,51 @@ a.anchor-link {
 <td>display file or file system status</td>
 </tr>
 <tr>
-<td><strong>4. Manipulating Files</strong></td>
+<td><strong>4. File-matching metacharacters</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Matches any number of characters.</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>Matches any one character.</td>
+</tr>
+<tr>
+<td><code>[...]</code></td>
+<td>Matches any one of the characters between the brackets, which can include a hyphen-separated range of letters or numbers.</td>
+</tr>
+<tr>
+<td><code>{}</code></td>
+<td>expand out a set of characters across filenames, directory names, or other arguments to which one gives commands</td>
+</tr>
+<tr>
+<td><strong>5. File-redirection metacharacters</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>Directs the contents of a file to the command. In most cases, this is the default action expected by the command and the use of the character is optional; using <code>less bigfile</code> is the same as <code>less &lt; bigfile</code>.</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Directs the standard output of a command to a file. If the file exists, the content of that file is overwritten.</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>Directs the output of a command to a file, adding the output to the end of the existing file.</td>
+</tr>
+<tr>
+<td><code>2&gt;</code></td>
+<td>Directs standard error (error messages) to the file.</td>
+</tr>
+<tr>
+<td><code>&amp;&gt;</code> or <code>2&gt;&amp;1</code></td>
+<td>Directs both standard output and standard error to the file.</td>
+</tr>
+<tr>
+<td><strong>6. Manipulating Files</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7637,7 +7681,11 @@ a.anchor-link {
 <td>copy ﬁles</td>
 </tr>
 <tr>
-<td><strong>5. Manipulating directories</strong></td>
+<td><code>cat &gt; &lt;fname&gt; &lt;&lt; DELIMITER &lt;many lines text&gt; DELIMITER</code></td>
+<td><strong>here text</strong> (also called <em>here document</em>), enables you to type text that can be used as standard input for a command, like <code>cat</code>. If you want to pass the text literally, you should place the first <code>DELIMITER</code> word into <code>''</code>, like this: <code>'DELIMITER'</code>; see <a href="./01_Shell_linux_adm.ipynb#Subshell">Subshell</a> for examples</td>
+</tr>
+<tr>
+<td><strong>7. Manipulating directories</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7661,7 +7709,7 @@ a.anchor-link {
 <td>copy dirs</td>
 </tr>
 <tr>
-<td><strong>6. Mount</strong></td>
+<td><strong>8. Mount</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7673,7 +7721,7 @@ a.anchor-link {
 <td>unmount a filesystem</td>
 </tr>
 <tr>
-<td><strong>7. Links</strong></td>
+<td><strong>9. Links</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7697,7 +7745,7 @@ a.anchor-link {
 <td>create a symbolic link, i.e. a shortcut</td>
 </tr>
 <tr>
-<td><strong>8. Permissions</strong></td>
+<td><strong>10. Permissions</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7741,7 +7789,7 @@ a.anchor-link {
 <td><code>find</code> to select only the regular files for adding/removing executable writes recursively</td>
 </tr>
 <tr>
-<td><strong>9. Ownership</strong></td>
+<td><strong>11. Ownership</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7757,7 +7805,7 @@ a.anchor-link {
 <td>change ownership</td>
 </tr>
 <tr>
-<td><strong>10. Bonus flags</strong></td>
+<td><strong>12. Bonus flags</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7769,7 +7817,7 @@ a.anchor-link {
 <td>change file attributes on a Linux file system</td>
 </tr>
 <tr>
-<td><strong>11. ACLs</strong></td>
+<td><strong>13. ACLs</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7787,6 +7835,73 @@ a.anchor-link {
 <tr>
 <td><code>setfacl -m group:staff:r-- &lt;file_name&gt;</code></td>
 <td>set a new permission rule on a group in the ACL</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19344d0c-5efc-424a-92f9-03101f70ef3d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<center> 
+    File-type encoding used by <code>ls</code>
+</center>
+<table>
+<thead>
+<tr>
+<th>File type</th>
+<th>Symbol</th>
+<th>Created by</th>
+<th>Removed by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regular file</td>
+<td><code>-</code></td>
+<td><code>editors</code>, <code>cp</code>, etc.</td>
+<td><code>rm</code></td>
+</tr>
+<tr>
+<td>Directory</td>
+<td><code>d</code></td>
+<td><code>mkdir</code></td>
+<td><code>rmdir</code>, <code>rm -r</code></td>
+</tr>
+<tr>
+<td>Character device file</td>
+<td><code>c</code></td>
+<td><code>mknod</code></td>
+<td><code>rm</code></td>
+</tr>
+<tr>
+<td>Block device file</td>
+<td><code>b</code></td>
+<td><code>mknod</code></td>
+<td><code>rm</code></td>
+</tr>
+<tr>
+<td>Local domain socket</td>
+<td><code>s</code></td>
+<td><code>socket</code> system call</td>
+<td><code>rm</code></td>
+</tr>
+<tr>
+<td>Named pipe</td>
+<td><code>p</code></td>
+<td><code>mknod</code></td>
+<td><code>rm</code></td>
+</tr>
+<tr>
+<td>Symbolic link</td>
+<td><code>l</code></td>
+<td><code>ln -s</code></td>
+<td><code>rm</code></td>
 </tr>
 </tbody>
 </table>
@@ -7882,73 +7997,6 @@ a.anchor-link {
 </tbody>
 </table>
 <p>The distinguishing characteristic of <code>/sbin</code> was originally that its contents were <em>statically linked</em> and so had fewer dependencies on other parts of the system. These days, all binaries are dynamically linked and there is no real difference between <code>/bin</code> and <code>/sbin</code>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ee847974-6f05-4624-bf71-081bab03295a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<center> 
-    File-type encoding used by <code>ls</code>
-</center>
-<table>
-<thead>
-<tr>
-<th>File type</th>
-<th>Symbol</th>
-<th>Created by</th>
-<th>Removed by</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Regular file</td>
-<td><code>-</code></td>
-<td><code>editors</code>, <code>cp</code>, etc.</td>
-<td><code>rm</code></td>
-</tr>
-<tr>
-<td>Directory</td>
-<td><code>d</code></td>
-<td><code>mkdir</code></td>
-<td><code>rmdir</code>, <code>rm -r</code></td>
-</tr>
-<tr>
-<td>Character device file</td>
-<td><code>c</code></td>
-<td><code>mknod</code></td>
-<td><code>rm</code></td>
-</tr>
-<tr>
-<td>Block device file</td>
-<td><code>b</code></td>
-<td><code>mknod</code></td>
-<td><code>rm</code></td>
-</tr>
-<tr>
-<td>Local domain socket</td>
-<td><code>s</code></td>
-<td><code>socket</code> system call</td>
-<td><code>rm</code></td>
-</tr>
-<tr>
-<td>Named pipe</td>
-<td><code>p</code></td>
-<td><code>mknod</code></td>
-<td><code>rm</code></td>
-</tr>
-<tr>
-<td>Symbolic link</td>
-<td><code>l</code></td>
-<td><code>ln -s</code></td>
-<td><code>rm</code></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 </div>
@@ -12142,6 +12190,295 @@ other::r--
 
 </pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=df77b6d7-b754-4180-8324-b9fd10d205de">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="4.7-Manipulating-Files"><b></b>4.7 Manipulating Files<a class="anchor-link" href="#4.7-Manipulating-Files">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=834c0534-15be-4b31-9633-fb2d04f73b64">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Metacharacters-and-Operators">Metacharacters and Operators<a class="anchor-link" href="#Metacharacters-and-Operators">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=984bd6a9-0983-4b52-b338-d765fb6d41da">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>Metacharacters can help you match one or more files without completely typing each filename.</li>
+<li>Operators enable you to direct information from one command or file to another command or file.</li>
+</ul>
+<p>See main table for details.</p>
+<p><strong>Shell globbing</strong> (pattern matching) - универсализация файловых имен (замена реальных символов в имени и расширении универсальными с целью распространения действия спецификации на определенные типы файлов).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a6243bde-0d64-4f5d-b063-5f0c9ba2ccf0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="here-text"><code>here text</code><a class="anchor-link" href="#here-text">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b0004318-26a6-4708-89af-0dc2eb83ade1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp
+cat<span class="w"> </span>&gt;<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="s">&lt;&lt; 'd'</span>
+<span class="s">hello</span>
+<span class="s">I am learning</span>
+<span class="s">the here d</span>ocument<span class="w"> </span>syntax
+d
+
+cat<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>hello
+I am learning
+the here document syntax
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=45dbb67c-cff7-4352-8561-b73e3ac809fc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Other-methods">Other methods<a class="anchor-link" href="#Other-methods">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b70ba4e2-3301-44e1-b3dc-d7bcc7a7920e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>touch<span class="w"> </span>test<span class="o">{</span><span class="m">1</span>,2,3<span class="o">}</span>
+ls<span class="w"> </span>test*
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre><span class="ansi-green-intense-fg ansi-bold">test</span>  test1  test2  test3  test.c  test.py
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5a0f3669-00ce-429b-9c57-a2763d1352a6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>rm<span class="w"> </span>-f<span class="w"> </span>test<span class="o">{</span><span class="m">1</span>,2,3<span class="o">}</span>
+ls<span class="w"> </span>test*
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre><span class="ansi-green-intense-fg ansi-bold">test</span>  test.c  test.py
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b8108dbc-0052-49dd-95dd-b54d9bb7bc7c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>touch<span class="w"> </span>a<span class="o">{</span><span class="m">1</span>..5<span class="o">}</span>
+ls<span class="w"> </span>a*
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>a1  a2  a3  a4  a5
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=03637685-bd38-4f74-bc65-b6cdeb871b35">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>rm<span class="w"> </span>-f<span class="w"> </span>a<span class="o">{</span><span class="m">1</span>..5<span class="o">}</span>
+ls<span class="w"> </span>a*
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>ls: cannot access 'a*': No such file or directory
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre></pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=25682699-a3be-409b-b7a4-c8c97bf78fcb">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>touch<span class="w"> </span><span class="o">{</span>1one,1two,1three<span class="o">}</span>_<span class="o">{</span>table,chairs,people<span class="o">}</span>
+ls<span class="w"> </span><span class="m">1</span>*
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>1e3ccc4a7388f73397a1899bc36e9b79-{87A94AB0-E370-4cde-98D3-ACC110C5967D}
+1one_chairs
+1one_people
+1one_table
+1three_chairs
+1three_people
+1three_table
+1two_chairs
+1two_people
+1two_table
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3a48fc90-e111-4035-8f0a-e6d2e46f970b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>rm<span class="w"> </span>-f<span class="w"> </span><span class="o">{</span>1one,1two,1three<span class="o">}</span>_<span class="o">{</span>table,chairs,people<span class="o">}</span>
+ls<span class="w"> </span><span class="m">1</span>*
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>1e3ccc4a7388f73397a1899bc36e9b79-{87A94AB0-E370-4cde-98D3-ACC110C5967D}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f10cb264-8339-43ff-b4ca-dc0f0e8ff580">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
