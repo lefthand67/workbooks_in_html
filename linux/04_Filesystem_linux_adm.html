@@ -7637,30 +7637,6 @@ a.anchor-link {
 <td>expand out a set of characters across filenames, directory names, or other arguments to which one gives commands</td>
 </tr>
 <tr>
-<td><strong>5. File-redirection metacharacters</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>&lt;</code></td>
-<td>Directs the contents of a file to the command. In most cases, this is the default action expected by the command and the use of the character is optional; using <code>less bigfile</code> is the same as <code>less &lt; bigfile</code>.</td>
-</tr>
-<tr>
-<td><code>&gt;</code></td>
-<td>Directs the standard output of a command to a file. If the file exists, the content of that file is overwritten.</td>
-</tr>
-<tr>
-<td><code>&gt;&gt;</code></td>
-<td>Directs the output of a command to a file, adding the output to the end of the existing file.</td>
-</tr>
-<tr>
-<td><code>2&gt;</code></td>
-<td>Directs standard error (error messages) to the file.</td>
-</tr>
-<tr>
-<td><code>&amp;&gt;</code> or <code>2&gt;&amp;1</code></td>
-<td>Directs both standard output and standard error to the file.</td>
-</tr>
-<tr>
 <td><strong>6. Manipulating Files</strong></td>
 <td></td>
 </tr>
@@ -9332,6 +9308,188 @@ When you create a symbolic link with a relative path, the link itself stores the
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Like local domain sockets, <strong>named pipes</strong> allow communication between two processes running on the same host. They’re also known as “FIFO files” (As in financial accounting, FIFO is short for the phrase “first in, first out”). You can create named pipes with <code>mknod</code> and remove them with <code>rm</code>.</p>
 <p>Named pipes and local domain sockets serve similar purposes, and the fact that both exist is essentially a historical artifact. Most likely, neither of them would exist if UNIX and Linux were designed today; network sockets would stand in for both.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=08846e7d-392f-41e6-bda0-4cf1381ebc7d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Special-files">Special files<a class="anchor-link" href="#Special-files">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e16b3005-69b6-4222-84ad-8894c07a2c81">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="/dev/null"><code>/dev/null</code><a class="anchor-link" href="#/dev/null">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=459cbeff-c6fd-4af6-8268-d49234105982">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Unix systems provide two special files that are particularly useful in shell programming. The first file, <code>/dev/null</code>, is often known as the “<strong>bit bucket</strong>.” Data sent to this file is thrown away by the system. In other words, a program writing data to this file always believes that it has successfully written the data, but in practice, nothing is done with it. This is useful when you need a command’s exit status but not its output. For example, to test if a file contains a pattern:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span>grep<span class="w"> </span>pattern<span class="w"> </span>myfile<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+<span class="k">then</span>
+...
+<span class="w"> </span>Pattern<span class="w"> </span>is<span class="w"> </span>there
+<span class="k">else</span>
+...
+<span class="w"> </span>Pattern<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>there
+<span class="k">fi</span>
+</pre></div>
+<p>In contrast to writes, reading from <code>/dev/null</code> always returns end-of-file immediately. Reading from <code>/dev/null</code> is rare in shell programming, but it’s important to know how the file behaves.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f9fefab4-2b09-4060-b967-82d202dd03f5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="/dev/tty"><code>/dev/tty</code><a class="anchor-link" href="#/dev/tty">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=45a0f269-4c86-4fdb-80d3-6dafb71389de">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The other special file is <code>/dev/tty</code>. When a program opens this file, Unix automatically redirects it to the real terminal (physical console or serial port, or pseudoterminal for network and windowed logins) associated with the program. This is particularly useful for reading input that must come from a human, such as a password. It is also useful, although less so, for generating error messages:</p>
+<div class="highlight"><pre><span></span><span class="nb">printf</span><span class="w"> </span><span class="s2">"Enter new password: "</span><span class="w">   </span><span class="c1"># Prompt for input</span>
+stty<span class="w"> </span>-echo<span class="w">                      </span><span class="c1"># Turn off echoing of typed characters</span>
+<span class="nb">read</span><span class="w"> </span>pass<span class="w"> </span>&lt;<span class="w"> </span>/dev/tty<span class="w">            </span><span class="c1"># Read password</span>
+<span class="nb">printf</span><span class="w"> </span><span class="s2">"Enter again: "</span><span class="w">          </span><span class="c1"># Prompt again</span>
+<span class="nb">read</span><span class="w"> </span>pass2<span class="w"> </span>&lt;<span class="w"> </span>/dev/tty<span class="w">           </span><span class="c1"># Read again for verification</span>
+stty<span class="w"> </span><span class="nb">echo</span><span class="w">                       </span><span class="c1"># Don't forget to turn echoing back on</span>
+...
+</pre></div>
+<p>The <code>stty</code> (set tty) command controls various settings of your terminal (or window).</p>
+<blockquote>
+<p><code>stty</code> is possibly the most baroque and complicated Unix command in existence. See the stty(1) manpage for the gory details.</p>
+</blockquote>
+<p>The <code>–echo</code> option turns off the automatic printing (echoing) of every character you type; <code>stty echo</code> restores it.</p>
+<hr/>
+<p><em>ChatGPT:</em><br/>
+In Unix-like operating systems, <code>/dev/tty</code> is a special file that represents the controlling terminal for the current process. The concept of a terminal can refer to physical devices, such as a keyboard and monitor, or virtual terminals provided by software. Here’s a detailed explanation:</p>
+<p><strong>Understanding <code>/dev/tty</code></strong></p>
+<ol>
+<li><p><strong>Controlling Terminal</strong>: The term "controlling terminal" refers to the terminal associated with a session leader (typically the shell or terminal emulator you are using). When you execute a command, <code>/dev/tty</code> refers to the terminal that initiated the command.</p>
+</li>
+<li><p><strong>Device File</strong>: <code>/dev/tty</code> is a device file, which means it is an interface to a device driver that appears in the filesystem as if it were an ordinary file.</p>
+</li>
+</ol>
+<p><strong>Common Use Cases</strong></p>
+<ol>
+<li><strong>Standard I/O Redirection</strong>:<ul>
+<li>When you redirect input or output to <code>/dev/tty</code>, you are explicitly directing it to the terminal.</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9d458d50-fc0a-4317-9fe6-4ac113475871">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello, world!"</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/tty
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Hello, world!
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f75f87d8-4a7d-4965-802d-2fa9ed466afd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="2">
+<li><strong>Scripting</strong>:<ul>
+<li>Scripts can use <code>/dev/tty</code> to interact with the user directly through the terminal, regardless of any redirection of standard input and output.</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">"Enter your name: "</span><span class="w"> </span>name<span class="w"> </span>&lt;<span class="w"> </span>/dev/tty
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello, </span><span class="nv">$name</span><span class="s2">!"</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/tty
+</pre></div>
+<ol start="3">
+<li><strong>Debugging</strong>:<ul>
+<li>When debugging scripts or programs, printing to <code>/dev/tty</code> ensures that the output goes to the terminal, helping in scenarios where standard output or error might be redirected elsewhere.</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Debug info"</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/tty
+</pre></div>
+<p><strong>Differentiating <code>/dev/tty</code> from Other TTY Devices</strong></p>
+<ul>
+<li><p><strong>/dev/tty vs /dev/ttyX</strong>:</p>
+<ul>
+<li><code>/dev/tty</code> always refers to the controlling terminal for the current process.</li>
+<li><code>/dev/ttyX</code> (where X is a number) refers to specific terminal devices (e.g., <code>/dev/tty1</code>, <code>/dev/tty2</code>, etc.), which could be virtual consoles or serial ports.</li>
+</ul>
+</li>
+<li><p><strong>/dev/tty vs /dev/console</strong>:</p>
+<ul>
+<li><code>/dev/console</code> refers to the system console, which is the terminal device that receives kernel messages and login prompts in single-user mode.</li>
+<li><code>/dev/tty</code> refers to the controlling terminal for the current process, which could be any terminal or terminal emulator in use.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Practical Examples</strong></p>
+<ol>
+<li><strong>Redirecting Output to the Terminal</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span>ls<span class="w"> </span>&gt;<span class="w"> </span>/dev/tty
+</pre></div>
+<ol start="2">
+<li><strong>Interactive Scripting</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="c1"># Script that asks for user input directly from the terminal</span>
+<span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">"Enter command (or 'exit' to quit): "</span><span class="w"> </span>cmd<span class="w"> </span>&lt;<span class="w"> </span>/dev/tty
+<span class="w">  </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$cmd</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"exit"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">break</span>
+<span class="w">  </span><span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="nv">$cmd</span><span class="s2">"</span>
+<span class="k">done</span>
+</pre></div>
+<p><strong>Conclusion</strong></p>
+<p><code>/dev/tty</code> is a powerful and flexible tool for Unix users and developers, providing a consistent way to refer to the controlling terminal. It plays a critical role in script interactions, debugging, and managing terminal I/O operations.</p>
 </div>
 </div>
 </div>

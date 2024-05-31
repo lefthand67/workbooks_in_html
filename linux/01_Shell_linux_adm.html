@@ -7813,7 +7813,31 @@ a.anchor-link {
 <td>call the environment variable</td>
 </tr>
 <tr>
-<td><strong>6. Environment variables</strong></td>
+<td><strong>6. Output redirection metacharacters</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>Directs the contents of a file to the command. In most cases, this is the default action expected by the command and the use of the character is optional; using <code>less bigfile</code> is the same as <code>less &lt; bigfile</code>.</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Directs the standard output of a command to a file. If the file exists, the content of that file is overwritten.</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>Directs the output of a command to a file, adding the output to the end of the existing file.</td>
+</tr>
+<tr>
+<td><code>2&gt;</code></td>
+<td>Directs standard error (error messages) to the file.</td>
+</tr>
+<tr>
+<td><code>&amp;&gt;</code> or <code>2&gt;&amp;1</code></td>
+<td>Directs both standard output and standard error to the file.</td>
+</tr>
+<tr>
+<td><strong>7. Environment variables</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7829,7 +7853,7 @@ a.anchor-link {
 <td>Mark variables and functions to be passed to child processes. Ensures variables are available in the environment of subsequently executed commands.</td>
 </tr>
 <tr>
-<td><strong>7. Aliases</strong></td>
+<td><strong>8. Aliases</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7849,7 +7873,7 @@ a.anchor-link {
 <td>backslash causes any command to run unaliased</td>
 </tr>
 <tr>
-<td><strong>8. Misc</strong></td>
+<td><strong>9. Misc</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7861,7 +7885,7 @@ a.anchor-link {
 <td>execute commands in the subshell; a script must have executable permissions</td>
 </tr>
 <tr>
-<td><strong>9. Exit the session</strong></td>
+<td><strong>10. Exit the session</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -8105,7 +8129,7 @@ Bash configuration files
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.1-Terminal-vs-Console">1.1 Terminal vs Console<a class="anchor-link" href="#1.1-Terminal-vs-Console">¶</a></h1>
+<h1 id="1.1-Terminal-vs-Console"><b></b>1.1 Terminal vs Console<a class="anchor-link" href="#1.1-Terminal-vs-Console">¶</a></h1>
 </div>
 </div>
 </div>
@@ -9628,11 +9652,12 @@ locate is /bin/locate
 </ul>
 <hr/>
 <p><em>VR</em>:<br/>
-Your own scripts in <code>PATH</code> will not be autocompleted unless you have added this line to the <code>/usr/share/bash-completion/bash_completion</code> file:</p>
-<div class="highlight"><pre><span></span><span class="nb">complete</span><span class="w"> </span>-c<span class="w"> </span><span class="nb">command</span><span class="w"> </span>.<span class="w"> </span><span class="nb">source</span>
+You can add your own commands that will autocomple arguments in this file:</p>
+<div class="highlight"><pre><span></span>vi<span class="w"> </span>/usr/share/bash-completion/bash_completion
+<span class="nb">complete</span><span class="w"> </span>-c<span class="w"> </span><span class="nb">command</span><span class="w"> </span>python
+:wq
+<span class="nb">source</span><span class="w"> </span>/usr/share/bash-completion/bash_completion
 </pre></div>
-<p>This command autocompletes the <code>.sh</code> files after the <code>.</code> and <code>source</code> commands.</p>
-<p>There is a problem, though: you won't be able to autocomplete scripts not in your <code>PATH</code>, using <code>.</code> or <code>source</code>. But you can execute them just typing their relative path (<code>./&lt;script_name</code>, see <a href="#Subshell">Subshell</a>) and hit Enter, which have the same result on executables as <code>.</code>.</p>
 <hr/>
 <ul>
 <li><p><strong>Variable</strong></p>
@@ -11209,7 +11234,7 @@ alias rm='rm -i'
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>If you want to add your own commands or shell scripts, place them in the <code>/home/user/bin</code> directory. This directory is automatically added to your path in some Linux systems, although you may need to create that directory or add it to your <code>PATH</code> on other Linux systems. So, as long as you add the command to your <code>bin</code> with execute permission, you can begin using it by simply typing the command name at your shell prompt. To make commands available to all users, add them to <code>/usr/local/bin</code>.</p>
 <blockquote>
-<p>Note: For autocomplete, see <a href="#Command-line-completion">Command-line completion</a>.</p>
+<p>For example, you have a user <code>~/bin</code> directory for your own scripts that is added to PATH, and there is an <code>example.sh</code> script. First, you need to give executable permissions to your script, and then you can just type <code>example.sh</code> from any directory, it will be autocompleted and executed in a <a href="#Subshell">subshell</a>.</p>
 </blockquote>
 <p>Unlike some other operating systems, Linux does not, by default, check the current directory for an executable before searching the path. It immediately begins searching the path, and executables in the current directory are run only if they are in the <code>PATH</code> variable or you give their absolute (such as <code>/home/chris/scriptx.sh</code>) or relative (for example, <code>./scriptx.sh</code>) location.</p>
 <p>The path directory order is important. Directories are checked from left to right. So, in this example, if there is a command called <code>foo</code> located in both the <code>/usr/bin</code> and <code>/bin</code> directories, the one in <code>/usr/bin</code> is executed. To have the other <code>foo</code> command run, you either type the full path to the command or change your <code>PATH</code> variable.</p>
