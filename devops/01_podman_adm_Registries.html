@@ -7505,7 +7505,8 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ol>
-<li>Valentin Rothberg <a href="https://www.redhat.com/sysadmin/manage-container-registries">How to manage Linux container registries</a> from RedHat</li>
+<li>Valentin Rothberg <a href="https://www.redhat.com/sysadmin/manage-container-registries">"How to manage Linux container registries"</a> from RedHat</li>
+<li>Valentin Rothberg <a href="https://www.redhat.com/sysadmin/container-image-short-names">"Container image short names in Podman"</a> from RedHat</li>
 </ol>
 </div>
 </div>
@@ -7517,7 +7518,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.-Main-files"><b></b>1. Main files<a class="anchor-link" href="#1.-Main-files">¶</a></h1>
+<h1 id="1.1-Main-files"><b></b>1.1 Main files<a class="anchor-link" href="#1.1-Main-files">¶</a></h1>
 </div>
 </div>
 </div>
@@ -7573,14 +7574,19 @@ a.anchor-link {
 <td>a registry configuration file for a single user</td>
 </tr>
 <tr>
-<td><code>/etc/containers/registries.conf.d/shortnames.conf</code></td>
-<td><code>/etc/containers/registries.conf.d/000-shortnames.conf</code></td>
-<td>short names</td>
-</tr>
-<tr>
 <td><code>podman info -f json \| jq ".registries"</code></td>
 <td></td>
 <td>see what registries are defined for your Podman installation</td>
+</tr>
+<tr>
+<td><strong>Aliases</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>/etc/containers/registries.conf.d/shortnames.conf</code></td>
+<td><code>/etc/containers/registries.conf.d/000-shortnames.conf</code></td>
+<td>short names</td>
 </tr>
 <tr>
 <td><strong>Login</strong></td>
@@ -7623,6 +7629,17 @@ a.anchor-link {
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ea202692-a47c-4f45-bc0a-b2dfe44ea371">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="1.2-Registries"><b></b>1.2 Registries<a class="anchor-link" href="#1.2-Registries">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5c6e1678-14a0-46cc-9f73-a33463e752e3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7634,23 +7651,16 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f8c3b224-5219-4449-9260-5ffb079f40f8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9674a3fa-4c73-4971-b9cc-2d3ac239a544">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>The <code>registries.conf</code> configuration is in play whenever we push or pull an image. Or, more generally speaking, whenever we contact a <strong>container registry</strong>. That's an easy rule of thumb. The systemwide location is <code>/etc/containers/registries.conf</code>, but if you want to change that for a single user, you can create a new file at <code>$HOME/.config/containers/registries.conf</code>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=868db609-e660-4d15-ab86-bdd42ed6c9a2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<blockquote>
+<p>Fedora has the registries list by default, on Debian system you should create it manually:</p>
+</blockquote>
 <div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"PRETTY*"</span>
 <span class="nv">PRETTY_NAME</span><span class="o">=</span><span class="s2">"Fedora Linux 39 (Server Edition)"</span>
 
@@ -7666,7 +7676,7 @@ $<span class="w"> </span>podman<span class="w"> </span>info<span class="w"> </sp
 </pre></div>
 <p>If the image cannot be found on the first registry, Podman will attempt to pull from the second registry and so on. Buildah and CRI-O follow the same logic but note that</p>
 <blockquote>
-<p>Skopeo always normalizes to docker.io.</p>
+<p>Skopeo always normalizes to <code>docker.io</code>.</p>
 </blockquote>
 <p>Large corporations usually have on-premises container registries. Integrating such registries in your workflow is as simple as adding them to the list of unqualified-search registries.</p>
 </div>
@@ -7679,7 +7689,7 @@ $<span class="w"> </span>podman<span class="w"> </span>info<span class="w"> </sp
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="user-conf-file">user conf file<a class="anchor-link" href="#user-conf-file">¶</a></h2>
+<h2 id="user-.conf-file">user <code>.conf</code> file<a class="anchor-link" href="#user-.conf-file">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7697,41 +7707,39 @@ vi<span class="w"> </span><span class="nv">$HOME</span>/.config/containers/regis
 <div class="highlight"><pre><span></span><span class="na">unqualified-search-registries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">['docker.io', 'ghrc.io', 'quay.io']</span>
 <span class="o">:</span><span class="s">wq</span>
 </pre></div>
-<p>Today, May 30, 2024 "Docker" has blocked the users from Russia, so we need some mirrors. And this fact proves the correctness of my decision to learn Podman 5 months ago. Yay!</p>
-<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5164e08c-47b7-4aa0-b431-4f5a3e7ce7a0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="1.3-TOML-tables"><b></b>1.3 TOML tables<a class="anchor-link" href="#1.3-TOML-tables">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4da9607e-7c49-4382-9579-07c92c29cafc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>On May 30, 2024 "Docker" has blocked the users from Russia, so we need some mirrors. And this fact proves the correctness of my decision to learn Podman 5 months ago. Yay!</p>
+<p>You can create a list of mirrors using TOML tables.</p>
 <p>Updated file, but for now podman can work only with one image at a time, so search does not work, but pulls work great:</p>
-<div class="highlight"><pre><span></span><span class="na">unqualified-search-registries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">['docker.io', 'ghrc.io', 'quay.io']</span>
+<div class="highlight"><pre><span></span><span class="c1"># See containers-registries.conf(5) for more information</span>
+
+<span class="na">unqualified-search-registries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">["localhost:5000", "registry.fedoraproject.org", "ghcr.io", "docker.io", "quay.io"]</span>
 
 <span class="k">[[registry]]</span>
-<span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"docker.io"</span>
-<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">'docker.io'</span>
-<span class="na">insecure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+<span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"localhost:5000"</span>
+<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"localhost:5000"</span>
+<span class="na">insecure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
 <span class="na">blocked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
-
-<span class="k">[[registry.mirror]]</span>
-<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"huecker.io"</span>
-
-<span class="k">[[registry.mirror]]</span>
-<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"gallery.ecr.aws"</span>
-
-<span class="k">[[registry.mirror]]</span>
-<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"mirror.gcr.io"</span>
-
-<span class="k">[[registry.mirror]]</span>
-<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"daocloud.io"</span>
-
-<span class="k">[[registry.mirror]]</span>
-<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"c.163.com"</span>
-
-<span class="k">[[registry.mirror]]</span>
-<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"registry.docker-cn.com"</span>
-
-<span class="k">[[registry.mirror]]</span>
-<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"yandex.cr/mirror"</span>
-
-<span class="k">[[registry.mirror]]</span>
-<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"docker.mirrors.ustc.edu.cn"</span>
-
 
 <span class="k">[[registry]]</span>
 <span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"quay.io"</span>
@@ -7740,15 +7748,52 @@ vi<span class="w"> </span><span class="nv">$HOME</span>/.config/containers/regis
 <span class="na">blocked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
 
 <span class="k">[[registry]]</span>
-<span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ghrc.io"</span>
-<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ghrc.io"</span>
+<span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"registry.fedoraproject.org"</span>
+<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"registry.fedoraproject.org"</span>
 <span class="na">insecure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
 <span class="na">blocked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
 
-<span class="k">[[registry.mirror]]</span>
-<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"gcr.io"</span>
+<span class="k">[[registry]]</span>
+<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ghcr.io"</span>
+<span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ghcr.io"</span>
+<span class="na">insecure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+<span class="na">blocked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+
+<span class="k">[[registry]]</span>
+<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">'docker.io'</span>
+<span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"docker.io"</span>
+<span class="na">insecure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+<span class="na">blocked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+
+<span class="w">	</span><span class="k">[[registry.mirror]]</span>
+<span class="w">	</span><span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"huecker.io"</span>
+
+<span class="w">	</span><span class="k">[[registry.mirror]]</span>
+<span class="w">	</span><span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"gcr.io"</span>
+
+<span class="w">	</span><span class="k">[[registry.mirror]]</span>
+<span class="w">	</span><span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"gallery.ecr.aws"</span>
+
+<span class="w">	</span><span class="k">[[registry.mirror]]</span>
+<span class="w">	</span><span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"mirror.gcr.io"</span>
+
+<span class="w">	</span><span class="k">[[registry.mirror]]</span>
+<span class="w">	</span><span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"daocloud.io"</span>
+
+<span class="w">	</span><span class="k">[[registry.mirror]]</span>
+<span class="w">	</span><span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"c.163.com"</span>
+
+<span class="w">	</span><span class="k">[[registry.mirror]]</span>
+<span class="w">	</span><span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"registry.docker-cn.com"</span>
+
+<span class="w">	</span><span class="k">[[registry.mirror]]</span>
+<span class="w">	</span><span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"yandex.cr/mirror"</span>
+
+<span class="w">	</span><span class="k">[[registry.mirror]]</span>
+<span class="w">	</span><span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"docker.mirrors.ustc.edu.cn"</span>
 </pre></div>
 <p>Source: <a href="https://github.com/containers/image/blob/main/docs/containers-registries.conf.5.md">containers-registries.conf.5.md</a></p>
+<p>Let's check:</p>
 </div>
 </div>
 </div>
@@ -7757,7 +7802,7 @@ vi<span class="w"> </span><span class="nv">$HOME</span>/.config/containers/regis
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-bash"><pre><span></span>skopeo<span class="w"> </span>inspect<span class="w"> </span>--raw<span class="w"> </span>docker://docker.io/library/debian<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq
@@ -7859,12 +7904,874 @@ vi<span class="w"> </span><span class="nv">$HOME</span>/.config/containers/regis
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2acdcb72-8dbf-41b4-be79-841a81353164">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0e11edb5-ad86-42ce-ba54-41c26d49a0ba">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>cat<span class="w"> </span>/etc/containers/registries.conf
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre># For more information on this configuration file, see containers-registries.conf(5).
+#
+# NOTE: RISK OF USING UNQUALIFIED IMAGE NAMES
+# We recommend always using fully qualified image names including the registry
+# server (full dns name), namespace, image name, and tag
+# (e.g., registry.redhat.io/ubi8/ubi:latest). Pulling by digest (i.e.,
+# quay.io/repository/name@digest) further eliminates the ambiguity of tags.
+# When using short names, there is always an inherent risk that the image being
+# pulled could be spoofed. For example, a user wants to pull an image named
+# `foobar` from a registry and expects it to come from myregistry.com. If
+# myregistry.com is not first in the search list, an attacker could place a
+# different `foobar` image at a registry earlier in the search list. The user
+# would accidentally pull and run the attacker's image and code rather than the
+# intended content. We recommend only adding registries which are completely
+# trusted (i.e., registries which don't allow unknown or anonymous users to
+# create accounts with arbitrary names). This will prevent an image from being
+# spoofed, squatted or otherwise made insecure.  If it is necessary to use one
+# of these registries, it should be added at the end of the list.
+#
+# # An array of host[:port] registries to try when pulling an unqualified image, in order.
+# unqualified-search-registries = ["example.com"]
+#
+# [[registry]]
+# # The "prefix" field is used to choose the relevant [[registry]] TOML table;
+# # (only) the TOML table with the longest match for the input image name
+# # (taking into account namespace/repo/tag/digest separators) is used.
+# # 
+# # The prefix can also be of the form: *.example.com for wildcard subdomain
+# # matching.
+# #
+# # If the prefix field is missing, it defaults to be the same as the "location" field.
+# prefix = "example.com/foo"
+#
+# # If true, unencrypted HTTP as well as TLS connections with untrusted
+# # certificates are allowed.
+# insecure = false
+#
+# # If true, pulling images with matching names is forbidden.
+# blocked = false
+#
+# # The physical location of the "prefix"-rooted namespace.
+# #
+# # By default, this is equal to "prefix" (in which case "prefix" can be omitted
+# # and the [[registry]] TOML table can only specify "location").
+# #
+# # Example: Given
+# #   prefix = "example.com/foo"
+# #   location = "internal-registry-for-example.net/bar"
+# # requests for the image example.com/foo/myimage:latest will actually work with the
+# # internal-registry-for-example.net/bar/myimage:latest image.
+#
+# # The location can be empty iff prefix is in a
+# # wildcarded format: "*.example.com". In this case, the input reference will
+# # be used as-is without any rewrite.
+# location = internal-registry-for-example.com/bar"
+#
+# # (Possibly-partial) mirrors for the "prefix"-rooted namespace.
+# #
+# # The mirrors are attempted in the specified order; the first one that can be
+# # contacted and contains the image will be used (and if none of the mirrors contains the image,
+# # the primary location specified by the "registry.location" field, or using the unmodified
+# # user-specified reference, is tried last).
+# #
+# # Each TOML table in the "mirror" array can contain the following fields, with the same semantics
+# # as if specified in the [[registry]] TOML table directly:
+# # - location
+# # - insecure
+# [[registry.mirror]]
+# location = "example-mirror-0.local/mirror-for-foo"
+# [[registry.mirror]]
+# location = "example-mirror-1.local/mirrors/foo"
+# insecure = true
+# # Given the above, a pull of example.com/foo/image:latest will try:
+# # 1. example-mirror-0.local/mirror-for-foo/image:latest
+# # 2. example-mirror-1.local/mirrors/foo/image:latest
+# # 3. internal-registry-for-example.net/bar/image:latest
+# # in order, and use the first one that exists.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=627b7c85-3cf8-4636-bfbf-f796f16a2e2f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="1.4-Aliases"><b></b>1.4 Aliases<a class="anchor-link" href="#1.4-Aliases">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=babebdbe-71eb-4fd1-a063-c3e91f4e1e40">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<blockquote>
+<p>WARNING: # NOTE: RISK OF USING UNQUALIFIED IMAGE NAMES
+We recommend always using fully qualified image names including the registry server (full dns name), namespace, image name, and tag (e.g., <code>registry.redhat.io/ubi8/ubi:latest</code>). Pulling by digest (i.e., <code>quay.io/repository/name@digest</code>) further eliminates the ambiguity of tags.
+When using short names, there is always an inherent risk that the image being pulled could be spoofed. For example, a user wants to pull an image named <code>foobar</code> from a registry and expects it to come from <code>myregistry.com</code>. If <code>myregistry.com</code> is not first in the search list, an attacker could place a different <code>foobar</code> image at a registry earlier in the search list. The user would accidentally pull and run the attacker's image and code rather than the intended content. We recommend only adding registries which are completely trusted (i.e., registries which don't allow unknown or anonymous users to create accounts with arbitrary names). This will prevent an image from being spoofed, squatted or otherwise made insecure.  If it is necessary to use one of these registries, it should be added at the end of the list.</p>
+</blockquote>
+<p>To secure using short names, there are so-called <strong>short-name aliases</strong>. Similar to aliases in BASH, a short-name alias has a left-hand name that is being replaced with a right-hand value. Short-name aliases can now be configured in the <code>registries.conf</code> file as follows:</p>
+<div class="highlight"><pre><span></span><span class="na">unqualified-search-registries</span><span class="o">=</span><span class="s">[“registry.fedoraproject.org”, “quay.io”]</span>
+
+<span class="k">[aliases]</span>
+<span class="na">"fedora"</span><span class="o">=</span><span class="s">"registry.fedoraproject.org/fedora"</span>
+<span class="na">"fedora-minimal"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"registry.fedoraproject.org/fedora-minimal"</span>
+</pre></div>
+<p>All aliases must be specified in the new <strong>aliases</strong> table. Using the above <code>registries.conf</code> file, Podman will resolve <code>fedora</code> immediately and securely to <code>registry.fedoraproject.org/fedora</code>. It will not try resolving <code>fedora</code> by using the registries listed in the <code>unqualified-search-registries</code> field.</p>
+<p>Given this example, you would not pull <code>quay.io/fedora</code> if it existed, only the image specified by the alias, <code>registry.fedoraproject.org/fedora</code>.</p>
+<p>Multiple Linux distributions and companies have expressed interest in collaborating with the Podman maintainers on assembling the short-name list, which we maintain on <a href="https://github.com/containers/shortnames">github.com</a>.</p>
+<p>If no matching alias is found, Podman will prompt the user to choose one of the unqualified-search registries. If the selected image is pulled successfully, Podman will automatically record a new short-name alias in the users <code>$HOME/.config/containers/short-name-aliases.conf</code> file. Subsequent pull attempts will use these aliases to resolve the previously selected and pulled image, even if it is removed.</p>
+<blockquote>
+<p>Note that the <code>short-name-aliases.conf</code> has precedence over <code>registries.conf</code> if both specify the same alias.</p>
+</blockquote>
+<p>Once a short-name alias is recorded, we won't be prompted any more, and Podman will correctly auto-complete the short name.</p>
+<blockquote>
+<p>Note that a short-name alias is only recorded if the selected image was pulled successfully.</p>
+</blockquote>
+<p>If we accidentally select the wrong image, the pull would fail. We might also just kill a pull operation with CTRL+C.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=56dbba0f-e718-478c-8697-f83d2e4bb24a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>cat<span class="w"> </span><span class="nv">$HOME</span>/.config/containers/short-name-aliases.conf
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>cat: /home/commi/.config/containers/short-name-aliases.conf: No such file or directory
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre></pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8e0b68b1-1cef-4406-a296-38e1dcdf1d5e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>cat<span class="w"> </span>/etc/containers/registries.conf.d/shortnames.conf
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[aliases]
+  # almalinux
+  "almalinux" = "docker.io/library/almalinux"
+  "almalinux-minimal" = "docker.io/library/almalinux-minimal"
+  # centos
+  "centos" = "quay.io/centos/centos"
+  # containers
+  "skopeo" = "quay.io/skopeo/stable"
+  "buildah" = "quay.io/buildah/stable"
+  "podman" = "quay.io/podman/stable"
+  # docker
+  "alpine" = "docker.io/library/alpine"
+  "docker" = "docker.io/library/docker"
+  "registry" = "docker.io/library/registry"
+  "hello-world" = "docker.io/library/hello-world"
+  "swarm" = "docker.io/library/swarm"
+  # Fedora
+  "fedora-minimal" = "registry.fedoraproject.org/fedora-minimal"
+  "fedora" = "registry.fedoraproject.org/fedora"
+  # openSUSE
+  "opensuse/tumbleweed" = "registry.opensuse.org/opensuse/tumbleweed"
+  "opensuse/tumbleweed-dnf" = "registry.opensuse.org/opensuse/tumbleweed-dnf"
+  "opensuse/tumbleweed-microdnf" = "registry.opensuse.org/opensuse/tumbleweed-microdnf"
+  "opensuse/leap" = "registry.opensuse.org/opensuse/leap"
+  "opensuse/busybox" = "registry.opensuse.org/opensuse/busybox"
+  "tumbleweed" = "registry.opensuse.org/opensuse/tumbleweed"
+  "tumbleweed-dnf" = "registry.opensuse.org/opensuse/tumbleweed-dnf"
+  "tumbleweed-microdnf" = "registry.opensuse.org/opensuse/tumbleweed-microdnf"
+  "leap" = "registry.opensuse.org/opensuse/leap"
+  "leap-dnf" = "registry.opensuse.org/opensuse/leap-dnf"
+  "leap-microdnf" = "registry.opensuse.org/opensuse/leap-microdnf"
+  "tw-busybox" = "registry.opensuse.org/opensuse/busybox"
+  # SUSE
+  "suse/sle15" = "registry.suse.com/suse/sle15"
+  "suse/sles12sp5" = "registry.suse.com/suse/sles12sp5"
+  "suse/sles12sp4" = "registry.suse.com/suse/sles12sp4"
+  "suse/sles12sp3" = "registry.suse.com/suse/sles12sp3"
+  "sle15" = "registry.suse.com/suse/sle15"
+  "sles12sp5" = "registry.suse.com/suse/sles12sp5"
+  "sles12sp4" = "registry.suse.com/suse/sles12sp4"
+  "sles12sp3" = "registry.suse.com/suse/sles12sp3"
+  # Red Hat Enterprise Linux
+  "rhel" = "registry.access.redhat.com/rhel"
+  "rhel6" = "registry.access.redhat.com/rhel6"
+  "rhel7" = "registry.access.redhat.com/rhel7"
+  "ubi7" = "registry.access.redhat.com/ubi7"
+  "ubi7-init" = "registry.access.redhat.com/ubi7-init"
+  "ubi7-minimal" = "registry.access.redhat.com/ubi7-minimal"
+  "ubi8" = "registry.access.redhat.com/ubi8"
+  "ubi8-minimal" = "registry.access.redhat.com/ubi8-minimal"
+  "ubi8-init" = "registry.access.redhat.com/ubi8-init"
+  "ubi8-micro" = "registry.access.redhat.com/ubi8-micro"
+  "ubi8/ubi" = "registry.access.redhat.com/ubi8/ubi"
+  "ubi8/ubi-minimal" = "registry.access.redhat.com/ubi8-minimal"
+  "ubi8/ubi-init" = "registry.access.redhat.com/ubi8-init"
+  "ubi8/ubi-micro" = "registry.access.redhat.com/ubi8-micro"
+  # Rocky Linux
+  "rockylinux" = "docker.io/library/rockylinux"
+  # Debian
+  "debian" = "docker.io/library/debian"
+  # Kali Linux
+  "kali-bleeding-edge" = "docker.io/kalilinux/kali-bleeding-edge"
+  "kali-dev" = "docker.io/kalilinux/kali-dev"
+  "kali-experimental" = "docker.io/kalilinux/kali-experimental"
+  "kali-last-release" = "docker.io/kalilinux/kali-last-release"
+  "kali-rolling" = "docker.io/kalilinux/kali-rolling"
+  # Ubuntu
+  "ubuntu" = "docker.io/library/ubuntu"
+  # Oracle Linux
+  "oraclelinux" = "container-registry.oracle.com/os/oraclelinux"
+  # busybox
+  "busybox" = "docker.io/library/busybox"
+  # php
+  "php" = "docker.io/library/php"
+  # python
+  "python" = "docker.io/library/python"
+  # node
+  "node" = "docker.io/library/node"
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d08d70f3-9c17-4282-bb2d-0b52e598ffae">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Using-aliases-in-scripts">Using aliases in scripts<a class="anchor-link" href="#Using-aliases-in-scripts">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=58ab59db-9208-46d4-93af-648e538d4107">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>That is a particularly delicate issue. Security should always be on by default and not be opt-in. We also need to account for the millions of Podman deployments that must continue working even after an update. Taking everything into account, we came up with three so-called "short-name modes" that can be configured in the registries.conf:</p>
+<ul>
+<li><strong>enforcing</strong>: If no alias is found and more than one unqualified-search registry is set, prompt the user to select one registry to pull from. If the user cannot be prompted (i.e., stdin or stdout are not a TTY), Podman will throw an error.</li>
+<li><strong>permissive</strong>: Behaves as enforcing but will not throw an error if the user cannot be prompted. Instead, Podman will try all unqualified-search registries in the given order. Note that no alias will be recorded.</li>
+<li><strong>disabled</strong>: Podman will try all unqualified-search registries in the given order, and no alias will be recorded. This is pretty much the same behavior of Podman before short names were introduced.</li>
+</ul>
+<p>These three modes meet all our requirements.</p>
+<ul>
+<li>On new installations, the short-name mode in the <code>registries.conf</code> file will be set to <strong>enforcing</strong>. This way, new installations are as secure as possible.</li>
+<li>On existing systems, however, the <code>registries.conf</code> files will not be altered, and Podman will default to the <strong>permissive</strong> mode. This way, updated systems are secure when running interactively while not breaking existing deployments.</li>
+</ul>
+<p>Note that distributions have full control over which mode they want to set by default on new installations. For now (2020), Fedora and Red Hat Enterprise Linux will default to permissive.  Future versions may default to enforcing.</p>
+<p>Source: <a href="https://github.com/containers/image/blob/main/docs/containers-registries.conf.5.md">containers-registries.conf.5.md</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ec2301ee-8e5f-4c39-ba1c-037c30ede6ad">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="1.5-Configuring-a-local-container-registry"><b></b>1.5 Configuring a local container registry<a class="anchor-link" href="#1.5-Configuring-a-local-container-registry">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=473ebe3a-9b4d-4b86-9360-2fe006f76b96">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Running a local container registry is quite common. I have one running all the time, so I can cache images and develop and test new features such as auto-updates in Podman. The bandwidth in my home office is limited, so I appreciate the fast pushes and pulls. Since everything is running locally, I don't need to worry about setting up TLS for the registry. That implies connecting to the registry via HTTP rather than via HTTPS. Podman allows you to do that by specifying --tls-verify=false on the command line, which will skip TLS verification and allow insecure connections.</p>
+<p>An alternative approach to skipping TLS verification via the command line is by using the registries.conf. This may be more convenient, especially for automated scripts where we don't want to manually add command-line flags. Let's have a look at the config snippet below.</p>
+<div class="highlight"><pre><span></span><span class="k">[[registry]]</span>
+<span class="na">location</span><span class="o">=</span><span class="s">"localhost:5000"</span>
+<span class="na">insecure</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+<p>The format of the <code>registries.conf</code> is TOML. The double braces of <code>[[registry]]</code> indicate that we can specify a list (or table) of <code>[registry]</code> objects. In this example, there is only one registry where the <code>location</code> (i.e., its address) is set to <code>localhost:5000</code>. That is where a local registry is commonly running. Whenever the <code>containers/image</code> library connects to a container registry with that location, it will look up its configuration and act accordingly. In this case, the registry is configured to be <code>insecure</code>, and TLS verification will be skipped. Podman and the other container tools can now talk to the local registry without getting the connections rejected.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3f48b356-a1e7-4eca-af0a-86da0f97b4b3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Local-registry-vs-local-container-storage">Local registry vs local container storage<a class="anchor-link" href="#Local-registry-vs-local-container-storage">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9a785539-7829-4a98-8c2b-6f7b212d75f2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><em>ChatGPT</em>:<br/>
+Using a local registry (<code>localhost:5000</code>) and <a href="../Walsh_Podman_in_Action/podman_in_action.ipynb#Container-transports">local container storage</a> serve different purposes, each offering distinct advantages depending on your use case.</p>
+<p>Feature/Use Case|Local Registry (<code>localhost:5000</code>)|Local Container Storage
+-|-|-
+<strong>Purpose</strong>|Acts as a local repository server|Mechanism for storing images locally on the host
+<strong>Sharing Images</strong>|Across multiple hosts within the same network|Specific to the host machine
+<strong>Centralized Management</strong>|Provides a centralized place to store images|No centralized management
+<strong>Development &amp; Testing</strong>|Useful for team collaboration in development and testing|Ideal for isolated development on a single host             |
+<strong>Speed &amp; Efficiency</strong>|Network overhead involved in pulls and pushes|Faster access without network overhead
+<strong>CI/CD Pipelines</strong>|Useful in CI/CD pipelines to store build artifacts|Less suited for CI/CD pipelines needing image sharing
+<strong>Tools Required</strong>|Podman, Local Registry Container|Podman, Skopeo
+<strong>Usage Example - Start</strong>|<code>podman run -d -p 5000:5000 --name local-registry -v /path/on/host:/var/lib/registry registry:2</code>|N/A
+<strong>Usage Example - Tag &amp; Push</strong>|<code>podman tag alpine localhost:5000/my-alpine</code>|<code>podman tag alpine my-alpine</code>
+<strong>Usage Example - Push</strong>|<code>podman push localhost:5000/my-alpine</code>|N/A
+<strong>Usage Example - Pull</strong>|<code>podman pull localhost:5000/my-alpine</code>|<code>skopeo copy docker://docker.io/library/alpine:latest containers-storage:localhost/alpine:latest</code>
+<strong>Usage Example - Run</strong>|<code>podman run --rm localhost:5000/my-alpine echo "Hello from local registry"</code>|<code>podman run --rm localhost/alpine:latest echo "Hello from local storage"</code>
+<strong>When to Use</strong>|Multiple hosts, team collaboration, CI/CD pipelines|Single host development, speed, isolated usage</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=115672e5-8202-46ad-855c-ff3960eebf17">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="registry:2-image"><code>registry:2</code> image<a class="anchor-link" href="#registry:2-image">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8e8bd9c0-ff46-4d0e-befb-c151038fb9b7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>skopeo<span class="w"> </span>inspect<span class="w"> </span>docker://docker.io/library/registry:2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre><span class="ansi-yellow-fg">WARN</span>[0002] Registry disallows tag list retrieval; skipping 
+{
+    "Name": "docker.io/library/registry",
+    "Digest": "sha256:4fac7a8257b1d7a86599043fcc181dfbdf9c8f57e337db763ac94b0e67c6cfb5",
+    "RepoTags": null,
+    "Created": "2023-10-02T18:42:41Z",
+    "DockerVersion": "",
+    "Labels": null,
+    "Architecture": "amd64",
+    "Os": "linux",
+    "Layers": [
+        "sha256:619be1103602d98e1963557998c954c892b3872986c27365e9f651f5bc27cab8",
+        "sha256:862815ae87dc680eb8ecc779dba6e6aad38a782132ce92b571f705abdd7cbfc6",
+        "sha256:74e12953df9580cfa53c844f2b8f373f61c107008d16a88f735929b51649bee5",
+        "sha256:6f0ce73649a0f93ee8f5dc39a85a6cbb632700acf4c6e6370858c4957d33ef9d",
+        "sha256:ef4f267ce8ed8e998f5225b975fa899a685c7b4795eb989fa1b87acaaee4f179"
+    ],
+    "Env": [
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    ]
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=859244d5-8dd5-4f53-9b78-a1367bdde848">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Explanation</strong></p>
+<ul>
+<li><p><strong>Container</strong>:</p>
+<ul>
+<li>The container running the registry is created from the <code>registry:2</code> image. This container runs the Docker registry service, which allows you to store and manage container images.</li>
+</ul>
+</li>
+<li><p><strong>Port Mapping</strong>:</p>
+<ul>
+<li>The <code>-p 5000:5000</code> option in the <code>podman run</code> command maps port 5000 of the host machine to port 5000 of the container.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Key Points</strong></p>
+<ol>
+<li><strong>Localhost (<code>localhost</code>)</strong>:<ul>
+<li><code>localhost</code> is a standard hostname that refers to the local machine itself. It's used to access services running on the same machine.
+<br/><br/></li>
+</ul>
+</li>
+<li><strong>Port (<code>5000</code>)</strong>:<ul>
+<li>Port <code>5000</code> is a network port. In this context, it is used by the Docker registry service running inside the container.
+<br/><br/></li>
+</ul>
+</li>
+<li><strong>Container</strong>:<ul>
+<li>The container is an instance of the <code>registry:2</code> image. It runs the Docker registry service.</li>
+<li>Inside the container, the registry service listens on port <code>5000</code>.
+<br/><br/></li>
+</ul>
+</li>
+<li><strong>Port Mapping (<code>-p 5000:5000</code>)</strong>:<ul>
+<li>The first <code>5000</code> is the port on the host machine.</li>
+<li>The second <code>5000</code> is the port inside the container.</li>
+<li>This mapping allows you to access the registry service on the host machine using <code>localhost:5000</code>.
+<br/><br/></li>
+</ul>
+</li>
+<li><strong>Mount a volume for persistent storage</strong>:<ul>
+<li><code>-v /path/on/host:/var/lib/registry</code>: This option mounts the directory <code>/path/on/host</code> on the host machine to the directory <code>/var/lib/registry</code> inside the container. The <code>/var/lib/registry</code> directory is where the Docker registry stores its data.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Accessing the Registry</strong></p>
+<p>When you run the command:</p>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:5000<span class="w"> </span>--name<span class="w"> </span>local-registry<span class="w"> </span>-v<span class="w"> </span>/path/on/host:/var/lib/registry<span class="w"> </span>registry:2
+</pre></div>
+<ul>
+<li>It starts a container named <code>local-registry</code>.</li>
+<li>This container runs a Docker registry service.</li>
+<li>The registry service listens on port 5000 inside the container.</li>
+<li>Due to the port mapping, you can access this service on your host machine at <code>http://localhost:5000</code>.</li>
+</ul>
+<p>You can verify that the registry is running by visiting <code>http://localhost:5000/v2/_catalog</code> in a web browser or using tools like <code>curl</code> to make a request:</p>
+<div class="highlight"><pre><span></span>curl<span class="w"> </span>http://localhost:5000/v2/_catalog
+</pre></div>
+<p>You should see an empty JSON response indicating that there are no repositories in the registry.</p>
+<p><strong>Example Usage</strong></p>
+<ol>
+<li><strong>Pushing an Image to the Local Registry</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>tag<span class="w"> </span>alpine<span class="w"> </span>localhost:5000/my-alpine
+podman<span class="w"> </span>push<span class="w"> </span>localhost:5000/my-alpine
+</pre></div>
+<ul>
+<li>This tags the <code>alpine</code> image with the name <code>localhost:5000/my-alpine</code>.</li>
+<li>Then it pushes this image to the local registry running at <code>localhost:5000</code>.</li>
+</ul>
+<ol start="2">
+<li><strong>Pulling an Image from the Local Registry</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>pull<span class="w"> </span>localhost:5000/my-alpine
+</pre></div>
+<ul>
+<li>This pulls the <code>my-alpine</code> image from the local registry at <code>localhost:5000</code>.</li>
+</ul>
+<p><strong>Visual Representation</strong></p>
+<pre><code class="language-plaintext">plaintext
++---------------------------------------+
+| Host Machine (localhost)              |
+|                                       |
+|   +---------------------------------+ |
+|   | Container                       | |
+|   |                                 | |
+|   |  registry:2                     | |
+|   |  (Docker Registry Service)      | |
+|   |                                 | |
+|   |  Listens on port 5000           | |
+|   +---------------------------------+ |
+|              |   (port 5000)           |
++--------------|------------------------+
+               | (port 5000)
+               V
+      Access via http://localhost:5000
+</code></pre>
+<p><strong>Summary</strong></p>
+<ul>
+<li><strong><code>localhost:5000</code></strong>: Refers to the local machine's network address and port 5000.</li>
+<li><strong>Container</strong>: Runs the Docker registry service.</li>
+<li><strong>Port Mapping</strong>: Allows access to the registry service on the host machine via <code>localhost:5000</code>.</li>
+</ul>
+<p>Thus, <code>localhost:5000</code> is not a container itself, but an address on your host machine that maps to the port where the registry service inside the container is running.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39335029-69a2-496d-8c6b-3bd165c1ca84">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Keep-data-persistent">Keep data persistent<a class="anchor-link" href="#Keep-data-persistent">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=62ac4248-1a81-4c3a-aa8a-3d57b31e4269">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><em>ChatGPT:</em><br/>
+When you run the command <code>podman run -d -p 5000:5000 --name local-registry registry:2</code>, you are creating and running a Docker registry container using Podman. This container instance will store the pulled and pushed images internally, within its own filesystem.</p>
+<p>Here's how it works:</p>
+<ol>
+<li><p><strong>Image Storage Within the Container</strong>:</p>
+<ul>
+<li>When you pull an image from a remote registry or push an image to the local registry, the images are stored within the filesystem of the running registry container.</li>
+<li>The Docker registry service running inside the container manages the storage of images and metadata within its filesystem.</li>
+</ul>
+</li>
+<li><p><strong>Persistence of Images</strong>:</p>
+<ul>
+<li>By default, the images stored within the container's filesystem are not persistent. If the container is stopped or removed, the images stored inside it will be lost.</li>
+<li>If you need persistent storage for the images, you can mount a host directory into the container and configure the registry to store images in that directory. This ensures that the images remain available even if the container is stopped or removed.</li>
+</ul>
+</li>
+<li><p><strong>Accessing Stored Images</strong>:</p>
+<ul>
+<li>You can access the images stored within the registry container using the registry's API endpoints. For example, you can use the <code>/v2/_catalog</code> endpoint to list the repositories stored in the registry.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Persistence Options</strong></p>
+<p>If you need persistent storage for the images stored in the local registry container, you have a few options:</p>
+<ol>
+<li><strong>Mount a Host Directory</strong>:<ul>
+<li>You can mount a directory from the host machine into the registry container and configure the registry to store images in that directory. This ensures that the images are stored on the host's filesystem and persist even if the container is stopped or removed.</li>
+<li>Example:</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:5000<span class="w"> </span>--name<span class="w"> </span>local-registry<span class="w"> </span>-v<span class="w"> </span>/path/on/host:/var/lib/registry<span class="w"> </span>registry:2
+</pre></div>
+<ol start="2">
+<li><strong>Use a Data Volume</strong>:<ul>
+<li>You can create a Podman data volume and mount it into the registry container. This provides a dedicated volume for storing the registry's data, separate from the container's filesystem.</li>
+<li>Example:</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>registry-data
+podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5000</span>:5000<span class="w"> </span>--name<span class="w"> </span>local-registry<span class="w"> </span>-v<span class="w"> </span>registry-data:/var/lib/registry<span class="w"> </span>registry:2
+</pre></div>
+<p>By using one of these persistence options, you can ensure that the images stored in the local registry container are retained even if the container is stopped or removed, providing a more robust and reliable storage solution.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9c95ce4a-7581-41e7-963b-8f19fac035e6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="1.6-Blocking-a-registry,-namespace,-or-image"><b></b>1.6 Blocking a registry, namespace, or image<a class="anchor-link" href="#1.6-Blocking-a-registry,-namespace,-or-image">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=885e6a1c-359b-4755-b857-7524c3dba9c8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>In case you want to prevent users or tools from pulling from a specific registry, you can do as follows.</p>
+<div class="highlight"><pre><span></span><span class="k">[[registry]]</span>
+<span class="na">location</span><span class="o">=</span><span class="s">"registry.example.org"</span>
+<span class="na">blocked</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+<p>The <code>blocked=true</code> prevents connections to this registry, or at least to blocks pulling data from it.</p>
+<p>However, it's surprisingly common among users to block only specific namespaces or individual images but not the entire registry:</p>
+<div class="highlight"><pre><span></span><span class="k">[[registry]]]</span>
+<span class="na">location</span><span class="o">=</span><span class="s">"registry.example.org"</span>
+<span class="na">prefix</span><span class="o">=</span><span class="s">"registry.example.org/namespace"</span>
+<span class="na">blocked</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+<p>A <strong>prefix</strong> instructs only to select the specified configuration when we attempt to pull an image that is matched by the specific prefix. For example, if we would run a</p>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>pull<span class="w"> </span>registry.example.org/namespace/image:latest
+</pre></div>
+<p>the specified prefix would match, and Podman would be blocked from pulling the image. If you want to block a specific image, you can set it using the following:</p>
+<div class="highlight"><pre><span></span><span class="nv">prefix</span><span class="o">=</span><span class="s2">"registry.example.org/namespace/image"</span>
+</pre></div>
+<p>Using a prefix is a very powerful tool to meet all kinds of use cases. It can be combined with all knobs of a <code>[registry]</code>.</p>
+<blockquote>
+<p>Note that using a prefix is optional.</p>
+</blockquote>
+<p>If none is specified, the prefix will default to the (mandatory) location.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=09d9d730-0a54-4ef1-ba05-5011cbb68f7f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="1.7-Mirroring-registries"><b></b>1.7 Mirroring registries<a class="anchor-link" href="#1.7-Mirroring-registries">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=42b8bbfb-f10f-4a56-a1cd-d6a12eb76d71">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>A registry <strong>mirror</strong> is a registry that will be contacted before attempting to pull from the original one. It's a common use case and one of the oldest feature requests in the container ecosystem.</p>
+<div class="highlight"><pre><span></span><span class="k">[[registry]]</span>
+<span class="na">location</span><span class="o">=</span><span class="s">"registry.access.redhat.com"</span>
+<span class="k">[[registry.mirror]]</span>
+<span class="na">location</span><span class="o">=</span><span class="s">"internal.registry.mirror"</span>
+</pre></div>
+<p>With this configuration, when pulling the Universal Base Image via <code>podman pull ubi8</code>, the image would be pulled from the mirror instead of Red Hat's container registry.</p>
+<p>Note that we can specify multiple mirrors that will be contacted in the specified order. Let's have a quick look at what that means:</p>
+<div class="highlight"><pre><span></span><span class="k">[[registry]]</span>
+<span class="na">location</span><span class="o">=</span><span class="s">"registry.example.com"</span>
+<span class="k">[[registry.mirror]]</span>
+<span class="na">location</span><span class="o">=</span><span class="s">"mirror-1.com"</span>
+<span class="k">[[registry.mirror]]</span>
+<span class="na">location</span><span class="o">=</span><span class="s">"mirror-2.com"</span>
+<span class="k">[[registry.mirror]]</span>
+<span class="na">location</span><span class="o">=</span><span class="s">"mirror-3.com"</span>
+</pre></div>
+<p>Let's assume we are attempting to pull the image <code>registry.example.com/myimage:latest</code>. Mirrors are contacted in the specified order (i.e., <strong>top-down</strong>), which means that Podman would first try to pull the image from <code>mirror-1.com</code>. If the image is not present or the pull fails for other reasons, Podman would contact <code>mirror-2.com</code> and so forth. If all mirror pulls fail, Podman will contact the main <code>registry.example.com</code>.</p>
+<p>Note that mirrors also support the <code>insecure</code> knob. If you want to skip TLS verification for a specific mirror, just add <code>insecure=true</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b0adca4f-1054-4edf-a05c-cae922339cfd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="1.8-Remapping-references"><b></b>1.8 Remapping references<a class="anchor-link" href="#1.8-Remapping-references">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3fe766e1-8085-4c87-b954-37bf7cc2e1b4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>As we explored above, a prefix is used to select a specific <code>[registry]</code> in the r<code>egistries.conf</code>. While prefixes are a powerful means to block specific namespaces or certain images from being pulled, they can also be used to remap entire images. Similar to mirrors, we can use a prefix to pull from a different registry and a different namespace.</p>
+<p>To illustrate what I mean by remapping, let's consider that we run in an air-gapped environment. We cannot access container registries since we are disconnected from the internet. Our workload is using images from <code>Quay.io</code>, <code>Docker Hub</code>, and <code>Red Hat</code>'s container registry. While we could have one network-local mirror per registry, we could also just use one with the following config.</p>
+<div class="highlight"><pre><span></span><span class="k">[[registry]]</span>
+<span class="na">prefix</span><span class="o">=</span><span class="s">"quay.io"</span>
+<span class="na">location</span><span class="o">=</span><span class="s">"internal.registry.mirror/quay"</span>
+
+<span class="k">[[registry]]</span>
+<span class="na">prefix</span><span class="o">=</span><span class="s">"docker.io"</span>
+<span class="na">location</span><span class="o">=</span><span class="s">"internal.registry.mirror/docker"</span>
+
+<span class="k">[[registry]]</span>
+<span class="na">prefix</span><span class="o">=</span><span class="s">"registry.access.redhat.com"</span>
+<span class="na">location</span><span class="o">=</span><span class="s">"internal.registry.mirror/redhat"</span>
+</pre></div>
+<p>A <code>podman pull quay.io/buildah/stable:latest</code> will now instead <code>pull internal.registry.mirror/quay/buildah/stable:latest</code>. However, the pulled image will remain <code>quay.io/buildah/stable:latest</code> since the remapping and mirroring happen transparently to Podman and the other container tools.</p>
+<p>As we can see in the snippet above, <code>internal.registry.mirror</code> is our network-local mirror that we are using to pull images on behalf of <code>Quay.io</code>, <code>Docker Hub</code>, and <code>Red Hat</code>'s container registry. Images of each registry reside on separate namespaces on the registry (i.e., "quay", "docker", "redhat") — simple yet powerful trick to remap images when pulling.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=15056c52-4f26-4cce-8eda-2a42c4e8bc17">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="skopeo-sync"><code>skopeo sync</code><a class="anchor-link" href="#skopeo-sync">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1ba2d476-d009-4473-8e96-10d4addcdd74">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>You may ask yourself how we can pre-populate the internal mirror with the images from the three registries. I do not recommend doing that manually but to use <code>skopeo sync</code> instead. With <code>skopeo sync</code>, a sysadmin can easily load all images onto a USB drive, bring that to an air-gapped cluster, and preload the mirror.</p>
+<p>There are countless use cases where such remapping may help. For instance, when using another registry during tests, it may come in handy to transparently pull from another (testing or staging) registry than in production. No code changes are needed.</p>
+<p>Tom Sweeney and Ed Santiago used the remapping to develop a creative solution to address the rate limits of Docker Hub. In late November 2020, Docker Hub started to limit the number of pulls per user in a given timeframe. At first, we were concerned because large parts of our testing systems, and continuous integration used Docker Hub images. But with a simple change to the <code>registries.conf</code> on our systems, Tom and Ed found a great solution. That spared us from the manual and tedious task of changing all images referring to <code>docker.io</code> in our tests.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=59d9b2c3-6a15-4a9a-aa7e-d81322659e85">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="1.9-Advanced-configuration-management-via-drop-on-config-files"><b></b>1.9 Advanced configuration management via drop-on config files<a class="anchor-link" href="#1.9-Advanced-configuration-management-via-drop-on-config-files">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2fa1db62-3415-4ee0-bb92-f7066bac2dee">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Managing configurations is challenging. Our systems are updated all the time, and with the updates may come configuration changes. We may want to add new registries, configure new mirrors, correct previous settings or extend the default configuration of Fedora. There are many motivations, and for certain <code>registries.conf</code> supports it via so-called drop-in configuration files.</p>
+<p>When loading the configuration, the <code>containers/image</code> library will first load</p>
+<ul>
+<li>the main configuration file at <code>/etc/containers/registries.conf</code> and then</li>
+<li>all files in the <code>/etc/containers/registries.conf.d</code> directory in alpha-numerical order.</li>
+</ul>
+<p>Using such drop-in <code>registries.conf</code> files is straight forward. Just place a <code>.conf</code> file in the directory, and Podman will get the updated configuration. Note that tables in the config are merged while simple knobs are overridden. This means, in practice, that the <code>[[registry]]</code> table can easily be extended with new registries. If a registry with the same prefix already exists, the registry setting will be overridden. The same applies to the <code>[aliases]</code> table. Simple configuration knobs such as <code>unqualified-search-registries</code> are always overridden.</p>
+<hr/>
+<p><em>ChatGPT:</em><br/>
+Certainly! Let's delve into more detail with examples to illustrate how configuration tables are merged and how simple settings are overridden in Podman's <code>registries.conf</code> configuration files.</p>
+<p><strong>Configuration Tables Merging:</strong></p>
+<p>Consider a scenario where you have multiple drop-in configuration files in the <code>/etc/containers/registries.conf.d</code> directory, each defining configurations for registries:</p>
+<ol>
+<li><strong>File: <code>registry1.conf</code></strong>:</li>
+</ol>
+<pre><code class="language-plaintext">plaintext
+[[registry]]
+location = "example.com"
+insecure = true
+</code></pre>
+<ol start="2">
+<li><strong>File: <code>registry2.conf</code></strong>:</li>
+</ol>
+<pre><code class="language-plaintext">plaintext
+[[registry]]
+location = "example.com"
+prefix = "registry2"
+</code></pre>
+<p>In this case, both files define configurations for the registry with the location <code>example.com</code>. When Podman loads these configurations, it merges the <code>[[registry]]</code> tables, resulting in the following merged configuration:</p>
+<pre><code class="language-plaintext">plaintext
+[[registry]]
+location = "example.com"
+insecure = true
+prefix = "registry2"
+</code></pre>
+<p>As a result, the configuration from <code>registry2.conf</code> overrides the <code>insecure</code> setting from <code>registry1.conf</code>, while the <code>prefix</code> setting is added to the merged configuration.</p>
+<p><strong>Aliases Table Overriding:</strong></p>
+<p>Let's say you have two drop-in configuration files defining aliases for registries:</p>
+<ol>
+<li><strong>File: <code>aliases1.conf</code></strong>:</li>
+</ol>
+<pre><code class="language-plaintext">plaintext
+[aliases]
+my-alias = "example.com"
+</code></pre>
+<ol start="2">
+<li><strong>File: <code>aliases2.conf</code></strong>:</li>
+</ol>
+<pre><code class="language-plaintext">plaintext
+[aliases]
+my-alias = "my-registry.com"
+</code></pre>
+<p>In this case, both files define an alias <code>my-alias</code>, but with different mappings. When Podman loads these configurations, it overrides the alias defined in <code>aliases1.conf</code> with the one defined in <code>aliases2.conf</code>. As a result, the final merged configuration will contain the alias mapping from <code>aliases2.conf</code>.</p>
+<p><strong>Simple Configuration Knobs:</strong></p>
+<p>For simple configuration knobs like <code>unqualified-search-registries</code>, the settings are always overridden by the latest configuration. For example:</p>
+<ol>
+<li><strong>File: <code>config1.conf</code></strong>:</li>
+</ol>
+<pre><code class="language-plaintext">plaintext
+unqualified-search-registries = ["example.com"]
+</code></pre>
+<ol start="2">
+<li><strong>File: <code>config2.conf</code></strong>:</li>
+</ol>
+<pre><code class="language-plaintext">plaintext
+unqualified-search-registries = ["registry.io"]
+</code></pre>
+<p>In this case, the <code>unqualified-search-registries</code> setting from <code>config2.conf</code> will override the one from <code>config1.conf</code>.</p>
+<p><strong>Summary:</strong></p>
+<ul>
+<li>Configuration tables, such as <code>[[registry]]</code> and <code>[aliases]</code>, are merged when multiple drop-in configuration files are present.</li>
+<li>Simple settings like <code>unqualified-search-registries</code> are always overridden by the latest configuration.</li>
+<li>When merging configurations, the latest configuration takes precedence, overriding any conflicting settings from previous configurations.</li>
+</ul>
+<p>These examples illustrate how Podman handles merging and overriding configurations from multiple drop-in <code>registries.conf</code> files, ensuring that the final configuration reflects the latest settings specified in the files.</p>
+<hr/>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5dc8b890-0e39-43d4-94f7-4fce944fd2c4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-bash"><pre><span></span>man<span class="w"> </span>containers-registries.conf
@@ -8237,126 +9144,6 @@ HISTORY
 registry                          System-wide    CONTAINERS-REGISTRIES.CONF(5)
 </pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=627b7c85-3cf8-4636-bfbf-f796f16a2e2f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=babebdbe-71eb-4fd1-a063-c3e91f4e1e40">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d08d70f3-9c17-4282-bb2d-0b52e598ffae">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=58ab59db-9208-46d4-93af-648e538d4107">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=473ebe3a-9b4d-4b86-9360-2fe006f76b96">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3f48b356-a1e7-4eca-af0a-86da0f97b4b3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9a785539-7829-4a98-8c2b-6f7b212d75f2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=115672e5-8202-46ad-855c-ff3960eebf17">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=859244d5-8dd5-4f53-9b78-a1367bdde848">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39335029-69a2-496d-8c6b-3bd165c1ca84">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=62ac4248-1a81-4c3a-aa8a-3d57b31e4269">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2fa1db62-3415-4ee0-bb92-f7066bac2dee">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
