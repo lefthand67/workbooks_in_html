@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>01_shell_scripting_Getting_started</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>05_Access_Control_linux_adm</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7476,2181 +7476,1057 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bdbee943-d2e8-40fc-8cc7-b4e4217e0399">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=529b08f6-954b-41d4-ab2b-02e178bb27d1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.-SHELL-SCRIPTING---Getting-Started">1. SHELL SCRIPTING - Getting Started<a class="anchor-link" href="#1.-SHELL-SCRIPTING---Getting-Started">¶</a></h1>
+<h1 id="5.-GNU/Linux---Access-Control">5. GNU/Linux - Access Control<a class="anchor-link" href="#5.-GNU/Linux---Access-Control">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c9a9b2d9-bc16-4f7f-a408-90c4d82f5a0c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=089d1823-8f21-4b59-9334-8187dd0cad97">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Literature"><b></b>Literature<a class="anchor-link" href="#Literature">¶</a></h1>
+<h1 id="5.1-Standard-UNIX-access-control"><b></b>5.1 Standard UNIX access control<a class="anchor-link" href="#5.1-Standard-UNIX-access-control">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=298fcbd3-867d-4d71-8faf-c273f90d1d30">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=054dc6c4-e5a2-4ea3-9257-133ea0ecdb67">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol>
-<li>Arnold Robbins, Nelson H. F. Beebe "Classic Shell Scripting", May 2005, ISBN: 9780596555269</li>
-<li><a href="../../05_Unix_Bash/linux_adm/01_Shell_linux_adm.ipynb">GNU/Linux - Shell</a></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8a39ac8e-7175-448e-8d0e-3365ef867326">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="0.-Preliminaries">0. Preliminaries<a class="anchor-link" href="#0.-Preliminaries">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fc8fd31a-9396-4f23-b7e7-6d2624ce8ef8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><em>ChatGPT:</em><br/>
-Yes, shell scripting is essential for many DevOps positions. Here’s why shell scripting is crucial in the DevOps field, along with some specific scenarios where it is particularly beneficial:</p>
-<p><strong>Why Shell Scripting is Important for DevOps</strong></p>
-<ol>
-<li><p><strong>Automation of Routine Tasks</strong>:</p>
+<p>The standard UNIX access control model has remained largely unchanged for decades. With a few enhancements, it continues to be the default for general-purpose OS distributions. The scheme follows a few basic rules:</p>
 <ul>
-<li>DevOps involves a lot of repetitive tasks like deployments, backups, log rotation, and monitoring. Shell scripts can automate these tasks, saving time and reducing human error.</li>
+<li>Access control decisions depend on which user is attempting to perform an operation, or in some cases, on that user’s membership in a UNIX group.</li>
+<li>Objects (e.g., files and processes) have owners. Owners have broad (but not necessarily unrestricted) control over their objects.</li>
+<li>You own the objects you create.</li>
+<li>The special user account called “root” can act as the owner of any object.</li>
+<li>Only root can perform certain sensitive administrative operations.</li>
 </ul>
-</li>
-<li><p><strong>System Administration</strong>:</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4b96a2b8-1c5a-441a-b364-398b0b2f0754">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Filesystem-Control-Access">Filesystem Control Access<a class="anchor-link" href="#Filesystem-Control-Access">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=736b703a-1b9a-4100-84ad-84b43daf26f6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>See <a href="./04_Filesystem_linux_adm.ipynb">04_Filesystem_linux_adm</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5e029dd4-9858-4e66-a1e1-ddb4f759ef45">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Process-ownership">Process ownership<a class="anchor-link" href="#Process-ownership">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=74d619ad-1684-4627-ada3-16757e8e2515">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The owner of a process can send the <strong>process signals</strong> and can also reduce (<strong>degrade</strong>) the process’ scheduling priority. Processes actually have multiple identities associated with them:</p>
 <ul>
-<li>Shell scripts are used to manage servers, including starting/stopping services, managing system configurations, and handling user permissions.</li>
+<li>a real, effective, and saved UID;</li>
+<li>a real, effective, and saved GID; and</li>
+<li>under Linux, a “filesystem UID” that is used only to determine file access permissions.</li>
 </ul>
-</li>
-<li><p><strong>CI/CD Pipelines</strong>:</p>
+<p>Broadly speaking,</p>
 <ul>
-<li>Continuous Integration and Continuous Deployment pipelines often involve a series of shell commands to build, test, and deploy applications. Shell scripting helps in orchestrating these commands efficiently.</li>
+<li>the real numbers are used for accounting (now largely vestigial), and</li>
+<li>the effective numbers are used for the determination of access permissions.</li>
 </ul>
-</li>
-<li><p><strong>Configuration Management</strong>:</p>
-<ul>
-<li>Tools like Ansible, Puppet, and Chef often utilize shell scripting to perform low-level system configuration tasks.</li>
-</ul>
-</li>
-<li><p><strong>Environment Setup</strong>:</p>
-<ul>
-<li>Setting up development, testing, and production environments often requires running a series of shell commands to install software, configure settings, and ensure that the environment is ready for use.</li>
-</ul>
-</li>
-<li><p><strong>Monitoring and Logging</strong>:</p>
-<ul>
-<li>Shell scripts can be used to monitor system performance, collect logs, and alert the team when certain thresholds are exceeded.</li>
-</ul>
-</li>
-</ol>
-<p><strong>Specific Scenarios Where Shell Scripting is Used in DevOps</strong></p>
-<ol>
-<li><p><strong>Deployments</strong>:</p>
-<ul>
-<li>Automating the deployment of applications to various environments (development, staging, production) often involves shell scripts that handle tasks such as copying files, restarting services, and running database migrations.</li>
-</ul>
-</li>
-<li><p><strong>System Health Checks</strong>:</p>
-<ul>
-<li>Scripts that check the status of services, disk space usage, memory utilization, and other system metrics. These scripts can be run at regular intervals and alert the team if something goes wrong.</li>
-</ul>
-</li>
-<li><p><strong>Backup and Restore</strong>:</p>
-<ul>
-<li>Automating the process of backing up databases and important files, and restoring them when needed. Shell scripts can schedule these tasks to run at specific times using cron jobs.</li>
-</ul>
-</li>
-<li><p><strong>Log Management</strong>:</p>
-<ul>
-<li>Rotating, compressing, and archiving log files to ensure that logs do not consume too much disk space. Shell scripts can also parse logs and extract relevant information for further analysis.</li>
-</ul>
-</li>
-<li><p><strong>Environment Variables and Configuration Files</strong>:</p>
-<ul>
-<li>Managing environment variables and configuration files for different environments. Shell scripts can be used to ensure that the correct configurations are applied in each environment.</li>
-</ul>
-</li>
-</ol>
-<p><strong>Integration with Other DevOps Tools</strong></p>
-<p>While shell scripting is fundamental, it often works in tandem with other DevOps tools:</p>
-<ul>
-<li><strong>Docker</strong>: Shell scripts can be used to build, tag, and push Docker images, as well as to run containers.</li>
-<li><strong>Kubernetes</strong>: Shell scripts can interact with <code>kubectl</code> to manage Kubernetes clusters and deployments.</li>
-<li><strong>Jenkins</strong>: Shell scripting is frequently used within Jenkins pipelines to perform build and deployment steps.</li>
-<li><strong>Terraform</strong>: While Terraform uses its own language, shell scripts can be used for provisioning resources that Terraform does not directly support.</li>
-</ul>
-<p><strong>Conclusion</strong></p>
-<p>Shell scripting is a vital skill for DevOps professionals because it enables the automation of a wide range of tasks, from system administration to deployment and monitoring. While other scripting and programming languages (like Python) are also valuable, shell scripting is often the quickest and most direct way to interact with the Unix/Linux operating systems and DevOps tools. Learning shell scripting will make you more effective in a DevOps role by enabling you to automate and streamline your workflows.</p>
+<p>The real and effective numbers are normally the same (but not always, see <a href="./04_Filesystem_linux_adm.ipynb#The-setuid-and-setgid-bits">The setuid and setgid bits</a>).</p>
+<p>The saved UID and GID are parking spots for IDs that are not currently in use but that remain available for the process to invoke. The saved IDs allow a program to repeatedly enter and leave a privileged mode of operation; this precaution reduces the risk of unintended misbehavior.</p>
+<p>The filesystem UID is generally explained as an implementation detail of NFS, the Network File System. It is usually the same as the effective UID.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8151c959-17cf-4e2d-89b1-8e8a47e6a616">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c57407fe-5e33-41b3-88bf-c772bd18dddb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.0-Commands-handout"><b></b>1.0 Commands handout<a class="anchor-link" href="#1.0-Commands-handout">¶</a></h1>
+<h2 id="The-root-account">The root account<a class="anchor-link" href="#The-root-account">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b761b989-4c3a-49ce-b8eb-c292c12f3cef">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cca2d074-03ca-4d94-ab36-eb683d4dbb1f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="General-list">General list<a class="anchor-link" href="#General-list">¶</a></h2>
+<p><code>root</code>'s UID is <code>0</code>.</p>
+<p>Nothing prevents you from changing the username on this account or from creating additional accounts whose UIDs are 0; however, such changes have a tendency to create inadvertent breaches of system security. They also create confusion when other people have to deal with the strange way you’ve configured your system.</p>
+<p>Traditional UNIX allows the superuser (that is, any process for which the effective UID is 0) to perform any valid operation on any file or process (certain operations such as executing a file on which the execute permission bit is not set, are forbidden even to the superuser).</p>
+<p>An example of superuser powers is the ability of a process owned by root to change its UID and GID. The login program and its GUI equivalents are a case in point; the process that prompts you for your password when you log in to the system initially runs as root. If the password and username that you enter are legitimate, the login program changes its UID and GID to your UID and GID and starts up your shell or GUI environment. Once a root process has changed its ownerships to become a normal user process, it can’t recover its former privileged state.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6a48c376-1041-4169-9abc-cd50c5affef9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a95c4bc2-92c9-4782-ac2e-555ffa0f2193">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>command</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>1. Get location string</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>readlink -f</code></td>
-<td>print resolved symbolic links or canonical file names; <code>-f</code> canonicalize by following every symlink in every component of the given name recursively; all but the last component must exist</td>
-</tr>
-<tr>
-<td><code>dirname</code></td>
-<td>strip last component from file name</td>
-</tr>
-<tr>
-<td><code>basename</code></td>
-<td>strip directory and suffix from filenames</td>
-</tr>
-<tr>
-<td><strong>2. Commands syntax</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>&lt;command&gt; --</code></td>
-<td>two dashes should be used to signify the end of options</td>
-</tr>
-<tr>
-<td><code>&lt;command&gt; $n</code></td>
-<td>where $n$ is a number less than 10; a positional argument</td>
-</tr>
-<tr>
-<td><code>&lt;command&gt; ${n}</code></td>
-<td>where $n$ is a number greater than 9; a positional argument</td>
-</tr>
-<tr>
-<td><strong>3. Run the script</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>#!/bin/bash -</code></td>
-<td>The bare option <code>–</code> says that there are no more shell options; this is a security feature</td>
-</tr>
-<tr>
-<td><strong>4. Output manipulation commands</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>echo</code></td>
-<td>display a line of text; has portability problems</td>
-</tr>
-<tr>
-<td><code>printf</code></td>
-<td>format and print data; best alternative to <code>echo</code></td>
-</tr>
-<tr>
-<td><code>tr</code></td>
-<td>translate or delete characters</td>
-</tr>
-<tr>
-<td><code>stty</code></td>
-<td>change and print terminal line settings</td>
-</tr>
-<tr>
-<td><code>stty -echo</code></td>
-<td>turn of echoing; <code>stty echo</code> returns it</td>
-</tr>
-<tr>
-<td><strong>5. Special files</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>/dev/null</code></td>
-<td>bytes neverland</td>
-</tr>
-<tr>
-<td><code>/dev/tty</code></td>
-<td>a special file that represents the controlling terminal for the current process</td>
-</tr>
-<tr>
-<td><strong>6. Debugging</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sh -x &lt;script&gt;</code></td>
-<td>turn the execution tracing on</td>
-</tr>
-<tr>
-<td><code>set -x</code> line in the script</td>
-<td>turn the execution tracing <em>on</em> in the script</td>
-</tr>
-<tr>
-<td><code>set +x</code> line in the script</td>
-<td>turn the execution tracing <em>off</em> in the script</td>
-</tr>
-</tbody>
-</table>
+<h2 id="Setuid-and-setgid-execution">Setuid and setgid execution<a class="anchor-link" href="#Setuid-and-setgid-execution">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=637fa1ca-73a3-441d-9d2e-c6ca5917ecf4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cb262225-3d28-425b-a1f4-2b323b08e6b3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Locale-environment-variables">Locale environment variables<a class="anchor-link" href="#Locale-environment-variables">¶</a></h2>
+<p>See <a href="./04_Filesystem_linux_adm.ipynb#The-setuid-and-setgid-bits">The setuid and setgid bits</a>.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=43d0f0eb-c86b-4415-b485-72c85c4ee4cb">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=80aad868-97bc-4b0a-84c1-049b1ba2de51">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<center>Locale environment variables</center>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>LANG</code></td>
-<td>Default value for any <code>LC_xxx</code> variable that is not otherwise set</td>
-</tr>
-<tr>
-<td><code>LC_ALL</code></td>
-<td>Value that overrides all other <code>LC_xxx</code> variables</td>
-</tr>
-<tr>
-<td><code>LC_COLLATE</code></td>
-<td>Locale name for collation (sorting)</td>
-</tr>
-<tr>
-<td><code>LC_CTYPE</code></td>
-<td>Locale name for character types (alphabetic, digit, punctuation, and so on)</td>
-</tr>
-<tr>
-<td><code>LC_MESSAGES</code></td>
-<td>Locale name for affirmative and negative responses and for messages; POSIX only</td>
-</tr>
-<tr>
-<td><code>LC_MONETARY</code></td>
-<td>Locale name for currency formatting</td>
-</tr>
-<tr>
-<td><code>LC_NUMERIC</code></td>
-<td>Locale name for number formatting</td>
-</tr>
-<tr>
-<td><code>LC_TIME</code></td>
-<td>Locale name for date and time formatting</td>
-</tr>
-</tbody>
-</table>
+<h1 id="5.2-Management-of-the-root-account"><b></b>5.2 Management of the root account<a class="anchor-link" href="#5.2-Management-of-the-root-account">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dffaf1cd-e50a-404a-bfbd-1c84e150e72c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f48d589e-bdb6-4e74-9571-48a616b3dc6a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.1-Background"><b></b>1.1 Background<a class="anchor-link" href="#1.1-Background">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9536005f-1df7-4a13-aa43-f07107dbfe1c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5ff268c6-75ec-4116-8b02-736d1b9c40e6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.2-Software-Tools-Principles"><b></b>1.2 Software Tools Principles<a class="anchor-link" href="#1.2-Software-Tools-Principles">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=642c1e9f-66b4-41ca-a661-aa0ba8ea14cd">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=420559b1-90c8-4bec-91e5-27f064609119">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol>
-<li>Do one thing well</li>
-<li>Process lines of text, not binary</li>
-<li>Use regular expressions (BRE, ERE)</li>
-<li>Default to standard I/O</li>
-<li>Don't be chatty</li>
-<li>Generate the same output format accepted as input</li>
-<li>Let someone else do the hard part</li>
-<li>Detour to build specialized tools</li>
-</ol>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2d140c31-dba6-4783-8471-d630f7ddd346">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b9574f99-822c-47e5-a3fc-6008dc227df0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.3-Getting-Started"><b></b>1.3 Getting Started<a class="anchor-link" href="#1.3-Getting-Started">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b96dd60d-039a-4faa-be2b-25919d160797">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=75863d14-092f-47cb-aed9-65cbe0eed3f3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Shell scripts are used most often</p>
-<ul>
-<li>for system administration tasks, or</li>
-<li>for combining existing programs to accomplish some small, specific job.</li>
-</ul>
-<p>Once you’ve figured out how to get the job done, you can bundle up the commands into a separate program, or <strong>script</strong>, which you can then run directly. What’s more, if it’s useful, other people can make use of the program, treating it as a <em>black box</em>, a program that gets a job done, without their having to know how it does so.</p>
-<p>Examples of scripting languages include awk, Perl, Python, Ruby, and the shell.</p>
-<p>The reasons to use a shell script are:</p>
-<ul>
-<li><strong>Simplicity</strong><ul>
-<li>The shell is a high-level language; you can express complex operations clearly and simply using it.</li>
-</ul>
-</li>
-<li><strong>Portability</strong><ul>
-<li>By using just POSIX-specified features, you have a good chance of being able to move your script, unchanged, to different kinds of systems.</li>
-</ul>
-</li>
-<li><strong>Ease of development</strong><ul>
-<li>You can often write a powerful, useful script in little time.</li>
-</ul>
-</li>
-</ul>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1673724d-3a86-4586-8bf5-b341fbedd500">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7c905013-c6fc-412e-a5c2-77a75f99a439">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="A-Simple-Script">A Simple Script<a class="anchor-link" href="#A-Simple-Script">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7d408875-af2b-4759-8534-028714b93c76">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6b3bc837-d624-4eb6-9f36-035cf3a79cca">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Count-users">Count users<a class="anchor-link" href="#Count-users">¶</a></h3>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8e058ad9-270c-438d-a132-c7bb3ed3adbc">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ca58172-faf0-47d1-8807-93c5eda7c1e3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<pre><code>$ cat &gt; nusers      # Create the file, copy terminal input with cat
-who | wc -l         # Program text
-^D                  # Ctrl-D is end-of-file
-$ chmod +x nusers   # Make it executable
-$ ./nusers          # Do a test run
-6                   # Output is what we expect
-</code></pre>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=754fc22a-ffe4-4ba4-ba13-79e35d82d398">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp
-
-cat<span class="w"> </span>&gt;<span class="w"> </span>nusers<span class="w"> </span><span class="s">&lt;&lt; 'text'</span>
-<span class="s">who | wc -l</span>
-<span class="s">text</span>
-
-<span class="c1"># run in a subshell</span>
-chmod<span class="w"> </span>+x<span class="w"> </span>nusers
-./nusers
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>9
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3dd6920f-309a-4b5b-a4a4-6ebe0f44a510">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=172f8655-b5a3-4c38-9dcd-c36fcb717335">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>This shows the typical development cycle for small one- or two-line shell scripts:</p>
-<ul>
-<li>first, you experiment directly at the command line.</li>
-<li>Then, once you’ve figured out the proper incantations to do what you want, you put them into a separate script and make the script executable.</li>
-</ul>
-<p>You can then use that script directly from now on.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5d94f104-67d2-473d-85f3-5dd1ee8313d5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ad33e8e8-023e-411f-993f-2983b2220de6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Self-Contained-Scripts">Self-Contained Scripts<a class="anchor-link" href="#Self-Contained-Scripts">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=81014ce0-c809-43ac-bea9-e4ee64eb7b35">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8e774f98-83c7-4f07-a7ac-c1ae3474c0e7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="%23!"><code>#!</code><a class="anchor-link" href="#%23!">¶</a></h3>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1d36d3ba-e692-4677-87b2-f511e34f4c2c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=210f4ff8-835d-4908-a42d-d7c770008619">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>When the shell runs a program, it asks the Unix kernel to start a new process and run the given program in that process. The kernel knows how to do this for compiled programs.</p>
-<p>When the shell asks the kernel to run the shell script, the kernel will fail to do so, returning a “not executable format file” error. The shell, upon receiving this error, proceeds to start a new copy of <code>/bin/sh</code> (the standard shell) to run the program.</p>
-<p>The “fall back to /bin/sh” mechanism is great when there’s only one shell. However, because current Unix systems have multiple shells, there needs to be a way to tell the Unix kernel which shell to use when running a particular shell script. In fact, it helps to have a general mechanism that makes it possible to directly invoke any programming language interpreter, not just a command shell. This is done via a special first line in the script file—one that begins with the two characters <code>#!</code>.</p>
-<p>When the first two characters of a file are <code>#!</code>, the kernel scans the rest of the line for the full pathname of an interpreter to use to run the program. (Any intervening whitespace is skipped.) The kernel also scans for a single option to be passed to that interpreter. The kernel invokes the interpreter with the given option, along with the rest of the command line. For example, assume a csh script named <code>/usr/ucb/whizprog</code>, with this first line:</p>
-<div class="highlight"><pre><span></span><span class="ch">#! /bin/csh -f</span>
-</pre></div>
-<p>Furthermore, assume that <code>/usr/ucb</code> is included in the shell’s search path. A user might type the command</p>
-<div class="highlight"><pre><span></span>whizprog<span class="w"> </span>-q<span class="w"> </span>/dev/tty01
-</pre></div>
-<p>The kernel interprets the <code>#!</code> line and invokes csh as follows:</p>
-<div class="highlight"><pre><span></span>/bin/csh<span class="w"> </span>-f<span class="w"> </span>/usr/ucb/whizprog<span class="w"> </span>-q<span class="w"> </span>/dev/tty01
-</pre></div>
-<p>This mechanism makes it easy to invoke <em>any</em> interpreted language. For example, it is a good way to invoke a standalone awk program:</p>
-<div class="highlight"><pre><span></span><span class="ch">#! /bin/awk -f</span>
-awk<span class="w"> </span>program<span class="w"> </span>here
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b96719e0-712a-4d5a-8ee7-1909efac7252">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=84b3854b-b401-45f1-afa7-df54a3c438c9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Remember">Remember<a class="anchor-link" href="#Remember">¶</a></h3>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=97e1ec9f-782e-4c11-ab73-77fc75445d62">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8a751fca-8860-4fc9-a13c-d510d3eb0bf4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol>
-<li><p>On modern systems, the maximum length of the <code>#!</code> line varies from <code>63</code> to <code>1024</code> characters. Try to keep it less than 64 characters.</p>
-</li>
-<li><p>On some systems, the “rest of the command line” that is passed to the interpreter includes the full pathname of the command. On others, it does not; the command line as entered is passed to the program. Thus, scripts that look at the command-line arguments cannot portably depend on the full pathname being present.</p>
-</li>
-<li><p>Don’t put any trailing whitespace after an option, if present. It will get passed along to the invoked program along with the option.</p>
-</li>
-<li><p>You have to know the full pathname to the interpreter to be run. This can prevent cross-vendor portability, since different vendors put things in different places (e.g., <code>/bin/awk</code> versus <code>/usr/bin/awk</code>).</p>
-</li>
-<li><p>On antique systems that don’t have <code>#!</code> interpretation in the kernel, some shells will do it themselves, and they may be picky about the presence or absence of whitespace characters between the <code>#!</code> and the name of the interpreter.</p>
-</li>
-</ol>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b84b6d2e-f289-4f88-9bcb-1f231d401cf8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0bd091f3-5656-443d-8dc9-ad679cb0e045">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Some-considerations">Some considerations<a class="anchor-link" href="#Some-considerations">¶</a></h4>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=76c97f8c-d12d-4e5c-baab-1977696d80f8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f561d83d-fd9b-4a08-9d0d-3e002fb282b5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li>to 2. To make the script portable and ensure it always finds the correct directory, you can resolve the full path to the script using <code>readlink -f</code> (or an equivalent) to handle different invocation styles:</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-<span class="c1"># Get the full path of the script</span>
-<span class="nv">script_path</span><span class="o">=</span><span class="k">$(</span>readlink<span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span><span class="k">)</span>
-<span class="nv">script_dir</span><span class="o">=</span><span class="k">$(</span>dirname<span class="w"> </span><span class="s2">"</span><span class="nv">$script_path</span><span class="s2">"</span><span class="k">)</span>
-
-<span class="c1"># Path to the configuration file</span>
-<span class="nv">config_file</span><span class="o">=</span><span class="s2">"</span><span class="nv">$script_dir</span><span class="s2">/config.txt"</span>
-
-<span class="c1"># Print the paths for demonstration</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">"Script full path: </span><span class="nv">$script_path</span><span class="s2">"</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">"Script directory: </span><span class="nv">$script_dir</span><span class="s2">"</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">"Configuration file: </span><span class="nv">$config_file</span><span class="s2">"</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=da6e50eb-4d52-4453-8d76-50d056727db2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nv">a</span><span class="o">=</span><span class="k">$(</span>readlink<span class="w"> </span>-f<span class="w"> </span>.<span class="k">)</span>
-<span class="nb">echo</span><span class="w"> </span><span class="nv">$a</span>
-dirname<span class="w"> </span><span class="nv">$a</span>
-basename<span class="w"> </span><span class="nv">$a</span>
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/home/commi/Yandex.Disk/it_learning/06_devops/01_shell_scripting
-/home/commi/Yandex.Disk/it_learning/06_devops
-01_shell_scripting
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2483bc82-91d1-43e9-9ae8-64ba48c123a1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4d2deadc-41e8-4269-98d9-e9797f2e0ee3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li>to 4. On Debian these are symlinks to <code>/usr/bin/mawk</code>:</li>
-</ul>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fd31ebb3-89d4-4052-a88a-a955dd304ef8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-l<span class="w"> </span>/bin/awk
-ls<span class="w"> </span>-l<span class="w"> </span>/usr/bin/awk
-ls<span class="w"> </span>-l<span class="w"> </span>/etc/alternatives/awk
-ls<span class="w"> </span>-l<span class="w"> </span>/usr/bin/mawk
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>lrwxrwxrwx 1 root root 21 Jun 17  2022 <span class="ansi-cyan-intense-fg ansi-bold">/bin/awk</span> -&gt; <span class="ansi-green-intense-fg ansi-bold">/etc/alternatives/awk</span>*
-lrwxrwxrwx 1 root root 21 Jun 17  2022 <span class="ansi-cyan-intense-fg ansi-bold">/usr/bin/awk</span> -&gt; <span class="ansi-green-intense-fg ansi-bold">/etc/alternatives/awk</span>*
-lrwxrwxrwx 1 root root 13 Jun 17  2022 <span class="ansi-cyan-intense-fg ansi-bold">/etc/alternatives/awk</span> -&gt; <span class="ansi-green-intense-fg ansi-bold">/usr/bin/mawk</span>*
--rwxr-xr-x 1 root root 158376 Jun 17  2022 <span class="ansi-green-intense-fg ansi-bold">/usr/bin/mawk</span>*
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cc1267b7-e48e-4369-8a29-bea51590e7ab">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ad5cb60d-110d-46ae-9d8f-33865fd8b903">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Revised-example-script">Revised example script<a class="anchor-link" href="#Revised-example-script">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c2874850-7282-402d-b6b1-5c4304394af1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp
-
-cat<span class="w"> </span>&gt;<span class="w"> </span>nusers<span class="w"> </span><span class="s">&lt;&lt; 'text'</span>
-<span class="s">#!/bin/bash -</span>
-<span class="s">who | wc -l</span>
-<span class="s">text</span>
-chmod<span class="w"> </span>+x<span class="w"> </span>nusers
-
-<span class="c1"># run in a subshell</span>
-./nusers
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>10
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3711e3e-79a2-4cbe-b562-34b098765d8c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b96ed7fb-cf1c-4aa3-bea2-437d166e4fb4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.4-Basic-Shell-Constructs"><b></b>1.4 Basic Shell Constructs<a class="anchor-link" href="#1.4-Basic-Shell-Constructs">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=90cf3c82-1045-4854-8825-76a8b4c823db">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5e096a97-b736-4688-af92-245342f3bb93">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Commands-and-Arguments">Commands and Arguments<a class="anchor-link" href="#Commands-and-Arguments">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9bfc492b-d351-4b06-af21-3459aa0f1fc1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6d40e1e9-b954-4a8f-8d3f-822baa9ea0f6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The shell recognizes three fundamental kinds of commands:</p>
-<ul>
-<li><p>built-in commands,</p>
-</li>
-<li><p>shell functions, and</p>
-</li>
-<li><p>external commands.</p>
-</li>
-<li><p><strong>Built-in commands</strong> are just that: commands that the shell itself executes. Some commands are built-in from necessity, such as cd to change the directory, or read to get input from the user (or a file) into a shell variable. Other commands are often built into the shell for efficiency. Most typically, these include the test command (described later in “The test Command” [6.2.4]), which is heavily used in shell scripting, and I/O commands such as echo or printf.</p>
-</li>
-<li><p><strong>Shell functions</strong> are self-contained chunks of code, written in the shell language, that are invoked in the same way as a command is. We delay discussion of them until “Functions” [6.5]. At this point, it’s enough to know that they’re invoked, and they act, just like regular commands.</p>
-</li>
-<li><p><strong>External commands</strong> are those that the shell runs by creating a separate process (subshell?). The basic steps are:</p>
-<ol>
-<li>Create a new process. This process starts out as a copy of the shell.</li>
-<li>In the new process, search the directories listed in the <code>PATH</code> variable for the given command. <code>/bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin</code> might be a typical value of <code>PATH</code>. (The path search is skipped when a command name contains a slash character, <code>/</code>.)</li>
-<li>In the new process, execute the found program by replacing the running shell program with the new program.</li>
-<li>When the program finishes, the original shell continues by reading the next command from the terminal, or by running the next command in the script.</li>
-</ol>
-</li>
-</ul>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cfd6fcfe-639a-457c-b602-2c05e75fe28a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=05132119-200e-469f-bccf-4882fbf24c02">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<center>
-<img alt="Program execution" src="data:image/png;base64,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" style="width: 800px"/>
-<p style="text-align: center;"><i>Program execution (in a subshell)</i></p>
-</center>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=830d5605-a85a-4795-9390-8422bb97c740">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=50a91dfd-c642-4904-af68-a9ad3720e116">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-<p><em>ChatGPT:</em></p>
-<center>
-Key differences between executing an external command and using the <code>source</code> command to run a script
-</center>
-<table>
-<thead>
-<tr>
-<th><strong>Aspect</strong></th>
-<th><strong>External Command</strong></th>
-<th><strong><code>source ./script.sh</code></strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Process Creation</strong></td>
-<td>Creates a new process.</td>
-<td>No new process is created.</td>
-</tr>
-<tr>
-<td><strong>Execution Context</strong></td>
-<td>Runs in a new process.</td>
-<td>Runs in the current shell context.</td>
-</tr>
-<tr>
-<td><strong>Environment Variable Changes</strong></td>
-<td>Changes do not persist in the parent shell.</td>
-<td>Changes persist in the current shell.</td>
-</tr>
-<tr>
-<td><strong>Performance</strong></td>
-<td>May have overhead due to process creation.</td>
-<td>Faster, as it avoids creating a new process.</td>
-</tr>
-<tr>
-<td><strong>Typical Use Case</strong></td>
-<td>Executing standalone programs or utilities.</td>
-<td>Running scripts that modify the current shell environment (e.g., setting environment variables).</td>
-</tr>
-<tr>
-<td><strong>Path Search</strong></td>
-<td>Searches directories in PATH for the command.</td>
-<td>Not applicable, as the script is specified directly.</td>
-</tr>
-<tr>
-<td><strong>Continuation</strong></td>
-<td>Original shell waits for the new process to finish, then continues.</td>
-<td>Shell continues immediately after sourcing the script.</td>
-</tr>
-</tbody>
-</table>
-<center>When to run scripts in a subshell versus sourcing them</center>
-<table>
-<thead>
-<tr>
-<th><strong>Scenario</strong></th>
-<th><strong>Run in Subshell</strong></th>
-<th><strong>Source in Current Shell</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Isolation Required</strong></td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td><strong>No Persistent Changes Needed</strong></td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td><strong>Independent Execution</strong></td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td><strong>Environment Modifications Needed</strong></td>
-<td>No</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td><strong>Profile/Setup Scripts</strong></td>
-<td>No</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td><strong>Interactive Environment Adjustments</strong></td>
-<td>No</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td><strong>Performance Considerations</strong></td>
-<td>Generally acceptable for short scripts</td>
-<td>More efficient for frequent changes</td>
-</tr>
-</tbody>
-</table>
-<p>In conclusion, while running scripts in a subshell is common and appropriate for standalone tasks, sourcing scripts is necessary when you need to modify the current shell's environment. Choose the approach that best fits the needs of your specific task.</p>
-<hr/>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9fead4ed-3813-46f6-bf0d-fe6a1c775a99">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc9f452e-0f3a-4b2a-8342-3eed246087ee">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Variables">Variables<a class="anchor-link" href="#Variables">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1916a401-421e-46e7-a356-06472640af15">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9bdec64d-aea0-4a9a-a2f5-85f80140942e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Shell variables hold string values, and there is also no limit on the number of characters that they may hold. (The Bourne shell was one of the few early Unix programs to follow a “no arbitrary limits” design principle.)</p>
-<p><strong>Variables</strong> are assigned values by writing the variable name, immediately followed by an <code>=</code> character, and the new value, without any intervening spaces. Shell variable values are retrieved by prefixing the variable’s name with a <code>$</code> character.</p>
-<p>Use quotes when assigning a literal value that contains spaces:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4a66cd0c-8aa7-4b84-800b-85e86252e41c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [43]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nv">first</span><span class="o">=</span>isaac<span class="w"> </span><span class="nv">middle</span><span class="o">=</span>bashevis<span class="w"> </span><span class="nv">last</span><span class="o">=</span>singer<span class="w">  </span><span class="c1"># Multiple assignments allowed on one line</span>
-<span class="nv">fullname</span><span class="o">=</span><span class="s2">"isaac bashevis singer"</span><span class="w">         </span><span class="c1"># Use quotes for whitespace in value</span>
-<span class="nv">oldname</span><span class="o">=</span><span class="nv">$fullname</span><span class="w">                        </span><span class="c1"># Quotes not needed to preserve spaces in value</span>
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f1318b98-66e3-4d58-9666-7586352b6c67">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4ab04939-b9c2-410c-b5d5-99de40c5764d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>As shown in the previous example, double quotes aren’t necessary around the value of one variable being used as the new value of a second variable. Using them, though, doesn’t hurt either, and is necessary when concatenating variables:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4a6651b8-0afe-4636-9fbb-eb58a7a8cbbb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [45]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nv">fullname</span><span class="o">=</span><span class="s2">"</span><span class="nv">$first</span><span class="s2"> </span><span class="nv">$middle</span><span class="s2"> </span><span class="nv">$last</span><span class="s2">"</span><span class="w">  </span><span class="c1"># Double quotes required here</span>
-<span class="nb">echo</span><span class="w"> </span><span class="nv">$fullname</span>
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>isaac bashevis singer
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=00903dbd-44f2-436a-96af-c6c8a63e84dc">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b154d1c7-7b0f-492f-806e-728f7299cbfa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Simple-Output-with-echo">Simple Output with echo<a class="anchor-link" href="#Simple-Output-with-echo">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4f1c6fd6-ab2d-444f-83c5-e548412d492e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=971ac20f-7d0e-4fd6-ad72-ef42d06a59a4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>We just saw the <code>echo</code> command for printing out the value of <code>fullname</code>, and you’ve probably used it at the command line. <code>echo</code>’s job is to produce output, either for prompting or to generate data for further processing.</p>
-<p>The original <code>echo</code> command simply printed its arguments back to standard output, with each one separated from the next by a single space and terminated with a newline:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4b617f89-3c45-49ee-9c24-f1814a07e169">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">echo</span><span class="w"> </span>Now<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>all<span class="w"> </span>good<span class="w"> </span>men
-<span class="nb">echo</span><span class="w"> </span>to<span class="w"> </span>come<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>aid<span class="w"> </span>of<span class="w"> </span>their<span class="w"> </span>country.
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Now is the time for all good men
-to come to the aid of their country.
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=818f6de9-d35f-4550-b96d-a27140bef8e2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=09593061-9fa4-4f2f-8690-c215faa6c28e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Unfortunately, over time, different versions of <code>echo</code> developed. The BSD version accepted a first argument of <code>–n</code>, which would make it omit the trailing newline. For example (the underscore represents the terminal’s cursor):</p>
-<div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">"Enter your name: "</span><span class="w">   </span><span class="c1"># Print prompt</span>
-Enter<span class="w"> </span>your<span class="w"> </span>name:<span class="w"> </span>_<span class="w">              </span><span class="c1"># Enter data</span>
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=02a096c1-f183-4bf9-b2c8-e6f251728e78">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=71b1767f-0699-4141-92a7-aadda2f8605f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<blockquote>
-<p><em>NOTE</em>: your  shell may have its own version of <code>echo</code>, which usually supersedes the version described here. Please refer to your shell's documentation for details about the options it supports</p>
-</blockquote>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=647b8c81-dbbb-4aa5-85ac-3b8a2d0d3e14">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [58]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$SHELL</span>
-<span class="nb">help</span><span class="w"> </span><span class="nb">echo</span>
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>/bin/bash
-echo: echo [-neE] [arg ...]
-    Write arguments to the standard output.
-    
-    Display the ARGs, separated by a single space character and followed by a
-    newline, on the standard output.
-    
-    Options:
-      -n	do not append a newline
-      -e	enable interpretation of the following backslash escapes
-      -E	explicitly suppress interpretation of backslash escapes
-    
-    `echo' interprets the following backslash-escaped characters:
-      \a	alert (bell)
-      \b	backspace
-      \c	suppress further output
-      \e	escape character
-      \E	escape character
-      \f	form feed
-      \n	new line
-      \r	carriage return
-      \t	horizontal tab
-      \v	vertical tab
-      \\	backslash
-      \0nnn	the character whose ASCII code is NNN (octal).  NNN can be
-    		0 to 3 octal digits
-      \xHH	the eight-bit character whose value is HH (hexadecimal).  HH
-    		can be one or two hex digits
-      \uHHHH	the Unicode character whose value is the hexadecimal value HHHH.
-    		HHHH can be one to four hex digits.
-      \UHHHHHHHH the Unicode character whose value is the hexadecimal value
-    		HHHHHHHH. HHHHHHHH can be one to eight hex digits.
-    
-    Exit Status:
-    Returns success unless a write error occurs.
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a1a6ccc7-6d7a-453e-bd72-d08027a3411f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d8a53696-cb15-46f0-b496-9e1ebc7810ce">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="printf"><code>printf</code><a class="anchor-link" href="#printf">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bacf0654-886e-4a22-9d8e-5fb49099fe92">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6e293851-7b1e-44de-be45-de568e4ceeab">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>This command is more flexible than <code>echo</code>, but at the cost of some added complexity.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b061391e-bb8e-4e20-8211-890e10a98227">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>man<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"NOTE"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">'2p'</span>
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>       NOTE:  printf(1) is a preferred alternative, which does not have issues
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=654786e9-7fe2-4ce4-a5a8-c9db6d38a7f8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=23c23bf7-97f6-4f61-b78c-94db5bb3517e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>In effect, <code>echo</code> could be used portably only if it was used in the simplest fashion.</p>
-<p>The <code>printf</code> command is modeled after the <code>printf( )</code> library routine from the C library and can output a simple string just like the <code>echo</code> command.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=07e81b4d-d53c-4876-be95-01638b059e4a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [69]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Rot Front!\n'</span><span class="w">  </span><span class="c1"># use single quotes</span>
-<span class="nb">printf</span><span class="w"> </span><span class="s2">"Rot Front!\n"</span>
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Rot Front!
-bash: !\n: event not found
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=86a801ae-d2c7-45d9-b206-8b0c4fffbd35">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a9dd0055-cad5-41ad-a253-f517b1844c37">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The main difference that you will notice immediately is that, unlike <code>echo</code>, <code>printf</code> does not automatically supply a newline. You must specify it explicitly as <code>\n</code>. The full syntax of the <code>printf</code> command has two parts:</p>
-<pre><code>printf format-string [arguments ...]
-</code></pre>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2623fea7-f8f8-473f-bdf8-b1693b9c9e22">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [73]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">printf</span><span class="w"> </span><span class="s1">'I use "%s" as my default shell\n'</span><span class="w"> </span><span class="nv">$BASH</span>
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>I use "/usr/bin/bash" as my default shell
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ce1ccfa-3f03-464c-974d-70a93d03c584">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ca78221f-cf6d-4052-a1ad-e35cff400e31">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Basic-I/O-Redirection">Basic I/O Redirection<a class="anchor-link" href="#Basic-I/O-Redirection">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9cd348c8-a4af-4a37-b08f-983f5ede8c43">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=645f16d2-106a-4f61-81e4-5cd97308fede">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Standard I/O is perhaps the most fundamental concept in the Software Tools philosophy. The idea is that programs should have</p>
-<ul>
-<li>a data source,</li>
-<li>a data sink (where data goes), and</li>
-<li>a place to report problems.</li>
-</ul>
-<p>These are referred to by the names</p>
-<ul>
-<li><strong>standard input</strong>,</li>
-<li><strong>standard output</strong>, and</li>
-<li><strong>standard error</strong>, respectively.</li>
-</ul>
-<p>A program should neither know, nor care, what kind of device lies behind its input and outputs: disk files, terminals, tape drives, network connections, or even another running program! A program can expect these standard places to be already open and ready to use when it starts up.</p>
-<p>Many, if not most, Unix programs follow this design. By default, they read standard input, write standard output, and send error messages to standard error. Such programs are called <strong>filters</strong>, for reasons that will become clear shortly. The default for standard input, standard output, and standard error is the terminal. This can be seen with <code>cat</code>:</p>
-<pre><code>$ cat
-now is the time      # With no arguments, read standard input, write standard output
-now is the time      # Typed by the user
-for all good men     # Echoed back by cat
-for all good men
-^D                   # Ctrl-D, End of file
-</code></pre>
-<p>When you log in, Unix arranges the default place for standard input, output, and error to be your terminal. I/O redirection is the process by which you, at the terminal interactively, or from within a shell script, then arrange to change the places from which input comes or to which output goes.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2ec8c005-3e61-4937-a184-bec9eef97b4b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9210054e-9ea2-48c3-b39c-90352e7efe21">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Redirection-and-pipelines">Redirection and pipelines<a class="anchor-link" href="#Redirection-and-pipelines">¶</a></h3>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c6169c71-4b91-47bb-88f5-12e429e7c84b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=681e1389-6030-45d9-b143-f863daf60d3e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>See <a href="../../05_Unix_Bash/linux_adm/01_Shell_linux_adm.ipynb#1.0-Commands-handout">GNU/Linux - Shell</a></p>
-<p>Although <code>&lt;</code> and <code>&gt;</code> connect input and output to files, a pipeline hooks together two or more running programs. The standard output of the first program becomes the standard input of the second one. In favorable cases,</p>
-<blockquote>
-<p>pipelines can run as much as ten times faster than similar code using temporary files.</p>
-</blockquote>
-<p>Most of this book is about learning how to hook together the various tools into pipelines of increasing complexity and power. For example:</p>
-<div class="highlight"><pre><span></span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s1">'\r'</span><span class="w"> </span>&lt;<span class="w"> </span>dos-file.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>&gt;<span class="w"> </span>unix-file.txt
-</pre></div>
-<p>This pipeline removes carriage-return characters from the input file, and then sorts the data, sending the resulting output to the destination file.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d8738ce6-7863-4832-8de2-db0c41a30c0f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=38f8f24d-3a71-490a-8a0c-6eed108a0a20">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="stty"><code>stty</code><a class="anchor-link" href="#stty">¶</a></h3>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=33179071-45c9-435b-a266-2cf9d89a4c79">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7e2d5ec7-edf9-4b57-b263-c13aeb919023">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The other special file is <code>/dev/tty</code>. When a program opens this file, Unix automatically redirects it to the real terminal (physical console or serial port, or pseudoterminal for network and windowed logins) associated with the program. This is particularly useful for reading input that must come from a human, such as a password. It is also useful, although less so, for generating error messages:</p>
-<div class="highlight"><pre><span></span><span class="nb">printf</span><span class="w"> </span><span class="s2">"Enter new password: "</span><span class="w">   </span><span class="c1"># Prompt for input</span>
-stty<span class="w"> </span>-echo<span class="w">                      </span><span class="c1"># Turn off echoing of typed characters</span>
-<span class="nb">read</span><span class="w"> </span>pass<span class="w"> </span>&lt;<span class="w"> </span>/dev/tty<span class="w">            </span><span class="c1"># Read password</span>
-<span class="nb">printf</span><span class="w"> </span><span class="s2">"Enter again: "</span><span class="w">          </span><span class="c1"># Prompt again</span>
-<span class="nb">read</span><span class="w"> </span>pass2<span class="w"> </span>&lt;<span class="w"> </span>/dev/tty<span class="w">           </span><span class="c1"># Read again for verification</span>
-stty<span class="w"> </span><span class="nb">echo</span><span class="w">                       </span><span class="c1"># Don't forget to turn echoing back on</span>
-...
-</pre></div>
-<p>The <code>stty</code> (set tty) command controls various settings of your terminal (or window).</p>
-<blockquote>
-<p><code>stty</code> is possibly the most baroque and complicated Unix command in existence. See the stty(1) manpage for the gory details.</p>
-</blockquote>
-<p>The <code>–echo</code> option turns off the automatic printing (echoing) of every character you type; <code>stty echo</code> restores it.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2742fbc9-78da-4f70-9796-f17eb75e4b16">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ad33f9df-7c4f-4a75-a467-3106414f0c98">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="$PATH"><code>$PATH</code><a class="anchor-link" href="#$PATH">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd45fdfa-1fef-4654-9d1d-5e82fe05845a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=49d3525d-95ef-4f24-ad63-1a21945fc773">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>You can create a user's <code>~/bin</code> directory for all your scripts and add it to the <code>PATH</code> variable, so these scripts can be found by your system when you run them from any directory.</p>
-<div class="highlight"><pre><span></span>mkdir<span class="w"> </span><span class="nv">$HOME</span>/bin
-<span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HOME</span>/bin
-</pre></div>
-<p>and if you want to make this change persistent add the last line to the <code>$HOME/.bashrc</code> file.</p>
-<p><strong>Empty components</strong> in <code>$PATH</code> mean “the current directory.” An empty component can be designated by two successive colons in the middle of the path value, or by a leading or trailing colon, which puts the current directory first or last, respectively, in the path search:</p>
-<div class="highlight"><pre><span></span><span class="nv">PATH</span><span class="o">=</span>:/bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin<span class="w">   </span><span class="c1"># Current directory first</span>
-<span class="nv">PATH</span><span class="o">=</span>/bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:<span class="w">   </span><span class="c1"># Current directory last</span>
-<span class="nv">PATH</span><span class="o">=</span>/bin:/usr/bin:/usr/X11R6/bin::/usr/local/bin<span class="w">   </span><span class="c1"># Current directory in middle</span>
-</pre></div>
-<p>If you wish to include the current directory in the search path, it is preferable to use an explicit dot in <code>$PATH</code>; this makes it clearer to the reader of your program what’s going on.</p>
-<p>In our testing, we found two versions of the same system that did not correctly support supplying an empty component at the end of <code>$PATH</code>. Empty components thus represent a minor portability problem.</p>
-<blockquote>
-<p>NOTE: In general, you should not have the current directory in your path at all. It represents a <strong>security problem</strong>. We describe empty components only so that you understand how path searching works.</p>
-</blockquote>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=41598c5c-58a1-4396-927d-a8b7111232ae">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=84dc5326-f43f-44c1-a8c7-b011877a01ed">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.5-Accessing-Shell-Script-Arguments"><b></b>1.5 Accessing Shell Script Arguments<a class="anchor-link" href="#1.5-Accessing-Shell-Script-Arguments">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=556e3549-ef04-44dc-abda-472733b814dc">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fba10051-1688-4aa5-a440-4445101eb99e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Positional-arguments">Positional arguments<a class="anchor-link" href="#Positional-arguments">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=20daab4c-b9cf-49c7-a188-dca9941b7d6e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=324770da-03e9-4fea-855b-b4592aaaadcf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The so-called <strong>positional parameters</strong> represent a shell script’s command-line arguments. They also represent a function’s arguments within shell functions. Individual arguments are named by integer numbers. For historical reasons, you have to enclose the number in braces if it’s greater than nine:</p>
-<div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>first<span class="w"> </span>arg<span class="w"> </span>is<span class="w"> </span><span class="nv">$1</span>
-<span class="nb">echo</span><span class="w"> </span>tenth<span class="w"> </span>arg<span class="w"> </span>is<span class="w"> </span><span class="si">${</span><span class="nv">10</span><span class="si">}</span>
-</pre></div>
-<p>Special “variables” provide access to the total number of arguments that were passed, and to all the arguments at once. We provide the details later, in “Positional parameters”.</p>
-<p>Suppose you want to know what terminal a particular user is using. Well, once again, you could use a plain <code>who</code> command and manually scan the output. However, that’s difficult and error prone, especially on systems with lots of users. This time what you want to do is search through <code>who</code>’s output for a particular user. Well, anytime you want to do searching, that’s a job for the <code>grep</code> command, which prints lines matching the pattern given in its first argument. Suppose you’re looking for user <code>betsy</code> because you really need that flag you ordered from her:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2afda564-83e7-4154-87c8-c90d72046b88">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>who<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>commi
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre><span class="ansi-red-intense-fg ansi-bold">commi</span>    tty7         2024-06-02 16:35 (:0)
-<span class="ansi-red-intense-fg ansi-bold">commi</span>    pts/0        2024-06-02 16:35 (:0)
-<span class="ansi-red-intense-fg ansi-bold">commi</span>    pts/1        2024-06-02 16:35 (:0)
-<span class="ansi-red-intense-fg ansi-bold">commi</span>    pts/2        2024-06-02 16:35 (:0)
-<span class="ansi-red-intense-fg ansi-bold">commi</span>    pts/3        2024-06-02 16:35 (:0)
-<span class="ansi-red-intense-fg ansi-bold">commi</span>    pts/4        2024-06-02 16:35 (:0)
-<span class="ansi-red-intense-fg ansi-bold">commi</span>    pts/5        2024-06-02 16:35 (:0)
-<span class="ansi-red-intense-fg ansi-bold">commi</span>    pts/7        2024-06-02 17:16 (:0)
-<span class="ansi-red-intense-fg ansi-bold">commi</span>    pts/11       2024-06-03 14:51 (:0)
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7b9b13f4-4c0c-49df-88db-e6d2631de618">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=68826a41-35fc-4c64-b55c-14a1a2a9580f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Now that we know how to find a particular user, we can put the commands into a script, with the script’s first argument being the username we want to find:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c09b7dbc-335b-4e42-a28b-b6d494039c2b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp
-
-cat<span class="w"> </span>&gt;<span class="w"> </span>finduser<span class="w"> </span><span class="s">&lt;&lt; 'text'</span>
-<span class="s">#! /bin/sh</span>
-<span class="s"># finduser --- see if user named by first argument is logged in</span>
-
-<span class="s">who | grep $1</span>
-<span class="s">text</span>
-chmod<span class="w"> </span>+x<span class="w"> </span>finduser
-
-./finduser<span class="w"> </span>commi
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>commi    tty7         2024-06-02 16:35 (:0)
-commi    pts/0        2024-06-02 16:35 (:0)
-commi    pts/1        2024-06-02 16:35 (:0)
-commi    pts/2        2024-06-02 16:35 (:0)
-commi    pts/3        2024-06-02 16:35 (:0)
-commi    pts/4        2024-06-02 16:35 (:0)
-commi    pts/5        2024-06-02 16:35 (:0)
-commi    pts/7        2024-06-02 17:16 (:0)
-commi    pts/11       2024-06-03 14:51 (:0)
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e99c4396-00f4-4fe1-b034-3108bea000be">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>cat<span class="w"> </span>finduser
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>#! /bin/sh
-# finduser --- see if user named by first argument is logged in
-
-who | grep $1
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3e70665-e417-44b3-9c02-26d2bfe16d71">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0d737bfc-77e6-4f74-96ef-314a6fc126b9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Once we see that the program works, we can move it to our personal <code>bin</code> directory.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0ca6c287-8bd4-4845-86e6-fe9e5c8915e6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ff05c19b-e65e-428a-840e-2fb2f67785c2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.6-Simple-Execution-Tracing"><b></b>1.6 Simple Execution Tracing<a class="anchor-link" href="#1.6-Simple-Execution-Tracing">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=36efb52b-0482-4dce-bbf4-43817b0ab056">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=35401b72-1067-466f-96a9-1bc3c3704107">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Execution tracing</strong> causes the shell to print out each command as it’s executed, preceded by “<code>+ </code>” — that is, a plus sign followed by a space. (You can change what gets printed by assigning a new value to the <code>PS4</code> shell variable.) For example:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5cd107d7-720d-4e15-9c1c-2915bae70004">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>sh<span class="w"> </span>-x<span class="w"> </span>./finduser<span class="w"> </span>commi
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>+ who
-+ grep commi
-commi    tty7         2024-06-02 16:35 (:0)
-commi    pts/0        2024-06-02 16:35 (:0)
-commi    pts/1        2024-06-02 16:35 (:0)
-commi    pts/2        2024-06-02 16:35 (:0)
-commi    pts/3        2024-06-02 16:35 (:0)
-commi    pts/4        2024-06-02 16:35 (:0)
-commi    pts/5        2024-06-02 16:35 (:0)
-commi    pts/7        2024-06-02 17:16 (:0)
-commi    pts/11       2024-06-03 14:51 (:0)
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5cba651b-a209-4427-bd85-9a05f74d48d6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5c8f86c0-d8e2-42b3-aa31-ea34f49d7dca">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>You can turn execution tracing on within a script by using the command <code>set -x</code>, and turn it off again with <code>set +x</code>:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3269be7b-283e-46a3-b27d-02cdf0e1469a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp
-
-cat<span class="w"> </span>&gt;<span class="w"> </span>trace1.sh<span class="w"> </span><span class="s">&lt;&lt; 'text'</span>
-<span class="s">#!/bin/sh</span>
-
-<span class="s">set -x</span>
-<span class="s">echo 1st echo</span>
-
-<span class="s">set +x</span>
-<span class="s">echo 2nd echo</span>
-<span class="s">text</span>
-
-chmod<span class="w"> </span>+x<span class="w"> </span>trace1.sh
-./trace1.sh
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>+ echo 1st echo
-1st echo
-+ set +x
-2nd echo
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8312c782-f2b1-461c-8d12-5981592c10c5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a1e7eb96-c55a-42e6-9920-bfb3f8036778">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.7-Internationalization-and-Localization"><b></b>1.7 Internationalization and Localization<a class="anchor-link" href="#1.7-Internationalization-and-Localization">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1965d95f-9eef-4093-b793-76132410fa8e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b377e6a2-0f41-4f71-922b-827321951933">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Writing software for an international audience is a challenging problem. The task is usually divided into two parts:</p>
-<ul>
-<li><strong>internationalization</strong> (<em>i18n</em> for short, since that long word has 18 letters between the first and last), and</li>
-<li><strong>localization</strong> (similarly abbreviated <em>l10n</em>).</li>
-</ul>
-<p>Internationalization is the process of designing software so that it can be adapted for specific user communities without having to change or recompile the code. At a minimum, this means that all character strings must be wrapped in library calls that handle runtime lookup of suitable translations in message catalogs. Typically, the translations are specified in ordinary text files that accompany the software, and then are compiled by <code>gencat</code> or <code>msgfmt</code> into compact binary files organized for fast lookup.</p>
-<p>The compiled message catalogs are then installed in a system-specific directory tree, such as the GNU conventional <code>/usr/share/locale</code> and <code>/usr/local/share/locale</code>, or on commercial Unix systems, <code>/usr/lib/nls</code> or <code>/usr/lib/locale</code>. Details can be found in the manual pages for <code>setlocale(3)</code>, <code>catgets(3C)</code>, and <code>gettext(3C)</code>.</p>
-<p>Localization is the process of adapting internationalized software for use by specific user communities. This may require translating software documentation, and all text strings output by the software, and possibly changing the formats of currency, dates, numbers, times, units of measurement, and so on, in program output. The character set used for text may also have to be changed, unless the universal Unicode character set can be used, and different fonts may be required. For some languages, the writing direction has to be changed as well.</p>
-<p>In the Unix world, ISO programming language standards and POSIX have introduced limited support for addressing these problems, but much remains to be done, and progress varies substantially across the various flavors of Unix. For the user, the feature that controls which language or cultural environment is in effect is called the <strong>locale</strong>, and it is set by one or more of the environment variables (see <a href="#Locale-environment-variables">Locale environment variables</a>).</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=930c7587-006d-4a0c-88d5-2df8e15ed5b8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>man<span class="w"> </span>gencat
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>GENCAT(1)                           Debian                           GENCAT(1)
-
-NAME
-       gencat - Generate message catalog
-
-SYNOPSIS
-       gencat [OPTION...] -o OUTPUT-FILE [INPUT-FILE]...
-
-DESCRIPTION
-       The gencat program is specified in the X/Open standard and the GNU
-       implementation follows this specification and so processes all
-       correctly formed input files. Additionally some extension are
-       implemented which help to work in a more reasonable way with the
-       catgets(3) functions.
-
-       -H, --header NAME
-              Create C header file NAME containing symbol definitions
-
-       --new  Do not use existing catalog, force new output file
-
-       -o, --output NAME
-              Write output to file NAME
-
-AUTHOR
-       gencat was written by Ulrich Drepper as part of the GNU C Library.
-
-       This man page was written by Jeff Bailey &lt;jbailey@debian.org&gt;.
-
-3rd Berkeley Distribution        November 2003                       GENCAT(1)
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5beeb585-3457-4ccc-bca5-9a704369b031">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>man<span class="w"> </span>msgfmt
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>No manual entry for msgfmt
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=50cca693-7e9e-41a3-9cc5-c878c41c76a3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0d4a3f13-71c5-425d-b2ed-8c825e624a18">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>In general, you set <code>LC_ALL</code> to force a single locale, and you set <code>LANG</code> to provide a fallback locale. In most cases, you should avoid setting any of the other <code>LC_xxx</code> variables. For example, although it might appear to be more precise to set <code>LC_COLLATE</code> when you use the sort command, that setting might conflict with a setting of <code>LC_CTYPE</code>, or be ignored entirely if <code>LC_ALL</code> is set.</p>
-<p>Only a single standard locale name, <code>C</code>, is prescribed by the ISO C and C++ standards: it selects traditional ASCII-oriented behavior. POSIX specifies one additional locale name, <code>POSIX</code>, which is equivalent to <code>C</code>.</p>
-<p>Apart from the names <code>C</code> and <code>POSIX</code>, locale names are not standardized. However, most vendors have adopted similar, but not identical, naming conventions. The locale name encodes a language, a territory, and optionally, a codeset and a modifier. It is normally represented by a lowercase two-letter ISO 639 language code, an underscore, and an uppercase two-letter ISO 3166-1 country code, optionally followed by a dot and the character-set encoding, and an at-sign and a modifier word.</p>
-<p>Language names are sometimes used as well. You can list all of the recognized locale names on your system like this:</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=025c7656-e19a-439a-8dc1-f91aff003154">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>locale<span class="w"> </span>-a
-</pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>C
-C.utf8
-en_GB.utf8
-en_US.utf8
-POSIX
-ru_RU.utf8
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=940780dd-5ab8-43af-b427-078578e1b266">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>locale
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>LANG=en_US.UTF-8
-LANGUAGE=en_US:en
-LC_CTYPE="en_US.UTF-8"
-LC_NUMERIC="en_US.UTF-8"
-LC_TIME="en_US.UTF-8"
-LC_COLLATE="en_US.UTF-8"
-LC_MONETARY="en_US.UTF-8"
-LC_MESSAGES="en_US.UTF-8"
-LC_PAPER="en_US.UTF-8"
-LC_NAME="en_US.UTF-8"
-LC_ADDRESS="en_US.UTF-8"
-LC_TELEPHONE="en_US.UTF-8"
-LC_MEASUREMENT="en_US.UTF-8"
-LC_IDENTIFICATION="en_US.UTF-8"
-LC_ALL=en_US.UTF-8
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=09d5696f-2583-42f2-bbc8-8e89a2cf6d6f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nv">LC_ALL</span><span class="o">=</span>ru_RU.UTF8<span class="w"> </span>locale<span class="w"> </span>-ck<span class="w"> </span>LC_TIME
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>LC_TIME
-abday="Вс;Пн;Вт;Ср;Чт;Пт;Сб"
-day="Воскресенье;Понедельник;Вторник;Среда;Четверг;Пятница;Суббота"
-abmon="янв;фев;мар;апр;мая;июн;июл;авг;сен;окт;ноя;дек"
-mon="января;февраля;марта;апреля;мая;июня;июля;августа;сентября;октября;ноября;декабря"
-am_pm=";"
-d_t_fmt="%a %d %b %Y %T"
-d_fmt="%d.%m.%Y"
-t_fmt="%T"
-t_fmt_ampm=""
-era=
-era_year=""
-era_d_fmt=""
-alt_digits=
-era_d_t_fmt=""
-era_t_fmt=""
-time-era-num-entries=0
-time-era-entries=""
-week-ndays=7
-week-1stday=19971130
-week-1stweek=1
-first_weekday=2
-first_workday=2
-cal_direction=1
-timezone=""
-date_fmt="%a %d %b %Y %T %Z"
-time-codeset="UTF-8"
-alt_mon="Январь;Февраль;Март;Апрель;Май;Июнь;Июль;Август;Сентябрь;Октябрь;Ноябрь;Декабрь"
-ab_alt_mon="янв;фев;мар;апр;май;июн;июл;авг;сен;окт;ноя;дек"
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=15a9491b-37b0-4d71-9570-5e1a1bbf9b1d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nv">LC_ALL</span><span class="o">=</span>ru_RU.UTF8<span class="w"> </span>ls<span class="w"> </span>-l
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>total 22976
--rw-r--r-- 1 commi commi    76145 июн  3 20:36  01_shell_scripting_Getting_started.ipynb
--rw-r--r-- 1 commi commi  2741648 мая 28 17:55  abs-guide.pdf
-drwxr-xr-x 3 commi commi     4096 мая 31 19:48  <span class="ansi-blue-intense-fg ansi-bold">data</span>/
--rw-r--r-- 1 commi commi 10536139 мая 28 17:55 'Linux Command Line and Shell Scripting Bible (2015).pdf'
--rw-r--r-- 1 commi commi  8040356 мая 28 17:55 'Robbins A., Beebe N. Classic Shell Scripting.pdf'
--rw-r--r-- 1 commi commi  2120211 мая 28 17:55 'Shotts W. The Linux Command Line.pdf'
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=93bf439b-c572-4f2f-bc73-a1cf5e94f6f7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>ls<span class="w"> </span>-l
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>total 22968
--rw-r--r-- 1 commi commi    67454 Jun  3 20:38  01_shell_scripting_Getting_started.ipynb
--rw-r--r-- 1 commi commi  2741648 May 28 17:55  abs-guide.pdf
-drwxr-xr-x 3 commi commi     4096 May 31 19:48  <span class="ansi-blue-intense-fg ansi-bold">data</span>/
--rw-r--r-- 1 commi commi 10536139 May 28 17:55 'Linux Command Line and Shell Scripting Bible (2015).pdf'
--rw-r--r-- 1 commi commi  8040356 May 28 17:55 'Robbins A., Beebe N. Classic Shell Scripting.pdf'
--rw-r--r-- 1 commi commi  2120211 May 28 17:55 'Shotts W. The Linux Command Line.pdf'
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd886d5d-ab42-4f76-82e7-9e43b761a8ba">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a87acf87-e014-493a-b906-3b3ac1f1c5c1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Shell scripts are often affected by locales, notably</p>
-<ul>
-<li>in collation order, and</li>
-<li>in bracket-expression character ranges in regular expressions.</li>
-</ul>
-<p>It appears to be quite difficult on most Unix systems to determine from locale documentation or tools exactly what characters are members of the character and equivalence classes, and what collating symbols are available. This reflects the immaturity of locale support on current systems.</p>
-<p>When the GNU <code>gettext</code> package is installed, it is possible to use it to support the internationalization and localization of shell scripts. You can find the details in the <strong>Preparing Shell Scripts for Internationalization section</strong> of the <a href="https://www.gnu.org/software/gettext/manual/gettext.html"><code>gettext</code> manual</a>.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c2c51ba1-7b18-4a9a-801a-6bd76ebfc969">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=17535f9f-148e-496d-a9ec-e7bea92daab9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>man<span class="w"> </span>-k<span class="w"> </span>gettext
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>dcgettext (3)        - translate message
-dcngettext (3)       - translate message and choose plural form
-dgettext (3)         - translate message
-dngettext (3)        - translate message and choose plural form
-Dpkg::Gettext (3perl) - convenience wrapper around Locale::gettext
-gettext (1)          - translate message
-gettext (3)          - translate message
-Locale::gettext (3pm) - message handling functions
-ngettext (1)         - translate message and choose plural form
-ngettext (3)         - translate message and choose plural form
-pygettext3.11 (1)    - Python equivalent of xgettext(1)
-pygettext3 (1)       - Python equivalent of xgettext(1)
-textdomain (3)       - set domain for future gettext() calls
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=eba22d85-f625-4f92-8f9a-96db223e5593">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2da2356b-2e97-40e2-90d1-f6bb5ee85b8b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>man<span class="w"> </span>gettext
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0ead525-0e42-46ec-b2f1-b4422bd4f469">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>GETTEXT(1)                       User Commands                      GETTEXT(1)
-
-NAME
-       gettext - translate message
-
-SYNOPSIS
-       gettext [OPTION] [[TEXTDOMAIN] MSGID]
-       gettext [OPTION] -s [MSGID]...
-
-DESCRIPTION
-       The  gettext  program  translates  a  natural language message into the
-       user's language, by looking up the translation in a message catalog.
-
-       Display native language translation of a textual message.
-
-       -d, --domain=TEXTDOMAIN
-              retrieve translated messages from TEXTDOMAIN
-
-       -c, --context=CONTEXT
-              specify context for MSGID
-
-       -e     enable expansion of some escape sequences
-
-       -n     suppress trailing newline
-
-       -E     (ignored for compatibility)
-
-       [TEXTDOMAIN] MSGID
-              retrieve translated message corresponding to MSGID from  TEXTDO‐
-              MAIN
-
-   Informative output:
-       -h, --help
-              display this help and exit
-
-       -V, --version
-              display version information and exit
-
-       If the TEXTDOMAIN parameter is not given, the domain is determined from
-       the environment variable TEXTDOMAIN.  If the  message  catalog  is  not
-       found  in the regular directory, another location can be specified with
-       the environment variable TEXTDOMAINDIR.  When used with the  -s  option
-       the  program  behaves  like the 'echo' command.  But it does not simply
-       copy its arguments to stdout.  Instead those messages found in the  se‐
-       lected    catalog   are   translated.    Standard   search   directory:
-       /usr/share/locale
-
-AUTHOR
-       Written by Ulrich Drepper.
-
-REPORTING BUGS
-       Report    bugs    in    the    bug    tracker    at     &lt;https://savan‐
-       nah.gnu.org/projects/gettext&gt; or by email to &lt;bug-gettext@gnu.org&gt;.
-
-COPYRIGHT
-       Copyright  ©  1995-2020 Free Software Foundation, Inc.  License GPLv3+:
-       GNU GPL version 3 or later &lt;https://gnu.org/licenses/gpl.html&gt;
-       This is free software: you are free  to  change  and  redistribute  it.
-       There is NO WARRANTY, to the extent permitted by law.
-
-SEE ALSO
-       The  full  documentation for gettext is maintained as a Texinfo manual.
-       If the info and gettext programs are properly installed at  your  site,
-       the command
-
-              info gettext
-
-       should give you access to the complete manual.
-
-GNU gettext-runtime 0.21         February 2023                      GETTEXT(1)
-</pre>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0962431b-6a93-4065-8c15-66848576ffea">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6617aee7-9c74-4acb-9184-aaf360329446">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4f5681ad-9401-42be-b4f7-39ebfdc52cdb">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d295c923-9e82-476c-9172-abdce520da58">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b83aa2f3-21a1-487a-adf5-e07c69d38179">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=64736706-ed69-4f8b-95e3-e61b09b843f0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8db87f59-f670-4e34-9264-a1bce4da4ee5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57d3ab3f-c1d2-4356-b400-4fc9c8ff3c37">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3435b5b-9331-4759-821b-e9ade4b0c51b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5d35a1ee-f4b2-415f-bf99-e8b0aa22d152">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1f8b301f-3edb-48b4-a12f-97d9adddeae8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1c117d11-6df8-4366-9764-fe9ff240c373">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=90d54675-65cf-4333-8b2f-ff1778c436bf">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8dee5aea-3fec-4723-9e23-aa03501774bd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4a6cf145-5cc9-4211-a9dd-4f2b99d1c968">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ed1dfa11-3e83-4d92-83a3-114266e4c9cc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e2064b23-8178-4060-aa57-9d3787864684">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cda4cc3c-abfb-45b9-9510-742624578f7e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=44701925-bb41-4428-95d4-96879b4f194a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=060daa12-20d3-49d2-8c4c-e46218d00534">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=59b404cc-9136-4db5-ba98-3acef837389e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db190621-22f4-4ab7-b8e0-9f0a8ce3d3be">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f2b76eb3-c6e2-497c-ab08-ff501435d785">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=140420e4-c194-4658-8cb1-71cfb87c3765">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=41bd418c-316b-42aa-bdcb-5ea8851a6bfa">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1db8802f-df4f-45cc-8c51-9b611ea1feae">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=386d7f13-b682-45e2-a602-166ef564a64d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8a4e8690-e0c9-47b0-9ff8-46f0fc00baee">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=28f6a0d8-cd0d-4ad7-9726-18dd2459031a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=779341c0-3f64-43bd-98fd-9dc66d88921b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=48cbd58f-3a89-4081-aa8e-fa1ee06bf8f3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a0d27cbe-92c6-477d-a928-9156581d76f4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ae1cbfce-d169-4d7e-bff8-c789d900809f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>

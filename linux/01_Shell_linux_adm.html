@@ -7614,6 +7614,17 @@ a.anchor-link {
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c20a0b74-4c41-4fdb-ac2e-8c915d9a0739">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="General-commands">General commands<a class="anchor-link" href="#General-commands">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=15335b08-143f-4c3a-b915-02a37908d2c1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7906,6 +7917,17 @@ a.anchor-link {
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d1c577bb-7b2d-4fac-8924-dbb54d74e06e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Bash-configuration-files">Bash configuration files<a class="anchor-link" href="#Bash-configuration-files">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=03792575-815a-4f4d-9ba5-14f372f90d47">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7956,6 +7978,17 @@ Bash configuration files
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6d768c75-0bba-4ec3-9232-afc161871aa4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Common-Shell-Environment-Variables">Common Shell Environment Variables<a class="anchor-link" href="#Common-Shell-Environment-Variables">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8063,6 +8096,64 @@ Bash configuration files
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6f853603-0a8d-4347-93ab-1b67f04673c5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="set,-declare,-export"><code>set</code>, <code>declare</code>, <code>export</code><a class="anchor-link" href="#set,-declare,-export">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8fb38527-54c2-4149-91e7-6a73594a21ca">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th><code>set</code></th>
+<th><code>declare</code></th>
+<th><code>export</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Usage</strong></td>
+<td><code>set [options] [value]</code></td>
+<td><code>declare [options] variable=value</code></td>
+<td><code>export [variable=value]</code></td>
+</tr>
+<tr>
+<td><strong>Function</strong></td>
+<td>Set or unset shell options and positional parameters. Displays shell variables and functions if no options are provided.</td>
+<td>Declare variables and give them attributes. Can display attributes and values of variables.</td>
+<td>Mark variables and functions to be passed to child processes. Ensures variables are available in the environment of subsequently executed commands.</td>
+</tr>
+<tr>
+<td><strong>Scope</strong></td>
+<td>Affects the current shell session</td>
+<td>Affects the current shell session</td>
+<td>Affects the current shell session and child processes</td>
+</tr>
+<tr>
+<td><strong>Common Options/Usage</strong></td>
+<td><code>-e</code>: Exit immediately if a command exits with a non-zero status. <br/> <code>-u</code>: Treat unset variables as an error when substituting. <br/> <code>-x</code>: Print commands and their arguments as they are executed. <br/> <code>+option</code>: Disable the specified option.</td>
+<td><code>-i</code>: Declare a variable as an integer. <br/> <code>-r</code>: Make a variable read-only. <br/> <code>-a</code>: Declare a variable as an array. <br/> <code>-f</code>: Display function names and definitions. <br/> <code>-x</code>: Mark a variable for export to subsequent commands via the environment.</td>
+<td><code>export VAR=value</code>: Set and export a variable. <br/> <code>export VAR</code>: Export an existing variable.</td>
+</tr>
+</tbody>
+</table>
+<p>|<strong>Use Case</strong>|Adjusting shell behavior and debugging|Defining variables with specific attributes|Making variables available to subprocesses</p>
 </div>
 </div>
 </div>
@@ -10571,7 +10662,7 @@ And I am 36 years old.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="set,-declare,-export"><code>set</code>, <code>declare</code>, <code>export</code><a class="anchor-link" href="#set,-declare,-export">¶</a></h3>
+<h3 id="set,-declare,-export-commands"><code>set</code>, <code>declare</code>, <code>export</code> commands<a class="anchor-link" href="#set,-declare,-export-commands">¶</a></h3>
 </div>
 </div>
 </div>
@@ -10583,54 +10674,7 @@ And I am 36 years old.
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><em>ChatGPT</em>:<br/>
-In the bash shell, the built-in commands <code>set</code>, <code>declare</code>, and <code>export</code> serve different purposes related to variable management and environment control. Here’s a detailed explanation of each:</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4e43ce7b-48c7-4761-80e5-d56f1bb30f3c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Aspect</th>
-<th><code>set</code></th>
-<th><code>declare</code></th>
-<th><code>export</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Usage</strong></td>
-<td><code>set [options] [value]</code></td>
-<td><code>declare [options] variable=value</code></td>
-<td><code>export [variable=value]</code></td>
-</tr>
-<tr>
-<td><strong>Function</strong></td>
-<td>Set or unset shell options and positional parameters. Displays shell variables and functions if no options are provided.</td>
-<td>Declare variables and give them attributes. Can display attributes and values of variables.</td>
-<td>Mark variables and functions to be passed to child processes. Ensures variables are available in the environment of subsequently executed commands.</td>
-</tr>
-<tr>
-<td><strong>Scope</strong></td>
-<td>Affects the current shell session</td>
-<td>Affects the current shell session</td>
-<td>Affects the current shell session and child processes</td>
-</tr>
-<tr>
-<td><strong>Common Options/Usage</strong></td>
-<td><code>-e</code>: Exit immediately if a command exits with a non-zero status. <br/> <code>-u</code>: Treat unset variables as an error when substituting. <br/> <code>-x</code>: Print commands and their arguments as they are executed. <br/> <code>+option</code>: Disable the specified option.</td>
-<td><code>-i</code>: Declare a variable as an integer. <br/> <code>-r</code>: Make a variable read-only. <br/> <code>-a</code>: Declare a variable as an array. <br/> <code>-f</code>: Display function names and definitions. <br/> <code>-x</code>: Mark a variable for export to subsequent commands via the environment.</td>
-<td><code>export VAR=value</code>: Set and export a variable. <br/> <code>export VAR</code>: Export an existing variable.</td>
-</tr>
-</tbody>
-</table>
-<p>|<strong>Use Case</strong>|Adjusting shell behavior and debugging|Defining variables with specific attributes|Making variables available to subprocesses</p>
+In the bash shell, the built-in commands <code>set</code>, <code>declare</code>, and <code>export</code> serve different purposes related to variable management and environment control. See the <a href="#set,-declare,-export">"set, declare, export" table</a></p>
 </div>
 </div>
 </div>

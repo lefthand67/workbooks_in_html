@@ -1,1 +1,1 @@
-My workbooks from learning different fields of computer science, divided by folders: databases, machine learning, devops, linux administration, etc.
+Hello everyone! I learn many different CS fields and take note in the Jupyter notebooks. Here are some of those workbooks saved in the HTML format for reading from the mobile web browser.
