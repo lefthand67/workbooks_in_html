@@ -7487,6 +7487,264 @@ a.anchor-link {
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5c71dd91-09ba-4f47-84f3-56d043e19e18">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="5.0-Commands-handout"><b></b>5.0 Commands handout<a class="anchor-link" href="#5.0-Commands-handout">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=49836e10-0900-4b7f-85d0-58e25202f78e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<table>
+<thead>
+<tr>
+<th>bash</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/etc/passwd</code></td>
+<td>users' names list</td>
+</tr>
+<tr>
+<td><code>/etc/group</code></td>
+<td>groups list</td>
+</tr>
+<tr>
+<td><code>/etc/sudoers</code></td>
+<td>sudoers group file, i.e. the users who can use <code>sudo</code> command</td>
+</tr>
+<tr>
+<td><strong>login mode</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>~/.bash_profile</code></td>
+<td>is read in login mode</td>
+</tr>
+<tr>
+<td><code>/usr/bin/su - username</code></td>
+<td>access another user's account in login mode; root can <code>su</code> to any account without entering a password</td>
+</tr>
+<tr>
+<td><code>bash --login</code></td>
+<td>simulate a login shell and read the login mode files</td>
+</tr>
+<tr>
+<td><strong>non-login mode</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>~/.bashrc</code></td>
+<td>is read in nonlogin mode</td>
+</tr>
+<tr>
+<td><code>bash</code></td>
+<td>tart a new non-login bash shell</td>
+</tr>
+<tr>
+<td><strong>security problems</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sudo sh</code>, <code>sudo su</code></td>
+<td>get the root shell without entering the root's password</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9306fb81-78a8-437e-b929-26577a64b6ed">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Bash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>root and sudo</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>su -</code> substitute user (<code>exit</code>)</td>
+<td>work as a root user</td>
+</tr>
+<tr>
+<td><code>sudo -l -U &lt;uname&gt;</code></td>
+<td>list the privileges for the invoking user</td>
+</tr>
+<tr>
+<td><strong>Adding\removing users</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>adduser &lt;uname&gt;</code></td>
+<td>add a new user</td>
+</tr>
+<tr>
+<td><code>deluser &lt;uname&gt;</code></td>
+<td>delete a user's account</td>
+</tr>
+<tr>
+<td><strong>Groups</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>groupadd &lt;gname&gt;</code></td>
+<td>create a group</td>
+</tr>
+<tr>
+<td><code>usermod -aG &lt;uname&gt; &lt;gname&gt;</code></td>
+<td>add an existing user to an existing group</td>
+</tr>
+<tr>
+<td><code>adduser &lt;uname&gt; &lt;gname&gt;</code></td>
+<td>create a new user and add them to an existing group</td>
+</tr>
+<tr>
+<td><code>groupdel &lt;gname&gt;</code></td>
+<td>delete a group</td>
+</tr>
+<tr>
+<td><strong>Show info</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>cat /etc/passwd</code></td>
+<td>show all users</td>
+</tr>
+<tr>
+<td><code>w</code> and <code>who</code></td>
+<td>show current users</td>
+</tr>
+<tr>
+<td><code>uptime</code></td>
+<td>show number of current users and load</td>
+</tr>
+<tr>
+<td><code>id</code> or <code>id &lt;username&gt;</code></td>
+<td>show user's groups with details</td>
+</tr>
+<tr>
+<td><code>groups</code> or <code>groups &lt;uname&gt;</code></td>
+<td>shows the user's groups</td>
+</tr>
+<tr>
+<td><strong>Passwords</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>passwd &lt;uname&gt;</code> (stored in <code>/etc/shadow</code>)</td>
+<td>change user password</td>
+</tr>
+<tr>
+<td><code>passwd -e &lt;uname&gt;</code> (expire flag)</td>
+<td>change pwd on the next logon</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4d1830df-fbea-4917-be04-bd67af713a70">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="sudo"><code>sudo</code><a class="anchor-link" href="#sudo">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=df089562-8a91-43db-a5a5-33d7815683c4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<table>
+<thead>
+<tr>
+<th>Bash</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>apt install sudo</code></td>
+<td>install sudo</td>
+</tr>
+<tr>
+<td><code>etc/sudoers</code></td>
+<td>sudoers file, do not touch it</td>
+</tr>
+<tr>
+<td><code>visudo</code></td>
+<td>command for editing the sudoers file</td>
+</tr>
+<tr>
+<td><code>man 5 sudoers</code></td>
+<td>man on default <code>sudo</code> security policy plugin</td>
+</tr>
+<tr>
+<td><strong>restricted sudo rights</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>/etc/sudoers.d/filename</code></td>
+<td>give users sudo rights for some operations without adding them to the sudo group</td>
+</tr>
+<tr>
+<td><strong>unrestricted sudo rights</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>usermod -aG sudo &lt;username&gt;</code></td>
+<td>add an existing user to sudo group - sudo can act as root</td>
+</tr>
+<tr>
+<td><code>adduser &lt;uname&gt; sudo</code></td>
+<td>add user to sudo group</td>
+</tr>
+<tr>
+<td><code>sudo deluser &lt;uname&gt; sudo</code></td>
+<td>delete a user from the sudo group</td>
+</tr>
+<tr>
+<td><strong>Show info</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sudo -l -U &lt;uname&gt;</code></td>
+<td>list the privileges for the invoking user</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=089d1823-8f21-4b59-9334-8187dd0cad97">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7637,6 +7895,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Proper husbandry of the root account is a crucial skill.</p>
 </div>
 </div>
 </div>
@@ -7647,6 +7906,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Root-account-login">Root account login<a class="anchor-link" href="#Root-account-login">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7657,6 +7917,59 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>Root logins leave no record of what operations were performed as root.</li>
+<li>The log-in-as-root scenario leaves no record of who was actually doing the work. If several people have access to the root account, you won’t be able to tell who used it and when.</li>
+</ul>
+<p>For these reasons, most systems allow root logins to be disabled on terminals, through window systems, and across the network — everywhere but on the system console.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f58c0b87-e78a-466b-8a5f-2157c5e27632">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Restore-root-password">Restore root password<a class="anchor-link" href="#Restore-root-password">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b201bdfc-b409-447f-9f54-3a5379e51b46">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol>
+<li>Restart the machine and press <code>e</code> in the grub menu.</li>
+<li>Locate the line starting with "Linux" and append to the end:<ul>
+<li><code>rw init=/bin/bash</code></li>
+</ul>
+</li>
+<li>Boot:<ul>
+<li><code>ctrl-x</code>.</li>
+</ul>
+</li>
+<li>Change the root password using:<ul>
+<li><code>passwd</code></li>
+</ul>
+</li>
+<li>(in Fedora) Restore the SELinux context and permissions with:<ul>
+<li><code>touch / .autorelabel</code></li>
+</ul>
+</li>
+<li>Remount the root dir:<ul>
+<li><code>mount -o remount,ro /</code></li>
+</ul>
+</li>
+<li>Reboot the system:<ul>
+<li><code>/sbin/reboot -f</code></li>
+</ul>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -7667,6 +7980,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="su:-substitute-user-identity"><code>su</code>: substitute user identity<a class="anchor-link" href="#su:-substitute-user-identity">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7677,26 +7991,126 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>A marginally better way to access the root account is to use the <code>su</code> command. If invoked without arguments, <code>su</code> prompts for the root password and then starts up a root shell. Root privileges remain in effect until you terminate the shell by typing <code>&lt;Control-D&gt;</code> or the <code>exit</code> command.</p>
+<blockquote>
+<p><code>su</code> doesn’t record the commands executed as root, but it does create a log entry that states who became root and when.</p>
+</blockquote>
+<p>The <code>su</code> command can also substitute identities other than root. Sometimes, the only way to reproduce or debug a user’s problem is to <code>su</code> to their account so that you reproduce the environment in which the problem occurs.</p>
+<p>If you know someone’s password, you can access that person’s account directly by executing <code>su - username</code>. As with an <code>su</code> to root, you are prompted for the password for username. The <code>-</code> (dash) option makes <code>su</code> spawn the shell in login mode.</p>
+<p>The exact implications of login mode vary by shell, but <strong>login mode</strong> normally changes the number or identity of the files that the shell reads when it starts up. For example, bash reads</p>
+<ul>
+<li><code>~/.bash_profile</code> in login mode and</li>
+<li><code>~/.bashrc</code> in nonlogin mode.</li>
+</ul>
+<p>When diagnosing other users’ problems, it helps to reproduce their login environments as closely as possible by running in login mode.</p>
+<hr/>
+<p><em>ChatGPT</em>:</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7c905013-c6fc-412e-a5c2-77a75f99a439">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5a07083a-5fe2-4f4c-9ca7-53aa65656276">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Login-Mode-vs.-Non-login-Mode">Login Mode vs. Non-login Mode<a class="anchor-link" href="#Login-Mode-vs.-Non-login-Mode">¶</a></h3>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6b3bc837-d624-4eb6-9f36-035cf3a79cca">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2be41306-de39-4188-91b3-e04d92f8266b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>When you start a shell session in Unix or Linux, the shell can operate in different modes. One of these modes is "login mode." The distinction between login and non-login mode affects which configuration files the shell reads and executes when it starts up. This can impact the environment setup, such as environment variables, aliases, and functions that are available in the shell session.</p>
+<ol>
+<li><p><strong>Login Mode</strong>:</p>
+<ul>
+<li>When you log into your system (e.g., via SSH, or by logging in at a console), you are starting a shell in login mode.</li>
+<li>In login mode, the shell reads and executes commands from certain initialization files, which typically include:<ul>
+<li><code>~/.bash_profile</code>: This is the primary startup file read when a user logs into the system.</li>
+<li><code>~/.bash_login</code>: If <code>~/.bash_profile</code> does not exist, <code>~/.bash_login</code> will be read.</li>
+<li><code>~/.profile</code>: If neither <code>~/.bash_profile</code> nor <code>~/.bash_login</code> exist, <code>~/.profile</code> will be read.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Non-login Mode</strong>:</p>
+<ul>
+<li>When you open a new terminal window in a graphical environment, or when you start a subshell, you are usually starting a shell in non-login mode.</li>
+<li>In non-login mode, the shell reads and executes commands from different initialization files, typically:<ul>
+<li><code>~/.bashrc</code>: This file contains configurations for interactive non-login shells. This is where you define functions, aliases, and non-environmental settings.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>How to Start a Shell in Login Mode</strong></p>
+<p>To simulate a login shell and read the login mode files, you can start your shell with the <code>--login</code> option:</p>
+<div class="highlight"><pre><span></span>bash<span class="w"> </span>--login
+</pre></div>
+<p>This command forces <code>bash</code> to behave as if it is a login shell, reading the appropriate startup files like <code>~/.bash_profile</code>.</p>
+<p>If you call <code>bash</code> with no options, you simulate a non-login shell.</p>
+<hr/>
+<p>On some systems, the root password allows an <code>su</code> or <code>login</code> to any account. On others, you must first <code>su</code> explicitly to root before <code>su</code>ing to another account;</p>
+<blockquote>
+<p>root can <code>su</code> to any account without entering a password.</p>
+</blockquote>
+<p>Get in the habit of typing the full pathname to <code>su</code> (e.g., <code>/bin/su</code> or <code>/usr/bin/su</code>) rather than relying on the shell to find the command for you. This precaution gives you some protection against arbitrary programs called <code>su</code> that might have been sneaked into your search path with the intention of harvesting passwords.</p>
+<p>On most systems, you must be a member of the group “wheel” to use <code>su</code>. We consider <code>su</code> to have been largely superseded by <code>sudo</code>, described in the next section. <code>su</code> is best reserved for emergencies. It’s also helpful for fixing situations in which <code>sudo</code> has been broken or misconfigured.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d6ed2200-2e45-4e12-97c7-3f7358cb913c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="sudo:-limited-su"><code>sudo</code>: limited <code>su</code><a class="anchor-link" href="#sudo:-limited-su">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a3799490-a858-4241-a04b-2e18a38426d8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>If the root account is used by several administrators, you really have only a vague idea of who’s using it or what they’ve done.</p>
+<p>The most widely used solution to these problems is a program called <code>sudo</code> that is currently maintained by Todd Miller. We recommend it as the primary method of access to the root account.</p>
+<p><code>sudo</code> takes as its argument a command line to be executed as root (or as another restricted user). <code>sudo</code> consults the file <code>/etc/sudoers</code> (<code>/usr/local/etc/sudoers</code> on FreeBSD), which lists the people who are authorized to use <code>sudo</code> and the commands they are allowed to run on each host. If the proposed command is permitted, <code>sudo</code> prompts for the user’s own password and executes the command.</p>
+<p>Additional <code>sudo</code> commands can be executed without the “doer” having to type a password until a five-minute period (configurable) has elapsed with no further sudo activity. This timeout serves as a modest protection against users with <code>sudo</code> privileges who leave terminals unattended.</p>
+<p><code>sudo</code> keeps a log of</p>
+<ul>
+<li>the command lines that were executed,</li>
+<li>the hosts on which they were run,</li>
+<li>the people who ran them,</li>
+<li>the directories from which they were run, and</li>
+<li>the times at which they were invoked.</li>
+</ul>
+<p>This information can be logged by syslog or placed in the file of your choice. We recommend using syslog to forward the log entries to a secure central host.</p>
+<p>A log entry for randy’s executing <code>sudo /usr/bin/cat /etc/sudoers</code> might look like this:</p>
+<div class="highlight"><pre><span></span>Dec<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">10</span>:57:19<span class="w"> </span>tigger<span class="w"> </span>sudo:<span class="w"> </span>randy:<span class="w"> </span><span class="nv">TTY</span><span class="o">=</span>ttyp0<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nv">PWD</span><span class="o">=</span>/tigger/users/randy<span class="p">;</span>
+<span class="nv">USER</span><span class="o">=</span>root<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nv">COMMAND</span><span class="o">=</span>/bin/cat<span class="w"> </span>/etc/sudoers
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ed8a5f9e-c668-48c0-b10d-6c9c16aa9d34">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Example-configuration">Example configuration<a class="anchor-link" href="#Example-configuration">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7707,6 +8121,343 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The sudoers file is designed so that a single version can be used on many different hosts at once. Here’s a typical example:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Define aliases for machines in CS &amp; Physics departments</span>
+Host_Alias<span class="w"> </span><span class="nv">CS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>tigger,<span class="w"> </span>anchor,<span class="w"> </span>piper,<span class="w"> </span>moet,<span class="w"> </span>sigi
+Host_Alias<span class="w"> </span><span class="nv">PHYSICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>eprince,<span class="w"> </span>pprince,<span class="w"> </span>icarus
+
+<span class="c1"># Define collections of commands</span>
+Cmnd_Alias<span class="w"> </span><span class="nv">DUMP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/sbin/dump,<span class="w"> </span>/sbin/restore
+Cmnd_Alias<span class="w"> </span><span class="nv">WATCHDOG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/local/bin/watchdog
+Cmnd_Alias<span class="w"> </span><span class="nv">SHELLS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/bin/sh,<span class="w"> </span>/bin/dash,<span class="w"> </span>/bin/bash
+
+<span class="c1"># Permissions</span>
+mark,<span class="w"> </span>ed<span class="w">		 </span><span class="nv">PHYSICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ALL
+herb<span class="w">			 </span><span class="nv">CS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/sbin/tcpdump<span class="w"> </span>:<span class="w"> </span><span class="nv">PHYSICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>operator<span class="o">)</span><span class="w"> </span>DUMP
+lynda<span class="w">		     </span><span class="nv">ALL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>ALL<span class="o">)</span><span class="w"> </span>ALL,<span class="w"> </span>!SHELLS
+%wheel<span class="w">		     </span>ALL,<span class="w"> </span>!PHYSICS<span class="w"> </span><span class="o">=</span><span class="w"> </span>NOPASSWD:<span class="w"> </span>WATCHDOG
+</pre></div>
+<p>The first two sets of lines define groups of hosts (see <code>/ets/hosts</code> file) and commands that are referred to in the permission specifications later in the file. The lists could be included literally in the specifications, but aliases make the sudoers file easier to read and understand; they also make the file easier to update in the future. It’s also possible to define aliases for sets of users and for sets of users as whom commands may be run.</p>
+<p>Each permission specification line includes information about</p>
+<ul>
+<li>The users to whom the line applies</li>
+<li>The hosts on which the line should be heeded</li>
+<li>The commands that the specified users can run</li>
+<li>The users as whom the commands can be executed</li>
+</ul>
+<p>The first permission line applies to the users <code>mark</code> and <code>ed</code> on the machines in the <code>PHYSICS</code> group (<code>eprince</code>, <code>pprince</code>, and <code>icarus</code>). The built-in command alias <code>ALL</code> allows them to run any command. Since no list of users is specified in parentheses, sudo will run commands as root.</p>
+<p>The second permission line allows <code>herb</code> to run <code>tcpdump</code> on <code>CS</code> machines and dump-related commands on <code>PHYSICS</code> machines. However, the dump commands can be run only as <code>operator</code>, not as root. The actual command line that <code>herb</code> would type would be something like</p>
+<div class="highlight"><pre><span></span>ubuntu$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>operator<span class="w"> </span>/usr/sbin/dump<span class="w"> </span>0u<span class="w"> </span>/dev/sda1
+</pre></div>
+<p>The user <code>lynda</code> can run commands as any user on any machine, except that she can’t run several common shells. Does this mean that lynda really can’t get a root shell? Of course not:</p>
+<div class="highlight"><pre><span></span>ubuntu$<span class="w"> </span>cp<span class="w"> </span>-p<span class="w"> </span>/bin/sh<span class="w"> </span>/tmp/sh
+ubuntu$<span class="w"> </span>sudo<span class="w"> </span>/tmp/sh
+</pre></div>
+<p>Generally speaking,</p>
+<blockquote>
+<p>any attempt to allow “all commands except ...” is doomed to failure, at least in a technical sense.</p>
+</blockquote>
+<p>However, it might still be worthwhile to set up the sudoers file this way as a reminder that root shells are strongly discouraged.</p>
+<p>The final line allows users in group <code>wheel</code> to run the local <code>watchdog</code> command as root on all machines except <code>eprince</code>, <code>pprince</code>, and <code>icarus</code>. Furthermore, no password is required to run the command.</p>
+<p>Note that commands in the sudoers file are specified with full pathnames to prevent people from executing their own programs and scripts as root. Though no examples are shown above, it is possible to specify the arguments that are permissible for each command as well.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ddaf4d50-22ed-4088-918e-1350ffe33024">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="visudo"><code>visudo</code><a class="anchor-link" href="#visudo">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=faf4af5a-8929-472c-9eba-7fc7c7ec169f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>To manually modify the sudoers file, use the <code>visudo</code> command, which checks to be sure no one else is editing the file, invokes an editor on it (<code>vi</code>, or whichever editor you specify in your <code>EDITOR</code> environment variable), and then verifies the syntax of the edited file before installing it. This last step is particularly important because an invalid sudoers file might prevent you from sudoing again to fix it.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8770b398-0851-4751-aae0-6e84e3e25884">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="sudo-pros-and-cons"><code>sudo</code> pros and cons<a class="anchor-link" href="#sudo-pros-and-cons">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1dd253ce-1e7e-4938-b3ee-71589b5c1113">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The use of sudo has the following advantages:</p>
+<ul>
+<li>Accountability is much improved because of command logging.</li>
+<li>Users can do specific chores without having unlimited root privileges.</li>
+<li>The real root password can be known to only one or two people (Or even zero people, if you have the right kind of password vault system in place).</li>
+<li>Using sudo is faster than using su or logging in as root.</li>
+<li>Privileges can be revoked without the need to change the root password.</li>
+<li>A canonical list of all users with root privileges is maintained.</li>
+<li>The chance of a root shell being left unattended is lessened.</li>
+<li>A single file can control access for an entire network.</li>
+</ul>
+<p><code>sudo</code> has a couple of disadvantages as well. The worst of these is that any breach in the security of a sudoer’s personal account can be equivalent to breaching the root account itself. You can’t do much to counter this threat other than caution your sudoers to protect their own accounts as they would the root account. You can also run a password cracker regularly on sudoers’ passwords to ensure that they are making good password selections.</p>
+<p><code>sudo</code>’s command logging can easily be subverted by tricks such as <strong>shell escapes</strong> from within an allowed program, or by</p>
+<ul>
+<li><code>sudo sh</code> and</li>
+<li><code>sudo su</code>.</li>
+</ul>
+<p>(Such commands do show up in the logs, so you’ll at least know they’ve been run.)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ce4170b-c7f9-44c3-a030-32f38fe4b7e9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="sudoers">sudoers<a class="anchor-link" href="#sudoers">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6c1bc63f-e9b5-4776-8b0f-dc49bda0e94d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
+<p><em>ChatGPT</em>:</p>
+<p>You have three ways to give a user sudo rights:</p>
+<ul>
+<li>restricted sudo rights to a group of the users (<code>/etc/sudoers.d/filename</code>);</li>
+<li>restricted sudo rights to one user (<code>/etc/sudoers.d/filename</code>);</li>
+<li>unrestricted sudo rights to any user (add to <code>sudo</code> group).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5536244e-ce23-4003-bb68-b370abe9631f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Restricted-sudo-rights-to-a-group-of-users">Restricted sudo rights to a group of users<a class="anchor-link" href="#Restricted-sudo-rights-to-a-group-of-users">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c7f7f366-c5c7-49fd-8e80-9d366f0ec9e8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>You can create a file <code>/etc/sudoers.d/myfile</code>:</p>
+<div class="highlight"><pre><span></span>visudo<span class="w"> </span>/etc/sudoers.d/myfile
+</pre></div>
+<p>and add the lines:</p>
+<div class="highlight"><pre><span></span>User_Alias<span class="w">      </span><span class="nv">SYS_ADMIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user1,<span class="w"> </span>user3
+User_Alias<span class="w">      </span><span class="nv">PG_ADMIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user1,<span class="w"> </span>user2
+
+Cmnd_Alias<span class="w">      </span><span class="nv">SHUTDOWN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/sbin/reboot,<span class="w"> </span>/sbin/poweroff
+Cmnd_Alias<span class="w">      </span><span class="nv">SYSMGMT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/systemctl
+Cmnd_Alias<span class="w">      </span><span class="nv">PKGMGMT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/dpkg,<span class="w"> </span>/usr/bin/apt
+Cmnd_Alias<span class="w">      </span><span class="nv">READLOGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/journalctl<span class="w"> </span>-r,<span class="w"> </span>/usr/bin/less<span class="w"> </span>/var/log/*,<span class="w"> </span>/usr/bin/tail<span class="w"> </span>-f<span class="w"> </span>/var/log/*
+Cmnd_Alias<span class="w">      </span><span class="nv">PG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/lib/postgresql/15/bin/*,<span class="w"> </span>/usr/bin/pg_ctlcluster
+
+<span class="c1"># Users listed above can run commands</span>
+SYS_ADMIN<span class="w">       </span><span class="nv">ALL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SHUTDOWN,<span class="w"> </span>SYSMGMT,<span class="w"> </span>PKGMGMT,<span class="w"> </span>READLOGS
+PG_ADMIN<span class="w">        </span><span class="nv">ALL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>READLOGS,<span class="w"> </span>PG
+</pre></div>
+<p>Also see: <a href="#Example-configuration">Example configuration</a></p>
+<p>Restrict permissions to this file:</p>
+<div class="highlight"><pre><span></span>chmod<span class="w"> </span><span class="m">440</span><span class="w"> </span>/etc/sudoers.d/myfile
+</pre></div>
+<p>In the line <code>SYS_ADMIN ALL = SHUTDOWN, SYSMGMT, PKGMGMT, READLOGS</code>, <code>ALL</code> refers to the host or hosts on which the specified commands can be executed. When <code>ALL</code> is used, it means that the command can be executed on any host. If you wanted to restrict the commands to only apply to certain hosts, you could specify the hosts in place of <code>ALL</code>.</p>
+<blockquote>
+<p>Note: When a user is in multiple <code>User_Alias</code> entries, they inherit the privileges from all those aliases. So in this case, <code>user1</code> will have the combined privileges of <code>SYS_ADMIN</code> and <code>PG_ADMIN</code> when running commands.</p>
+</blockquote>
+<p>Also you can create a <strong>linux group</strong> and grant its members restricted rights in <code>/etc/sudoers.d/myfile</code>:</p>
+<div class="highlight"><pre><span></span>groupadd<span class="w"> </span>&lt;gname&gt;
+</pre></div>
+<div class="highlight"><pre><span></span>Cmnd_Alias<span class="w"> </span><span class="nv">POWER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/sbin/reboot,<span class="w"> </span>/sbin/poweroff
+%&lt;gname&gt;<span class="w"> </span><span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span><span class="w"> </span>NOPASSWD:<span class="w"> </span>POWER
+:wq
+</pre></div>
+<p>Replace <code>&lt;gname&gt;</code> with the name of the group you want to create or use an existing group. After making the changes, save the file and the members of the <code>&lt;gname&gt;</code> group will be able to run <code>poweroff</code> and <code>reboot</code> without a password prompt.</p>
+<blockquote>
+<p>Note: After being added to a new group the user must log out and then log back in again for the new group to take effect.</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=09c864d1-81a6-4b6d-a630-d06d5e008a80">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Restricted-sudo-rights-to-one-user">Restricted sudo rights to one user<a class="anchor-link" href="#Restricted-sudo-rights-to-one-user">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1c4b4c82-8387-4329-bf60-adaee2d3ba4c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Create a file in <code>/etc/sudoers.d/filename</code> (or add info to the existing file):</p>
+<div class="highlight"><pre><span></span>su<span class="w"> </span>-
+visudo<span class="w"> </span>/etc/sudoers.d/user1_sudo
+</pre></div>
+<p>Add lines with desired commands for a specific user:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Allow to execute the poweroff and reboot commands without password</span>
+user1<span class="w"> 	</span><span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span><span class="w"> </span>NOPASSWD:<span class="w"> </span>/sbin/poweroff,<span class="w"> </span>/sbin/reboot
+
+<span class="c1"># Allow to execute apt commands</span>
+user1<span class="w"> 	</span><span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span><span class="w"> </span>/usr/bin/apt,<span class="w"> </span>/usr/bin/dpkg,<span class="w"> </span>/usr/bin/journalctl
+
+<span class="c1"># allow to read logs</span>
+user1<span class="w">   </span><span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span><span class="w"> </span>/usr/bin/tail<span class="w"> </span>-f<span class="w"> </span>/var/log/*
+user1<span class="w">   </span><span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span><span class="w"> </span>/usr/bin/less<span class="w"> </span>/var/log/*
+</pre></div>
+<p>Restrict permissions to this file:</p>
+<div class="highlight"><pre><span></span>chmod<span class="w"> </span><span class="m">440</span><span class="w"> </span>/etc/sudoers.d/filename
+</pre></div>
+<ol>
+<li><code>user1 ALL=(ALL)</code></li>
+</ol>
+<p>This part of a configuration file specifies that <code>user1</code> is allowed to run any command as any user, without requiring a password prompt. The <code>ALL</code> in parentheses means that this permission applies to all hosts on the network. Essentially, this configuration grants <code>user1</code> full administrative privileges without any restriction.</p>
+<ol start="2">
+<li><code>ALL=(ALL:ALL) ALL</code> (see <code>/etc/sudoers</code>)</li>
+</ol>
+<p>In the sudoers file, the entry <code>ALL=(ALL:ALL)</code> ALL provides the user with full privileges to run any command as any user on any host.</p>
+<p>The breakdown of the fields is as follows:</p>
+<ul>
+<li>The first "ALL" specifies that the user can run commands from any terminal.</li>
+<li>The (ALL:ALL) indicates that the user can run commands as any user and as any group.</li>
+<li>The last "ALL" means the user can run commands in any directory.</li>
+</ul>
+<p>Therefore, this entry grants the user full administrative privileges, allowing them to run any command with the ability to specify any user or group.</p>
+<ol start="3">
+<li><code>(ALL:ALL)</code></li>
+</ol>
+<p>The (ALL:ALL) part specifies the user and group that the user is allowed to run commands as.</p>
+<ul>
+<li><p>The first "ALL" before the colon indicates that the user can execute commands as any user, regardless of which user they are currently logged in as.</p>
+</li>
+<li><p>The second "ALL" after the colon indicates that the user can run commands as any group, allowing them to assume the privileges of any group regardless of their own group membership.</p>
+</li>
+</ul>
+<p>This level of flexibility means that the user is granted the ability to run commands with the privileges of any user or group on the system. It's important to use this level of access with caution, as it grants extensive privileges and can potentially compromise the security of the system if not used carefully.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f41739bb-f989-4ad5-a68d-7b8e5910cb52">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Unrestricted-rights---sudo-group">Unrestricted rights - sudo group<a class="anchor-link" href="#Unrestricted-rights---sudo-group">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=34d61516-3718-4f1b-9627-16264d8666fa">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span>su<span class="w"> </span>-
+adduser<span class="w"> </span>&lt;umame&gt;<span class="w"> </span>sudo
+sudo<span class="w"> </span>deluser<span class="w"> </span>&lt;uname&gt;<span class="w"> </span>sudo
+</pre></div>
+<blockquote>
+<p>After being added to a new group the user must log out and then log back in again for the new group to take effect.</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4ed9afb3-422c-43d7-89c3-7cc5d012b6e0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="/etc/sudoers.d/file-example"><code>/etc/sudoers.d/file</code> example<a class="anchor-link" href="#/etc/sudoers.d/file-example">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8e287306-b1b0-4151-b328-9ab3bf910409">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="c1"># INSTALL `apt install sudo`</span>
+<span class="c1"># COPY THIS FILE TO /etc/sudoers.d/</span>
+<span class="c1"># then `chown root:root`</span>
+<span class="c1"># and `chmod 440`</span>
+
+Cmnd_Alias<span class="w">      </span><span class="nv">SHUTDOWN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/sbin/reboot,<span class="w"> </span>/sbin/poweroff
+Cmnd_Alias<span class="w">      </span><span class="nv">SYSMGMT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/systemctl
+Cmnd_Alias<span class="w">      </span><span class="nv">PKGMGMT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/dpkg,<span class="w"> </span>/usr/bin/apt
+Cmnd_Alias<span class="w">      </span><span class="nv">READLOGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/journalctl<span class="w"> </span>-r,<span class="w"> </span>/usr/bin/less<span class="w"> </span>/var/log/*,<span class="w"> </span>/usr/bin/tail<span class="w"> </span>-f<span class="w"> </span>/var/log/*
+
+
+<span class="c1"># ALTERNATIVES</span>
+
+
+<span class="c1"># 1. ALIAS FOR USERS FOR GROUPING THEM (takes immediate effect)</span>
+User_Alias<span class="w">      </span><span class="nv">ADMIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>commi
+
+<span class="c1"># Users listed above (ADMIN) can run package managers and reboot the system</span>
+ADMIN<span class="w">           </span><span class="nv">ALL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SHUTDOWN,<span class="w"> </span>SYSMGMT,<span class="w"> </span>PKGMGMT,<span class="w"> </span>READLOGS
+
+
+<span class="c1"># 2. CREATE A LINUX GROUP AND ADD USERS TO IT (needs user's logout/login for effect)</span>
+<span class="c1">#%admin         ALL=(ALL) NOPASSWD: SHUTDOWN</span>
+<span class="c1">#%admin         ALL=(ALL) PKGMGMT, READLOGS</span>
+
+
+<span class="c1"># 3. GIVE RIGHTS FOR A SINGLE USER (takes immediate effect)</span>
+<span class="c1"># Allow to execute the poweroff and reboot commands without password</span>
+<span class="c1">#commi          ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot</span>
+
+<span class="c1"># Allow execute apt commands</span>
+<span class="c1">#commi          ALL=(ALL) /usr/bin/apt, /usr/bin/dpkg, /usr/bin/journalctl</span>
+
+<span class="c1"># allow read logs</span>
+<span class="c1">#commi          ALL=(ALL) /usr/bin/tail -f /var/log/*, /usr/bin/less /var/log/*</span>
+</pre></div>
+<hr/>
 </div>
 </div>
 </div>
@@ -8527,6 +9278,64 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=60455dfb-4d64-484f-80b5-19fad48e4f88">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Users,-Administrators,-and-Groups"><b></b>Users, Administrators, and Groups<a class="anchor-link" href="#Users,-Administrators,-and-Groups">¶</a></h1>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=120928bb-1466-402d-9b29-fecc2d28ad4f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>who<span class="w"> </span>-uH
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>NAME     LINE         TIME             IDLE          PID COMMENT
+commi    tty7         2024-03-08 02:18  old       110303 (:0)
+commi    pts/0        2024-03-08 02:18  old       110390 (:0)
+commi    pts/1        2024-03-10 00:43 00:38      172404 (:0)
+commi    pts/2        2024-03-08 02:24  old       114136 (:0)
+commi    pts/3        2024-03-08 02:25  old       114146 (:0)
+commi    pts/4        2024-03-08 02:25  old       114153 (:0)
+commi    pts/8        2024-03-10 16:20 01:44      182702 (:0)
+commi    pts/9        2024-03-11 14:19 01:01      213446 (:0)
+commi    pts/7        2024-03-08 02:33 20:06      115181 (:0)
+commi    pts/10       2024-03-10 17:54  old       186407 (:0)
+commi    pts/11       2024-03-09 14:55 00:07      148883 (:0)
+commi    pts/13       2024-03-10 16:26 01:44      183032 (:0)
+commi    pts/12       2024-03-10 16:26 01:33      183029 (:0)
+commi    pts/14       2024-03-10 16:26 01:44      183036 (:0)
+commi    pts/16       2024-03-08 02:57  old       115987 (:0)
+commi    pts/20       2024-03-10 16:26 01:44      183047 (:0)
+commi    pts/21       2024-03-10 16:26 01:44      183052 (:0)
+commi    pts/19       2024-03-10 16:26 01:44      183042 (:0)
+commi    pts/22       2024-03-11 02:39 01:34      205976 (:0)
+commi    pts/23       2024-03-11 03:09 01:34      207037 (:0)
+</pre>
+</div>
 </div>
 </div>
 </div>

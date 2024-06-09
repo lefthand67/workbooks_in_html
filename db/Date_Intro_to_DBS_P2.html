@@ -9910,7 +9910,7 @@ WHERE SCITY &gt; PCITY
 <li>$b$ is a divisor, and</li>
 <li>$c$ is the "mediator".</li>
 </ul>
-<p>$&gt; a\ \text{DIVIDEBY}\ b\ \text{PER}\ c$</p>
+<p>$$a\ \text{DIVIDEBY}\ b\ \text{PER}\ c$$</p>
 <p>is a relation with</p>
 <ul>
 <li>heading <code>{ X }</code> and</li>
@@ -9942,27 +9942,25 @@ WHERE SCITY &gt; PCITY
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Actually, we do <code>MED / DOR</code>.</p>
+<p>So, all <code>DOR</code> entries must appear for all <code>s_id</code> in <code>MED</code> (<code>AND</code> operation).</p>
+<p>The queries of that general nature are often more readily expressed in terms of <em>relational comparisons</em>:</p>
+<div class="highlight"><pre><span></span><span class="n">S</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">SP</span><span class="w"> </span><span class="k">RENAME</span><span class="w"> </span><span class="n">S</span><span class="o">#</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">S</span><span class="o">#</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="n">P</span><span class="o">#</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="n">P</span><span class="o">#</span><span class="w"> </span><span class="err">}</span>
+</pre></div>
+<p>and this is the divideby version:</p>
+<div class="highlight"><pre><span></span><span class="n">S</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="n">S</span><span class="o">#</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="n">DIVIDEBY</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="n">P</span><span class="o">#</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="n">PER</span><span class="w"> </span><span class="n">SP</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="n">S</span><span class="o">#</span><span class="p">,</span><span class="w"> </span><span class="n">P</span><span class="o">#</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="err">}</span>
+</pre></div>
+<p>There is some doubt as to whether <code>DIVIDEBY</code> would ever have been defined if the relational model had included relational comparisons in the first place, but it did not.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8bddfc0f-6ab4-4f3c-b9c8-4a8cc0946c85">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1df92d5f-615a-4e92-8b27-c70aa5108468">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7c952b96-0e2e-44d9-b765-a1a456143002">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="8.-Relational-Calculus"><b></b>8. Relational Calculus<a class="anchor-link" href="#8.-Relational-Calculus">¶</a></h1>
 </div>
 </div>
 </div>

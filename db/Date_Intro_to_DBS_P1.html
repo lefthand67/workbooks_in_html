@@ -7633,7 +7633,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">postgres_connector</span> <span class="kn">import</span> <span class="o">*</span>
@@ -8516,36 +8516,6 @@ etc.</li>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7149085c-1125-4169-9a56-f36a51457638">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">psycopg</span>
-<span class="kn">from</span> <span class="nn">info</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="k">def</span> <span class="nf">test_db</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">dbname</span><span class="o">=</span><span class="n">dbname</span><span class="p">):</span>
-    
-    <span class="n">query</span> <span class="o">=</span> <span class="n">MyQuery</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">dbname</span><span class="p">)</span>
-    <span class="n">n_cols</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cols</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">description</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span> <span class="o">+</span> <span class="s1">'-'</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
-
-    <span class="n">n_rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">query</span><span class="o">.</span><span class="n">rows</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rows</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9bc3f2a1-1437-418d-a3f5-8cc0996325c0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -8564,10 +8534,10 @@ etc.</li>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">"EXPLAIN ANALYZE SELECT * FROM resolution WHERE EXTRACT(YEAR FROM vote_date) = 1999;"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">"SELECT * FROM resolution WHERE EXTRACT(YEAR FROM vote_date) = 1999;"</span>
 </pre></div>
 </div>
 </div>
@@ -8587,15 +8557,44 @@ etc.</li>
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bd5fcb85-5112-49aa-813e-44284fbd5929">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">MyQuery</span><span class="p">(</span><span class="n">dbname</span><span class="o">=</span><span class="s2">"un_votes_mod"</span><span class="p">)</span><span class="o">.</span><span class="n">psql</span><span class="p">(</span><span class="s2">"DROP INDEX IF EXISTS year_b;"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+DROP INDEX
+
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4575e548-0e6e-436f-b1d2-69e15565e88f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_db</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="s2">"un_votes"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">MyQuery</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">dbname</span><span class="o">=</span><span class="s2">"un_votes_mod"</span><span class="p">)</span><span class="o">.</span><span class="n">explain_analyze</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8610,11 +8609,11 @@ etc.</li>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>	 QUERY PLAN
 --------------------------------------------------------------------------------
-Seq Scan on resolution  (cost=0.00..223.30 rows=49 width=30) (actual time=1.511..2.415 rows=135 loops=1)
+Seq Scan on resolution  (cost=0.00..222.98 rows=49 width=30) (actual time=3.035..4.187 rows=135 loops=1)
   Filter: (EXTRACT(year FROM vote_date) = '1999'::numeric)
   Rows Removed by Filter: 9664
-Planning Time: 0.402 ms
-Execution Time: 2.443 ms
+Planning Time: 1.304 ms
+Execution Time: 4.288 ms
 </pre>
 </div>
 </div>
@@ -8634,15 +8633,44 @@ Execution Time: 2.443 ms
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b78bc77d-7f4a-4f8d-9819-5b5ffa4de101">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=640b25f1-a9c8-4f7e-bc8b-030862981e7e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_db</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">MyQuery</span><span class="p">(</span><span class="n">dbname</span><span class="o">=</span><span class="s2">"un_votes_mod"</span><span class="p">)</span><span class="o">.</span><span class="n">psql</span><span class="p">(</span><span class="s2">"CREATE INDEX IF NOT EXISTS year_b ON resolution(EXTRACT (YEAR FROM vote_date));"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+CREATE INDEX
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=91a740af-ad05-4874-8ebc-621cc1e2c550">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">MyQuery</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">dbname</span><span class="o">=</span><span class="s2">"un_votes_mod"</span><span class="p">)</span><span class="o">.</span><span class="n">explain_analyze</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8657,13 +8685,13 @@ Execution Time: 2.443 ms
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>	 QUERY PLAN
 --------------------------------------------------------------------------------
-Bitmap Heap Scan on resolution  (cost=4.66..76.79 rows=49 width=30) (actual time=0.036..0.048 rows=135 loops=1)
+Bitmap Heap Scan on resolution  (cost=4.66..76.79 rows=49 width=30) (actual time=0.054..0.081 rows=135 loops=1)
   Recheck Cond: (EXTRACT(year FROM vote_date) = '1999'::numeric)
   Heap Blocks: exact=2
-  -&gt;  Bitmap Index Scan on year_b  (cost=0.00..4.65 rows=49 width=0) (actual time=0.022..0.022 rows=135 loops=1)
+  -&gt;  Bitmap Index Scan on year_b  (cost=0.00..4.65 rows=49 width=0) (actual time=0.039..0.039 rows=135 loops=1)
         Index Cond: (EXTRACT(year FROM vote_date) = '1999'::numeric)
-Planning Time: 0.612 ms
-Execution Time: 0.105 ms
+Planning Time: 0.793 ms
+Execution Time: 0.205 ms
 </pre>
 </div>
 </div>
@@ -8677,6 +8705,7 @@ Execution Time: 0.105 ms
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Users and user programs are thus independent of such access strategies, which is of course essential if data independence is to be achieved.</p>
+<p>Also see: subqueries vs joins (subqueries do not allow the DBMS to optimize the query).</p>
 </div>
 </div>
 </div>
