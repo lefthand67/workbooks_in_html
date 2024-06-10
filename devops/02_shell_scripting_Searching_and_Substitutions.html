@@ -7493,7 +7493,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="2.0-Commands">2.0 Commands<a class="anchor-link" href="#2.0-Commands">¶</a></h1>
+<h1 id="2.0-Commands-handout"><b></b>2.0 Commands handout<a class="anchor-link" href="#2.0-Commands-handout">¶</a></h1>
 </div>
 </div>
 </div>
@@ -7524,7 +7524,11 @@ a.anchor-link {
 </thead>
 <tbody>
 <tr>
-<td><strong>Programs</strong></td>
+<td><code>getconf</code></td>
+<td>Query system configuration variables</td>
+</tr>
+<tr>
+<td><strong>Text manipulation programs</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -7548,16 +7552,16 @@ a.anchor-link {
 <td></td>
 </tr>
 <tr>
+<td><code>man 1 grep</code> or <code>info grep</code></td>
+<td>print lines that match patterns</td>
+</tr>
+<tr>
 <td><code>man 7 regex</code></td>
 <td>POSIX.2 regular expressions</td>
 </tr>
 <tr>
 <td><code>man 3 regex</code></td>
 <td>POSIX regex functions</td>
-</tr>
-<tr>
-<td><code>man 1 grep</code></td>
-<td>print lines that match patterns</td>
 </tr>
 <tr>
 <td><code>man 3 wctype</code></td>
@@ -7596,9 +7600,9 @@ a.anchor-link {
 </thead>
 <tbody>
 <tr>
-<td><code>\\</code></td>
-<td>Both</td>
-<td>Usually, turn off the special meaning of the following character. Occasionally, enable a special meaning for the following character, such as for <code>\(...\)</code> and <code>\{...\}</code>.</td>
+<td><strong>Fundamental Structure</strong></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td><code>.</code></td>
@@ -7611,6 +7615,61 @@ a.anchor-link {
 <td>Match any number (or none) of the single character that immediately precedes it. For EREs, the preceding character can instead be a regular expression. For example, since <code>.</code> (dot) means any character, <code>.*</code> means “match any number of any character.” For BREs, <code>*</code> is not special if it’s the first character of a regular expression.</td>
 </tr>
 <tr>
+<td><code>?</code></td>
+<td>ERE</td>
+<td>Match zero or one instances of the preceding regular expression.</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>ERE</td>
+<td>Match one or more instances of the preceding regular expression.</td>
+</tr>
+<tr>
+<td><code>\{n,m\}</code></td>
+<td>BRE</td>
+<td>Termed an <strong>interval expression</strong>, or <strong>bound</strong>, this matches a range of occurrences of the single character that immediately precedes it. <code>\{n\}</code> matches exactly <code>n</code> occurrences, <code>\{n,\}</code> matches at least <code>n</code> occurrences, and <code>\{n,m\}</code> matches any number of occurrences between <code>n</code> and <code>m</code>. <code>n</code> and <code>m</code> must be between <code>0</code> and <code>RE_DUP_MAX</code> (minimum value: <code>255</code>), inclusive.</td>
+</tr>
+<tr>
+<td><code>{n,m}</code></td>
+<td>ERE</td>
+<td>Just like the BRE <code>\{n,m\}</code> earlier, but without the backslashes in front of the braces.</td>
+</tr>
+<tr>
+<td><code>{n}</code></td>
+<td></td>
+<td>The preceding item is matched exactly n times.</td>
+</tr>
+<tr>
+<td><code>{n,}</code></td>
+<td></td>
+<td>The preceding item is matched n or more times.</td>
+</tr>
+<tr>
+<td><code>{,m}</code></td>
+<td></td>
+<td>The preceding item is matched at most m times. This is a GNU extension.</td>
+</tr>
+<tr>
+<td><code>\|</code></td>
+<td>ERE</td>
+<td>infix operator; Match the regular expression specified before or after (<strong>branches</strong>).</td>
+</tr>
+<tr>
+<td><strong>Grouping</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>( )</code></td>
+<td>ERE</td>
+<td>Apply a match to the enclosed group of regular expressions.</td>
+</tr>
+<tr>
+<td><strong>Anchoring</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td><code>^</code></td>
 <td>Both</td>
 <td>Match the following regular expression at the beginning of the line or string. BRE: special only at the beginning of a regular expression. ERE: special everywhere.</td>
@@ -7621,49 +7680,94 @@ a.anchor-link {
 <td>Match the preceding regular expression at the end of the line or string. BRE: special only at the end of a regular expression. ERE: special everywhere.</td>
 </tr>
 <tr>
-<td><code>[...]</code></td>
-<td>Both</td>
-<td>Termed a <strong>bracket expression</strong>, this matches any one of the enclosed characters. A hyphen (<code>-</code>) indicates a range of consecutive characters. (<em><strong>Caution</strong></em>: ranges are locale-sensitive, and thus not portable.) A circumflex (<code>^</code>) as the first character in the brackets reverses the sense: it matches any one character <em>not</em> in the list. A hyphen or close bracket (<code>]</code>) as the first character is treated as a member of the list. All other metacharacters are treated as members of the list (i.e., literally). Bracket expressions may contain collating symbols, equivalence classes, and character classes.</td>
+<td><strong>Bracket Expressions</strong></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td><code>\{n,m\}</code></td>
-<td>BRE</td>
-<td>Termed an <strong>interval expression</strong>, or <strong>bound</strong>, this matches a range of occurrences of the single character that immediately precedes it. <code>\{n\}</code> matches exactly <code>n</code> occurrences, <code>\{n,\}</code> matches at least <code>n</code> occurrences, and <code>\{n,m\}</code> matches any number of occurrences between <code>n</code> and <code>m</code>. <code>n</code> and <code>m</code> must be between <code>0</code> and <code>RE_DUP_MAX</code> (minimum value: <code>255</code>), inclusive.</td>
+<td><code>[...]</code></td>
+<td>Both</td>
+<td>Termed a <strong>bracket expression</strong>, this matches any one of the enclosed characters.</td>
+</tr>
+<tr>
+<td><code>[i-j]</code></td>
+<td></td>
+<td>A hyphen (<code>-</code>) indicates a range of consecutive characters. (<em><strong>Caution</strong></em>: ranges are locale-sensitive, and thus not portable.) A circumflex (<code>^</code>) as the first character in the brackets reverses the sense: it matches any one character <em>not</em> in the list. A hyphen or close bracket (<code>]</code>) as the first character is treated as a member of the list. All other metacharacters are treated as members of the list (i.e., literally). Bracket expressions may contain collating symbols, equivalence classes, and character classes.</td>
+</tr>
+<tr>
+<td><code>[. .]</code></td>
+<td></td>
+<td>Collating Elements, should be placed into the bracket expression, like <code>[[.test.]]</code></td>
+</tr>
+<tr>
+<td><code>[= =]</code></td>
+<td></td>
+<td>Equivalence Classes, should be placed into the bracket expression, like <code>[[=a=]]</code></td>
+</tr>
+<tr>
+<td><code>[: :]</code></td>
+<td></td>
+<td>Character Classes, should be placed into the bracket expression, like <code>[[:alnum:]]</code></td>
+</tr>
+<tr>
+<td><strong>Backslash Character and Special Expressions</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>Both</td>
+<td>Usually, turn off the special meaning of the following character. Occasionally, enable a special meaning for the following character, such as for <code>\(...\)</code> and <code>\{...\}</code>.</td>
+</tr>
+<tr>
+<td><code>\&lt;\&gt;</code></td>
+<td></td>
+<td>match the empty string at the beginning and end of a word; not recommended to use</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td></td>
+<td>match the empty string at the edge of a word</td>
+</tr>
+<tr>
+<td><code>\B</code></td>
+<td></td>
+<td>match the empty string provided <em>not</em> at the edge of a word</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td></td>
+<td>a synonym for <code>[_[:alnum:]]</code></td>
+</tr>
+<tr>
+<td><code>\W</code></td>
+<td></td>
+<td>is a synonym for <code>[^_[:alnum:]]</code></td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td></td>
+<td>Match whitespace, it is a synonym for <code>[[:space:]]</code>.</td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td></td>
+<td>Match non-whitespace, it is a synonym for <code>[^[:space:]]</code>.</td>
+</tr>
+<tr>
+<td><strong>Back-references</strong></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td><code>\( \)</code></td>
-<td>BRE</td>
+<td></td>
 <td>Save the pattern enclosed between <code>\( and \)</code> in a special holding space. Up to nine subpatterns can be saved on a single pattern. The text matched by the subpatterns can be reused later in the same pattern, by the escape sequences <code>\1</code> to <code>\9</code>. For example, <code>\(ab\).*\1</code> matches two occurrences of <code>ab</code>, with any number of characters in between.</td>
 </tr>
 <tr>
 <td><code>\n</code></td>
-<td>BRE</td>
+<td></td>
 <td>Replay the <code>n</code>th subpattern enclosed in <code>\( and \)</code> into the pattern at this point. <code>n</code> is a number from <code>1</code> to <code>9</code>, with <code>1</code> starting on the left.</td>
-</tr>
-<tr>
-<td><code>{n,m}</code></td>
-<td>ERE</td>
-<td>Just like the BRE <code>\{n,m\}</code> earlier, but without the backslashes in front of the braces.</td>
-</tr>
-<tr>
-<td><code>+</code></td>
-<td>ERE</td>
-<td>Match one or more instances of the preceding regular expression.</td>
-</tr>
-<tr>
-<td><code>?</code></td>
-<td>ERE</td>
-<td>Match zero or one instances of the preceding regular expression.</td>
-</tr>
-<tr>
-<td><code>\|</code></td>
-<td>ERE</td>
-<td>infix operator; Match the regular expression specified before or after (<strong>branches</strong>).</td>
-</tr>
-<tr>
-<td><code>( )</code></td>
-<td>ERE</td>
-<td>Apply a match to the enclosed group of regular expressions.</td>
 </tr>
 </tbody>
 </table>
@@ -7695,6 +7799,10 @@ a.anchor-link {
 <li><strong>fgrep</strong>: “Fast grep.” This variant matches fixed strings instead of regular expressions using an algorithm optimized for fixed-string matching. The original version was also the only variant that could match multiple strings in parallel. In other words, <code>grep</code> and <code>egrep</code> could match only a single regular expression, whereas <code>fgrep</code> used a different algorithm that could match multiple strings, effectively testing each input line for a match against all the requested search strings.</li>
 </ul>
 <p>The 1992 POSIX standard merged all three variants into one <code>grep</code> program whose behavior is controlled by different options. The POSIX version can match multiple patterns, even for BREs and EREs. Both <code>fgrep</code> and <code>egrep</code> were also available, but they were marked as “deprecated,” meaning that they would be removed from a subsequent standard. And indeed, the 2001 POSIX standard only includes the merged <code>grep</code> command. However, in practice, both <code>egrep</code> and <code>fgrep</code> continue to be available on all Unix and Unix-like systems.</p>
+<blockquote>
+<p>7th Edition Unix had commands <code>egrep</code> and <code>fgrep</code> that were the counterparts of the modern <code>grep -E</code> and <code>grep -F</code>.  Although breaking up <code>grep</code> into three programs was perhaps useful on the small computers of the 1970s, <code>egrep</code> and <code>fgrep</code> were not standardized by POSIX and are no longer needed.  In the current GNU implementation, <code>egrep</code> and <code>fgrep</code> issue a warning and then act like their modern counterparts; eventually, they are planned to be removed entirely.<br/>
+See <code>info grep</code></p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -7756,7 +7864,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="2.2-Regular-Expressions"><b></b>2.2 Regular Expressions<a class="anchor-link" href="#2.2-Regular-Expressions">¶</a></h1>
+<h1 id="2.2-RE---Regular-Expressions"><b></b>2.2 RE - Regular Expressions<a class="anchor-link" href="#2.2-RE---Regular-Expressions">¶</a></h1>
 </div>
 </div>
 </div>
@@ -7767,6 +7875,40 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>A large number of Unix utilities derive their power from regular expressions of one form or another. A partial list includes the following:</p>
+<ul>
+<li>The <code>grep</code> family of tools for finding matching lines of text: <code>grep</code> and <code>egrep</code>, which are always available, as well as the nonstandard but useful <code>agrep</code> utility;</li>
+<li>The <code>sed</code> stream editor, for making changes to an input stream;</li>
+<li>String processing languages, such as <code>awk</code>, Icon, Perl, Python, Ruby, Tcl, and others;</li>
+<li>File viewers (sometimes called <strong>pagers</strong>), such as <code>more</code>, <code>page</code>, and <code>pg</code>, which are common on commercial Unix systems, and the popular <code>less</code> pager;</li>
+<li>Text editors, such as the venerable <code>ed</code> line editor, the standard <code>vi</code> screen editor, and popular add-on editors such as <code>emacs</code>, <code>jed</code>, <code>jove</code>, <code>vile</code>, <code>vim</code>, and others.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d6f165a6-b275-4e57-982e-04b4dbebcf90">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="BRE-and-ERE">BRE and ERE<a class="anchor-link" href="#BRE-and-ERE">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f24b5eba-5487-4a99-b992-aa32daf78b4e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>It is a historical artifact that there are two different regular expression flavors - basic and extended REs. While the existence of egrep-style extended regular expressions was known during the early Unix development period, <strong>Ken Thompson</strong> didn’t feel that it was necessary to implement such full-blown regular expressions for the ed editor. (Given the PDP-11’s small address space, the complexity of extended regular expressions, and the fact that for most editing jobs basic regular expressions are enough, this decision made sense.)</p>
+<p>The code for ed then served as the base for grep. (<strong>grep</strong> is an abbreviation for the ed command <code>g/re/p</code>: globally match re and print it.) ed’s code also served as an initial base for sed.</p>
+<p>Somewhere in the pre-V7 timeframe, egrep was created by <strong>Al Aho</strong>, a Bell Labs researcher who did groundbreaking work in regular expression matching and language parsing. The core matching code from egrep was later reused for regular expressions in awk.</p>
+<p>The <code>\&lt;</code> and <code>\&gt;</code> operators originated in a version of ed that was modified at the University of Waterloo by <strong>Rob Pike</strong>, <strong>Tom Duff</strong>, <strong>Hugh Redelmeier</strong>, and <strong>David Tilbrook</strong>. (Rob Pike was the one who invented those operators.) <strong>Bill Joy</strong> at UCB adopted it for the ex and vi editors, from whence it became widely used. Interval expressions originated in Programmer’s Workbench Unix (Programmer’s Workbench (PWB) Unix was a variant used within AT&amp;T to support telephone switch software development. It was also made available for commercial use.) and they filtered out into the commercial Unix world via System III, and later, System V. Table 3-8 lists the various Unix programs and which flavor of regular expression they use.</p>
+<p>A final note is that traditionally, awk did not support interval expressions within its flavor of extended regular expressions. Even as of 2005, support for interval expressions is not universal among different vendor versions of awk. For maximal portability, if you need to match braces from an awk program, you should escape them with a backslash, or enclose them inside a bracket expression. - <em>Check is needed.</em></p>
 </div>
 </div>
 </div>
@@ -7777,6 +7919,219 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Fundamental-building-blocks">Fundamental building blocks<a class="anchor-link" href="#Fundamental-building-blocks">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=26463daf-e7c8-47b7-be14-575e6231b702">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Single-characters">Single characters<a class="anchor-link" href="#Single-characters">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c6e3f8dd-8e04-4baf-a42a-488dd3817b23">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The fundamental building blocks of regular expressions are patterns that match <strong>single characters</strong>. Most characters, including all letters and digits, are regular expressions that match themselves. For example:</p>
+<ul>
+<li>The character <code>a</code> in a regular expression matches the character <code>a</code> in the input string.</li>
+<li>The digit <code>1</code> in a regular expression matches the digit <code>1</code> in the input string.</li>
+</ul>
+<p>The period <code>.</code> matches any single character. It is unspecified whether it matches an encoding error.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=acb514af-ec83-41a4-8d46-1e15960025f5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Atom">Atom<a class="anchor-link" href="#Atom">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3d7143c3-d223-4a76-a1b6-97b363f8e1e8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>An <strong>atom</strong> is:</p>
+<ul>
+<li>a regular expression enclosed in <code>()</code>: matching a match for the regular expression,</li>
+<li>an empty set of <code>()</code>: matching the null string,</li>
+<li>a bracket expression <code>[]</code>: see below,</li>
+<li><code>.</code>: matching any single character,</li>
+<li><code>^</code>: matching the null string at the beginning of a line,</li>
+<li><code>$</code>: matching the null string at the end of a line,</li>
+<li>a <code>\</code> followed by one of the characters <code>^ . [ $ ( ) | * + ? { \</code>: matching that character taken as an ordinary character,</li>
+<li>a <code>\</code> followed by any other character: matching that character taken as an ordinary character, as if the <code>\</code> had not been present, or</li>
+<li>a single character with no other significance: matching that character.</li>
+<li>It is illegal to end an RE with <code>\</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4670f17e-0d73-48d1-8976-7f50ecabe70c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Piece">Piece<a class="anchor-link" href="#Piece">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2ed1ba58-7f1c-44aa-9419-dfa08a70ed6f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>In addition to simple character matching, regular expressions can include special characters that modify the behavior of the preceding atom.</p>
+<p>A <strong>piece</strong> is an atom possibly followed by a single</p>
+<ul>
+<li><code>*</code>: matches a sequence of <code>0</code> or more matches of the atom;</li>
+<li><code>+</code>: matches a sequence of <code>1</code> or more matches of the atom;</li>
+<li><code>?</code>: matches a sequence of <code>0</code> or <code>1</code> matches of the atom;</li>
+<li>bound <code>{}</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=26970592-bcfd-48f7-99fe-d0edab20802f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Bound-%7B%7D">Bound <code>{}</code><a class="anchor-link" href="#Bound-%7B%7D">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=60f43803-6ad0-4486-8685-1815c2ea7902">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>A <strong>bound</strong> is <code>{</code> followed by an unsigned decimal integer, possibly followed by <code>,</code> possibly followed by another unsigned decimal integer, always followed by <code>}</code>.</p>
+<p>The integers must lie between <code>0</code> and <code>RE_DUP_MAX</code> (minimum 255) inclusive, and if there are two of them, the first may not exceed the second.</p>
+<ul>
+<li><code>{i}</code>: matches a sequence of exactly <code>i</code> matches of the atom it follows.</li>
+<li><code>{i,}</code>: matches a sequence of <code>i</code> or more matches of the atom it follows.</li>
+<li><code>{i,j}</code>: matches a sequence of <code>i</code> through <code>j</code> (inclusive) matches of the atom it follows.</li>
+</ul>
+<p>A <code>{</code> followed by a character other than a digit is an ordinary character, not the beginning of a bound.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=03f00daf-9582-4e7e-a99e-3c1e8178a05d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>getconf<span class="w"> </span>-a<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s1">'dup'</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>POSIX2_RE_<span class="ansi-red-intense-fg ansi-bold">DUP</span>_MAX                  32767
+RE_<span class="ansi-red-intense-fg ansi-bold">DUP</span>_MAX                         32767
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bd82c39d-6b9d-4c22-8418-c1329c1d0c2a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>getconf<span class="w"> </span>RE_DUP_MAX
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>32767
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=349e1956-a9ae-45d0-9425-8c65091ba177">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>cat<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s1">'pretty'</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre><span class="ansi-red-intense-fg ansi-bold">PRETTY</span>_NAME="Debian GNU/Linux 12 (bookworm)"
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=18e0550e-7d02-4c7c-81fe-ad42500bab41">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Bracket-Expressions-%5B%5D">Bracket Expressions <code>[]</code><a class="anchor-link" href="#Bracket-Expressions-%5B%5D">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7787,6 +8142,102 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>A <strong>bracket expression</strong> is a list of characters enclosed by <code>[</code> and <code>]</code>.</p>
+<ul>
+<li>It matches any single character in that list.</li>
+<li>If the first character of the list is the caret <code>^</code> then it matches any character <em>not</em> in the list; it is unspecified whether it matches an encoding error.</li>
+<li>To include a literal <code>]</code> in the list, make it the first character (following a possible '^').</li>
+<li>To include a literal <code>-</code>, make it<ul>
+<li>the first character, or</li>
+<li>last character, or</li>
+<li>the second endpoint of a range.</li>
+</ul>
+</li>
+<li>To use a literal <code>-</code> as the first endpoint of a range, enclose it in <code>[.</code> and <code>.]</code> to make it a collating element.</li>
+<li>To include a literal <code>^</code> place it anywhere but first.</li>
+</ul>
+<p>With the exception of these and some combinations using <code>[</code>, all other special characters, including '', lose their special significance within a bracket expression.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3843e82-bedd-406a-94f6-64dd797cdb2a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Range-Expression-%5Bi-j%5D">Range Expression <code>[i-j]</code><a class="anchor-link" href="#Range-Expression-%5Bi-j%5D">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4f7aeda0-7893-416b-8b54-0acc887b260d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Within a bracket expression, a <strong>range expression</strong> consists of two characters separated by a hyphen.</p>
+<ul>
+<li>It matches any single character that sorts between the two characters, inclusive, using the locale's collating sequence and character set.</li>
+</ul>
+<p>For example, in the default C locale, <code>[a-d]</code> is equivalent to <code>[abcd]</code>. Many locales sort characters in dictionary order, and in these locales <code>[a-d]</code> is typically not equivalent to <code>[abcd]</code>; it might be equivalent to <code>[aBbCcDd]</code>, for example. To obtain the traditional interpretation of bracket expressions, you can use the C locale by setting the <code>LC_ALL</code> environment variable to the value <code>C</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3d51ce24-7f38-4d95-ae92-d92c3b1e146c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Collating-Elements-%5B.-.%5D">Collating Elements <code>[.</code> <code>.]</code><a class="anchor-link" href="#Collating-Elements-%5B.-.%5D">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=142c501c-45ac-4dbc-9743-e1d60a6be741">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Within a bracket expression, a <strong>collating element</strong> is</p>
+<ul>
+<li>a character,</li>
+<li>a multicharacter sequence that collates as if it were a single character, or</li>
+<li>a collating-sequence name for either,</li>
+</ul>
+<p>enclosed in <code>[.</code> and <code>.]</code>, and it stands for the sequence of characters of that collating element.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0e98b008-8d63-4128-b184-81e1fb168da2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Equivalence-Classes-%5B=-=%5D">Equivalence Classes <code>[=</code> <code>=]</code><a class="anchor-link" href="#Equivalence-Classes-%5B=-=%5D">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cac9518d-d18d-4117-99cc-367e4827bb47">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Within a bracket expression, a collating element enclosed in <code>[=</code> and <code>=]</code> is an <strong>equivalence class</strong>, standing for the sequences of characters of all collating elements equivalent to that one, including itself.</p>
+<ul>
+<li>If there are no other equivalent collating elements, the treatment is as if the enclosing delimiters were <code>[.</code> and <code>.]</code>.</li>
+<li>An equivalence class may <em>not</em> be an endpoint of a range.</li>
+</ul>
+<p>For example, if o and ô are the  members  of an equivalence class, then "<code>[[=o=]]</code>", "<code>[[=ô=]]</code>", and "<code>[oô]</code>" are all synonymous.</p>
 </div>
 </div>
 </div>
@@ -7797,6 +8248,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Character-Classes-%5B:-:%5D">Character Classes <code>[:</code> <code>:]</code><a class="anchor-link" href="#Character-Classes-%5B:-:%5D">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7807,16 +8259,40 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Within a bracket expression, the name of a <strong>character class</strong> enclosed in <code>[:</code> and <code>:]</code> stands for the list of all characters belonging to that class. Standard character class names are:</p>
+<ul>
+<li><code>alnum</code></li>
+<li><code>digit</code></li>
+<li><code>punct</code></li>
+<li><code>alpha</code></li>
+<li><code>graph</code></li>
+<li><code>space</code></li>
+<li><code>blank</code></li>
+<li><code>lower</code></li>
+<li><code>upper</code></li>
+<li><code>cntrl</code></li>
+<li><code>print</code></li>
+<li><code>xdigit</code></li>
+</ul>
+<p>These stand for the character classes defined in <code>wctype(3)</code>. A locale may provide others.</p>
+<blockquote>
+<p>Note: A character class may not be used as an endpoint of a range.</p>
+</blockquote>
+<p>For example, <code>[[:alnum:]]</code> means the character class of numbers and letters in the current locale. In the C locale and ASCII character set encoding, this is the same as <code>[0-9A-Za-z]</code>.</p>
+<blockquote>
+<p>Note: Collating elements, equivalence classes, and character classes are only recognized inside the square brackets of a bracket expression. Writing a standalone regular expression such as <code>[:alpha:]</code> matches the characters <code>a</code>, <code>l</code>, <code>p</code>, <code>h</code>, and <code>:</code>. The correct way to write it is <code>[[:alpha:]]</code>.</p>
+</blockquote>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bb87d150-817d-4393-95e1-d6a718d214e8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=92abd3a4-5c97-421f-9c90-f35f38fedb22">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="The-Backslash-Character-and-Special-Expressions">The Backslash Character and Special Expressions<a class="anchor-link" href="#The-Backslash-Character-and-Special-Expressions">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7827,6 +8303,23 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>The symbols <code>\&lt;</code> and <code>\&gt;</code> respectively match the empty string at the beginning and end of a word.</li>
+<li>The symbol <code>\b</code> matches the empty string at the edge of a word, and <code>\B</code> matches the empty string provided it's not at the edge of a word.</li>
+<li>The symbol <code>\w</code> is a synonym for <code>[_[:alnum:]]</code> and <code>\W</code> is a synonym for <code>[^_[:alnum:]]</code>.</li>
+</ul>
+<p>While <code>\&lt;\&gt;</code> might work for simple cases, <code>\b\b</code> is generally more reliable and versatile. It explicitly checks for word boundaries on both sides, making it less prone to unexpected behavior in different scenarios and with various regex implementations. For most cases where you want to find entire words, using <code>\b</code> is the recommended approach.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5b313fa5-c463-4c87-8dae-d37ed208bc69">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Backreferences">Backreferences<a class="anchor-link" href="#Backreferences">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7837,6 +8330,49 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>BREs provide a mechanism, known as backreferences, for saying “match whatever an earlier part of the regular expression matched.” There are two steps to using backreferences:</p>
+<ol>
+<li>The first step is to enclose a subexpression in <code>\(</code> and <code>\)</code>. There may be up to <code>9</code> enclosed subexpressions within a single pattern, and they may be nested.</li>
+<li>The next step is to use <code>\digit</code>, where <code>digit</code> is a number between <code>1</code> and <code>9</code>, in a later part of the same pattern. Its meaning there is “<em>match whatever was matched by the <code>n</code>th earlier parenthesized subexpression.</em>”</li>
+</ol>
+<p>Here are some examples:</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Matches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\(ab\)\(cd\)[def]*\2\1</code></td>
+<td><code>abcdcdab</code>, <code>abcdeeecdab</code>, <code>abcdddeeffcdab</code>, ...</td>
+</tr>
+<tr>
+<td><code>\(why\).*\1</code></td>
+<td>A line with two occurrences of <code>why</code></td>
+</tr>
+<tr>
+<td><code>\([[:alpha:]_][[:alnum:]_]*\) = \1;</code></td>
+<td>Simple C/C++ assignment statement</td>
+</tr>
+</tbody>
+</table>
+<p>Backreferences are particularly useful for finding duplicated words and matching quotes:</p>
+<pre><code>\(["']\).*\1    # Matches single- or double-quoted words, like `'foo'` or `"bar"`.
+</code></pre>
+<p>This way, you don’t have to worry about whether a single quote or double quote was found first.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=45f0841a-7972-4589-babf-77560014e12f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Operator-precedence">Operator precedence<a class="anchor-link" href="#Operator-precedence">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7847,6 +8383,50 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>As in mathematical expressions, the regular expression operators have a certain defined precedence. This means that certain operators are applied before (have higher precedence than) other operators.</p>
+<center>Operator precedence from highest to lowest</center>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[..]</code></td>
+<td>Bracket symbols for character collation</td>
+</tr>
+<tr>
+<td><code>\metacharacter</code></td>
+<td>Escaped metacharacters</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>Bracket expressions</td>
+</tr>
+<tr>
+<td><code>\(\)</code></td>
+<td>Subexpressions and backreferences</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Repetition of the preceding single-character regex</td>
+</tr>
+<tr>
+<td><code>\{\}</code></td>
+<td>Repetition of the preceding single-character regex</td>
+</tr>
+<tr>
+<td>No symbol</td>
+<td>Concatenation</td>
+</tr>
+<tr>
+<td><code>^</code>, <code>$</code></td>
+<td>Anchors</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
