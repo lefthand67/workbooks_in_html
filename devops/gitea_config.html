@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>05_Access_Control_linux_adm</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>gitea_config</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7476,29 +7476,110 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=529b08f6-954b-41d4-ab2b-02e178bb27d1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db3299e2-2ed8-4bd2-84cf-4fb0c4207e1a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="5.-GNU/Linux---Access-Control">5. GNU/Linux - Access Control<a class="anchor-link" href="#5.-GNU/Linux---Access-Control">¶</a></h1>
+<h1 id="gitea"><a href="https://docs.gitea.com/">gitea</a><a class="anchor-link" href="#gitea">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5c71dd91-09ba-4f47-84f3-56d043e19e18">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9d085808-904a-48a6-89d1-fbdd79944bb6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="5.0-Commands-handout"><b></b>5.0 Commands handout<a class="anchor-link" href="#5.0-Commands-handout">¶</a></h1>
+<h1 id="Install"><b></b>Install<a class="anchor-link" href="#Install">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=49836e10-0900-4b7f-85d0-58e25202f78e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=11a912bd-1722-4ff2-a922-4bfeff9a5fa2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>gitea-data
+podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>gitea-config
+
+podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gitea<span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span>:22<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>gitea-data:/var/lib/gitea<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>gitea-config:/etc/gitea<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span><span class="se">\</span>
+docker.io/gitea/gitea:latest-rootless
+</pre></div>
+<blockquote>
+<p>Note: This won't work by default on RHEL-like systems because of the SELinux restrictions.</p>
+</blockquote>
+<p>Now just go to: <code>http://&lt;server_ip&gt;:3000/</code></p>
+<p>Inspect volumes:</p>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>gitea-data
+<span class="c1"># see mountpoint without quotes (-r)</span>
+podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>gitea-data<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span>.<span class="o">[</span><span class="m">0</span><span class="o">]</span>.Mountpoint
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3e4e3d5d-ca07-48df-92b6-240808378822">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="gitea-data"><code>gitea-data</code><a class="anchor-link" href="#gitea-data">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2bf805b1-a135-4371-9d10-d8130b8ce99c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span>$<span class="w"> </span>podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>gitea-data<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>
+<span class="o">[</span>
+<span class="w">  </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"gitea-data"</span>,
+<span class="w">    </span><span class="s2">"Driver"</span>:<span class="w"> </span><span class="s2">"local"</span>,
+<span class="w">    </span><span class="s2">"Mountpoint"</span>:<span class="w"> </span><span class="s2">"/home/user1/.local/share/containers/storage/volumes/gitea-data/_data"</span>,
+<span class="w">    </span><span class="s2">"CreatedAt"</span>:<span class="w"> </span><span class="s2">"2024-06-22T01:59:05.659878273+05:00"</span>,
+<span class="w">    </span><span class="s2">"Labels"</span>:<span class="w"> </span><span class="o">{}</span>,
+<span class="w">    </span><span class="s2">"Scope"</span>:<span class="w"> </span><span class="s2">"local"</span>,
+<span class="w">    </span><span class="s2">"Options"</span>:<span class="w"> </span><span class="o">{}</span>,
+<span class="w">    </span><span class="s2">"UID"</span>:<span class="w"> </span><span class="m">1000</span>,
+<span class="w">    </span><span class="s2">"GID"</span>:<span class="w"> </span><span class="m">1000</span>,
+<span class="w">    </span><span class="s2">"MountCount"</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">    </span><span class="s2">"NeedsCopyUp"</span>:<span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">]</span>
+
+$<span class="w"> </span>podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>gitea-data<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span>.<span class="o">[</span><span class="m">0</span><span class="o">]</span>.Mountpoint
+/home/user1/.local/share/containers/storage/volumes/gitea-data/_data
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=80043fad-7751-42d8-8a2e-0be93d8d583c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Files"><b></b>Files<a class="anchor-link" href="#Files">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f8e73255-9e91-40d4-b62e-5a76f4608b72">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7507,70 +7588,26 @@ a.anchor-link {
 <table>
 <thead>
 <tr>
-<th>bash</th>
+<th>file</th>
 <th>description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>/etc/passwd</code></td>
-<td>users' names list</td>
+<td><code>/var/lib/gitea/data/gitea.db</code></td>
+<td>database</td>
 </tr>
 <tr>
-<td><code>/etc/group</code></td>
-<td>groups list</td>
+<td><code>/var/lib/gitea/git/repositories</code></td>
+<td>root repository</td>
 </tr>
 <tr>
-<td><strong>login mode</strong></td>
-<td></td>
+<td><code>/etc/gitea/app.ini</code></td>
+<td>configuration file (change ip address, for example)</td>
 </tr>
 <tr>
-<td><code>~/.bash_profile</code></td>
-<td>is read in login mode</td>
-</tr>
-<tr>
-<td><code>/usr/bin/su - username</code></td>
-<td>access another user's account in login mode; root can <code>su</code> to any account without entering a password</td>
-</tr>
-<tr>
-<td><code>bash --login</code></td>
-<td>simulate a login shell and read the login mode files</td>
-</tr>
-<tr>
-<td><strong>non-login mode</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>~/.bashrc</code></td>
-<td>is read in nonlogin mode</td>
-</tr>
-<tr>
-<td><code>bash</code></td>
-<td>tart a new non-login bash shell</td>
-</tr>
-<tr>
-<td><strong>sudo</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>man 5 sudoers</code></td>
-<td>default sudo security policy plugin</td>
-</tr>
-<tr>
-<td><code>/etc/sudoers</code></td>
-<td>global sudoers group file, i.e. the users who can use <code>sudo</code> command</td>
-</tr>
-<tr>
-<td><code>/etc/sudoers.d/file</code></td>
-<td>separate files for different users or groups</td>
-</tr>
-<tr>
-<td><strong>security problems</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sudo sh</code>, <code>sudo su</code></td>
-<td>get the root shell without entering the root's password</td>
+<td><code>/var/lib/gitea/data/log</code></td>
+<td>logs</td>
 </tr>
 </tbody>
 </table>
@@ -7578,1816 +7615,407 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9306fb81-78a8-437e-b929-26577a64b6ed">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fcaf2944-b59d-4461-808e-ee093de087d7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Purpose</th>
-<th>Bash</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>root and sudo</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>su -</code> substitute user (<code>exit</code>)</td>
-<td>work as a root user</td>
-</tr>
-<tr>
-<td><code>sudo -l -U &lt;uname&gt;</code></td>
-<td>list the privileges for the invoking user</td>
-</tr>
-<tr>
-<td><strong>Adding\removing users</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>adduser &lt;uname&gt;</code></td>
-<td>add a new user</td>
-</tr>
-<tr>
-<td><code>deluser &lt;uname&gt;</code></td>
-<td>delete a user's account</td>
-</tr>
-<tr>
-<td><strong>Groups</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>groupadd &lt;gname&gt;</code></td>
-<td>create a group</td>
-</tr>
-<tr>
-<td><code>usermod -aG &lt;uname&gt; &lt;gname&gt;</code></td>
-<td>add an existing user to an existing group</td>
-</tr>
-<tr>
-<td><code>adduser &lt;uname&gt; &lt;gname&gt;</code></td>
-<td>create a new user and add them to an existing group</td>
-</tr>
-<tr>
-<td><code>groupdel &lt;gname&gt;</code></td>
-<td>delete a group</td>
-</tr>
-<tr>
-<td><strong>Show info</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>cat /etc/passwd</code></td>
-<td>show all users</td>
-</tr>
-<tr>
-<td><code>w</code> and <code>who</code></td>
-<td>show current users</td>
-</tr>
-<tr>
-<td><code>uptime</code></td>
-<td>show number of current users and load</td>
-</tr>
-<tr>
-<td><code>id</code> or <code>id &lt;username&gt;</code></td>
-<td>show user's groups with details</td>
-</tr>
-<tr>
-<td><code>groups</code> or <code>groups &lt;uname&gt;</code></td>
-<td>shows the user's groups</td>
-</tr>
-<tr>
-<td><strong>Passwords</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>passwd &lt;uname&gt;</code> (stored in <code>/etc/shadow</code>)</td>
-<td>change user password</td>
-</tr>
-<tr>
-<td><code>passwd -e &lt;uname&gt;</code> (expire flag)</td>
-<td>change pwd on the next logon</td>
-</tr>
-</tbody>
-</table>
+<h2 id="/etc/gitea/app.ini"><code>/etc/gitea/app.ini</code><a class="anchor-link" href="#/etc/gitea/app.ini">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4d1830df-fbea-4917-be04-bd67af713a70">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9334a265-087d-4037-8288-6ecddae3ab16">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="sudo"><code>sudo</code><a class="anchor-link" href="#sudo">¶</a></h2>
+<h3 id="Before-installation">Before installation<a class="anchor-link" href="#Before-installation">¶</a></h3>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=df089562-8a91-43db-a5a5-33d7815683c4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=100e06eb-22c5-411b-b6d1-f3102ca5c808">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Bash</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>apt install sudo</code></td>
-<td>install sudo</td>
-</tr>
-<tr>
-<td><code>etc/sudoers</code></td>
-<td>sudoers file, do not touch it</td>
-</tr>
-<tr>
-<td><code>visudo</code></td>
-<td>command for editing the sudoers file</td>
-</tr>
-<tr>
-<td><code>man 5 sudoers</code></td>
-<td>man on default <code>sudo</code> security policy plugin</td>
-</tr>
-<tr>
-<td><strong>restricted sudo rights</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>/etc/sudoers.d/filename</code></td>
-<td>give users sudo rights for some operations without adding them to the sudo group</td>
-</tr>
-<tr>
-<td><strong>unrestricted sudo rights</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>usermod -aG sudo &lt;username&gt;</code></td>
-<td>add an existing user to sudo group - sudo can act as root</td>
-</tr>
-<tr>
-<td><code>adduser &lt;uname&gt; sudo</code></td>
-<td>add user to sudo group</td>
-</tr>
-<tr>
-<td><code>sudo deluser &lt;uname&gt; sudo</code></td>
-<td>delete a user from the sudo group</td>
-</tr>
-<tr>
-<td><strong>Show info</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sudo -l -U &lt;uname&gt;</code></td>
-<td>list the privileges for the invoking user</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=089d1823-8f21-4b59-9334-8187dd0cad97">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="5.1-Standard-UNIX-access-control"><b></b>5.1 Standard UNIX access control<a class="anchor-link" href="#5.1-Standard-UNIX-access-control">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=054dc6c4-e5a2-4ea3-9257-133ea0ecdb67">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The standard UNIX access control model has remained largely unchanged for decades. With a few enhancements, it continues to be the default for general-purpose OS distributions. The scheme follows a few basic rules:</p>
-<ul>
-<li>Access control decisions depend on which user is attempting to perform an operation, or in some cases, on that user’s membership in a UNIX group.</li>
-<li>Objects (e.g., files and processes) have owners. Owners have broad (but not necessarily unrestricted) control over their objects.</li>
-<li>You own the objects you create.</li>
-<li>The special user account called “root” can act as the owner of any object.</li>
-<li>Only root can perform certain sensitive administrative operations.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4b96a2b8-1c5a-441a-b364-398b0b2f0754">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Filesystem-Control-Access">Filesystem Control Access<a class="anchor-link" href="#Filesystem-Control-Access">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=736b703a-1b9a-4100-84ad-84b43daf26f6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>See <a href="./04_Filesystem_linux_adm.ipynb">04_Filesystem_linux_adm</a></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5e029dd4-9858-4e66-a1e1-ddb4f759ef45">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Process-ownership">Process ownership<a class="anchor-link" href="#Process-ownership">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=74d619ad-1684-4627-ada3-16757e8e2515">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The owner of a process can send the <strong>process signals</strong> and can also reduce (<strong>degrade</strong>) the process’ scheduling priority. Processes actually have multiple identities associated with them:</p>
-<ul>
-<li>a real, effective, and saved UID;</li>
-<li>a real, effective, and saved GID; and</li>
-<li>under Linux, a “filesystem UID” that is used only to determine file access permissions.</li>
-</ul>
-<p>Broadly speaking,</p>
-<ul>
-<li>the real numbers are used for accounting (now largely vestigial), and</li>
-<li>the effective numbers are used for the determination of access permissions.</li>
-</ul>
-<p>The real and effective numbers are normally the same (but not always, see <a href="./04_Filesystem_linux_adm.ipynb#The-setuid-and-setgid-bits">The setuid and setgid bits</a>).</p>
-<p>The saved UID and GID are parking spots for IDs that are not currently in use but that remain available for the process to invoke. The saved IDs allow a program to repeatedly enter and leave a privileged mode of operation; this precaution reduces the risk of unintended misbehavior.</p>
-<p>The filesystem UID is generally explained as an implementation detail of NFS, the Network File System. It is usually the same as the effective UID.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c57407fe-5e33-41b3-88bf-c772bd18dddb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="The-root-account">The root account<a class="anchor-link" href="#The-root-account">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cca2d074-03ca-4d94-ab36-eb683d4dbb1f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><code>root</code>'s UID is <code>0</code>.</p>
-<p>Nothing prevents you from changing the username on this account or from creating additional accounts whose UIDs are 0; however, such changes have a tendency to create inadvertent breaches of system security. They also create confusion when other people have to deal with the strange way you’ve configured your system.</p>
-<p>Traditional UNIX allows the superuser (that is, any process for which the effective UID is 0) to perform any valid operation on any file or process (certain operations such as executing a file on which the execute permission bit is not set, are forbidden even to the superuser).</p>
-<p>An example of superuser powers is the ability of a process owned by root to change its UID and GID. The login program and its GUI equivalents are a case in point; the process that prompts you for your password when you log in to the system initially runs as root. If the password and username that you enter are legitimate, the login program changes its UID and GID to your UID and GID and starts up your shell or GUI environment. Once a root process has changed its ownerships to become a normal user process, it can’t recover its former privileged state.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a95c4bc2-92c9-4782-ac2e-555ffa0f2193">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Setuid-and-setgid-execution">Setuid and setgid execution<a class="anchor-link" href="#Setuid-and-setgid-execution">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cb262225-3d28-425b-a1f4-2b323b08e6b3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>See <a href="./04_Filesystem_linux_adm.ipynb#The-setuid-and-setgid-bits">The setuid and setgid bits</a>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=80aad868-97bc-4b0a-84c1-049b1ba2de51">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="5.2-Management-of-the-root-account"><b></b>5.2 Management of the root account<a class="anchor-link" href="#5.2-Management-of-the-root-account">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f48d589e-bdb6-4e74-9571-48a616b3dc6a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Proper husbandry of the root account is a crucial skill.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5ff268c6-75ec-4116-8b02-736d1b9c40e6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Root-account-login">Root account login<a class="anchor-link" href="#Root-account-login">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=420559b1-90c8-4bec-91e5-27f064609119">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li>Root logins leave no record of what operations were performed as root.</li>
-<li>The log-in-as-root scenario leaves no record of who was actually doing the work. If several people have access to the root account, you won’t be able to tell who used it and when.</li>
-</ul>
-<p>For these reasons, most systems allow root logins to be disabled on terminals, through window systems, and across the network — everywhere but on the system console.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f58c0b87-e78a-466b-8a5f-2157c5e27632">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Restore-root-password">Restore root password<a class="anchor-link" href="#Restore-root-password">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b201bdfc-b409-447f-9f54-3a5379e51b46">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol>
-<li>Restart the machine and press <code>e</code> in the grub menu.</li>
-<li>Locate the line starting with "Linux" and append to the end:<ul>
-<li><code>rw init=/bin/bash</code></li>
-</ul>
-</li>
-<li>Boot:<ul>
-<li><code>ctrl-x</code>.</li>
-</ul>
-</li>
-<li>Change the root password using:<ul>
-<li><code>passwd</code></li>
-</ul>
-</li>
-<li>(in Fedora) Restore the SELinux context and permissions with:<ul>
-<li><code>touch / .autorelabel</code></li>
-</ul>
-</li>
-<li>Remount the root dir:<ul>
-<li><code>mount -o remount,ro /</code></li>
-</ul>
-</li>
-<li>Reboot the system:<ul>
-<li><code>/sbin/reboot -f</code></li>
-</ul>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b9574f99-822c-47e5-a3fc-6008dc227df0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="su:-substitute-user-identity"><code>su</code>: substitute user identity<a class="anchor-link" href="#su:-substitute-user-identity">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=75863d14-092f-47cb-aed9-65cbe0eed3f3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>A marginally better way to access the root account is to use the <code>su</code> command. If invoked without arguments, <code>su</code> prompts for the root password and then starts up a root shell. Root privileges remain in effect until you terminate the shell by typing <code>&lt;Control-D&gt;</code> or the <code>exit</code> command.</p>
-<blockquote>
-<p><code>su</code> doesn’t record the commands executed as root, but it does create a log entry that states who became root and when.</p>
-</blockquote>
-<p>The <code>su</code> command can also substitute identities other than root. Sometimes, the only way to reproduce or debug a user’s problem is to <code>su</code> to their account so that you reproduce the environment in which the problem occurs.</p>
-<p>If you know someone’s password, you can access that person’s account directly by executing <code>su - username</code>. As with an <code>su</code> to root, you are prompted for the password for username. The <code>-</code> (dash) option makes <code>su</code> spawn the shell in login mode.</p>
-<p>The exact implications of login mode vary by shell, but <strong>login mode</strong> normally changes the number or identity of the files that the shell reads when it starts up. For example, bash reads</p>
-<ul>
-<li><code>~/.bash_profile</code> in login mode and</li>
-<li><code>~/.bashrc</code> in nonlogin mode.</li>
-</ul>
-<p>When diagnosing other users’ problems, it helps to reproduce their login environments as closely as possible by running in login mode.</p>
-<hr/>
-<p><em>ChatGPT</em>:</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5a07083a-5fe2-4f4c-9ca7-53aa65656276">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Login-Mode-vs.-Non-login-Mode">Login Mode vs. Non-login Mode<a class="anchor-link" href="#Login-Mode-vs.-Non-login-Mode">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2be41306-de39-4188-91b3-e04d92f8266b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>When you start a shell session in Unix or Linux, the shell can operate in different modes. One of these modes is "login mode." The distinction between login and non-login mode affects which configuration files the shell reads and executes when it starts up. This can impact the environment setup, such as environment variables, aliases, and functions that are available in the shell session.</p>
-<ol>
-<li><p><strong>Login Mode</strong>:</p>
-<ul>
-<li>When you log into your system (e.g., via SSH, or by logging in at a console), you are starting a shell in login mode.</li>
-<li>In login mode, the shell reads and executes commands from certain initialization files, which typically include:<ul>
-<li><code>~/.bash_profile</code>: This is the primary startup file read when a user logs into the system.</li>
-<li><code>~/.bash_login</code>: If <code>~/.bash_profile</code> does not exist, <code>~/.bash_login</code> will be read.</li>
-<li><code>~/.profile</code>: If neither <code>~/.bash_profile</code> nor <code>~/.bash_login</code> exist, <code>~/.profile</code> will be read.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Non-login Mode</strong>:</p>
-<ul>
-<li>When you open a new terminal window in a graphical environment, or when you start a subshell, you are usually starting a shell in non-login mode.</li>
-<li>In non-login mode, the shell reads and executes commands from different initialization files, typically:<ul>
-<li><code>~/.bashrc</code>: This file contains configurations for interactive non-login shells. This is where you define functions, aliases, and non-environmental settings.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p><strong>How to Start a Shell in Login Mode</strong></p>
-<p>To simulate a login shell and read the login mode files, you can start your shell with the <code>--login</code> option:</p>
-<div class="highlight"><pre><span></span>bash<span class="w"> </span>--login
-</pre></div>
-<p>This command forces <code>bash</code> to behave as if it is a login shell, reading the appropriate startup files like <code>~/.bash_profile</code>.</p>
-<p>If you call <code>bash</code> with no options, you simulate a non-login shell.</p>
-<hr/>
-<p>On some systems, the root password allows an <code>su</code> or <code>login</code> to any account. On others, you must first <code>su</code> explicitly to root before <code>su</code>ing to another account;</p>
-<blockquote>
-<p>root can <code>su</code> to any account without entering a password.</p>
-</blockquote>
-<p>Get in the habit of typing the full pathname to <code>su</code> (e.g., <code>/bin/su</code> or <code>/usr/bin/su</code>) rather than relying on the shell to find the command for you. This precaution gives you some protection against arbitrary programs called <code>su</code> that might have been sneaked into your search path with the intention of harvesting passwords.</p>
-<p>On most systems, you must be a member of the group “wheel” to use <code>su</code>. We consider <code>su</code> to have been largely superseded by <code>sudo</code>, described in the next section. <code>su</code> is best reserved for emergencies. It’s also helpful for fixing situations in which <code>sudo</code> has been broken or misconfigured.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d6ed2200-2e45-4e12-97c7-3f7358cb913c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="sudo:-limited-su"><code>sudo</code>: limited <code>su</code><a class="anchor-link" href="#sudo:-limited-su">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a3799490-a858-4241-a04b-2e18a38426d8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>If the root account is used by several administrators, you really have only a vague idea of who’s using it or what they’ve done.</p>
-<p>The most widely used solution to these problems is a program called <code>sudo</code> that is currently maintained by Todd Miller. We recommend it as the primary method of access to the root account.</p>
-<p><code>sudo</code> takes as its argument a command line to be executed as root (or as another restricted user). <code>sudo</code> consults the file <code>/etc/sudoers</code> (<code>/usr/local/etc/sudoers</code> on FreeBSD), which lists the people who are authorized to use <code>sudo</code> and the commands they are allowed to run on each host. If the proposed command is permitted, <code>sudo</code> prompts for the user’s own password and executes the command.</p>
-<p>Additional <code>sudo</code> commands can be executed without the “doer” having to type a password until a five-minute period (configurable) has elapsed with no further sudo activity. This timeout serves as a modest protection against users with <code>sudo</code> privileges who leave terminals unattended.</p>
-<p><code>sudo</code> keeps a log of</p>
-<ul>
-<li>the command lines that were executed,</li>
-<li>the hosts on which they were run,</li>
-<li>the people who ran them,</li>
-<li>the directories from which they were run, and</li>
-<li>the times at which they were invoked.</li>
-</ul>
-<p>This information can be logged by syslog or placed in the file of your choice. We recommend using syslog to forward the log entries to a secure central host.</p>
-<p>A log entry for randy’s executing <code>sudo /usr/bin/cat /etc/sudoers</code> might look like this:</p>
-<div class="highlight"><pre><span></span>Dec<span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">10</span>:57:19<span class="w"> </span>tigger<span class="w"> </span>sudo:<span class="w"> </span>randy:<span class="w"> </span><span class="nv">TTY</span><span class="o">=</span>ttyp0<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nv">PWD</span><span class="o">=</span>/tigger/users/randy<span class="p">;</span>
-<span class="nv">USER</span><span class="o">=</span>root<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nv">COMMAND</span><span class="o">=</span>/bin/cat<span class="w"> </span>/etc/sudoers
+<div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>/etc/gitea/app.ini<span class="w"> </span>
+<span class="nv">APP_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Gitea:<span class="w"> </span>Git<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>cup<span class="w"> </span>of<span class="w"> </span>tea
+<span class="nv">RUN_USER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git
+<span class="nv">RUN_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>prod
+
+<span class="o">[</span>repository<span class="o">]</span>
+<span class="nv">ROOT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/git/repositories
+
+<span class="o">[</span>repository.local<span class="o">]</span>
+<span class="nv">LOCAL_COPY_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/tmp/gitea/local-repo
+
+<span class="o">[</span>repository.upload<span class="o">]</span>
+<span class="nv">TEMP_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/tmp/gitea/uploads
+
+<span class="o">[</span>server<span class="o">]</span>
+<span class="nv">APP_DATA_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea
+<span class="nv">SSH_DOMAIN</span><span class="w">       </span><span class="o">=</span><span class="w"> </span>localhost
+<span class="nv">HTTP_PORT</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="m">3000</span>
+<span class="nv">ROOT_URL</span><span class="w">         </span><span class="o">=</span><span class="w"> </span>
+<span class="nv">DISABLE_SSH</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="p">;</span><span class="w"> </span>In<span class="w"> </span>rootless<span class="w"> </span>gitea<span class="w"> </span>container<span class="w"> </span>only<span class="w"> </span>internal<span class="w"> </span>ssh<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </span>supported
+<span class="nv">START_SSH_SERVER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="nv">SSH_PORT</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="m">2222</span>
+<span class="nv">SSH_LISTEN_PORT</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="m">2222</span>
+<span class="nv">BUILTIN_SSH_SERVER_USER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git
+<span class="nv">LFS_START_SERVER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+
+<span class="o">[</span>database<span class="o">]</span>
+<span class="nv">PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/gitea.db
+<span class="nv">DB_TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>sqlite3
+<span class="nv">HOST</span><span class="w">    </span><span class="o">=</span><span class="w"> </span>localhost:3306
+<span class="nv">NAME</span><span class="w">    </span><span class="o">=</span><span class="w"> </span>gitea
+<span class="nv">USER</span><span class="w">    </span><span class="o">=</span><span class="w"> </span>root
+<span class="nv">PASSWD</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>
+
+<span class="o">[</span>session<span class="o">]</span>
+<span class="nv">PROVIDER_CONFIG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/sessions
+
+<span class="o">[</span>picture<span class="o">]</span>
+<span class="nv">AVATAR_UPLOAD_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/avatars
+<span class="nv">REPOSITORY_AVATAR_UPLOAD_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/repo-avatars
+
+<span class="o">[</span>attachment<span class="o">]</span>
+<span class="nv">PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/attachments
+
+<span class="o">[</span>log<span class="o">]</span>
+<span class="nv">ROOT_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/log
+
+<span class="o">[</span>security<span class="o">]</span>
+<span class="nv">INSTALL_LOCK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="nv">SECRET_KEY</span><span class="w">   </span><span class="o">=</span><span class="w"> </span>
+<span class="nv">REVERSE_PROXY_LIMIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">REVERSE_PROXY_TRUSTED_PROXIES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>*
+
+<span class="o">[</span>service<span class="o">]</span>
+<span class="nv">DISABLE_REGISTRATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="nv">REQUIRE_SIGNIN_VIEW</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+
+<span class="o">[</span>lfs<span class="o">]</span>
+<span class="nv">PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/git/lfs
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ed8a5f9e-c668-48c0-b10d-6c9c16aa9d34">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0bdd2566-a0bc-4a1c-a865-3b2297734fc6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Example-configuration">Example configuration<a class="anchor-link" href="#Example-configuration">¶</a></h3>
+<h3 id="After-installation">After installation<a class="anchor-link" href="#After-installation">¶</a></h3>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ca58172-faf0-47d1-8807-93c5eda7c1e3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f8ce2300-9d4e-41f0-ac0d-7280912d7c7a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The sudoers file is designed so that a single version can be used on many different hosts at once. Here’s a typical example:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Define aliases for machines in CS &amp; Physics departments</span>
-Host_Alias<span class="w"> </span><span class="nv">CS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>tigger,<span class="w"> </span>anchor,<span class="w"> </span>piper,<span class="w"> </span>moet,<span class="w"> </span>sigi
-Host_Alias<span class="w"> </span><span class="nv">PHYSICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>eprince,<span class="w"> </span>pprince,<span class="w"> </span>icarus
+<div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>/etc/gitea/app.ini<span class="w"> </span>
+<span class="nv">APP_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>debian-server
+<span class="nv">RUN_USER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git
+<span class="nv">RUN_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>prod
+<span class="nv">WORK_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea
 
-<span class="c1"># Define collections of commands</span>
-Cmnd_Alias<span class="w"> </span><span class="nv">DUMP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/sbin/dump,<span class="w"> </span>/sbin/restore
-Cmnd_Alias<span class="w"> </span><span class="nv">WATCHDOG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/local/bin/watchdog
-Cmnd_Alias<span class="w"> </span><span class="nv">SHELLS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/bin/sh,<span class="w"> </span>/bin/dash,<span class="w"> </span>/bin/bash
+<span class="o">[</span>repository<span class="o">]</span>
+<span class="nv">ROOT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/git/repositories
 
-<span class="c1"># Permissions</span>
-mark,<span class="w"> </span>ed<span class="w">		 </span><span class="nv">PHYSICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ALL
-herb<span class="w">			 </span><span class="nv">CS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/sbin/tcpdump<span class="w"> </span>:<span class="w"> </span><span class="nv">PHYSICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>operator<span class="o">)</span><span class="w"> </span>DUMP
-lynda<span class="w">		     </span><span class="nv">ALL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>ALL<span class="o">)</span><span class="w"> </span>ALL,<span class="w"> </span>!SHELLS
-%wheel<span class="w">		     </span>ALL,<span class="w"> </span>!PHYSICS<span class="w"> </span><span class="o">=</span><span class="w"> </span>NOPASSWD:<span class="w"> </span>WATCHDOG
-</pre></div>
-<p>The first two sets of lines define groups of hosts (see <code>/ets/hosts</code> file) and commands that are referred to in the permission specifications later in the file. The lists could be included literally in the specifications, but aliases make the sudoers file easier to read and understand; they also make the file easier to update in the future. It’s also possible to define aliases for sets of users and for sets of users as whom commands may be run.</p>
-<p>Each permission specification line includes information about</p>
-<ul>
-<li>The users to whom the line applies</li>
-<li>The hosts on which the line should be heeded</li>
-<li>The commands that the specified users can run</li>
-<li>The users as whom the commands can be executed</li>
-</ul>
-<p>The first permission line applies to the users <code>mark</code> and <code>ed</code> on the machines in the <code>PHYSICS</code> group (<code>eprince</code>, <code>pprince</code>, and <code>icarus</code>). The built-in command alias <code>ALL</code> allows them to run any command. Since no list of users is specified in parentheses, sudo will run commands as root.</p>
-<p>The second permission line allows <code>herb</code> to run <code>tcpdump</code> on <code>CS</code> machines and dump-related commands on <code>PHYSICS</code> machines. However, the dump commands can be run only as <code>operator</code>, not as root. The actual command line that <code>herb</code> would type would be something like</p>
-<div class="highlight"><pre><span></span>ubuntu$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>operator<span class="w"> </span>/usr/sbin/dump<span class="w"> </span>0u<span class="w"> </span>/dev/sda1
-</pre></div>
-<p>The user <code>lynda</code> can run commands as any user on any machine, except that she can’t run several common shells. Does this mean that lynda really can’t get a root shell? Of course not:</p>
-<div class="highlight"><pre><span></span>ubuntu$<span class="w"> </span>cp<span class="w"> </span>-p<span class="w"> </span>/bin/sh<span class="w"> </span>/tmp/sh
-ubuntu$<span class="w"> </span>sudo<span class="w"> </span>/tmp/sh
-</pre></div>
-<p>Generally speaking,</p>
-<blockquote>
-<p>any attempt to allow “all commands except ...” is doomed to failure, at least in a technical sense.</p>
-</blockquote>
-<p>However, it might still be worthwhile to set up the sudoers file this way as a reminder that root shells are strongly discouraged.</p>
-<p>The final line allows users in group <code>wheel</code> to run the local <code>watchdog</code> command as root on all machines except <code>eprince</code>, <code>pprince</code>, and <code>icarus</code>. Furthermore, no password is required to run the command.</p>
-<p>Note that commands in the sudoers file are specified with full pathnames to prevent people from executing their own programs and scripts as root. Though no examples are shown above, it is possible to specify the arguments that are permissible for each command as well.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8770b398-0851-4751-aae0-6e84e3e25884">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="sudo-pros-and-cons"><code>sudo</code> pros and cons<a class="anchor-link" href="#sudo-pros-and-cons">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1dd253ce-1e7e-4938-b3ee-71589b5c1113">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The use of sudo has the following advantages:</p>
-<ul>
-<li>Accountability is much improved because of command logging.</li>
-<li>Users can do specific chores without having unlimited root privileges.</li>
-<li>The real root password can be known to only one or two people (Or even zero people, if you have the right kind of password vault system in place).</li>
-<li>Using sudo is faster than using su or logging in as root.</li>
-<li>Privileges can be revoked without the need to change the root password.</li>
-<li>A canonical list of all users with root privileges is maintained.</li>
-<li>The chance of a root shell being left unattended is lessened.</li>
-<li>A single file can control access for an entire network.</li>
-</ul>
-<p><code>sudo</code> has a couple of disadvantages as well. The worst of these is that any breach in the security of a sudoer’s personal account can be equivalent to breaching the root account itself. You can’t do much to counter this threat other than caution your sudoers to protect their own accounts as they would the root account. You can also run a password cracker regularly on sudoers’ passwords to ensure that they are making good password selections.</p>
-<p><code>sudo</code>’s command logging can easily be subverted by tricks such as <strong>shell escapes</strong> from within an allowed program, or by</p>
-<ul>
-<li><code>sudo sh</code> and</li>
-<li><code>sudo su</code>.</li>
-</ul>
-<p>(Such commands do show up in the logs, so you’ll at least know they’ve been run.)</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ddaf4d50-22ed-4088-918e-1350ffe33024">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="visudo"><code>visudo</code><a class="anchor-link" href="#visudo">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=faf4af5a-8929-472c-9eba-7fc7c7ec169f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>To manually modify the sudoers file, use the <code>visudo</code> command, which checks to be sure no one else is editing the file, invokes an editor on it (<code>vi</code>, or whichever editor you specify in your <code>EDITOR</code> environment variable), and then verifies the syntax of the edited file before installing it. This last step is particularly important because an invalid sudoers file might prevent you from sudoing again to fix it.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ce4170b-c7f9-44c3-a030-32f38fe4b7e9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="sudoers">sudoers<a class="anchor-link" href="#sudoers">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6c1bc63f-e9b5-4776-8b0f-dc49bda0e94d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-<p><em>ChatGPT</em>:</p>
-<p>You have three ways to give a user sudo rights:</p>
-<ul>
-<li>restricted sudo rights to a group of the users (<code>/etc/sudoers.d/filename</code>);</li>
-<li>restricted sudo rights to one user (<code>/etc/sudoers.d/filename</code>);</li>
-<li>unrestricted sudo rights to any user (add to <code>sudo</code> group; <code>/etc/sudoers</code>).</li>
-</ul>
-<div class="highlight"><pre><span></span>visudo<span class="w"> </span>/etc/sudoers.d/myfile<span class="w">        </span><span class="c1"># Create a file</span>
-chmod<span class="w"> </span><span class="m">440</span><span class="w"> </span>/etc/sudoers.d/myfile<span class="w">     </span><span class="c1"># Restrict permissions to this file</span>
+<span class="o">[</span>repository.local<span class="o">]</span>
+<span class="nv">LOCAL_COPY_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/tmp/gitea/local-repo
+
+<span class="o">[</span>repository.upload<span class="o">]</span>
+<span class="nv">TEMP_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/tmp/gitea/uploads
+
+<span class="o">[</span>server<span class="o">]</span>
+<span class="nv">APP_DATA_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea
+<span class="nv">SSH_DOMAIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">192</span>.168.1.9
+<span class="nv">HTTP_PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3000</span>
+<span class="nv">ROOT_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>http://192.168.1.9:3000/
+<span class="nv">DISABLE_SSH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="p">;</span><span class="w"> </span>In<span class="w"> </span>rootless<span class="w"> </span>gitea<span class="w"> </span>container<span class="w"> </span>only<span class="w"> </span>internal<span class="w"> </span>ssh<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </span>supported
+<span class="nv">START_SSH_SERVER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="nv">SSH_PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2222</span>
+<span class="nv">SSH_LISTEN_PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2222</span>
+<span class="nv">BUILTIN_SSH_SERVER_USER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git
+<span class="nv">LFS_START_SERVER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="nv">DOMAIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">192</span>.168.1.9
+<span class="nv">LFS_JWT_SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>qbRax2Ay-bEn2nxv4v8_9_ZjZ7Y4TKRaWweUxR27TgU
+<span class="nv">OFFLINE_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="o">[</span>database<span class="o">]</span>
+<span class="nv">PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/gitea.db
+<span class="nv">DB_TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>sqlite3
+<span class="nv">HOST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>localhost:3306
+<span class="nv">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gitea
+<span class="nv">USER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>root
+<span class="nv">PASSWD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="nv">SCHEMA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="nv">SSL_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>disable
+<span class="nv">LOG_SQL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+
+<span class="o">[</span>session<span class="o">]</span>
+<span class="nv">PROVIDER_CONFIG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/sessions
+<span class="nv">PROVIDER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>file
+
+<span class="o">[</span>picture<span class="o">]</span>
+<span class="nv">AVATAR_UPLOAD_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/avatars
+<span class="nv">REPOSITORY_AVATAR_UPLOAD_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/repo-avatars
+
+<span class="o">[</span>attachment<span class="o">]</span>
+<span class="nv">PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/attachments
+
+<span class="o">[</span>log<span class="o">]</span>
+<span class="nv">ROOT_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/log
+<span class="nv">MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>console
+<span class="nv">LEVEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>info
+
+<span class="o">[</span>security<span class="o">]</span>
+<span class="nv">INSTALL_LOCK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="nv">SECRET_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="nv">REVERSE_PROXY_LIMIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">REVERSE_PROXY_TRUSTED_PROXIES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>*
+<span class="nv">INTERNAL_TOKEN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE3MTkwMDQ5Mjd9.r-wwYGU66Fw4V5n_qyDgyvn0RPJZiFf6Ct7F6r9LWGQ
+<span class="nv">PASSWORD_HASH_ALGO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>pbkdf2
+
+<span class="o">[</span>service<span class="o">]</span>
+<span class="nv">DISABLE_REGISTRATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="nv">REQUIRE_SIGNIN_VIEW</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="nv">REGISTER_EMAIL_CONFIRM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="nv">ENABLE_NOTIFY_MAIL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="nv">ALLOW_ONLY_EXTERNAL_REGISTRATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="nv">ENABLE_CAPTCHA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="nv">DEFAULT_KEEP_EMAIL_PRIVATE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="nv">DEFAULT_ALLOW_CREATE_ORGANIZATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="nv">DEFAULT_ENABLE_TIMETRACKING</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="nv">NO_REPLY_ADDRESS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>noreply.localhost
+
+<span class="o">[</span>lfs<span class="o">]</span>
+<span class="nv">PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/git/lfs
+
+<span class="o">[</span>mailer<span class="o">]</span>
+<span class="nv">ENABLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+
+<span class="o">[</span>openid<span class="o">]</span>
+<span class="nv">ENABLE_OPENID_SIGNIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="nv">ENABLE_OPENID_SIGNUP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="o">[</span>cron.update_checker<span class="o">]</span>
+<span class="nv">ENABLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="o">[</span>repository.pull-request<span class="o">]</span>
+<span class="nv">DEFAULT_MERGE_STYLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>merge
+
+<span class="o">[</span>repository.signing<span class="o">]</span>
+<span class="nv">DEFAULT_TRUST_MODEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>committer
+
+<span class="o">[</span>oauth2<span class="o">]</span>
+<span class="nv">JWT_SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>IhLMNPdN2O2HsnQlkYrDQGifkSslFTal8uhehbbe6fs
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=02ef9339-d918-48f2-8aaa-d6382fd4e068">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Precedence">Precedence<a class="anchor-link" href="#Precedence">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9923fe36-601b-4955-8a85-9dd91ef73485">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The rule is that sudo always obeys the last matching line, with matching being determined by the entire 4-tuple of</p>
-<ul>
-<li>user,</li>
-<li>host,</li>
-<li>target user, and</li>
-<li>command.</li>
-</ul>
-<p>Each of those elements must match the configuration line, or the line is simply ignored.</p>
-<p>Therefore, <code>NOPASSWD</code> exceptions must follow their more general counterparts.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5536244e-ce23-4003-bb68-b370abe9631f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Restricted-sudo-rights-to-a-group-of-users">Restricted sudo rights to a <b></b>group of users<a class="anchor-link" href="#Restricted-sudo-rights-to-a-group-of-users">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eda1b143-fc9f-411b-9499-40130cb7689e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="User_alias"><code>User_alias</code><a class="anchor-link" href="#User_alias">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=150e130a-608c-4513-ac10-e82ab1ac7e8a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Add to the <code>/etc/sudoers.d/myfile</code>:</p>
-<div class="highlight"><pre><span></span>Host_Alias<span class="w">      </span><span class="nv">DB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>pg_server
-
-User_Alias<span class="w">      </span><span class="nv">SYS_ADMIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user1,<span class="w"> </span>user3
-User_Alias<span class="w">      </span><span class="nv">PG_ADMIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user1,<span class="w"> </span>user2
-
-Cmnd_Alias<span class="w">      </span><span class="nv">SHUTDOWN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/sbin/reboot,<span class="w"> </span>/sbin/poweroff
-Cmnd_Alias<span class="w">      </span><span class="nv">SYSMGMT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/systemctl
-Cmnd_Alias<span class="w">      </span><span class="nv">PKGMGMT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/dpkg,<span class="w"> </span>/usr/bin/apt
-Cmnd_Alias<span class="w">      </span><span class="nv">READLOGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/journalctl<span class="w"> </span>-r,<span class="w"> </span>/usr/bin/less<span class="w"> </span>/var/log/*,<span class="w"> </span>/usr/bin/tail<span class="w"> </span>-f<span class="w"> </span>/var/log/*
-Cmnd_Alias<span class="w">      </span><span class="nv">PG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/lib/postgresql/15/bin/*,<span class="w"> </span>/usr/bin/pg_ctlcluster
-
-<span class="c1"># Users listed above can run commands</span>
-<span class="c1"># User_Alias     ALL = (ALL) ALL</span>
-SYS_ADMIN<span class="w">       </span><span class="nv">ALL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SHUTDOWN,<span class="w"> </span>SYSMGMT,<span class="w"> </span>PKGMGMT,<span class="w"> </span>READLOGS
-PG_ADMIN<span class="w">        </span><span class="nv">DB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>READLOGS,<span class="w"> </span>PG
-</pre></div>
-<p>Also see: <a href="#Example-configuration">Example configuration</a></p>
-<ul>
-<li><code>Host_Alias</code>: the list of hostnames, see <code>/etc/hosts</code> for the names</li>
-<li><code>User_Alias</code>: the list of users</li>
-<li><code>Cmnd_Alias</code>: the list of commands</li>
-<li><code>ALL = (ALL) ALL</code>: "all Host_Aliases" = ("as all User_Aliases") "all Cmnd_Aliases"</li>
-</ul>
-<blockquote>
-<p>Note: When a user is in multiple <code>User_Alias</code> entries, they inherit the privileges from all those aliases. So in this case, <code>user1</code> will have the combined privileges of <code>SYS_ADMIN</code> and <code>PG_ADMIN</code> when running commands.</p>
-</blockquote>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8f41597f-bac4-488b-89e8-3fc4e17fc796">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="linux-group">linux group<a class="anchor-link" href="#linux-group">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c7f7f366-c5c7-49fd-8e80-9d366f0ec9e8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Also you can create a <strong>linux group</strong>:</p>
-<div class="highlight"><pre><span></span>groupadd<span class="w"> </span>user_group
-</pre></div>
-<p>and grant its members restricted rights in <code>/etc/sudoers.d/myfile</code>:</p>
-<div class="highlight"><pre><span></span>%user_group<span class="w">           </span><span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span><span class="w"> </span>NOPASSWD:<span class="w"> </span>POWER
-</pre></div>
-<p>After making the changes, save the file and the members of the user_group will be able to run <code>poweroff</code> and <code>reboot</code> without a password prompt.</p>
-<blockquote>
-<p>Note: After being added to a new group the user must log out and then log back in again for the new group to take effect.</p>
-</blockquote>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=09c864d1-81a6-4b6d-a630-d06d5e008a80">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Restricted-sudo-rights-to-one-user">Restricted sudo rights to one <b></b>user<a class="anchor-link" href="#Restricted-sudo-rights-to-one-user">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1c4b4c82-8387-4329-bf60-adaee2d3ba4c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Add lines with desired commands for a specific user:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Allow to execute the poweroff and reboot commands without password</span>
-user1<span class="w"> 	            </span><span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span><span class="w"> </span>NOPASSWD:<span class="w"> </span>/sbin/poweroff,<span class="w"> </span>/sbin/reboot
-
-<span class="c1"># Allow to execute apt commands</span>
-user1<span class="w"> 	            </span><span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span><span class="w"> </span>/usr/bin/apt,<span class="w"> </span>/usr/bin/dpkg,<span class="w"> </span>/usr/bin/journalctl
-
-<span class="c1"># allow to read logs</span>
-user1<span class="w">               </span><span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span><span class="w"> </span>/usr/bin/tail<span class="w"> </span>-f<span class="w"> </span>/var/log/*
-user1<span class="w">               </span><span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span><span class="w"> </span>/usr/bin/less<span class="w"> </span>/var/log/*
-</pre></div>
-<ul>
-<li><code>(ALL:ALL)</code>: the user can run commands as any user and as any group.</li>
-</ul>
-<p>This level of flexibility means that the user is granted the ability to run commands with the privileges of any user or group on the system. It's important to use this level of access with caution, as it grants extensive privileges and can potentially compromise the security of the system if not used carefully.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f41739bb-f989-4ad5-a68d-7b8e5910cb52">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Unrestricted-rights---sudo-group">Unrestricted rights - sudo <b></b>group<a class="anchor-link" href="#Unrestricted-rights---sudo-group">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=34d61516-3718-4f1b-9627-16264d8666fa">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span>su<span class="w"> </span>-
-adduser<span class="w"> </span>&lt;umame&gt;<span class="w"> </span>sudo
-sudo<span class="w"> </span>deluser<span class="w"> </span>&lt;uname&gt;<span class="w"> </span>sudo
-</pre></div>
-<blockquote>
-<p>After being added to a new group the user must log out and then log back in again for the new group to take effect.</p>
-</blockquote>
-<p>The group and the restrictions are specified in <code>/etc/sudoers</code></p>
-<div class="highlight"><pre><span></span><span class="c1"># Allow members of group sudo to execute any command</span>
-%sudo<span class="w">   </span><span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span><span class="w"> </span>ALL
-</pre></div>
-<p>Also you can grant <code>ALL=(ALL:ALL) ALL</code> to any group and any user in the <code>/etc/sudoers.d/filename</code>, which will have the same effect.</p>
-<hr/>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4ed9afb3-422c-43d7-89c3-7cc5d012b6e0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Examples-of-/etc/sudoers.d/file">Examples of <code>/etc/sudoers.d/file</code><a class="anchor-link" href="#Examples-of-/etc/sudoers.d/file">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=37c094e4-ca86-4d0d-9bf6-305b72de7599">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="c1"># Define aliases for machines in CS &amp; Physics departments</span>
-Host_Alias<span class="w"> 		</span><span class="nv">CS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>tigger,<span class="w"> </span>anchor,<span class="w"> </span>piper,<span class="w"> </span>moet,<span class="w"> </span>sigi
-Host_Alias<span class="w"> 		</span><span class="nv">PHYSICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>eprince,<span class="w"> </span>pprince,<span class="w"> </span>icarus
-
-<span class="c1"># Define collections of commands</span>
-Cmnd_Alias<span class="w"> 		</span><span class="nv">DUMP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/sbin/dump,<span class="w"> </span>/sbin/restore
-Cmnd_Alias<span class="w"> 		</span><span class="nv">WATCHDOG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/local/bin/watchdog
-Cmnd_Alias<span class="w"> 		</span><span class="nv">SHELLS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/bin/sh,<span class="w"> </span>/bin/dash,<span class="w"> </span>/bin/bash
-
-<span class="c1"># Permissions</span>
-mark,<span class="w"> </span>ed<span class="w">		</span><span class="nv">PHYSICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ALL
-herb<span class="w">			</span><span class="nv">CS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/sbin/tcpdump<span class="w"> </span>:<span class="w"> </span><span class="nv">PHYSICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>operator<span class="o">)</span><span class="w"> </span>DUMP
-lynda<span class="w">			</span><span class="nv">ALL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>ALL<span class="o">)</span><span class="w"> </span>ALL,<span class="w"> </span>!SHELLS
-%wheel<span class="w">			</span>ALL,<span class="w"> </span>!PHYSICS<span class="w"> </span><span class="o">=</span><span class="w"> </span>NOPASSWD:<span class="w"> </span>WATCHDOG
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ca1266c-c5c4-4809-ac29-22d424ca904d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>or:</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8e287306-b1b0-4151-b328-9ab3bf910409">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="c1"># INSTALL `apt install sudo`</span>
-<span class="c1"># COPY THIS FILE TO /etc/sudoers.d/</span>
-<span class="c1"># then `chown root:root`</span>
-<span class="c1"># and `chmod 440`</span>
-
-<span class="c1"># Host_Alias      AT_HOME = localhost</span>
-
-Cmnd_Alias<span class="w">      </span><span class="nv">SHUTDOWN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/sbin/reboot,<span class="w"> </span>/sbin/poweroff
-Cmnd_Alias<span class="w">      </span><span class="nv">SYSMGMT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/systemctl,<span class="w"> </span>/usr/bin/gpg,<span class="w"> </span>/usr/bin/lsblk
-Cmnd_Alias<span class="w">      </span><span class="nv">DSKMGMT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/lsblk,<span class="w"> </span>/usr/bin/dd,<span class="w"> </span>/usr/bin/eject
-Cmnd_Alias<span class="w">      </span><span class="nv">PKGMGMT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/dpkg,<span class="w"> </span>/usr/bin/apt,<span class="w"> </span>/usr/bin/apt-get
-Cmnd_Alias<span class="w">      </span><span class="nv">READLOGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/bin/journalctl,<span class="w"> </span>/var/log/*,<span class="w"> </span>/usr/bin/less,<span class="w"> </span>/usr/bin/tail,<span class="w"> </span>/usr/bin/head
-Cmnd_Alias<span class="w">      </span><span class="nv">PG_CMNDS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/lib/postgresql/15/bin/*,<span class="w"> </span>/usr/bin/pg_ctlcluster
-
-<span class="c1"># ALTERNATIVES</span>
-
-<span class="c1"># 1. ALIAS FOR USERS FOR GROUPING THEM (takes immediate effect)</span>
-User_Alias<span class="w">      </span><span class="nv">ADMIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>commi
-
-ADMIN<span class="w">           </span><span class="nv">ALL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>ALL<span class="o">)</span><span class="w"> </span>SYSMGMT,<span class="w"> </span>PKGMGMT,<span class="w"> </span>DSKMGMT,<span class="w"> </span>READLOGS,<span class="w"> </span>PG_CMNDS
-ADMIN<span class="w">           </span><span class="nv">ALL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>commi<span class="o">)</span><span class="w"> </span>NOPASSWD:<span class="w"> </span>SHUTDOWN
-
-
-<span class="c1"># 2. CREATE A LINUX GROUP AND ADD USERS TO IT (needs user's logout/login for effect)</span>
-<span class="c1">#%admin         ALL=(commi) NOPASSWD: SHUTDOWN   # shutdown the server only as commi</span>
-<span class="c1">#%admin         ALL=(ALL) PKGMGMT, READLOGS</span>
-
-
-<span class="c1"># 3. GIVE RIGHTS FOR A SINGLE USER (takes immediate effect)</span>
-<span class="c1">#commi          ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot</span>
-<span class="c1">#commi          ALL=(ALL) /usr/bin/apt, /usr/bin/dpkg, /usr/bin/journalctl</span>
-<span class="c1">#commi          ALL=(ALL) /usr/bin/tail -f /var/log/*, /usr/bin/less /var/log/*</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=172f8655-b5a3-4c38-9dcd-c36fcb717335">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ad33e8e8-023e-411f-993f-2983b2220de6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8e774f98-83c7-4f07-a7ac-c1ae3474c0e7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=210f4ff8-835d-4908-a42d-d7c770008619">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=84b3854b-b401-45f1-afa7-df54a3c438c9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8a751fca-8860-4fc9-a13c-d510d3eb0bf4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0bd091f3-5656-443d-8dc9-ad679cb0e045">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f561d83d-fd9b-4a08-9d0d-3e002fb282b5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4d2deadc-41e8-4269-98d9-e9797f2e0ee3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ad5cb60d-110d-46ae-9d8f-33865fd8b903">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b96ed7fb-cf1c-4aa3-bea2-437d166e4fb4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5e096a97-b736-4688-af92-245342f3bb93">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6d40e1e9-b954-4a8f-8d3f-822baa9ea0f6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=05132119-200e-469f-bccf-4882fbf24c02">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=50a91dfd-c642-4904-af68-a9ad3720e116">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc9f452e-0f3a-4b2a-8342-3eed246087ee">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9bdec64d-aea0-4a9a-a2f5-85f80140942e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4ab04939-b9c2-410c-b5d5-99de40c5764d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b154d1c7-7b0f-492f-806e-728f7299cbfa">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=971ac20f-7d0e-4fd6-ad72-ef42d06a59a4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=09593061-9fa4-4f2f-8690-c215faa6c28e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=71b1767f-0699-4141-92a7-aadda2f8605f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d8a53696-cb15-46f0-b496-9e1ebc7810ce">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6e293851-7b1e-44de-be45-de568e4ceeab">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=23c23bf7-97f6-4f61-b78c-94db5bb3517e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a9dd0055-cad5-41ad-a253-f517b1844c37">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ca78221f-cf6d-4052-a1ad-e35cff400e31">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=645f16d2-106a-4f61-81e4-5cd97308fede">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9210054e-9ea2-48c3-b39c-90352e7efe21">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=681e1389-6030-45d9-b143-f863daf60d3e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=38f8f24d-3a71-490a-8a0c-6eed108a0a20">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7e2d5ec7-edf9-4b57-b263-c13aeb919023">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ad33f9df-7c4f-4a75-a467-3106414f0c98">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=49d3525d-95ef-4f24-ad63-1a21945fc773">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=84dc5326-f43f-44c1-a8c7-b011877a01ed">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fba10051-1688-4aa5-a440-4445101eb99e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=324770da-03e9-4fea-855b-b4592aaaadcf">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=68826a41-35fc-4c64-b55c-14a1a2a9580f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0d737bfc-77e6-4f74-96ef-314a6fc126b9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ff05c19b-e65e-428a-840e-2fb2f67785c2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=35401b72-1067-466f-96a9-1bc3c3704107">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5c8f86c0-d8e2-42b3-aa31-ea34f49d7dca">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a1e7eb96-c55a-42e6-9920-bfb3f8036778">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b377e6a2-0f41-4f71-922b-827321951933">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0d4a3f13-71c5-425d-b2ed-8c825e624a18">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a87acf87-e014-493a-b906-3b3ac1f1c5c1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=17535f9f-148e-496d-a9ec-e7bea92daab9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2da2356b-2e97-40e2-90d1-f6bb5ee85b8b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0ead525-0e42-46ec-b2f1-b4422bd4f469">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0962431b-6a93-4065-8c15-66848576ffea">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6617aee7-9c74-4acb-9184-aaf360329446">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4f5681ad-9401-42be-b4f7-39ebfdc52cdb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d295c923-9e82-476c-9172-abdce520da58">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b83aa2f3-21a1-487a-adf5-e07c69d38179">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=64736706-ed69-4f8b-95e3-e61b09b843f0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8db87f59-f670-4e34-9264-a1bce4da4ee5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57d3ab3f-c1d2-4356-b400-4fc9c8ff3c37">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3435b5b-9331-4759-821b-e9ade4b0c51b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5d35a1ee-f4b2-415f-bf99-e8b0aa22d152">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1f8b301f-3edb-48b4-a12f-97d9adddeae8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1c117d11-6df8-4366-9764-fe9ff240c373">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=90d54675-65cf-4333-8b2f-ff1778c436bf">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8dee5aea-3fec-4723-9e23-aa03501774bd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4a6cf145-5cc9-4211-a9dd-4f2b99d1c968">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ed1dfa11-3e83-4d92-83a3-114266e4c9cc">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e2064b23-8178-4060-aa57-9d3787864684">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cda4cc3c-abfb-45b9-9510-742624578f7e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=44701925-bb41-4428-95d4-96879b4f194a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=060daa12-20d3-49d2-8c4c-e46218d00534">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=59b404cc-9136-4db5-ba98-3acef837389e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db190621-22f4-4ab7-b8e0-9f0a8ce3d3be">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f2b76eb3-c6e2-497c-ab08-ff501435d785">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=140420e4-c194-4658-8cb1-71cfb87c3765">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=41bd418c-316b-42aa-bdcb-5ea8851a6bfa">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1db8802f-df4f-45cc-8c51-9b611ea1feae">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=386d7f13-b682-45e2-a602-166ef564a64d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8a4e8690-e0c9-47b0-9ff8-46f0fc00baee">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=28f6a0d8-cd0d-4ad7-9726-18dd2459031a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=779341c0-3f64-43bd-98fd-9dc66d88921b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=48cbd58f-3a89-4081-aa8e-fa1ee06bf8f3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a0d27cbe-92c6-477d-a928-9156581d76f4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ae1cbfce-d169-4d7e-bff8-c789d900809f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=60455dfb-4d64-484f-80b5-19fad48e4f88">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Users,-Administrators,-and-Groups"><b></b>Users, Administrators, and Groups<a class="anchor-link" href="#Users,-Administrators,-and-Groups">¶</a></h1>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=120928bb-1466-402d-9b29-fecc2d28ad4f">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=144057c6-d656-411f-84f7-2ea92c67ce0b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>who<span class="w"> </span>-uH
+<div class="highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp
+
+cat<span class="w"> </span>&gt;<span class="w"> </span>before.txt<span class="w"> </span><span class="s">&lt;&lt; eof</span>
+<span class="s">$ cat /etc/gitea/app.ini </span>
+<span class="s">APP_NAME = Gitea: Git with a cup of tea</span>
+<span class="s">RUN_USER = git</span>
+<span class="s">RUN_MODE = prod</span>
+
+<span class="s">[repository]</span>
+<span class="s">ROOT = /var/lib/gitea/git/repositories</span>
+
+<span class="s">[repository.local]</span>
+<span class="s">LOCAL_COPY_PATH = /tmp/gitea/local-repo</span>
+
+<span class="s">[repository.upload]</span>
+<span class="s">TEMP_PATH = /tmp/gitea/uploads</span>
+
+<span class="s">[server]</span>
+<span class="s">APP_DATA_PATH = /var/lib/gitea</span>
+<span class="s">SSH_DOMAIN       = localhost</span>
+<span class="s">HTTP_PORT        = 3000</span>
+<span class="s">ROOT_URL         = </span>
+<span class="s">DISABLE_SSH      = false</span>
+<span class="s">; In rootless gitea container only internal ssh server is supported</span>
+<span class="s">START_SSH_SERVER = true</span>
+<span class="s">SSH_PORT         = 2222</span>
+<span class="s">SSH_LISTEN_PORT  = 2222</span>
+<span class="s">BUILTIN_SSH_SERVER_USER = git</span>
+<span class="s">LFS_START_SERVER = </span>
+
+<span class="s">[database]</span>
+<span class="s">PATH = /var/lib/gitea/data/gitea.db</span>
+<span class="s">DB_TYPE = sqlite3</span>
+<span class="s">HOST    = localhost:3306</span>
+<span class="s">NAME    = gitea</span>
+<span class="s">USER    = root</span>
+<span class="s">PASSWD  = </span>
+
+<span class="s">[session]</span>
+<span class="s">PROVIDER_CONFIG = /var/lib/gitea/data/sessions</span>
+
+<span class="s">[picture]</span>
+<span class="s">AVATAR_UPLOAD_PATH = /var/lib/gitea/data/avatars</span>
+<span class="s">REPOSITORY_AVATAR_UPLOAD_PATH = /var/lib/gitea/data/repo-avatars</span>
+
+<span class="s">[attachment]</span>
+<span class="s">PATH = /var/lib/gitea/data/attachments</span>
+
+<span class="s">[log]</span>
+<span class="s">ROOT_PATH = /var/lib/gitea/data/log</span>
+
+<span class="s">[security]</span>
+<span class="s">INSTALL_LOCK = false</span>
+<span class="s">SECRET_KEY   = </span>
+<span class="s">REVERSE_PROXY_LIMIT = 1</span>
+<span class="s">REVERSE_PROXY_TRUSTED_PROXIES = *</span>
+
+<span class="s">[service]</span>
+<span class="s">DISABLE_REGISTRATION = false</span>
+<span class="s">REQUIRE_SIGNIN_VIEW  = false</span>
+
+<span class="s">[lfs]</span>
+<span class="s">PATH = /var/lib/gitea/git/lfs</span>
+<span class="s">eof</span>
+
+cat<span class="w"> </span>&gt;<span class="w"> </span>after.txt<span class="w"> </span><span class="s">&lt;&lt; eof</span>
+<span class="s">$ cat /etc/gitea/app.ini </span>
+<span class="s">APP_NAME = debian-server</span>
+<span class="s">RUN_USER = git</span>
+<span class="s">RUN_MODE = prod</span>
+<span class="s">WORK_PATH = /var/lib/gitea</span>
+
+<span class="s">[repository]</span>
+<span class="s">ROOT = /var/lib/gitea/git/repositories</span>
+
+<span class="s">[repository.local]</span>
+<span class="s">LOCAL_COPY_PATH = /tmp/gitea/local-repo</span>
+
+<span class="s">[repository.upload]</span>
+<span class="s">TEMP_PATH = /tmp/gitea/uploads</span>
+
+<span class="s">[server]</span>
+<span class="s">APP_DATA_PATH = /var/lib/gitea</span>
+<span class="s">SSH_DOMAIN = 192.168.1.9</span>
+<span class="s">HTTP_PORT = 3000</span>
+<span class="s">ROOT_URL = http://192.168.1.9:3000/</span>
+<span class="s">DISABLE_SSH = false</span>
+<span class="s">; In rootless gitea container only internal ssh server is supported</span>
+<span class="s">START_SSH_SERVER = true</span>
+<span class="s">SSH_PORT = 2222</span>
+<span class="s">SSH_LISTEN_PORT = 2222</span>
+<span class="s">BUILTIN_SSH_SERVER_USER = git</span>
+<span class="s">LFS_START_SERVER = true</span>
+<span class="s">DOMAIN = 192.168.1.9</span>
+<span class="s">LFS_JWT_SECRET = qbRax2Ay-bEn2nxv4v8_9_ZjZ7Y4TKRaWweUxR27TgU</span>
+<span class="s">OFFLINE_MODE = true</span>
+
+<span class="s">[database]</span>
+<span class="s">PATH = /var/lib/gitea/data/gitea.db</span>
+<span class="s">DB_TYPE = sqlite3</span>
+<span class="s">HOST = localhost:3306</span>
+<span class="s">NAME = gitea</span>
+<span class="s">USER = root</span>
+<span class="s">PASSWD = </span>
+<span class="s">SCHEMA = </span>
+<span class="s">SSL_MODE = disable</span>
+<span class="s">LOG_SQL = false</span>
+
+<span class="s">[session]</span>
+<span class="s">PROVIDER_CONFIG = /var/lib/gitea/data/sessions</span>
+<span class="s">PROVIDER = file</span>
+
+<span class="s">[picture]</span>
+<span class="s">AVATAR_UPLOAD_PATH = /var/lib/gitea/data/avatars</span>
+<span class="s">REPOSITORY_AVATAR_UPLOAD_PATH = /var/lib/gitea/data/repo-avatars</span>
+
+<span class="s">[attachment]</span>
+<span class="s">PATH = /var/lib/gitea/data/attachments</span>
+
+<span class="s">[log]</span>
+<span class="s">ROOT_PATH = /var/lib/gitea/data/log</span>
+<span class="s">MODE = console</span>
+<span class="s">LEVEL = info</span>
+
+<span class="s">[security]</span>
+<span class="s">INSTALL_LOCK = true</span>
+<span class="s">SECRET_KEY = </span>
+<span class="s">REVERSE_PROXY_LIMIT = 1</span>
+<span class="s">REVERSE_PROXY_TRUSTED_PROXIES = *</span>
+<span class="s">INTERNAL_TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE3MTkwMDQ5Mjd9.r-wwYGU66Fw4V5n_qyDgyvn0RPJZiFf6Ct7F6r9LWGQ</span>
+<span class="s">PASSWORD_HASH_ALGO = pbkdf2</span>
+
+<span class="s">[service]</span>
+<span class="s">DISABLE_REGISTRATION = false</span>
+<span class="s">REQUIRE_SIGNIN_VIEW = false</span>
+<span class="s">REGISTER_EMAIL_CONFIRM = false</span>
+<span class="s">ENABLE_NOTIFY_MAIL = false</span>
+<span class="s">ALLOW_ONLY_EXTERNAL_REGISTRATION = false</span>
+<span class="s">ENABLE_CAPTCHA = false</span>
+<span class="s">DEFAULT_KEEP_EMAIL_PRIVATE = false</span>
+<span class="s">DEFAULT_ALLOW_CREATE_ORGANIZATION = true</span>
+<span class="s">DEFAULT_ENABLE_TIMETRACKING = true</span>
+<span class="s">NO_REPLY_ADDRESS = noreply.localhost</span>
+
+<span class="s">[lfs]</span>
+<span class="s">PATH = /var/lib/gitea/git/lfs</span>
+
+<span class="s">[mailer]</span>
+<span class="s">ENABLED = false</span>
+
+<span class="s">[openid]</span>
+<span class="s">ENABLE_OPENID_SIGNIN = true</span>
+<span class="s">ENABLE_OPENID_SIGNUP = true</span>
+
+<span class="s">[cron.update_checker]</span>
+<span class="s">ENABLED = true</span>
+
+<span class="s">[repository.pull-request]</span>
+<span class="s">DEFAULT_MERGE_STYLE = merge</span>
+
+<span class="s">[repository.signing]</span>
+<span class="s">DEFAULT_TRUST_MODEL = committer</span>
+
+<span class="s">[oauth2]</span>
+<span class="s">JWT_SECRET = IhLMNPdN2O2HsnQlkYrDQGifkSslFTal8uhehbbe6fs</span>
+<span class="s">eof</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=530e6dfa-93ba-4562-b187-6b3173321a8c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-bash"><pre><span></span>diff<span class="w"> </span>-y<span class="w"> </span>before.txt<span class="w"> </span>after.txt
 </pre></div>
 </div>
 </div>
@@ -9400,29 +8028,583 @@ ADMIN<span class="w">           </span><span class="nv">ALL</span><span class="w
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>NAME     LINE         TIME             IDLE          PID COMMENT
-commi    tty7         2024-03-08 02:18  old       110303 (:0)
-commi    pts/0        2024-03-08 02:18  old       110390 (:0)
-commi    pts/1        2024-03-10 00:43 00:38      172404 (:0)
-commi    pts/2        2024-03-08 02:24  old       114136 (:0)
-commi    pts/3        2024-03-08 02:25  old       114146 (:0)
-commi    pts/4        2024-03-08 02:25  old       114153 (:0)
-commi    pts/8        2024-03-10 16:20 01:44      182702 (:0)
-commi    pts/9        2024-03-11 14:19 01:01      213446 (:0)
-commi    pts/7        2024-03-08 02:33 20:06      115181 (:0)
-commi    pts/10       2024-03-10 17:54  old       186407 (:0)
-commi    pts/11       2024-03-09 14:55 00:07      148883 (:0)
-commi    pts/13       2024-03-10 16:26 01:44      183032 (:0)
-commi    pts/12       2024-03-10 16:26 01:33      183029 (:0)
-commi    pts/14       2024-03-10 16:26 01:44      183036 (:0)
-commi    pts/16       2024-03-08 02:57  old       115987 (:0)
-commi    pts/20       2024-03-10 16:26 01:44      183047 (:0)
-commi    pts/21       2024-03-10 16:26 01:44      183052 (:0)
-commi    pts/19       2024-03-10 16:26 01:44      183042 (:0)
-commi    pts/22       2024-03-11 02:39 01:34      205976 (:0)
-commi    pts/23       2024-03-11 03:09 01:34      207037 (:0)
+<pre>$ cat /etc/gitea/app.ini 					$ cat /etc/gitea/app.ini 
+APP_NAME = Gitea: Git with a cup of tea			      |	APP_NAME = debian-server
+RUN_USER = git							RUN_USER = git
+RUN_MODE = prod							RUN_MODE = prod
+							      &gt;	WORK_PATH = /var/lib/gitea
+
+[repository]							[repository]
+ROOT = /var/lib/gitea/git/repositories				ROOT = /var/lib/gitea/git/repositories
+
+[repository.local]						[repository.local]
+LOCAL_COPY_PATH = /tmp/gitea/local-repo				LOCAL_COPY_PATH = /tmp/gitea/local-repo
+
+[repository.upload]						[repository.upload]
+TEMP_PATH = /tmp/gitea/uploads					TEMP_PATH = /tmp/gitea/uploads
+
+[server]							[server]
+APP_DATA_PATH = /var/lib/gitea					APP_DATA_PATH = /var/lib/gitea
+SSH_DOMAIN       = localhost				      |	SSH_DOMAIN = 192.168.1.9
+HTTP_PORT        = 3000					      |	HTTP_PORT = 3000
+ROOT_URL         = 					      |	ROOT_URL = http://192.168.1.9:3000/
+DISABLE_SSH      = false				      |	DISABLE_SSH = false
+; In rootless gitea container only internal ssh server is sup	; In rootless gitea container only internal ssh server is sup
+START_SSH_SERVER = true						START_SSH_SERVER = true
+SSH_PORT         = 2222					      |	SSH_PORT = 2222
+SSH_LISTEN_PORT  = 2222					      |	SSH_LISTEN_PORT = 2222
+BUILTIN_SSH_SERVER_USER = git					BUILTIN_SSH_SERVER_USER = git
+LFS_START_SERVER = 					      |	LFS_START_SERVER = true
+							      &gt;	DOMAIN = 192.168.1.9
+							      &gt;	LFS_JWT_SECRET = qbRax2Ay-bEn2nxv4v8_9_ZjZ7Y4TKRaWweUxR27TgU
+							      &gt;	OFFLINE_MODE = true
+
+[database]							[database]
+PATH = /var/lib/gitea/data/gitea.db				PATH = /var/lib/gitea/data/gitea.db
+DB_TYPE = sqlite3						DB_TYPE = sqlite3
+HOST    = localhost:3306				      |	HOST = localhost:3306
+NAME    = gitea						      |	NAME = gitea
+USER    = root						      |	USER = root
+PASSWD  = 						      |	PASSWD = 
+							      &gt;	SCHEMA = 
+							      &gt;	SSL_MODE = disable
+							      &gt;	LOG_SQL = false
+
+[session]							[session]
+PROVIDER_CONFIG = /var/lib/gitea/data/sessions			PROVIDER_CONFIG = /var/lib/gitea/data/sessions
+							      &gt;	PROVIDER = file
+
+[picture]							[picture]
+AVATAR_UPLOAD_PATH = /var/lib/gitea/data/avatars		AVATAR_UPLOAD_PATH = /var/lib/gitea/data/avatars
+REPOSITORY_AVATAR_UPLOAD_PATH = /var/lib/gitea/data/repo-avat	REPOSITORY_AVATAR_UPLOAD_PATH = /var/lib/gitea/data/repo-avat
+
+[attachment]							[attachment]
+PATH = /var/lib/gitea/data/attachments				PATH = /var/lib/gitea/data/attachments
+
+[log]								[log]
+ROOT_PATH = /var/lib/gitea/data/log				ROOT_PATH = /var/lib/gitea/data/log
+							      &gt;	MODE = console
+							      &gt;	LEVEL = info
+
+[security]							[security]
+INSTALL_LOCK = false					      |	INSTALL_LOCK = true
+SECRET_KEY   = 						      |	SECRET_KEY = 
+REVERSE_PROXY_LIMIT = 1						REVERSE_PROXY_LIMIT = 1
+REVERSE_PROXY_TRUSTED_PROXIES = *				REVERSE_PROXY_TRUSTED_PROXIES = *
+							      &gt;	INTERNAL_TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmY
+							      &gt;	PASSWORD_HASH_ALGO = pbkdf2
+
+[service]							[service]
+DISABLE_REGISTRATION = false					DISABLE_REGISTRATION = false
+REQUIRE_SIGNIN_VIEW  = false				      |	REQUIRE_SIGNIN_VIEW = false
+							      &gt;	REGISTER_EMAIL_CONFIRM = false
+							      &gt;	ENABLE_NOTIFY_MAIL = false
+							      &gt;	ALLOW_ONLY_EXTERNAL_REGISTRATION = false
+							      &gt;	ENABLE_CAPTCHA = false
+							      &gt;	DEFAULT_KEEP_EMAIL_PRIVATE = false
+							      &gt;	DEFAULT_ALLOW_CREATE_ORGANIZATION = true
+							      &gt;	DEFAULT_ENABLE_TIMETRACKING = true
+							      &gt;	NO_REPLY_ADDRESS = noreply.localhost
+
+[lfs]								[lfs]
+PATH = /var/lib/gitea/git/lfs					PATH = /var/lib/gitea/git/lfs
+							      &gt;
+							      &gt;	[mailer]
+							      &gt;	ENABLED = false
+							      &gt;
+							      &gt;	[openid]
+							      &gt;	ENABLE_OPENID_SIGNIN = true
+							      &gt;	ENABLE_OPENID_SIGNUP = true
+							      &gt;
+							      &gt;	[cron.update_checker]
+							      &gt;	ENABLED = true
+							      &gt;
+							      &gt;	[repository.pull-request]
+							      &gt;	DEFAULT_MERGE_STYLE = merge
+							      &gt;
+							      &gt;	[repository.signing]
+							      &gt;	DEFAULT_TRUST_MODEL = committer
+							      &gt;
+							      &gt;	[oauth2]
+							      &gt;	JWT_SECRET = IhLMNPdN2O2HsnQlkYrDQGifkSslFTal8uhehbbe6fs
 </pre>
 </div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=618f1d2e-9241-43cd-887b-650120c873b9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=78ca1f62-51a1-4656-be2a-782143a8cde1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dd6e1f1f-89df-49b8-87eb-da73144ff9a1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=92e83ee0-d9aa-4a0c-afaa-05ee37599472">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ee38c61-0a71-4c3d-997d-0bead7a61f11">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=750e4992-f246-4c48-9a66-0a096ca28667">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=30a9c862-710d-4b5c-9ae1-0388f6d0e115">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd25565a-6146-4350-a6bf-13c6e25163a3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6bf2da80-7b31-423b-b0bc-ce2e9d5425f2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1c9be566-0654-41d9-a37a-db69bc3622ac">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3d0b6bd-bbf5-4f61-ae65-7e5eefff971a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bfab2a6d-9683-4930-9cc4-1ec7721ee523">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2d2d2834-9203-4e4d-a85c-7e0437b4a1f0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=25374f87-1283-4ecd-b0a4-606fa1032dd0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=07375551-8280-4c98-a82d-118e509cb0af">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0208c6f6-9c2a-4366-a224-a1214e1ce70d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=176e2a19-f683-4755-82e2-84c91d601e9d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9567fa62-850d-471d-a2e8-dd8c602dbb9e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9d0fdc0f-c891-462a-9c45-e1e3101504e9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d414d728-5d23-46d2-9068-b68b0a45590d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0ad1c75-5b6e-479a-a6c8-9fb1903f6d36">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c7efc82d-ade9-4b8b-900d-42fd78433bf9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c8c10ea6-d577-4cfa-aaaa-25d5b79faeeb">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eb8caeb5-0863-433b-8eb0-8c61b0eafc87">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=046ce3b8-f438-4fa3-bbcf-3510acfcf94e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4b9d0299-ee2a-4c07-af59-5080e5e88ec1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8069c174-92e0-4a7f-9506-2325ed1673e5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=383afbdc-f72d-4b01-9ad7-a51f189cdca1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=75021042-a4d2-462d-8d36-95c3aa75a07f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d7176b1b-f41f-467a-b2b4-b2e2cb632009">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=51a30c0f-2d27-42c8-9f38-c39672ee5d01">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d4a5fb9a-92d2-4663-9511-4aa1c6bedd4e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=96cc991a-d4f6-4a03-bc54-f601a14181d2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39020232-7f8e-415b-8591-daa19cda2c29">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d697540c-42d6-462e-a2b1-b9a6ff7cb612">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=946effd0-1ab6-4928-b082-1074b75c83c8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d96128d3-eca1-4888-bb9c-3d43f70f2645">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0dc9615b-f4f5-4681-8f80-9e62324a0a2a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a8edd1bf-eeb8-4478-8835-b563999e41c5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b740558e-73b2-4ceb-a642-2077ae36c03d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4b207325-e02a-426e-b52c-799661f73f47">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1dc37f64-f620-4a09-bde9-fabcbceb456a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f74fcbf2-05d5-41a4-89cd-9ef6ed8faa2a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cf94d438-3419-4362-af79-5fdc6946e82d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ae479aff-0557-407e-9fc3-1ca5f7bcd2a0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bffb68ba-b4e8-4a5c-9f5b-d48e7e0f6142">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=390c5eb1-6713-4e23-9749-a8c7d67b7a67">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>

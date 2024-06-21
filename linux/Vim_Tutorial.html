@@ -7526,13 +7526,15 @@ a.anchor-link {
 <td>Enter visual mode - selected parts of the lines</td>
 </tr>
 <tr>
-<td><code>esc</code></td>
+<td><code>esc</code> or <code>Ctrl-[</code></td>
 <td>Return to normal mode from insert or replace mode</td>
+</tr>
+<tr>
+<td><code>esc+esc</code></td>
+<td>Return to normal mode from command or visual mode</td>
 </tr>
 </tbody>
 </table>
-<p><code>Ctrl-[</code>|equivalent to pressing <code>Esc</code>
-|<code>esc+esc</code>|Return to normal mode from command or visual mode|</p>
 </div>
 </div>
 </div>
@@ -8093,12 +8095,12 @@ vi /etc/vim/vimrc  # (globally for all users)
 <td></td>
 </tr>
 <tr>
-<td><code>Ctrl+E</code></td>
-<td>Scroll the window down one line without moving the cursor</td>
+<td><code>Ctrl+Y</code></td>
+<td>Scroll the window <em>up</em> one line without moving the cursor</td>
 </tr>
 <tr>
-<td><code>Ctrl+Y</code></td>
-<td>Scroll the window up one line without moving the cursor</td>
+<td><code>Ctrl+E</code></td>
+<td>Scroll the window <em>down</em> one line without moving the cursor</td>
 </tr>
 <tr>
 <td><strong>Navigate between tags</strong></td>
@@ -8559,10 +8561,15 @@ vi /etc/vim/vimrc  # (globally for all users)
 </table>
 <h3 id="Replace-a-word">Replace a word<a class="anchor-link" href="#Replace-a-word">¶</a></h3><p><code>$ :s/&lt;search_term&gt;/&lt;replace_term&gt;/option</code>:</p>
 <ul>
-<li><code>S</code>: stands for substitute</li>
+<li><code>s</code>: stands for substitute</li>
 <li><code>search_term</code>: the word you want to search and replace</li>
 <li><code>replace_term</code>: the word with which you want to replace it with</li>
-<li><code>Option</code>: c (for confirmation), g (replace all occurrence in one line), i (for ignoring the case)</li>
+<li><code>Option</code>:<ul>
+<li><code>c</code>onfirmation,</li>
+<li><code>g</code>lobally (entire document or selection),</li>
+<li><code>i</code>gnoring the case.</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -8731,39 +8738,224 @@ vi /etc/vim/vimrc  # (globally for all users)
 <td><code>x</code></td>
 <td>Delete the character under the cursor</td>
 </tr>
+<tr>
+<td><code>X</code></td>
+<td>Delete the character before the cursor</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>cut</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>cut the rest of the line</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>cut a symbol using arrows and insert mode</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>cut the rest of the line and insert mode</td>
+</tr>
+<tr>
+<td><strong>Copy</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>yanking, i.e. copying</td>
+</tr>
+<tr>
+<td><strong>Paste</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>paste after</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>paste before</td>
+</tr>
+<tr>
+<td><strong>Uppercase</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>gUl</code> or <code>~</code></td>
+<td>Capitalize the letter under the cursor</td>
+</tr>
+<tr>
+<td><code>gUw</code></td>
+<td>Uppercase the word from the cursor</td>
+</tr>
+<tr>
+<td><code>gUiw</code></td>
+<td>Uppercase the entire word</td>
+</tr>
+<tr>
+<td><code>%s/\&lt;./\u&amp;/g</code></td>
+<td>Capitalize first letter of each word in a selection, see <a href="https://stackoverflow.com/questions/17440659/capitalize-first-letter-of-each-word-in-a-selection-using-vim">here</a></td>
+</tr>
+<tr>
+<td><strong>Lowercase</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>gul</code></td>
+<td>Lowercase the letter under the cursor</td>
+</tr>
+<tr>
+<td><code>guw</code></td>
+<td>Lowercase the word from the cursor</td>
+</tr>
+<tr>
+<td><code>guiw</code></td>
+<td>Lowercase the entire word</td>
+</tr>
+<tr>
+<td><strong>Etc</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>replace a symbol</td>
+</tr>
+<tr>
+<td><code>m</code></td>
+<td>move</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>repeat the last command</td>
+</tr>
 </tbody>
 </table>
-<p>|<code>X</code>|Delete the character before the cursor
-|<code>d</code>|cut|
-|<code>dd</code>|cut a whole line|
-|<code>D</code>|cut the rest of the line|
-|<code>c</code>|cut a symbol using arrows and insert mode|
-|<code>cc</code>|cut a line and insert mode|
-|<code>C</code>|cut the rest of the line and insert mode|
-|<strong>Copy</strong>||
-|<code>y</code>|yanking, i.e. copying|
-|<code>yy</code> or <code>Y</code>|copy a whole line|
-|<strong>Paste</strong>||
-|<code>p</code>|paste after|
-|<code>P</code>|paste before|
-|<strong>Uppercase</strong>||
-|<code>gUl</code> or <code>~</code>|Capitalize the letter under the cursor|
-|<code>gUw</code>|Uppercase the word from the cursor|
-|<code>gUiw</code>|Uppercase the entire word|
-|<code>%s/\&lt;./\u&amp;/g</code>|Capitalize first letter of each word in a selection, see <a href="https://stackoverflow.com/questions/17440659/capitalize-first-letter-of-each-word-in-a-selection-using-vim">here</a>|
-|<strong>Lowercase</strong>||
-|<code>gul</code>|Lowercase the letter under the cursor|
-|<code>guw</code>|Lowercase the word from the cursor|
-|<code>guiw</code>|Lowercase the entire word|
-|<strong>Etc</strong>||
-|<code>r</code>|replace a symbol|
-|<code>m</code>|move|
-|<code>.</code>|repeat the last command|</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3d18ad4-4c95-44a9-bff8-80db7a47d8c2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=01100fe0-dcfb-4766-abaf-dad4344a4786">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Combos">Combos<a class="anchor-link" href="#Combos">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6ff9aee8-2201-45ca-86dd-67621abf34bb">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Copy/Paste</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>yy</code> or <code>Y</code></td>
+<td>copy a whole line</td>
+</tr>
+<tr>
+<td><code>yaw</code></td>
+<td>copy a whole word with a whitespace after it</td>
+</tr>
+<tr>
+<td><code>yiw</code></td>
+<td>copy a whole word and nothing else</td>
+</tr>
+<tr>
+<td><code>"0p</code></td>
+<td>paste the last copied item (if you <code>yy</code> and then <code>dd</code> but want to paste <code>yy</code>)</td>
+</tr>
+<tr>
+<td><strong>Cut</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>dd</code></td>
+<td>cut a whole line</td>
+</tr>
+<tr>
+<td><code>cc</code></td>
+<td>cut a line and insert mode</td>
+</tr>
+<tr>
+<td><code>dw</code></td>
+<td>delete a word from the point you are now</td>
+</tr>
+<tr>
+<td><code>db</code></td>
+<td>cut the previous word (<code>daw</code> is much better)</td>
+</tr>
+<tr>
+<td><code>daw</code></td>
+<td>cut the cursored word with the whitespace after it</td>
+</tr>
+<tr>
+<td><code>diw</code></td>
+<td>delete a full word when you are in the middle of it</td>
+</tr>
+<tr>
+<td><code>5dw</code></td>
+<td>delete 5 words from the point you are now</td>
+</tr>
+<tr>
+<td><code>d0</code></td>
+<td>delete from here to the beginning of the line</td>
+</tr>
+<tr>
+<td><code>d$</code></td>
+<td>delete from here to the end of the line</td>
+</tr>
+<tr>
+<td><code>d%</code></td>
+<td>delete all the content in the brackets including them</td>
+</tr>
+<tr>
+<td><code>dG</code></td>
+<td>cut till the end of the document</td>
+</tr>
+<tr>
+<td><strong>Change</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xp</code></td>
+<td>swap the current character with the one before it.</td>
+</tr>
+<tr>
+<td><code>ciw</code></td>
+<td>change a full word ("change in a word")</td>
+</tr>
+<tr>
+<td><code>ci"</code></td>
+<td>change the contents between the quote marks</td>
+</tr>
+<tr>
+<td><code>ci(</code></td>
+<td>change in the patentheses</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e1e5e2b9-515a-4bdf-8528-03e1263b5613">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8774,7 +8966,7 @@ vi /etc/vim/vimrc  # (globally for all users)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc605ebb-d780-4986-8871-cc8de8152019">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=52488505-d59b-40b3-b96a-4fc93ece8146">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8827,97 +9019,6 @@ vi /etc/vim/vimrc  # (globally for all users)
 <tr>
 <td><code>gg=G</code></td>
 <td>correctly indent all file</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=01100fe0-dcfb-4766-abaf-dad4344a4786">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Combos">Combos<a class="anchor-link" href="#Combos">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6ff9aee8-2201-45ca-86dd-67621abf34bb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>"0p</code></td>
-<td>paste the last copied item (if you <code>yy</code> and then <code>dd</code> but want to paste <code>yy</code>)</td>
-</tr>
-<tr>
-<td><code>xp</code></td>
-<td>swap the current character with the one before it.</td>
-</tr>
-<tr>
-<td><code>ciw</code></td>
-<td>change a full word ("change in a word")</td>
-</tr>
-<tr>
-<td><code>ci"</code></td>
-<td>change the contents between the quote marks</td>
-</tr>
-<tr>
-<td><code>ci(</code></td>
-<td>change in the patentheses</td>
-</tr>
-<tr>
-<td><strong>Cut</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>dw</code></td>
-<td>delete a word from the point you are now</td>
-</tr>
-<tr>
-<td><code>5dw</code></td>
-<td>delete 5 words  from the point you are now</td>
-</tr>
-<tr>
-<td><code>diw</code></td>
-<td>delete a full word when you are in the middle of it</td>
-</tr>
-<tr>
-<td><code>d0</code></td>
-<td>delete from here to the beginning of the line</td>
-</tr>
-<tr>
-<td><code>d$</code></td>
-<td>delete from here to the end of the line</td>
-</tr>
-<tr>
-<td><code>d%</code></td>
-<td>delete all the content in the brackets including them</td>
-</tr>
-<tr>
-<td><code>db</code></td>
-<td>cut the previous word</td>
-</tr>
-<tr>
-<td><code>dib</code></td>
-<td>cut the cursored word</td>
-</tr>
-<tr>
-<td><code>dG</code></td>
-<td>cut till the end of the document</td>
 </tr>
 </tbody>
 </table>

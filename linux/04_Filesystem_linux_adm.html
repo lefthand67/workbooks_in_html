@@ -7514,6 +7514,17 @@ a.anchor-link {
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0cf957e-7701-4432-a89c-96e5b4bfacdd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="4.0-Commands-Handout"><b></b>4.0 Commands Handout<a class="anchor-link" href="#4.0-Commands-Handout">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cf984f33-6608-451f-a5ed-38d41ab58bb2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -11996,75 +12007,7 @@ And apply the same permissions on test2.txt by copying them from test.txt:
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Linux defines a set of supplemental flags that can be set on files to request special handling. For example, the <code>a</code> flag makes a file append-only, and the <code>i</code> flag makes it immutable and undeletable.</p>
 <p>Flags have binary values, so they are either present or absent for a given file. The underlying filesystem implementation must support the corresponding feature, so not all flags can be used on all filesystem types. In addition, some flags are experimental, unimplemented, or read-only.</p>
-<p>Linux uses the commands <code>lsattr</code> and <code>chattr</code> to view and change file attributes. Table 5.6 lists some of the more mainstream flags.</p>
-<center>
-    Linux file attribute flags
-</center>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>FS$^a$</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>A</code></td>
-<td>a</td>
-<td>Never update access time (st_atime ; for performance)</td>
-</tr>
-<tr>
-<td><code>a</code></td>
-<td>XBE</td>
-<td>Allow writing only in append mode$^b$</td>
-</tr>
-<tr>
-<td><code>C</code></td>
-<td>XBE</td>
-<td>Disable copy-on-write updates</td>
-</tr>
-<tr>
-<td><code>c</code></td>
-<td>B</td>
-<td>Compress contents</td>
-</tr>
-<tr>
-<td><code>D</code></td>
-<td>B</td>
-<td>Force directory updates to be written synchronously</td>
-</tr>
-<tr>
-<td><code>d</code></td>
-<td>BE</td>
-<td>Do not back up; backup utilities should ignore this file</td>
-</tr>
-<tr>
-<td><code>i</code></td>
-<td>XBE</td>
-<td>Make file immutable and undeletable</td>
-</tr>
-<tr>
-<td><code>j</code></td>
-<td>XBE</td>
-<td>Keep a journal for data changes as well as metadata</td>
-</tr>
-<tr>
-<td><code>S</code></td>
-<td>E</td>
-<td>Force changes to be written synchronously (no buffering)</td>
-</tr>
-<tr>
-<td><code>X</code></td>
-<td>XBE</td>
-<td>Avoid data compression if it is the default</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>a. X = XFS, B = Btrfs, E = ext3 and ext4</li>
-<li>b. Can be set only by root</li>
-</ul>
+<p>Linux uses the commands <code>lsattr</code> and <code>chattr</code> to view and change file attributes.</p>
 <p>The main thing to remember is that</p>
 <blockquote>
 <p>if a particular file seems to be behaving strangely, check it with <code>lsattr</code> to see if it has one or more flags enabled.</p>
