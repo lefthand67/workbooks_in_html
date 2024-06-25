@@ -7517,17 +7517,20 @@ docker.io/gitea/gitea:latest-rootless
 <blockquote>
 <p>Note: This won't work by default on RHEL-like systems because of the SELinux restrictions.</p>
 </blockquote>
-<p>Now just go to: <code>http://&lt;server_ip&gt;:3000/</code></p>
+<p>Now just go to: <code>http://&lt;server_ip&gt;:3000/</code> if you're on the Debian-like system.</p>
 <p>Inspect volumes:</p>
-<div class="highlight"><pre><span></span>podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>gitea-data
-<span class="c1"># see mountpoint without quotes (-r)</span>
+<div class="highlight"><pre><span></span><span class="c1"># list the volumes</span>
+podman<span class="w"> </span>inspect<span class="w"> </span>gitea<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.[0].Mounts[] | select(.Type == "volume") | .Name'</span>
+
+podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>gitea-data
+<span class="c1"># print mountpoint without quotes (-r)</span>
 podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>gitea-data<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span>.<span class="o">[</span><span class="m">0</span><span class="o">]</span>.Mountpoint
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3e4e3d5d-ca07-48df-92b6-240808378822">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2571b559-425d-413f-8741-971af11e3ba1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
