@@ -7487,39 +7487,92 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9d085808-904a-48a6-89d1-fbdd79944bb6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7886eb18-3650-4030-ae26-d0adb6fec38a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Install"><b></b>Install<a class="anchor-link" href="#Install">¶</a></h1>
+<table>
+<thead>
+<tr>
+<th>file</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Volumes</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>podman volume create gitea-data</td>
+<td>for <code>/var/lib/gitea</code></td>
+</tr>
+<tr>
+<td>podman volume create gitea-config</td>
+<td>for <code>/etc/gitea</code></td>
+</tr>
+<tr>
+<td><strong>Run</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>podman run -d --name gitea -p 3000:3000 -p 2222:22 -v gitea-data:/var/lib/gitea -v gitea-config:/etc/gitea -v /etc/localtime:/etc/localtime:ro docker.io/gitea/gitea:latest-rootless</code></td>
+<td>run on the localhost</td>
+</tr>
+<tr>
+<td><code>podman run -d --name gitea -p 3000:3000 -p 2222:22 -v gitea-data:/var/lib/gitea -v gitea-config:/etc/gitea -v /etc/localtime:/etc/localtime:ro docker.io/gitea/gitea:latest</code></td>
+<td>run on the server in the root mode</td>
+</tr>
+<tr>
+<td><strong>Files</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>/var/lib/gitea/data/gitea.db</code></td>
+<td>database</td>
+</tr>
+<tr>
+<td><code>/var/lib/gitea/git/repositories</code></td>
+<td>root repository</td>
+</tr>
+<tr>
+<td><code>/etc/gitea/app.ini</code></td>
+<td>configuration file (change ip address, for example)</td>
+</tr>
+<tr>
+<td><code>/var/lib/gitea/data/log</code></td>
+<td>logs</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=11a912bd-1722-4ff2-a922-4bfeff9a5fa2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=44833c7b-9f7a-45bb-b941-91a452cb1267">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Volumes"><b></b>Volumes<a class="anchor-link" href="#Volumes">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3cae3be-513c-403b-8172-ffb868b28347">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Create and inspect volumes:</p>
 <div class="highlight"><pre><span></span>podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>gitea-data
 podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>gitea-config
 
-podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gitea<span class="w"> </span><span class="se">\</span>
--p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span>:22<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>gitea-data:/var/lib/gitea<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>gitea-config:/etc/gitea<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span><span class="se">\</span>
-docker.io/gitea/gitea:latest-rootless
-</pre></div>
-<blockquote>
-<p>Note: This won't work by default on RHEL-like systems because of the SELinux restrictions.</p>
-</blockquote>
-<p>Now just go to: <code>http://&lt;server_ip&gt;:3000/</code> if you're on the Debian-like system.</p>
-<p>Inspect volumes:</p>
-<div class="highlight"><pre><span></span><span class="c1"># list the volumes</span>
+<span class="c1"># list the volumes</span>
 podman<span class="w"> </span>inspect<span class="w"> </span>gitea<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.[0].Mounts[] | select(.Type == "volume") | .Name'</span>
 
 podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>gitea-data
@@ -7530,7 +7583,7 @@ podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2571b559-425d-413f-8741-971af11e3ba1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b668c8ab-6122-4c61-a6c9-7f68f480be00">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7541,7 +7594,7 @@ podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2bf805b1-a135-4371-9d10-d8130b8ce99c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=87c7038e-96c2-488a-938c-d6dede5a7165">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7571,7 +7624,157 @@ $<span class="w"> </span>podman<span class="w"> </span>volume<span class="w"> </
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=80043fad-7751-42d8-8a2e-0be93d8d583c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=412a5853-22e5-42cb-bfc4-104f47439b68">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Rootless-container"><b></b>Rootless container<a class="anchor-link" href="#Rootless-container">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=10852bd8-f3ec-439d-86c9-eb85f9562428">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Can be used only on the localhost:</p>
+<blockquote>
+<p><em>In rootless gitea container only internal ssh server is supported</em>: from <code>/etc/gitea/app.ini</code> of <code>docker.io/gitea/gitea:latest-rootless</code></p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9d085808-904a-48a6-89d1-fbdd79944bb6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Install">Install<a class="anchor-link" href="#Install">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=11a912bd-1722-4ff2-a922-4bfeff9a5fa2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gitea<span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span>:22<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>gitea-data:/var/lib/gitea<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>gitea-config:/etc/gitea<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span><span class="se">\</span>
+docker.io/gitea/gitea:latest-rootless
+</pre></div>
+<blockquote>
+<p>Note: This won't work by default on RHEL-like systems because of the SELinux restrictions.</p>
+</blockquote>
+<p>Now just go to: <code>http://localhost:3000/</code> if you're on the Debian-like system.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=618f1d2e-9241-43cd-887b-650120c873b9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=78ca1f62-51a1-4656-be2a-782143a8cde1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dd6e1f1f-89df-49b8-87eb-da73144ff9a1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=92e83ee0-d9aa-4a0c-afaa-05ee37599472">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="SSH-connection"><b></b>SSH connection<a class="anchor-link" href="#SSH-connection">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=92d5f3d6-5114-4bab-85eb-49aa4ba75cb9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Server-preparation">Server preparation<a class="anchor-link" href="#Server-preparation">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c89df801-7a62-4930-947c-afde310c9973">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Configure-SSH-connection">Configure SSH connection<a class="anchor-link" href="#Configure-SSH-connection">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=65a26239-850f-42c1-91e2-5bd1c3c69adb">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Send an ssh key to the server and copy it to the container:</p>
+<p><strong>1. On the host machine:</strong></p>
+<div class="highlight"><pre><span></span>scp<span class="w"> </span>/home/host_user/.ssh/ssh_key.pub<span class="w"> </span>server_user@hostname:/tmp/ssh_key.pub
+ssh-add<span class="w"> </span>~/.ssh/ssh_key
+<span class="c1"># check if the key is added to the ssh agent</span>
+ssh-add<span class="w"> </span>-l
+</pre></div>
+<p><strong>2. On the server</strong></p>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>cp<span class="w"> </span>/tmp/ssh_key.pub<span class="w"> </span>container_name_or_id:/tmp/ssh_key.pub
+podman<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>container_id<span class="w"> </span>/bin/sh
+mkdir<span class="w"> </span>-p<span class="w"> </span>/var/lib/gitea/.ssh
+
+<span class="c1"># check if the owner is git and change it to git if necessary</span>
+ls<span class="w"> </span>-lad<span class="w"> </span>/var/lib/gitea/.ssh
+
+cat<span class="w"> </span>/tmp/ssh_key.pub<span class="w"> </span>&gt;&gt;<span class="w"> </span>/var/lib/gitea/.ssh/authorized_keys
+
+<span class="c1"># check the rights and change them to git if necessary</span>
+ls<span class="w"> </span>-la<span class="w"> </span>./.ssh/authorized_keys
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4252866d-97ee-4e6f-8a57-d2caf880f50b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7582,43 +7785,7 @@ $<span class="w"> </span>podman<span class="w"> </span>volume<span class="w"> </
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f8e73255-9e91-40d4-b62e-5a76f4608b72">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>file</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>/var/lib/gitea/data/gitea.db</code></td>
-<td>database</td>
-</tr>
-<tr>
-<td><code>/var/lib/gitea/git/repositories</code></td>
-<td>root repository</td>
-</tr>
-<tr>
-<td><code>/etc/gitea/app.ini</code></td>
-<td>configuration file (change ip address, for example)</td>
-</tr>
-<tr>
-<td><code>/var/lib/gitea/data/log</code></td>
-<td>logs</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fcaf2944-b59d-4461-808e-ee093de087d7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dc2cbf27-7539-4122-8e58-bceeaa85dae3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7629,7 +7796,7 @@ $<span class="w"> </span>podman<span class="w"> </span>volume<span class="w"> </
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9334a265-087d-4037-8288-6ecddae3ab16">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4b125693-e1bd-448a-96eb-ec0239e52acf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7640,7 +7807,7 @@ $<span class="w"> </span>podman<span class="w"> </span>volume<span class="w"> </
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=100e06eb-22c5-411b-b6d1-f3102ca5c808">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2cc52dc7-9c8e-466b-b8f4-27e4fc9ec31d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7711,7 +7878,7 @@ $<span class="w"> </span>podman<span class="w"> </span>volume<span class="w"> </
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0bdd2566-a0bc-4a1c-a865-3b2297734fc6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ccd72cf4-59d4-4cc7-9038-80e075ab5f29">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7722,7 +7889,7 @@ $<span class="w"> </span>podman<span class="w"> </span>volume<span class="w"> </
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f8ce2300-9d4e-41f0-ac0d-7280912d7c7a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=da4983a4-15b1-4d3e-adb0-28adf60bb975">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8015,7 +8182,7 @@ cat<span class="w"> </span>&gt;<span class="w"> </span>after.txt<span class="w">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-bash"><pre><span></span>diff<span class="w"> </span>-y<span class="w"> </span>before.txt<span class="w"> </span>after.txt
@@ -8138,46 +8305,6 @@ PATH = /var/lib/gitea/git/lfs					PATH = /var/lib/gitea/git/lfs
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
 <pre></pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=618f1d2e-9241-43cd-887b-650120c873b9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=78ca1f62-51a1-4656-be2a-782143a8cde1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dd6e1f1f-89df-49b8-87eb-da73144ff9a1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=92e83ee0-d9aa-4a0c-afaa-05ee37599472">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
