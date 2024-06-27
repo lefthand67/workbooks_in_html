@@ -7475,7 +7475,21 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main>
+<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b4356939-50dd-40c8-a7fe-48b9be3e5254">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db3299e2-2ed8-4bd2-84cf-4fb0c4207e1a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7545,6 +7559,10 @@ a.anchor-link {
 <td><code>/var/lib/gitea/data/log</code></td>
 <td>logs</td>
 </tr>
+<tr>
+<td><code>/data/gitea/home/.gitconfigdata/gitea/home/.gitconfig</code></td>
+<td><code>.gitconfig</code> file</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -7557,7 +7575,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Volumes"><b></b>Volumes<a class="anchor-link" href="#Volumes">¶</a></h1>
+<h1 id="Volumes-set-up"><b></b>Volumes set up<a class="anchor-link" href="#Volumes-set-up">¶</a></h1>
 </div>
 </div>
 </div>
@@ -7624,111 +7642,25 @@ $<span class="w"> </span>podman<span class="w"> </span>volume<span class="w"> </
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=412a5853-22e5-42cb-bfc4-104f47439b68">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Rootless-container"><b></b>Rootless container<a class="anchor-link" href="#Rootless-container">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=10852bd8-f3ec-439d-86c9-eb85f9562428">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Can be used only on the localhost:</p>
-<blockquote>
-<p><em>In rootless gitea container only internal ssh server is supported</em>: from <code>/etc/gitea/app.ini</code> of <code>docker.io/gitea/gitea:latest-rootless</code></p>
-</blockquote>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9d085808-904a-48a6-89d1-fbdd79944bb6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Install">Install<a class="anchor-link" href="#Install">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=11a912bd-1722-4ff2-a922-4bfeff9a5fa2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span>podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gitea<span class="w"> </span><span class="se">\</span>
--p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span>:22<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>gitea-data:/var/lib/gitea<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>gitea-config:/etc/gitea<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span><span class="se">\</span>
-docker.io/gitea/gitea:latest-rootless
-</pre></div>
-<blockquote>
-<p>Note: This won't work by default on RHEL-like systems because of the SELinux restrictions.</p>
-</blockquote>
-<p>Now just go to: <code>http://localhost:3000/</code> if you're on the Debian-like system.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=618f1d2e-9241-43cd-887b-650120c873b9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=78ca1f62-51a1-4656-be2a-782143a8cde1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dd6e1f1f-89df-49b8-87eb-da73144ff9a1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=92e83ee0-d9aa-4a0c-afaa-05ee37599472">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="SSH-connection"><b></b>SSH connection<a class="anchor-link" href="#SSH-connection">¶</a></h1>
+<h1 id="VLAN-version"><b></b>VLAN version<a class="anchor-link" href="#VLAN-version">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=92d5f3d6-5114-4bab-85eb-49aa4ba75cb9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cc8a19c4-c504-4ae3-8174-9bbb2f0107a2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Server-preparation">Server preparation<a class="anchor-link" href="#Server-preparation">¶</a></h2>
+<p>Setup gitea to work over the network on the dedicated server.</p>
+<p>Use <code>latest</code> release, i.e. root.</p>
 </div>
 </div>
 </div>
@@ -7739,7 +7671,7 @@ docker.io/gitea/gitea:latest-rootless
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Configure-SSH-connection">Configure SSH connection<a class="anchor-link" href="#Configure-SSH-connection">¶</a></h3>
+<h2 id="Run-gitea">Run gitea<a class="anchor-link" href="#Run-gitea">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7750,26 +7682,161 @@ docker.io/gitea/gitea:latest-rootless
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Send an ssh key to the server and copy it to the container:</p>
-<p><strong>1. On the host machine:</strong></p>
-<div class="highlight"><pre><span></span>scp<span class="w"> </span>/home/host_user/.ssh/ssh_key.pub<span class="w"> </span>server_user@hostname:/tmp/ssh_key.pub
-ssh-add<span class="w"> </span>~/.ssh/ssh_key
-<span class="c1"># check if the key is added to the ssh agent</span>
-ssh-add<span class="w"> </span>-l
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gitea<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span>:22<span class="w"> </span>-v<span class="w"> </span>gitea-data:/var/lib/gitea<span class="w"> </span>-v<span class="w"> </span>gitea-config:/etc/gitea<span class="w"> </span>-v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span>docker.io/gitea/gitea:latest
 </pre></div>
-<p><strong>2. On the server</strong></p>
-<div class="highlight"><pre><span></span>podman<span class="w"> </span>cp<span class="w"> </span>/tmp/ssh_key.pub<span class="w"> </span>container_name_or_id:/tmp/ssh_key.pub
-podman<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>container_id<span class="w"> </span>/bin/sh
-mkdir<span class="w"> </span>-p<span class="w"> </span>/var/lib/gitea/.ssh
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=aa9d5b80-1f2e-4fbc-9cc0-f46f0c83ff62">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="On-the-host-machine">On the host machine<a class="anchor-link" href="#On-the-host-machine">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d2d414a8-d1b5-41ef-bcd5-6803dae5264c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 
-<span class="c1"># check if the owner is git and change it to git if necessary</span>
-ls<span class="w"> </span>-lad<span class="w"> </span>/var/lib/gitea/.ssh
-
-cat<span class="w"> </span>/tmp/ssh_key.pub<span class="w"> </span>&gt;&gt;<span class="w"> </span>/var/lib/gitea/.ssh/authorized_keys
-
-<span class="c1"># check the rights and change them to git if necessary</span>
-ls<span class="w"> </span>-la<span class="w"> </span>./.ssh/authorized_keys
+<span class="n">string</span> <span class="o">=</span> <span class="s1">'3 товара за 200.99'</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"\d+.\d"</span>
+<span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>200.9
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=75860103-7fe2-4974-a3fe-df76312ffb68">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>You must provide an ssh public key to the gitea using its web form. Of course, you can <code>podman cp</code> the public key directly to the container (for example, to <code>/data/git/.ssh</code> dir) but gitea has its own ssh mechanism and your attempts to override it by the direct <code>cp</code> will lead to further <code>git push</code> failures, as my experience showed. So, follow this:</p>
+<ul>
+<li>Go to <code>http://&lt;host_name&gt;:3000</code> and configure the gitea.</li>
+<li>Create a new user account and log in.</li>
+<li>Go to <code>settings -&gt; SSH / GPG Keys</code> and add <code>your_key.pub</code> to the SSH keys<ul>
+<li>like in github, use <code>cat ~/.ssh/your_key.pub</code>)</li>
+<li>Verify the new key.</li>
+</ul>
+</li>
+<li>Check the connection:</li>
+</ul>
+<div class="highlight"><pre><span></span>ssh<span class="w"> </span>-T<span class="w"> </span>git@&lt;host_name&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span>
+<span class="c1">#or</span>
+ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/your_key<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span><span class="w"> </span>git@&lt;host_name&gt;
+</pre></div>
+<ul>
+<li>Add port number and the path to the key to the <code>~/.ssh/config</code> file:</li>
+</ul>
+<div class="highlight"><pre><span></span>Host<span class="w"> </span>giteahub.com
+<span class="w">    </span>Hostname<span class="w"> </span>&lt;ip_address&gt;
+<span class="w">    </span>User<span class="w"> </span>git
+<span class="w">    </span>IdentityFile<span class="w"> </span>/path/to/your/key
+<span class="w">    </span>Port<span class="w"> </span><span class="m">2222</span>
+</pre></div>
+<p>When done, check:</p>
+<div class="highlight"><pre><span></span>ssh<span class="w"> </span>-T<span class="w"> </span>giteahub.com
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fa3d2510-4a0a-4142-8c7e-669fb745371d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Repo-configuration">Repo configuration<a class="anchor-link" href="#Repo-configuration">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f27bce46-a440-4080-adc3-5e78e1e6898a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Now,</p>
+<ul>
+<li>create a new repo, and</li>
+<li>connect to it from the host machine using these commands:</li>
+</ul>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>init
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>main
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"first commit"</span>
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@192.168.1.9:user_name/repo_name.git
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+<p>If you configured <code>~/.ssh/config</code>:</p>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>giteahub.com:user_name/repo_name.git
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2e7ab619-54f2-4c1a-938a-09d88aeb5f7a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Single-machine-version"><b></b>Single machine version<a class="anchor-link" href="#Single-machine-version">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57d044da-5bb6-4ffd-b95c-a969f8fde98d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Use <code>latest-rootless</code> releases. They can be used only within the localhost, since they do not have any ssh client and you cannot set the external connections:</p>
+<blockquote>
+<p><em>In rootless gitea container only internal ssh server is supported</em>: from <code>/etc/gitea/app.ini</code> of <code>docker.io/gitea/gitea:latest-rootless</code></p>
+</blockquote>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gitea<span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span>:22<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>gitea-data:/var/lib/gitea<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>gitea-config:/etc/gitea<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span><span class="se">\</span>
+docker.io/gitea/gitea:latest-rootless
+</pre></div>
+<blockquote>
+<p>Note: This won't work by default on RHEL-like systems because of the SELinux restrictions.</p>
+</blockquote>
+<p>Now go to: <code>http://localhost:3000/</code>, finish the gitea configuration, and see <a href="#Repo-configuration">Repo configuration</a> after that you can use it only on this machine.</p>
+<p>Works best for testing and single use.</p>
 </div>
 </div>
 </div>
@@ -8006,172 +8073,172 @@ ls<span class="w"> </span>-la<span class="w"> </span>./.ssh/authorized_keys
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span>
 
-cat<span class="w"> </span>&gt;<span class="w"> </span>before.txt<span class="w"> </span><span class="s">&lt;&lt; eof</span>
-<span class="s">$ cat /etc/gitea/app.ini </span>
-<span class="s">APP_NAME = Gitea: Git with a cup of tea</span>
-<span class="s">RUN_USER = git</span>
-<span class="s">RUN_MODE = prod</span>
+<span class="n">cat</span> <span class="o">&gt;</span> <span class="n">before</span><span class="o">.</span><span class="n">txt</span> <span class="o">&lt;&lt;</span> <span class="n">eof</span>
+<span class="err">$</span> <span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">app</span><span class="o">.</span><span class="n">ini</span> 
+<span class="n">APP_NAME</span> <span class="o">=</span> <span class="n">Gitea</span><span class="p">:</span> <span class="n">Git</span> <span class="k">with</span> <span class="n">a</span> <span class="n">cup</span> <span class="n">of</span> <span class="n">tea</span>
+<span class="n">RUN_USER</span> <span class="o">=</span> <span class="n">git</span>
+<span class="n">RUN_MODE</span> <span class="o">=</span> <span class="n">prod</span>
 
-<span class="s">[repository]</span>
-<span class="s">ROOT = /var/lib/gitea/git/repositories</span>
+<span class="p">[</span><span class="n">repository</span><span class="p">]</span>
+<span class="n">ROOT</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">repositories</span>
 
-<span class="s">[repository.local]</span>
-<span class="s">LOCAL_COPY_PATH = /tmp/gitea/local-repo</span>
+<span class="p">[</span><span class="n">repository</span><span class="o">.</span><span class="n">local</span><span class="p">]</span>
+<span class="n">LOCAL_COPY_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">local</span><span class="o">-</span><span class="n">repo</span>
 
-<span class="s">[repository.upload]</span>
-<span class="s">TEMP_PATH = /tmp/gitea/uploads</span>
+<span class="p">[</span><span class="n">repository</span><span class="o">.</span><span class="n">upload</span><span class="p">]</span>
+<span class="n">TEMP_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">uploads</span>
 
-<span class="s">[server]</span>
-<span class="s">APP_DATA_PATH = /var/lib/gitea</span>
-<span class="s">SSH_DOMAIN       = localhost</span>
-<span class="s">HTTP_PORT        = 3000</span>
-<span class="s">ROOT_URL         = </span>
-<span class="s">DISABLE_SSH      = false</span>
-<span class="s">; In rootless gitea container only internal ssh server is supported</span>
-<span class="s">START_SSH_SERVER = true</span>
-<span class="s">SSH_PORT         = 2222</span>
-<span class="s">SSH_LISTEN_PORT  = 2222</span>
-<span class="s">BUILTIN_SSH_SERVER_USER = git</span>
-<span class="s">LFS_START_SERVER = </span>
+<span class="p">[</span><span class="n">server</span><span class="p">]</span>
+<span class="n">APP_DATA_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span>
+<span class="n">SSH_DOMAIN</span>       <span class="o">=</span> <span class="n">localhost</span>
+<span class="n">HTTP_PORT</span>        <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">ROOT_URL</span>         <span class="o">=</span> 
+<span class="n">DISABLE_SSH</span>      <span class="o">=</span> <span class="n">false</span>
+<span class="p">;</span> <span class="n">In</span> <span class="n">rootless</span> <span class="n">gitea</span> <span class="n">container</span> <span class="n">only</span> <span class="n">internal</span> <span class="n">ssh</span> <span class="n">server</span> <span class="ow">is</span> <span class="n">supported</span>
+<span class="n">START_SSH_SERVER</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">SSH_PORT</span>         <span class="o">=</span> <span class="mi">2222</span>
+<span class="n">SSH_LISTEN_PORT</span>  <span class="o">=</span> <span class="mi">2222</span>
+<span class="n">BUILTIN_SSH_SERVER_USER</span> <span class="o">=</span> <span class="n">git</span>
+<span class="n">LFS_START_SERVER</span> <span class="o">=</span> 
 
-<span class="s">[database]</span>
-<span class="s">PATH = /var/lib/gitea/data/gitea.db</span>
-<span class="s">DB_TYPE = sqlite3</span>
-<span class="s">HOST    = localhost:3306</span>
-<span class="s">NAME    = gitea</span>
-<span class="s">USER    = root</span>
-<span class="s">PASSWD  = </span>
+<span class="p">[</span><span class="n">database</span><span class="p">]</span>
+<span class="n">PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitea</span><span class="o">.</span><span class="n">db</span>
+<span class="n">DB_TYPE</span> <span class="o">=</span> <span class="n">sqlite3</span>
+<span class="n">HOST</span>    <span class="o">=</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">3306</span>
+<span class="n">NAME</span>    <span class="o">=</span> <span class="n">gitea</span>
+<span class="n">USER</span>    <span class="o">=</span> <span class="n">root</span>
+<span class="n">PASSWD</span>  <span class="o">=</span> 
 
-<span class="s">[session]</span>
-<span class="s">PROVIDER_CONFIG = /var/lib/gitea/data/sessions</span>
+<span class="p">[</span><span class="n">session</span><span class="p">]</span>
+<span class="n">PROVIDER_CONFIG</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">sessions</span>
 
-<span class="s">[picture]</span>
-<span class="s">AVATAR_UPLOAD_PATH = /var/lib/gitea/data/avatars</span>
-<span class="s">REPOSITORY_AVATAR_UPLOAD_PATH = /var/lib/gitea/data/repo-avatars</span>
+<span class="p">[</span><span class="n">picture</span><span class="p">]</span>
+<span class="n">AVATAR_UPLOAD_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">avatars</span>
+<span class="n">REPOSITORY_AVATAR_UPLOAD_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">repo</span><span class="o">-</span><span class="n">avatars</span>
 
-<span class="s">[attachment]</span>
-<span class="s">PATH = /var/lib/gitea/data/attachments</span>
+<span class="p">[</span><span class="n">attachment</span><span class="p">]</span>
+<span class="n">PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">attachments</span>
 
-<span class="s">[log]</span>
-<span class="s">ROOT_PATH = /var/lib/gitea/data/log</span>
+<span class="p">[</span><span class="n">log</span><span class="p">]</span>
+<span class="n">ROOT_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">log</span>
 
-<span class="s">[security]</span>
-<span class="s">INSTALL_LOCK = false</span>
-<span class="s">SECRET_KEY   = </span>
-<span class="s">REVERSE_PROXY_LIMIT = 1</span>
-<span class="s">REVERSE_PROXY_TRUSTED_PROXIES = *</span>
+<span class="p">[</span><span class="n">security</span><span class="p">]</span>
+<span class="n">INSTALL_LOCK</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">SECRET_KEY</span>   <span class="o">=</span> 
+<span class="n">REVERSE_PROXY_LIMIT</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">REVERSE_PROXY_TRUSTED_PROXIES</span> <span class="o">=</span> <span class="o">*</span>
 
-<span class="s">[service]</span>
-<span class="s">DISABLE_REGISTRATION = false</span>
-<span class="s">REQUIRE_SIGNIN_VIEW  = false</span>
+<span class="p">[</span><span class="n">service</span><span class="p">]</span>
+<span class="n">DISABLE_REGISTRATION</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">REQUIRE_SIGNIN_VIEW</span>  <span class="o">=</span> <span class="n">false</span>
 
-<span class="s">[lfs]</span>
-<span class="s">PATH = /var/lib/gitea/git/lfs</span>
-<span class="s">eof</span>
+<span class="p">[</span><span class="n">lfs</span><span class="p">]</span>
+<span class="n">PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">lfs</span>
+<span class="n">eof</span>
 
-cat<span class="w"> </span>&gt;<span class="w"> </span>after.txt<span class="w"> </span><span class="s">&lt;&lt; eof</span>
-<span class="s">$ cat /etc/gitea/app.ini </span>
-<span class="s">APP_NAME = debian-server</span>
-<span class="s">RUN_USER = git</span>
-<span class="s">RUN_MODE = prod</span>
-<span class="s">WORK_PATH = /var/lib/gitea</span>
+<span class="n">cat</span> <span class="o">&gt;</span> <span class="n">after</span><span class="o">.</span><span class="n">txt</span> <span class="o">&lt;&lt;</span> <span class="n">eof</span>
+<span class="err">$</span> <span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">app</span><span class="o">.</span><span class="n">ini</span> 
+<span class="n">APP_NAME</span> <span class="o">=</span> <span class="n">debian</span><span class="o">-</span><span class="n">server</span>
+<span class="n">RUN_USER</span> <span class="o">=</span> <span class="n">git</span>
+<span class="n">RUN_MODE</span> <span class="o">=</span> <span class="n">prod</span>
+<span class="n">WORK_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span>
 
-<span class="s">[repository]</span>
-<span class="s">ROOT = /var/lib/gitea/git/repositories</span>
+<span class="p">[</span><span class="n">repository</span><span class="p">]</span>
+<span class="n">ROOT</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">repositories</span>
 
-<span class="s">[repository.local]</span>
-<span class="s">LOCAL_COPY_PATH = /tmp/gitea/local-repo</span>
+<span class="p">[</span><span class="n">repository</span><span class="o">.</span><span class="n">local</span><span class="p">]</span>
+<span class="n">LOCAL_COPY_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">local</span><span class="o">-</span><span class="n">repo</span>
 
-<span class="s">[repository.upload]</span>
-<span class="s">TEMP_PATH = /tmp/gitea/uploads</span>
+<span class="p">[</span><span class="n">repository</span><span class="o">.</span><span class="n">upload</span><span class="p">]</span>
+<span class="n">TEMP_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">uploads</span>
 
-<span class="s">[server]</span>
-<span class="s">APP_DATA_PATH = /var/lib/gitea</span>
-<span class="s">SSH_DOMAIN = 192.168.1.9</span>
-<span class="s">HTTP_PORT = 3000</span>
-<span class="s">ROOT_URL = http://192.168.1.9:3000/</span>
-<span class="s">DISABLE_SSH = false</span>
-<span class="s">; In rootless gitea container only internal ssh server is supported</span>
-<span class="s">START_SSH_SERVER = true</span>
-<span class="s">SSH_PORT = 2222</span>
-<span class="s">SSH_LISTEN_PORT = 2222</span>
-<span class="s">BUILTIN_SSH_SERVER_USER = git</span>
-<span class="s">LFS_START_SERVER = true</span>
-<span class="s">DOMAIN = 192.168.1.9</span>
-<span class="s">LFS_JWT_SECRET = qbRax2Ay-bEn2nxv4v8_9_ZjZ7Y4TKRaWweUxR27TgU</span>
-<span class="s">OFFLINE_MODE = true</span>
+<span class="p">[</span><span class="n">server</span><span class="p">]</span>
+<span class="n">APP_DATA_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span>
+<span class="n">SSH_DOMAIN</span> <span class="o">=</span> <span class="mf">192.168.1.9</span>
+<span class="n">HTTP_PORT</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">ROOT_URL</span> <span class="o">=</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.1.9</span><span class="p">:</span><span class="mi">3000</span><span class="o">/</span>
+<span class="n">DISABLE_SSH</span> <span class="o">=</span> <span class="n">false</span>
+<span class="p">;</span> <span class="n">In</span> <span class="n">rootless</span> <span class="n">gitea</span> <span class="n">container</span> <span class="n">only</span> <span class="n">internal</span> <span class="n">ssh</span> <span class="n">server</span> <span class="ow">is</span> <span class="n">supported</span>
+<span class="n">START_SSH_SERVER</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">SSH_PORT</span> <span class="o">=</span> <span class="mi">2222</span>
+<span class="n">SSH_LISTEN_PORT</span> <span class="o">=</span> <span class="mi">2222</span>
+<span class="n">BUILTIN_SSH_SERVER_USER</span> <span class="o">=</span> <span class="n">git</span>
+<span class="n">LFS_START_SERVER</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">DOMAIN</span> <span class="o">=</span> <span class="mf">192.168.1.9</span>
+<span class="n">LFS_JWT_SECRET</span> <span class="o">=</span> <span class="n">qbRax2Ay</span><span class="o">-</span><span class="n">bEn2nxv4v8_9_ZjZ7Y4TKRaWweUxR27TgU</span>
+<span class="n">OFFLINE_MODE</span> <span class="o">=</span> <span class="n">true</span>
 
-<span class="s">[database]</span>
-<span class="s">PATH = /var/lib/gitea/data/gitea.db</span>
-<span class="s">DB_TYPE = sqlite3</span>
-<span class="s">HOST = localhost:3306</span>
-<span class="s">NAME = gitea</span>
-<span class="s">USER = root</span>
-<span class="s">PASSWD = </span>
-<span class="s">SCHEMA = </span>
-<span class="s">SSL_MODE = disable</span>
-<span class="s">LOG_SQL = false</span>
+<span class="p">[</span><span class="n">database</span><span class="p">]</span>
+<span class="n">PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitea</span><span class="o">.</span><span class="n">db</span>
+<span class="n">DB_TYPE</span> <span class="o">=</span> <span class="n">sqlite3</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">3306</span>
+<span class="n">NAME</span> <span class="o">=</span> <span class="n">gitea</span>
+<span class="n">USER</span> <span class="o">=</span> <span class="n">root</span>
+<span class="n">PASSWD</span> <span class="o">=</span> 
+<span class="n">SCHEMA</span> <span class="o">=</span> 
+<span class="n">SSL_MODE</span> <span class="o">=</span> <span class="n">disable</span>
+<span class="n">LOG_SQL</span> <span class="o">=</span> <span class="n">false</span>
 
-<span class="s">[session]</span>
-<span class="s">PROVIDER_CONFIG = /var/lib/gitea/data/sessions</span>
-<span class="s">PROVIDER = file</span>
+<span class="p">[</span><span class="n">session</span><span class="p">]</span>
+<span class="n">PROVIDER_CONFIG</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">sessions</span>
+<span class="n">PROVIDER</span> <span class="o">=</span> <span class="n">file</span>
 
-<span class="s">[picture]</span>
-<span class="s">AVATAR_UPLOAD_PATH = /var/lib/gitea/data/avatars</span>
-<span class="s">REPOSITORY_AVATAR_UPLOAD_PATH = /var/lib/gitea/data/repo-avatars</span>
+<span class="p">[</span><span class="n">picture</span><span class="p">]</span>
+<span class="n">AVATAR_UPLOAD_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">avatars</span>
+<span class="n">REPOSITORY_AVATAR_UPLOAD_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">repo</span><span class="o">-</span><span class="n">avatars</span>
 
-<span class="s">[attachment]</span>
-<span class="s">PATH = /var/lib/gitea/data/attachments</span>
+<span class="p">[</span><span class="n">attachment</span><span class="p">]</span>
+<span class="n">PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">attachments</span>
 
-<span class="s">[log]</span>
-<span class="s">ROOT_PATH = /var/lib/gitea/data/log</span>
-<span class="s">MODE = console</span>
-<span class="s">LEVEL = info</span>
+<span class="p">[</span><span class="n">log</span><span class="p">]</span>
+<span class="n">ROOT_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">log</span>
+<span class="n">MODE</span> <span class="o">=</span> <span class="n">console</span>
+<span class="n">LEVEL</span> <span class="o">=</span> <span class="n">info</span>
 
-<span class="s">[security]</span>
-<span class="s">INSTALL_LOCK = true</span>
-<span class="s">SECRET_KEY = </span>
-<span class="s">REVERSE_PROXY_LIMIT = 1</span>
-<span class="s">REVERSE_PROXY_TRUSTED_PROXIES = *</span>
-<span class="s">INTERNAL_TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE3MTkwMDQ5Mjd9.r-wwYGU66Fw4V5n_qyDgyvn0RPJZiFf6Ct7F6r9LWGQ</span>
-<span class="s">PASSWORD_HASH_ALGO = pbkdf2</span>
+<span class="p">[</span><span class="n">security</span><span class="p">]</span>
+<span class="n">INSTALL_LOCK</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">SECRET_KEY</span> <span class="o">=</span> 
+<span class="n">REVERSE_PROXY_LIMIT</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">REVERSE_PROXY_TRUSTED_PROXIES</span> <span class="o">=</span> <span class="o">*</span>
+<span class="n">INTERNAL_TOKEN</span> <span class="o">=</span> <span class="n">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span><span class="o">.</span><span class="n">eyJuYmYiOjE3MTkwMDQ5Mjd9</span><span class="o">.</span><span class="n">r</span><span class="o">-</span><span class="n">wwYGU66Fw4V5n_qyDgyvn0RPJZiFf6Ct7F6r9LWGQ</span>
+<span class="n">PASSWORD_HASH_ALGO</span> <span class="o">=</span> <span class="n">pbkdf2</span>
 
-<span class="s">[service]</span>
-<span class="s">DISABLE_REGISTRATION = false</span>
-<span class="s">REQUIRE_SIGNIN_VIEW = false</span>
-<span class="s">REGISTER_EMAIL_CONFIRM = false</span>
-<span class="s">ENABLE_NOTIFY_MAIL = false</span>
-<span class="s">ALLOW_ONLY_EXTERNAL_REGISTRATION = false</span>
-<span class="s">ENABLE_CAPTCHA = false</span>
-<span class="s">DEFAULT_KEEP_EMAIL_PRIVATE = false</span>
-<span class="s">DEFAULT_ALLOW_CREATE_ORGANIZATION = true</span>
-<span class="s">DEFAULT_ENABLE_TIMETRACKING = true</span>
-<span class="s">NO_REPLY_ADDRESS = noreply.localhost</span>
+<span class="p">[</span><span class="n">service</span><span class="p">]</span>
+<span class="n">DISABLE_REGISTRATION</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">REQUIRE_SIGNIN_VIEW</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">REGISTER_EMAIL_CONFIRM</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">ENABLE_NOTIFY_MAIL</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">ALLOW_ONLY_EXTERNAL_REGISTRATION</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">ENABLE_CAPTCHA</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">DEFAULT_KEEP_EMAIL_PRIVATE</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">DEFAULT_ALLOW_CREATE_ORGANIZATION</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">DEFAULT_ENABLE_TIMETRACKING</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">NO_REPLY_ADDRESS</span> <span class="o">=</span> <span class="n">noreply</span><span class="o">.</span><span class="n">localhost</span>
 
-<span class="s">[lfs]</span>
-<span class="s">PATH = /var/lib/gitea/git/lfs</span>
+<span class="p">[</span><span class="n">lfs</span><span class="p">]</span>
+<span class="n">PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">lfs</span>
 
-<span class="s">[mailer]</span>
-<span class="s">ENABLED = false</span>
+<span class="p">[</span><span class="n">mailer</span><span class="p">]</span>
+<span class="n">ENABLED</span> <span class="o">=</span> <span class="n">false</span>
 
-<span class="s">[openid]</span>
-<span class="s">ENABLE_OPENID_SIGNIN = true</span>
-<span class="s">ENABLE_OPENID_SIGNUP = true</span>
+<span class="p">[</span><span class="n">openid</span><span class="p">]</span>
+<span class="n">ENABLE_OPENID_SIGNIN</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">ENABLE_OPENID_SIGNUP</span> <span class="o">=</span> <span class="n">true</span>
 
-<span class="s">[cron.update_checker]</span>
-<span class="s">ENABLED = true</span>
+<span class="p">[</span><span class="n">cron</span><span class="o">.</span><span class="n">update_checker</span><span class="p">]</span>
+<span class="n">ENABLED</span> <span class="o">=</span> <span class="n">true</span>
 
-<span class="s">[repository.pull-request]</span>
-<span class="s">DEFAULT_MERGE_STYLE = merge</span>
+<span class="p">[</span><span class="n">repository</span><span class="o">.</span><span class="n">pull</span><span class="o">-</span><span class="n">request</span><span class="p">]</span>
+<span class="n">DEFAULT_MERGE_STYLE</span> <span class="o">=</span> <span class="n">merge</span>
 
-<span class="s">[repository.signing]</span>
-<span class="s">DEFAULT_TRUST_MODEL = committer</span>
+<span class="p">[</span><span class="n">repository</span><span class="o">.</span><span class="n">signing</span><span class="p">]</span>
+<span class="n">DEFAULT_TRUST_MODEL</span> <span class="o">=</span> <span class="n">committer</span>
 
-<span class="s">[oauth2]</span>
-<span class="s">JWT_SECRET = IhLMNPdN2O2HsnQlkYrDQGifkSslFTal8uhehbbe6fs</span>
-<span class="s">eof</span>
+<span class="p">[</span><span class="n">oauth2</span><span class="p">]</span>
+<span class="n">JWT_SECRET</span> <span class="o">=</span> <span class="n">IhLMNPdN2O2HsnQlkYrDQGifkSslFTal8uhehbbe6fs</span>
+<span class="n">eof</span>
 </pre></div>
 </div>
 </div>
@@ -8185,7 +8252,7 @@ cat<span class="w"> </span>&gt;<span class="w"> </span>after.txt<span class="w">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-bash"><pre><span></span>diff<span class="w"> </span>-y<span class="w"> </span>before.txt<span class="w"> </span>after.txt
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">diff</span> <span class="o">-</span><span class="n">y</span> <span class="n">before</span><span class="o">.</span><span class="n">txt</span> <span class="n">after</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 </div>
@@ -8315,6 +8382,7 @@ PATH = /var/lib/gitea/git/lfs					PATH = /var/lib/gitea/git/lfs
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="CI/CD"><b></b>CI/CD<a class="anchor-link" href="#CI/CD">¶</a></h1>
 </div>
 </div>
 </div>
@@ -8325,6 +8393,86 @@ PATH = /var/lib/gitea/git/lfs					PATH = /var/lib/gitea/git/lfs
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><em>ChatGPT:</em> (not checked)</p>
+<h3 id="Setting-Up-Gitea-with-Drone-CI-Using-Podman">Setting Up Gitea with Drone CI Using Podman<a class="anchor-link" href="#Setting-Up-Gitea-with-Drone-CI-Using-Podman">¶</a></h3><h4 id="Step-1:-Install-Gitea">Step 1: Install Gitea<a class="anchor-link" href="#Step-1:-Install-Gitea">¶</a></h4><ol>
+<li><p><strong>Prerequisites:</strong></p>
+<ul>
+<li>A server with a Linux operating system.</li>
+<li>Podman installed on your server.</li>
+</ul>
+</li>
+<li><p><strong>Install Gitea using Podman:</strong></p>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>gitea-data
+podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="o">=</span>gitea<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-p<span class="w"> </span><span class="m">222</span>:22<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>gitea-data:/data<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>docker.io/gitea/gitea:latest
+</pre></div>
+</li>
+<li><p><strong>Configure Gitea:</strong></p>
+<ul>
+<li>Open your browser and go to <code>http://your_server_ip:3000</code>.</li>
+<li>Follow the setup instructions to configure the database, admin account, and other settings.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Step-2:-Install-Drone-CI">Step 2: Install Drone CI<a class="anchor-link" href="#Step-2:-Install-Drone-CI">¶</a></h4><ol>
+<li><p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Gitea installed and running.</li>
+<li>Podman installed on your server.</li>
+</ul>
+</li>
+<li><p><strong>Install Drone CI using Podman:</strong></p>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>drone-data
+podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="o">=</span>drone<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>drone-data:/data<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">DRONE_GITEA_SERVER</span><span class="o">=</span>http://your_gitea_server:3000<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">DRONE_GITEA_CLIENT_ID</span><span class="o">=</span>your_client_id<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">DRONE_GITEA_CLIENT_SECRET</span><span class="o">=</span>your_client_secret<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">DRONE_RPC_SECRET</span><span class="o">=</span>your_rpc_secret<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">DRONE_SERVER_HOST</span><span class="o">=</span>your_drone_server<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">DRONE_SERVER_PROTO</span><span class="o">=</span>http<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>docker.io/drone/drone:latest
+</pre></div>
+</li>
+<li><p><strong>Configure Drone CI:</strong></p>
+<ul>
+<li>Go to <code>http://your_drone_server</code> in your browser.</li>
+<li>Follow the setup instructions.</li>
+<li>In Gitea, add an OAuth2 application for integration with Drone (Settings -&gt; Applications -&gt; Create New Application).</li>
+<li>Enter your Drone server URL and obtain the Client ID and Client Secret.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Step-3:-Configure-Repositories-for-CI/CD">Step 3: Configure Repositories for CI/CD<a class="anchor-link" href="#Step-3:-Configure-Repositories-for-CI/CD">¶</a></h4><ol>
+<li><p><strong>Create a <code>.drone.yml</code> file in your repository:</strong></p>
+<p>Example of a simple <code>.drone.yml</code> file:</p>
+<div class="highlight"><pre><span></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pipeline</span>
+<span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+
+<span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpine</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "Running tests"</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run_some_tests.sh</span>
+</pre></div>
+</li>
+<li><p><strong>Commit and push the <code>.drone.yml</code> file to your repository:</strong></p>
+<ul>
+<li>This file describes your CI/CD pipeline and will be executed by Drone CI.</li>
+</ul>
+</li>
+</ol>
+<h3 id="Benefits-of-Using-Gitea-with-Drone-CI-and-Podman">Benefits of Using Gitea with Drone CI and Podman<a class="anchor-link" href="#Benefits-of-Using-Gitea-with-Drone-CI-and-Podman">¶</a></h3><ul>
+<li><strong>Full Control Over Infrastructure:</strong> You manage your server and resources, avoiding limitations imposed by external providers.</li>
+<li><strong>Unlimited CI/CD Minutes:</strong> There are no restrictions on the number of CI/CD minutes since you are using your own server.</li>
+<li><strong>Flexibility and Customization:</strong> You can tailor your CI/CD processes to meet your specific requirements.</li>
+</ul>
+<h3 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">¶</a></h3><p>Using Gitea in combination with Drone CI and Podman provides a powerful, flexible, and self-hosted solution for managing your repositories and CI/CD pipelines. This setup allows you to bypass limitations on free minutes and gives you complete control over your infrastructure.</p>
 </div>
 </div>
 </div>
