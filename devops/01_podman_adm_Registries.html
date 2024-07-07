@@ -7729,6 +7729,9 @@ vi<span class="w"> </span><span class="nv">$HOME</span>/.config/containers/regis
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>On May 30, 2024 "Docker" has blocked the users from Russia, so we need some mirrors. And this fact proves the correctness of my decision to learn Podman 5 months ago. Yay!</p>
+<hr/>
+<p>UPD: Next we were unbanned, but nevertheless...</p>
+<hr/>
 <p>You can create a list of mirrors using TOML tables.</p>
 <p>Updated file, but for now podman can work only with one image at a time, so search does not work, but pulls work great:</p>
 <div class="highlight"><pre><span></span><span class="c1"># See containers-registries.conf(5) for more information</span>
@@ -7901,6 +7904,35 @@ vi<span class="w"> </span><span class="nv">$HOME</span>/.config/containers/regis
 </span><span class="ansi-bold">}</span>
 </pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7c8c29bf-31b1-4db5-b753-59794d855d4d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Prefix-and-location">Prefix and location<a class="anchor-link" href="#Prefix-and-location">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dfad7eb1-7c03-4dde-9873-6c470cb3bdaa">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>For testing and development you can substitute the hub name (prefix) with the real location. So, for example, when you test your images on the local registry before pushing the images to the cloud hub, you can do:</p>
+<div class="highlight"><pre><span></span><span class="k">[[registry]]</span>
+<span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"your_hub.com"</span>
+<span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"localhost:5000"</span>
+<span class="na">insecure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="na">blocked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+</pre></div>
+<p>When you are done, set <code>insecure = false</code> and change location to <code>"your_hub.com"</code>. This way, your code will always be ready for production.</p>
 </div>
 </div>
 </div>

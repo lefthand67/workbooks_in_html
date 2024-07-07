@@ -7475,1009 +7475,69 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b4356939-50dd-40c8-a7fe-48b9be3e5254">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db3299e2-2ed8-4bd2-84cf-4fb0c4207e1a">
+<main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=674ac86d-b7a2-4719-81bd-3d995f04e15e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="gitea"><a href="https://docs.gitea.com/">gitea</a><a class="anchor-link" href="#gitea">¶</a></h1>
+<h1 id="GITEA-HUB-CONFIGURATION">GITEA HUB CONFIGURATION<a class="anchor-link" href="#GITEA-HUB-CONFIGURATION">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7886eb18-3650-4030-ae26-d0adb6fec38a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=321bef9e-0ecd-47ee-bca2-6a251f52ba45">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>file</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Volumes</strong></td>
-<td></td>
-</tr>
-<tr>
-<td>podman volume create gitea-data</td>
-<td>for <code>/var/lib/gitea</code></td>
-</tr>
-<tr>
-<td>podman volume create gitea-config</td>
-<td>for <code>/etc/gitea</code></td>
-</tr>
-<tr>
-<td><strong>Run</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>podman run -d --name gitea -p 3000:3000 -p 2222:22 -v gitea-data:/var/lib/gitea -v gitea-config:/etc/gitea -v /etc/localtime:/etc/localtime:ro docker.io/gitea/gitea:latest-rootless</code></td>
-<td>run on the localhost</td>
-</tr>
-<tr>
-<td><code>podman run -d --name gitea -p 3000:3000 -p 2222:22 -v gitea-data:/var/lib/gitea -v gitea-config:/etc/gitea -v /etc/localtime:/etc/localtime:ro docker.io/gitea/gitea:latest</code></td>
-<td>run on the server in the root mode</td>
-</tr>
-<tr>
-<td><strong>Files</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>/var/lib/gitea/data/gitea.db</code></td>
-<td>database</td>
-</tr>
-<tr>
-<td><code>/var/lib/gitea/git/repositories</code></td>
-<td>root repository</td>
-</tr>
-<tr>
-<td><code>/etc/gitea/app.ini</code></td>
-<td>configuration file (change ip address, for example)</td>
-</tr>
-<tr>
-<td><code>/var/lib/gitea/data/log</code></td>
-<td>logs</td>
-</tr>
-<tr>
-<td><code>/data/gitea/home/.gitconfigdata/gitea/home/.gitconfig</code></td>
-<td><code>.gitconfig</code> file</td>
-</tr>
-</tbody>
-</table>
+<h1 id="1.-Architecture">1. Architecture<a class="anchor-link" href="#1.-Architecture">¶</a></h1>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=44833c7b-9f7a-45bb-b941-91a452cb1267">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a0472e03-691a-4231-bf89-1a6e6fba6e38">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Volumes-set-up"><b></b>Volumes set up<a class="anchor-link" href="#Volumes-set-up">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3cae3be-513c-403b-8172-ffb868b28347">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Create and inspect volumes:</p>
-<div class="highlight"><pre><span></span>podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>gitea-data
-podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>gitea-config
-
-<span class="c1"># list the volumes</span>
-podman<span class="w"> </span>inspect<span class="w"> </span>gitea<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.[0].Mounts[] | select(.Type == "volume") | .Name'</span>
-
-podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>gitea-data
-<span class="c1"># print mountpoint without quotes (-r)</span>
-podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>gitea-data<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span>.<span class="o">[</span><span class="m">0</span><span class="o">]</span>.Mountpoint
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b668c8ab-6122-4c61-a6c9-7f68f480be00">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="gitea-data"><code>gitea-data</code><a class="anchor-link" href="#gitea-data">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=87c7038e-96c2-488a-938c-d6dede5a7165">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span>$<span class="w"> </span>podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>gitea-data<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>
-<span class="o">[</span>
-<span class="w">  </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"gitea-data"</span>,
-<span class="w">    </span><span class="s2">"Driver"</span>:<span class="w"> </span><span class="s2">"local"</span>,
-<span class="w">    </span><span class="s2">"Mountpoint"</span>:<span class="w"> </span><span class="s2">"/home/user1/.local/share/containers/storage/volumes/gitea-data/_data"</span>,
-<span class="w">    </span><span class="s2">"CreatedAt"</span>:<span class="w"> </span><span class="s2">"2024-06-22T01:59:05.659878273+05:00"</span>,
-<span class="w">    </span><span class="s2">"Labels"</span>:<span class="w"> </span><span class="o">{}</span>,
-<span class="w">    </span><span class="s2">"Scope"</span>:<span class="w"> </span><span class="s2">"local"</span>,
-<span class="w">    </span><span class="s2">"Options"</span>:<span class="w"> </span><span class="o">{}</span>,
-<span class="w">    </span><span class="s2">"UID"</span>:<span class="w"> </span><span class="m">1000</span>,
-<span class="w">    </span><span class="s2">"GID"</span>:<span class="w"> </span><span class="m">1000</span>,
-<span class="w">    </span><span class="s2">"MountCount"</span>:<span class="w"> </span><span class="m">0</span>,
-<span class="w">    </span><span class="s2">"NeedsCopyUp"</span>:<span class="w"> </span><span class="nb">true</span>
-<span class="w">  </span><span class="o">}</span>
-<span class="o">]</span>
-
-$<span class="w"> </span>podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>gitea-data<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span>.<span class="o">[</span><span class="m">0</span><span class="o">]</span>.Mountpoint
-/home/user1/.local/share/containers/storage/volumes/gitea-data/_data
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=92e83ee0-d9aa-4a0c-afaa-05ee37599472">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="VLAN-version"><b></b>VLAN version<a class="anchor-link" href="#VLAN-version">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cc8a19c4-c504-4ae3-8174-9bbb2f0107a2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Setup gitea to work over the network on the dedicated server.</p>
-<p>Use <code>latest</code> release, i.e. root.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c89df801-7a62-4930-947c-afde310c9973">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Run-gitea">Run gitea<a class="anchor-link" href="#Run-gitea">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=65a26239-850f-42c1-91e2-5bd1c3c69adb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span>podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gitea<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span>:22<span class="w"> </span>-v<span class="w"> </span>gitea-data:/var/lib/gitea<span class="w"> </span>-v<span class="w"> </span>gitea-config:/etc/gitea<span class="w"> </span>-v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span>docker.io/gitea/gitea:latest
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=aa9d5b80-1f2e-4fbc-9cc0-f46f0c83ff62">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="On-the-host-machine">On the host machine<a class="anchor-link" href="#On-the-host-machine">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d2d414a8-d1b5-41ef-bcd5-6803dae5264c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
-
-<span class="n">string</span> <span class="o">=</span> <span class="s1">'3 товара за 200.99'</span>
-<span class="n">pat</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"\d+.\d"</span>
-<span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>200.9
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=75860103-7fe2-4974-a3fe-df76312ffb68">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>You must provide an ssh public key to the gitea using its web form. Of course, you can <code>podman cp</code> the public key directly to the container (for example, to <code>/data/git/.ssh</code> dir) but gitea has its own ssh mechanism and your attempts to override it by the direct <code>cp</code> will lead to further <code>git push</code> failures, as my experience showed. So, follow this:</p>
 <ul>
-<li>Go to <code>http://&lt;host_name&gt;:3000</code> and configure the gitea.</li>
-<li>Create a new user account and log in.</li>
-<li>Go to <code>settings -&gt; SSH / GPG Keys</code> and add <code>your_key.pub</code> to the SSH keys<ul>
-<li>like in github, use <code>cat ~/.ssh/your_key.pub</code>)</li>
-<li>Verify the new key.</li>
+<li>Content Delivery Tier (Gitea):<ul>
+<li>Delivers its services and user interface directly to users through web browsers, enabling interaction with Git repositories and collaboration features.</li>
 </ul>
 </li>
-<li>Check the connection:</li>
-</ul>
-<div class="highlight"><pre><span></span>ssh<span class="w"> </span>-T<span class="w"> </span>git@&lt;host_name&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span>
-<span class="c1">#or</span>
-ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/your_key<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span><span class="w"> </span>git@&lt;host_name&gt;
-</pre></div>
-<ul>
-<li>Add port number and the path to the key to the <code>~/.ssh/config</code> file:</li>
-</ul>
-<div class="highlight"><pre><span></span>Host<span class="w"> </span>giteahub.com
-<span class="w">    </span>Hostname<span class="w"> </span>&lt;ip_address&gt;
-<span class="w">    </span>User<span class="w"> </span>git
-<span class="w">    </span>IdentityFile<span class="w"> </span>/path/to/your/key
-<span class="w">    </span>Port<span class="w"> </span><span class="m">2222</span>
-</pre></div>
-<p>When done, check:</p>
-<div class="highlight"><pre><span></span>ssh<span class="w"> </span>-T<span class="w"> </span>giteahub.com
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fa3d2510-4a0a-4142-8c7e-669fb745371d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Repo-configuration">Repo configuration<a class="anchor-link" href="#Repo-configuration">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f27bce46-a440-4080-adc3-5e78e1e6898a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Now,</p>
-<ul>
-<li>create a new repo, and</li>
-<li>connect to it from the host machine using these commands:</li>
-</ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>init
-git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>main
-git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"first commit"</span>
-git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@192.168.1.9:user_name/repo_name.git
-git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
-</pre></div>
-<p>If you configured <code>~/.ssh/config</code>:</p>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>giteahub.com:user_name/repo_name.git
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2e7ab619-54f2-4c1a-938a-09d88aeb5f7a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Single-machine-version"><b></b>Single machine version<a class="anchor-link" href="#Single-machine-version">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57d044da-5bb6-4ffd-b95c-a969f8fde98d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Use <code>latest-rootless</code> releases. They can be used only within the localhost, since they do not have any ssh client and you cannot set the external connections:</p>
-<blockquote>
-<p><em>In rootless gitea container only internal ssh server is supported</em>: from <code>/etc/gitea/app.ini</code> of <code>docker.io/gitea/gitea:latest-rootless</code></p>
-</blockquote>
-<div class="highlight"><pre><span></span>podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gitea<span class="w"> </span><span class="se">\</span>
--p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-p<span class="w"> </span><span class="m">2222</span>:22<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>gitea-data:/var/lib/gitea<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>gitea-config:/etc/gitea<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span><span class="se">\</span>
-docker.io/gitea/gitea:latest-rootless
-</pre></div>
-<blockquote>
-<p>Note: This won't work by default on RHEL-like systems because of the SELinux restrictions.</p>
-</blockquote>
-<p>Now go to: <code>http://localhost:3000/</code>, finish the gitea configuration, and see <a href="#Repo-configuration">Repo configuration</a> after that you can use it only on this machine.</p>
-<p>Works best for testing and single use.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4252866d-97ee-4e6f-8a57-d2caf880f50b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Files"><b></b>Files<a class="anchor-link" href="#Files">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dc2cbf27-7539-4122-8e58-bceeaa85dae3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="/etc/gitea/app.ini"><code>/etc/gitea/app.ini</code><a class="anchor-link" href="#/etc/gitea/app.ini">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4b125693-e1bd-448a-96eb-ec0239e52acf">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Before-installation">Before installation<a class="anchor-link" href="#Before-installation">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2cc52dc7-9c8e-466b-b8f4-27e4fc9ec31d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>/etc/gitea/app.ini<span class="w"> </span>
-<span class="nv">APP_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Gitea:<span class="w"> </span>Git<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>cup<span class="w"> </span>of<span class="w"> </span>tea
-<span class="nv">RUN_USER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git
-<span class="nv">RUN_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>prod
-
-<span class="o">[</span>repository<span class="o">]</span>
-<span class="nv">ROOT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/git/repositories
-
-<span class="o">[</span>repository.local<span class="o">]</span>
-<span class="nv">LOCAL_COPY_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/tmp/gitea/local-repo
-
-<span class="o">[</span>repository.upload<span class="o">]</span>
-<span class="nv">TEMP_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/tmp/gitea/uploads
-
-<span class="o">[</span>server<span class="o">]</span>
-<span class="nv">APP_DATA_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea
-<span class="nv">SSH_DOMAIN</span><span class="w">       </span><span class="o">=</span><span class="w"> </span>localhost
-<span class="nv">HTTP_PORT</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="m">3000</span>
-<span class="nv">ROOT_URL</span><span class="w">         </span><span class="o">=</span><span class="w"> </span>
-<span class="nv">DISABLE_SSH</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="p">;</span><span class="w"> </span>In<span class="w"> </span>rootless<span class="w"> </span>gitea<span class="w"> </span>container<span class="w"> </span>only<span class="w"> </span>internal<span class="w"> </span>ssh<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </span>supported
-<span class="nv">START_SSH_SERVER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-<span class="nv">SSH_PORT</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="m">2222</span>
-<span class="nv">SSH_LISTEN_PORT</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="m">2222</span>
-<span class="nv">BUILTIN_SSH_SERVER_USER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git
-<span class="nv">LFS_START_SERVER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-
-<span class="o">[</span>database<span class="o">]</span>
-<span class="nv">PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/gitea.db
-<span class="nv">DB_TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>sqlite3
-<span class="nv">HOST</span><span class="w">    </span><span class="o">=</span><span class="w"> </span>localhost:3306
-<span class="nv">NAME</span><span class="w">    </span><span class="o">=</span><span class="w"> </span>gitea
-<span class="nv">USER</span><span class="w">    </span><span class="o">=</span><span class="w"> </span>root
-<span class="nv">PASSWD</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>
-
-<span class="o">[</span>session<span class="o">]</span>
-<span class="nv">PROVIDER_CONFIG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/sessions
-
-<span class="o">[</span>picture<span class="o">]</span>
-<span class="nv">AVATAR_UPLOAD_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/avatars
-<span class="nv">REPOSITORY_AVATAR_UPLOAD_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/repo-avatars
-
-<span class="o">[</span>attachment<span class="o">]</span>
-<span class="nv">PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/attachments
-
-<span class="o">[</span>log<span class="o">]</span>
-<span class="nv">ROOT_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/log
-
-<span class="o">[</span>security<span class="o">]</span>
-<span class="nv">INSTALL_LOCK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="nv">SECRET_KEY</span><span class="w">   </span><span class="o">=</span><span class="w"> </span>
-<span class="nv">REVERSE_PROXY_LIMIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<span class="nv">REVERSE_PROXY_TRUSTED_PROXIES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>*
-
-<span class="o">[</span>service<span class="o">]</span>
-<span class="nv">DISABLE_REGISTRATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="nv">REQUIRE_SIGNIN_VIEW</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-
-<span class="o">[</span>lfs<span class="o">]</span>
-<span class="nv">PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/git/lfs
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ccd72cf4-59d4-4cc7-9038-80e075ab5f29">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="After-installation">After installation<a class="anchor-link" href="#After-installation">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=da4983a4-15b1-4d3e-adb0-28adf60bb975">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>/etc/gitea/app.ini<span class="w"> </span>
-<span class="nv">APP_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>debian-server
-<span class="nv">RUN_USER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git
-<span class="nv">RUN_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>prod
-<span class="nv">WORK_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea
-
-<span class="o">[</span>repository<span class="o">]</span>
-<span class="nv">ROOT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/git/repositories
-
-<span class="o">[</span>repository.local<span class="o">]</span>
-<span class="nv">LOCAL_COPY_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/tmp/gitea/local-repo
-
-<span class="o">[</span>repository.upload<span class="o">]</span>
-<span class="nv">TEMP_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/tmp/gitea/uploads
-
-<span class="o">[</span>server<span class="o">]</span>
-<span class="nv">APP_DATA_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea
-<span class="nv">SSH_DOMAIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">192</span>.168.1.9
-<span class="nv">HTTP_PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3000</span>
-<span class="nv">ROOT_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>http://192.168.1.9:3000/
-<span class="nv">DISABLE_SSH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="p">;</span><span class="w"> </span>In<span class="w"> </span>rootless<span class="w"> </span>gitea<span class="w"> </span>container<span class="w"> </span>only<span class="w"> </span>internal<span class="w"> </span>ssh<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </span>supported
-<span class="nv">START_SSH_SERVER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-<span class="nv">SSH_PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2222</span>
-<span class="nv">SSH_LISTEN_PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2222</span>
-<span class="nv">BUILTIN_SSH_SERVER_USER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git
-<span class="nv">LFS_START_SERVER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-<span class="nv">DOMAIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">192</span>.168.1.9
-<span class="nv">LFS_JWT_SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>qbRax2Ay-bEn2nxv4v8_9_ZjZ7Y4TKRaWweUxR27TgU
-<span class="nv">OFFLINE_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-
-<span class="o">[</span>database<span class="o">]</span>
-<span class="nv">PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/gitea.db
-<span class="nv">DB_TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>sqlite3
-<span class="nv">HOST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>localhost:3306
-<span class="nv">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gitea
-<span class="nv">USER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>root
-<span class="nv">PASSWD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="nv">SCHEMA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="nv">SSL_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>disable
-<span class="nv">LOG_SQL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-
-<span class="o">[</span>session<span class="o">]</span>
-<span class="nv">PROVIDER_CONFIG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/sessions
-<span class="nv">PROVIDER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>file
-
-<span class="o">[</span>picture<span class="o">]</span>
-<span class="nv">AVATAR_UPLOAD_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/avatars
-<span class="nv">REPOSITORY_AVATAR_UPLOAD_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/repo-avatars
-
-<span class="o">[</span>attachment<span class="o">]</span>
-<span class="nv">PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/attachments
-
-<span class="o">[</span>log<span class="o">]</span>
-<span class="nv">ROOT_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/data/log
-<span class="nv">MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>console
-<span class="nv">LEVEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>info
-
-<span class="o">[</span>security<span class="o">]</span>
-<span class="nv">INSTALL_LOCK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-<span class="nv">SECRET_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="nv">REVERSE_PROXY_LIMIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<span class="nv">REVERSE_PROXY_TRUSTED_PROXIES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>*
-<span class="nv">INTERNAL_TOKEN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE3MTkwMDQ5Mjd9.r-wwYGU66Fw4V5n_qyDgyvn0RPJZiFf6Ct7F6r9LWGQ
-<span class="nv">PASSWORD_HASH_ALGO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>pbkdf2
-
-<span class="o">[</span>service<span class="o">]</span>
-<span class="nv">DISABLE_REGISTRATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="nv">REQUIRE_SIGNIN_VIEW</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="nv">REGISTER_EMAIL_CONFIRM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="nv">ENABLE_NOTIFY_MAIL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="nv">ALLOW_ONLY_EXTERNAL_REGISTRATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="nv">ENABLE_CAPTCHA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="nv">DEFAULT_KEEP_EMAIL_PRIVATE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="nv">DEFAULT_ALLOW_CREATE_ORGANIZATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-<span class="nv">DEFAULT_ENABLE_TIMETRACKING</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-<span class="nv">NO_REPLY_ADDRESS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>noreply.localhost
-
-<span class="o">[</span>lfs<span class="o">]</span>
-<span class="nv">PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/lib/gitea/git/lfs
-
-<span class="o">[</span>mailer<span class="o">]</span>
-<span class="nv">ENABLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-
-<span class="o">[</span>openid<span class="o">]</span>
-<span class="nv">ENABLE_OPENID_SIGNIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-<span class="nv">ENABLE_OPENID_SIGNUP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-
-<span class="o">[</span>cron.update_checker<span class="o">]</span>
-<span class="nv">ENABLED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-
-<span class="o">[</span>repository.pull-request<span class="o">]</span>
-<span class="nv">DEFAULT_MERGE_STYLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>merge
-
-<span class="o">[</span>repository.signing<span class="o">]</span>
-<span class="nv">DEFAULT_TRUST_MODEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>committer
-
-<span class="o">[</span>oauth2<span class="o">]</span>
-<span class="nv">JWT_SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>IhLMNPdN2O2HsnQlkYrDQGifkSslFTal8uhehbbe6fs
-</pre></div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=144057c6-d656-411f-84f7-2ea92c67ce0b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span>
-
-<span class="n">cat</span> <span class="o">&gt;</span> <span class="n">before</span><span class="o">.</span><span class="n">txt</span> <span class="o">&lt;&lt;</span> <span class="n">eof</span>
-<span class="err">$</span> <span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">app</span><span class="o">.</span><span class="n">ini</span> 
-<span class="n">APP_NAME</span> <span class="o">=</span> <span class="n">Gitea</span><span class="p">:</span> <span class="n">Git</span> <span class="k">with</span> <span class="n">a</span> <span class="n">cup</span> <span class="n">of</span> <span class="n">tea</span>
-<span class="n">RUN_USER</span> <span class="o">=</span> <span class="n">git</span>
-<span class="n">RUN_MODE</span> <span class="o">=</span> <span class="n">prod</span>
-
-<span class="p">[</span><span class="n">repository</span><span class="p">]</span>
-<span class="n">ROOT</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">repositories</span>
-
-<span class="p">[</span><span class="n">repository</span><span class="o">.</span><span class="n">local</span><span class="p">]</span>
-<span class="n">LOCAL_COPY_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">local</span><span class="o">-</span><span class="n">repo</span>
-
-<span class="p">[</span><span class="n">repository</span><span class="o">.</span><span class="n">upload</span><span class="p">]</span>
-<span class="n">TEMP_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">uploads</span>
-
-<span class="p">[</span><span class="n">server</span><span class="p">]</span>
-<span class="n">APP_DATA_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span>
-<span class="n">SSH_DOMAIN</span>       <span class="o">=</span> <span class="n">localhost</span>
-<span class="n">HTTP_PORT</span>        <span class="o">=</span> <span class="mi">3000</span>
-<span class="n">ROOT_URL</span>         <span class="o">=</span> 
-<span class="n">DISABLE_SSH</span>      <span class="o">=</span> <span class="n">false</span>
-<span class="p">;</span> <span class="n">In</span> <span class="n">rootless</span> <span class="n">gitea</span> <span class="n">container</span> <span class="n">only</span> <span class="n">internal</span> <span class="n">ssh</span> <span class="n">server</span> <span class="ow">is</span> <span class="n">supported</span>
-<span class="n">START_SSH_SERVER</span> <span class="o">=</span> <span class="n">true</span>
-<span class="n">SSH_PORT</span>         <span class="o">=</span> <span class="mi">2222</span>
-<span class="n">SSH_LISTEN_PORT</span>  <span class="o">=</span> <span class="mi">2222</span>
-<span class="n">BUILTIN_SSH_SERVER_USER</span> <span class="o">=</span> <span class="n">git</span>
-<span class="n">LFS_START_SERVER</span> <span class="o">=</span> 
-
-<span class="p">[</span><span class="n">database</span><span class="p">]</span>
-<span class="n">PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitea</span><span class="o">.</span><span class="n">db</span>
-<span class="n">DB_TYPE</span> <span class="o">=</span> <span class="n">sqlite3</span>
-<span class="n">HOST</span>    <span class="o">=</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">3306</span>
-<span class="n">NAME</span>    <span class="o">=</span> <span class="n">gitea</span>
-<span class="n">USER</span>    <span class="o">=</span> <span class="n">root</span>
-<span class="n">PASSWD</span>  <span class="o">=</span> 
-
-<span class="p">[</span><span class="n">session</span><span class="p">]</span>
-<span class="n">PROVIDER_CONFIG</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">sessions</span>
-
-<span class="p">[</span><span class="n">picture</span><span class="p">]</span>
-<span class="n">AVATAR_UPLOAD_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">avatars</span>
-<span class="n">REPOSITORY_AVATAR_UPLOAD_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">repo</span><span class="o">-</span><span class="n">avatars</span>
-
-<span class="p">[</span><span class="n">attachment</span><span class="p">]</span>
-<span class="n">PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">attachments</span>
-
-<span class="p">[</span><span class="n">log</span><span class="p">]</span>
-<span class="n">ROOT_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">log</span>
-
-<span class="p">[</span><span class="n">security</span><span class="p">]</span>
-<span class="n">INSTALL_LOCK</span> <span class="o">=</span> <span class="n">false</span>
-<span class="n">SECRET_KEY</span>   <span class="o">=</span> 
-<span class="n">REVERSE_PROXY_LIMIT</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">REVERSE_PROXY_TRUSTED_PROXIES</span> <span class="o">=</span> <span class="o">*</span>
-
-<span class="p">[</span><span class="n">service</span><span class="p">]</span>
-<span class="n">DISABLE_REGISTRATION</span> <span class="o">=</span> <span class="n">false</span>
-<span class="n">REQUIRE_SIGNIN_VIEW</span>  <span class="o">=</span> <span class="n">false</span>
-
-<span class="p">[</span><span class="n">lfs</span><span class="p">]</span>
-<span class="n">PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">lfs</span>
-<span class="n">eof</span>
-
-<span class="n">cat</span> <span class="o">&gt;</span> <span class="n">after</span><span class="o">.</span><span class="n">txt</span> <span class="o">&lt;&lt;</span> <span class="n">eof</span>
-<span class="err">$</span> <span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">app</span><span class="o">.</span><span class="n">ini</span> 
-<span class="n">APP_NAME</span> <span class="o">=</span> <span class="n">debian</span><span class="o">-</span><span class="n">server</span>
-<span class="n">RUN_USER</span> <span class="o">=</span> <span class="n">git</span>
-<span class="n">RUN_MODE</span> <span class="o">=</span> <span class="n">prod</span>
-<span class="n">WORK_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span>
-
-<span class="p">[</span><span class="n">repository</span><span class="p">]</span>
-<span class="n">ROOT</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">repositories</span>
-
-<span class="p">[</span><span class="n">repository</span><span class="o">.</span><span class="n">local</span><span class="p">]</span>
-<span class="n">LOCAL_COPY_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">local</span><span class="o">-</span><span class="n">repo</span>
-
-<span class="p">[</span><span class="n">repository</span><span class="o">.</span><span class="n">upload</span><span class="p">]</span>
-<span class="n">TEMP_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">uploads</span>
-
-<span class="p">[</span><span class="n">server</span><span class="p">]</span>
-<span class="n">APP_DATA_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span>
-<span class="n">SSH_DOMAIN</span> <span class="o">=</span> <span class="mf">192.168.1.9</span>
-<span class="n">HTTP_PORT</span> <span class="o">=</span> <span class="mi">3000</span>
-<span class="n">ROOT_URL</span> <span class="o">=</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.1.9</span><span class="p">:</span><span class="mi">3000</span><span class="o">/</span>
-<span class="n">DISABLE_SSH</span> <span class="o">=</span> <span class="n">false</span>
-<span class="p">;</span> <span class="n">In</span> <span class="n">rootless</span> <span class="n">gitea</span> <span class="n">container</span> <span class="n">only</span> <span class="n">internal</span> <span class="n">ssh</span> <span class="n">server</span> <span class="ow">is</span> <span class="n">supported</span>
-<span class="n">START_SSH_SERVER</span> <span class="o">=</span> <span class="n">true</span>
-<span class="n">SSH_PORT</span> <span class="o">=</span> <span class="mi">2222</span>
-<span class="n">SSH_LISTEN_PORT</span> <span class="o">=</span> <span class="mi">2222</span>
-<span class="n">BUILTIN_SSH_SERVER_USER</span> <span class="o">=</span> <span class="n">git</span>
-<span class="n">LFS_START_SERVER</span> <span class="o">=</span> <span class="n">true</span>
-<span class="n">DOMAIN</span> <span class="o">=</span> <span class="mf">192.168.1.9</span>
-<span class="n">LFS_JWT_SECRET</span> <span class="o">=</span> <span class="n">qbRax2Ay</span><span class="o">-</span><span class="n">bEn2nxv4v8_9_ZjZ7Y4TKRaWweUxR27TgU</span>
-<span class="n">OFFLINE_MODE</span> <span class="o">=</span> <span class="n">true</span>
-
-<span class="p">[</span><span class="n">database</span><span class="p">]</span>
-<span class="n">PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitea</span><span class="o">.</span><span class="n">db</span>
-<span class="n">DB_TYPE</span> <span class="o">=</span> <span class="n">sqlite3</span>
-<span class="n">HOST</span> <span class="o">=</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">3306</span>
-<span class="n">NAME</span> <span class="o">=</span> <span class="n">gitea</span>
-<span class="n">USER</span> <span class="o">=</span> <span class="n">root</span>
-<span class="n">PASSWD</span> <span class="o">=</span> 
-<span class="n">SCHEMA</span> <span class="o">=</span> 
-<span class="n">SSL_MODE</span> <span class="o">=</span> <span class="n">disable</span>
-<span class="n">LOG_SQL</span> <span class="o">=</span> <span class="n">false</span>
-
-<span class="p">[</span><span class="n">session</span><span class="p">]</span>
-<span class="n">PROVIDER_CONFIG</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">sessions</span>
-<span class="n">PROVIDER</span> <span class="o">=</span> <span class="n">file</span>
-
-<span class="p">[</span><span class="n">picture</span><span class="p">]</span>
-<span class="n">AVATAR_UPLOAD_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">avatars</span>
-<span class="n">REPOSITORY_AVATAR_UPLOAD_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">repo</span><span class="o">-</span><span class="n">avatars</span>
-
-<span class="p">[</span><span class="n">attachment</span><span class="p">]</span>
-<span class="n">PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">attachments</span>
-
-<span class="p">[</span><span class="n">log</span><span class="p">]</span>
-<span class="n">ROOT_PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">log</span>
-<span class="n">MODE</span> <span class="o">=</span> <span class="n">console</span>
-<span class="n">LEVEL</span> <span class="o">=</span> <span class="n">info</span>
-
-<span class="p">[</span><span class="n">security</span><span class="p">]</span>
-<span class="n">INSTALL_LOCK</span> <span class="o">=</span> <span class="n">true</span>
-<span class="n">SECRET_KEY</span> <span class="o">=</span> 
-<span class="n">REVERSE_PROXY_LIMIT</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">REVERSE_PROXY_TRUSTED_PROXIES</span> <span class="o">=</span> <span class="o">*</span>
-<span class="n">INTERNAL_TOKEN</span> <span class="o">=</span> <span class="n">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span><span class="o">.</span><span class="n">eyJuYmYiOjE3MTkwMDQ5Mjd9</span><span class="o">.</span><span class="n">r</span><span class="o">-</span><span class="n">wwYGU66Fw4V5n_qyDgyvn0RPJZiFf6Ct7F6r9LWGQ</span>
-<span class="n">PASSWORD_HASH_ALGO</span> <span class="o">=</span> <span class="n">pbkdf2</span>
-
-<span class="p">[</span><span class="n">service</span><span class="p">]</span>
-<span class="n">DISABLE_REGISTRATION</span> <span class="o">=</span> <span class="n">false</span>
-<span class="n">REQUIRE_SIGNIN_VIEW</span> <span class="o">=</span> <span class="n">false</span>
-<span class="n">REGISTER_EMAIL_CONFIRM</span> <span class="o">=</span> <span class="n">false</span>
-<span class="n">ENABLE_NOTIFY_MAIL</span> <span class="o">=</span> <span class="n">false</span>
-<span class="n">ALLOW_ONLY_EXTERNAL_REGISTRATION</span> <span class="o">=</span> <span class="n">false</span>
-<span class="n">ENABLE_CAPTCHA</span> <span class="o">=</span> <span class="n">false</span>
-<span class="n">DEFAULT_KEEP_EMAIL_PRIVATE</span> <span class="o">=</span> <span class="n">false</span>
-<span class="n">DEFAULT_ALLOW_CREATE_ORGANIZATION</span> <span class="o">=</span> <span class="n">true</span>
-<span class="n">DEFAULT_ENABLE_TIMETRACKING</span> <span class="o">=</span> <span class="n">true</span>
-<span class="n">NO_REPLY_ADDRESS</span> <span class="o">=</span> <span class="n">noreply</span><span class="o">.</span><span class="n">localhost</span>
-
-<span class="p">[</span><span class="n">lfs</span><span class="p">]</span>
-<span class="n">PATH</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gitea</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">lfs</span>
-
-<span class="p">[</span><span class="n">mailer</span><span class="p">]</span>
-<span class="n">ENABLED</span> <span class="o">=</span> <span class="n">false</span>
-
-<span class="p">[</span><span class="n">openid</span><span class="p">]</span>
-<span class="n">ENABLE_OPENID_SIGNIN</span> <span class="o">=</span> <span class="n">true</span>
-<span class="n">ENABLE_OPENID_SIGNUP</span> <span class="o">=</span> <span class="n">true</span>
-
-<span class="p">[</span><span class="n">cron</span><span class="o">.</span><span class="n">update_checker</span><span class="p">]</span>
-<span class="n">ENABLED</span> <span class="o">=</span> <span class="n">true</span>
-
-<span class="p">[</span><span class="n">repository</span><span class="o">.</span><span class="n">pull</span><span class="o">-</span><span class="n">request</span><span class="p">]</span>
-<span class="n">DEFAULT_MERGE_STYLE</span> <span class="o">=</span> <span class="n">merge</span>
-
-<span class="p">[</span><span class="n">repository</span><span class="o">.</span><span class="n">signing</span><span class="p">]</span>
-<span class="n">DEFAULT_TRUST_MODEL</span> <span class="o">=</span> <span class="n">committer</span>
-
-<span class="p">[</span><span class="n">oauth2</span><span class="p">]</span>
-<span class="n">JWT_SECRET</span> <span class="o">=</span> <span class="n">IhLMNPdN2O2HsnQlkYrDQGifkSslFTal8uhehbbe6fs</span>
-<span class="n">eof</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=530e6dfa-93ba-4562-b187-6b3173321a8c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">diff</span> <span class="o">-</span><span class="n">y</span> <span class="n">before</span><span class="o">.</span><span class="n">txt</span> <span class="n">after</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>$ cat /etc/gitea/app.ini 					$ cat /etc/gitea/app.ini 
-APP_NAME = Gitea: Git with a cup of tea			      |	APP_NAME = debian-server
-RUN_USER = git							RUN_USER = git
-RUN_MODE = prod							RUN_MODE = prod
-							      &gt;	WORK_PATH = /var/lib/gitea
-
-[repository]							[repository]
-ROOT = /var/lib/gitea/git/repositories				ROOT = /var/lib/gitea/git/repositories
-
-[repository.local]						[repository.local]
-LOCAL_COPY_PATH = /tmp/gitea/local-repo				LOCAL_COPY_PATH = /tmp/gitea/local-repo
-
-[repository.upload]						[repository.upload]
-TEMP_PATH = /tmp/gitea/uploads					TEMP_PATH = /tmp/gitea/uploads
-
-[server]							[server]
-APP_DATA_PATH = /var/lib/gitea					APP_DATA_PATH = /var/lib/gitea
-SSH_DOMAIN       = localhost				      |	SSH_DOMAIN = 192.168.1.9
-HTTP_PORT        = 3000					      |	HTTP_PORT = 3000
-ROOT_URL         = 					      |	ROOT_URL = http://192.168.1.9:3000/
-DISABLE_SSH      = false				      |	DISABLE_SSH = false
-; In rootless gitea container only internal ssh server is sup	; In rootless gitea container only internal ssh server is sup
-START_SSH_SERVER = true						START_SSH_SERVER = true
-SSH_PORT         = 2222					      |	SSH_PORT = 2222
-SSH_LISTEN_PORT  = 2222					      |	SSH_LISTEN_PORT = 2222
-BUILTIN_SSH_SERVER_USER = git					BUILTIN_SSH_SERVER_USER = git
-LFS_START_SERVER = 					      |	LFS_START_SERVER = true
-							      &gt;	DOMAIN = 192.168.1.9
-							      &gt;	LFS_JWT_SECRET = qbRax2Ay-bEn2nxv4v8_9_ZjZ7Y4TKRaWweUxR27TgU
-							      &gt;	OFFLINE_MODE = true
-
-[database]							[database]
-PATH = /var/lib/gitea/data/gitea.db				PATH = /var/lib/gitea/data/gitea.db
-DB_TYPE = sqlite3						DB_TYPE = sqlite3
-HOST    = localhost:3306				      |	HOST = localhost:3306
-NAME    = gitea						      |	NAME = gitea
-USER    = root						      |	USER = root
-PASSWD  = 						      |	PASSWD = 
-							      &gt;	SCHEMA = 
-							      &gt;	SSL_MODE = disable
-							      &gt;	LOG_SQL = false
-
-[session]							[session]
-PROVIDER_CONFIG = /var/lib/gitea/data/sessions			PROVIDER_CONFIG = /var/lib/gitea/data/sessions
-							      &gt;	PROVIDER = file
-
-[picture]							[picture]
-AVATAR_UPLOAD_PATH = /var/lib/gitea/data/avatars		AVATAR_UPLOAD_PATH = /var/lib/gitea/data/avatars
-REPOSITORY_AVATAR_UPLOAD_PATH = /var/lib/gitea/data/repo-avat	REPOSITORY_AVATAR_UPLOAD_PATH = /var/lib/gitea/data/repo-avat
-
-[attachment]							[attachment]
-PATH = /var/lib/gitea/data/attachments				PATH = /var/lib/gitea/data/attachments
-
-[log]								[log]
-ROOT_PATH = /var/lib/gitea/data/log				ROOT_PATH = /var/lib/gitea/data/log
-							      &gt;	MODE = console
-							      &gt;	LEVEL = info
-
-[security]							[security]
-INSTALL_LOCK = false					      |	INSTALL_LOCK = true
-SECRET_KEY   = 						      |	SECRET_KEY = 
-REVERSE_PROXY_LIMIT = 1						REVERSE_PROXY_LIMIT = 1
-REVERSE_PROXY_TRUSTED_PROXIES = *				REVERSE_PROXY_TRUSTED_PROXIES = *
-							      &gt;	INTERNAL_TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmY
-							      &gt;	PASSWORD_HASH_ALGO = pbkdf2
-
-[service]							[service]
-DISABLE_REGISTRATION = false					DISABLE_REGISTRATION = false
-REQUIRE_SIGNIN_VIEW  = false				      |	REQUIRE_SIGNIN_VIEW = false
-							      &gt;	REGISTER_EMAIL_CONFIRM = false
-							      &gt;	ENABLE_NOTIFY_MAIL = false
-							      &gt;	ALLOW_ONLY_EXTERNAL_REGISTRATION = false
-							      &gt;	ENABLE_CAPTCHA = false
-							      &gt;	DEFAULT_KEEP_EMAIL_PRIVATE = false
-							      &gt;	DEFAULT_ALLOW_CREATE_ORGANIZATION = true
-							      &gt;	DEFAULT_ENABLE_TIMETRACKING = true
-							      &gt;	NO_REPLY_ADDRESS = noreply.localhost
-
-[lfs]								[lfs]
-PATH = /var/lib/gitea/git/lfs					PATH = /var/lib/gitea/git/lfs
-							      &gt;
-							      &gt;	[mailer]
-							      &gt;	ENABLED = false
-							      &gt;
-							      &gt;	[openid]
-							      &gt;	ENABLE_OPENID_SIGNIN = true
-							      &gt;	ENABLE_OPENID_SIGNUP = true
-							      &gt;
-							      &gt;	[cron.update_checker]
-							      &gt;	ENABLED = true
-							      &gt;
-							      &gt;	[repository.pull-request]
-							      &gt;	DEFAULT_MERGE_STYLE = merge
-							      &gt;
-							      &gt;	[repository.signing]
-							      &gt;	DEFAULT_TRUST_MODEL = committer
-							      &gt;
-							      &gt;	[oauth2]
-							      &gt;	JWT_SECRET = IhLMNPdN2O2HsnQlkYrDQGifkSslFTal8uhehbbe6fs
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ee38c61-0a71-4c3d-997d-0bead7a61f11">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="CI/CD"><b></b>CI/CD<a class="anchor-link" href="#CI/CD">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=750e4992-f246-4c48-9a66-0a096ca28667">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><em>ChatGPT:</em> (not checked)</p>
-<h3 id="Setting-Up-Gitea-with-Drone-CI-Using-Podman">Setting Up Gitea with Drone CI Using Podman<a class="anchor-link" href="#Setting-Up-Gitea-with-Drone-CI-Using-Podman">¶</a></h3><h4 id="Step-1:-Install-Gitea">Step 1: Install Gitea<a class="anchor-link" href="#Step-1:-Install-Gitea">¶</a></h4><ol>
-<li><p><strong>Prerequisites:</strong></p>
-<ul>
-<li>A server with a Linux operating system.</li>
-<li>Podman installed on your server.</li>
+<li>Gateway Tier (Traefik):<ul>
+<li>Routes requests to the Gitea service based on incoming requests, manages SSL termination, load balancing, and serves as the entry point for accessing Gitea.</li>
 </ul>
 </li>
-<li><p><strong>Install Gitea using Podman:</strong></p>
-<div class="highlight"><pre><span></span>podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>gitea-data
-podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="o">=</span>gitea<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>-p<span class="w"> </span><span class="m">222</span>:22<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>gitea-data:/data<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>docker.io/gitea/gitea:latest
-</pre></div>
-</li>
-<li><p><strong>Configure Gitea:</strong></p>
-<ul>
-<li>Open your browser and go to <code>http://your_server_ip:3000</code>.</li>
-<li>Follow the setup instructions to configure the database, admin account, and other settings.</li>
+<li>Services Tier (Gitea):<ul>
+<li>Provides all business capabilities related to managing Git repositories, user accounts, issue tracking, and collaboration features.</li>
 </ul>
 </li>
-</ol>
-<h4 id="Step-2:-Install-Drone-CI">Step 2: Install Drone CI<a class="anchor-link" href="#Step-2:-Install-Drone-CI">¶</a></h4><ol>
-<li><p><strong>Prerequisites:</strong></p>
-<ul>
-<li>Gitea installed and running.</li>
-<li>Podman installed on your server.</li>
+<li>Data Tier (PostgreSQL):<ul>
+<li>Stores and retrieves data managed by Gitea, ensuring data integrity and persistence for operational needs.</li>
 </ul>
 </li>
-<li><p><strong>Install Drone CI using Podman:</strong></p>
-<div class="highlight"><pre><span></span>podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>drone-data
-podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="o">=</span>drone<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>drone-data:/data<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">DRONE_GITEA_SERVER</span><span class="o">=</span>http://your_gitea_server:3000<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">DRONE_GITEA_CLIENT_ID</span><span class="o">=</span>your_client_id<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">DRONE_GITEA_CLIENT_SECRET</span><span class="o">=</span>your_client_secret<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">DRONE_RPC_SECRET</span><span class="o">=</span>your_rpc_secret<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">DRONE_SERVER_HOST</span><span class="o">=</span>your_drone_server<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">DRONE_SERVER_PROTO</span><span class="o">=</span>http<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>docker.io/drone/drone:latest
-</pre></div>
-</li>
-<li><p><strong>Configure Drone CI:</strong></p>
-<ul>
-<li>Go to <code>http://your_drone_server</code> in your browser.</li>
-<li>Follow the setup instructions.</li>
-<li>In Gitea, add an OAuth2 application for integration with Drone (Settings -&gt; Applications -&gt; Create New Application).</li>
-<li>Enter your Drone server URL and obtain the Client ID and Client Secret.</li>
 </ul>
-</li>
-</ol>
-<h4 id="Step-3:-Configure-Repositories-for-CI/CD">Step 3: Configure Repositories for CI/CD<a class="anchor-link" href="#Step-3:-Configure-Repositories-for-CI/CD">¶</a></h4><ol>
-<li><p><strong>Create a <code>.drone.yml</code> file in your repository:</strong></p>
-<p>Example of a simple <code>.drone.yml</code> file:</p>
-<div class="highlight"><pre><span></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pipeline</span>
-<span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-
-<span class="nt">steps</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpine</span>
-<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "Running tests"</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run_some_tests.sh</span>
-</pre></div>
-</li>
-<li><p><strong>Commit and push the <code>.drone.yml</code> file to your repository:</strong></p>
-<ul>
-<li>This file describes your CI/CD pipeline and will be executed by Drone CI.</li>
-</ul>
-</li>
-</ol>
-<h3 id="Benefits-of-Using-Gitea-with-Drone-CI-and-Podman">Benefits of Using Gitea with Drone CI and Podman<a class="anchor-link" href="#Benefits-of-Using-Gitea-with-Drone-CI-and-Podman">¶</a></h3><ul>
-<li><strong>Full Control Over Infrastructure:</strong> You manage your server and resources, avoiding limitations imposed by external providers.</li>
-<li><strong>Unlimited CI/CD Minutes:</strong> There are no restrictions on the number of CI/CD minutes since you are using your own server.</li>
-<li><strong>Flexibility and Customization:</strong> You can tailor your CI/CD processes to meet your specific requirements.</li>
-</ul>
-<h3 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">¶</a></h3><p>Using Gitea in combination with Drone CI and Podman provides a powerful, flexible, and self-hosted solution for managing your repositories and CI/CD pipelines. This setup allows you to bypass limitations on free minutes and gives you complete control over your infrastructure.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=30a9c862-710d-4b5c-9ae1-0388f6d0e115">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=38ff4972-66fd-47b6-bb2d-aa70780b42e7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="2.-Configurational-files">2. Configurational files<a class="anchor-link" href="#2.-Configurational-files">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d4ceea82-4fff-47ec-bd7f-d19575303fb7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8487,7 +7547,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd25565a-6146-4350-a6bf-13c6e25163a3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a24da2e7-7e8f-48bc-97aa-5071d24f2a56">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8497,7 +7557,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6bf2da80-7b31-423b-b0bc-ce2e9d5425f2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2d29b6c1-5193-4309-b881-cf08195e62d7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8507,7 +7567,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1c9be566-0654-41d9-a37a-db69bc3622ac">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3b5cf64f-200a-4a8b-93c0-e9e88cae50d3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8517,7 +7577,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3d0b6bd-bbf5-4f61-ae65-7e5eefff971a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=290ae6be-c4a2-406c-96a2-ecf01e6d5fbb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8527,7 +7587,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bfab2a6d-9683-4930-9cc4-1ec7721ee523">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b442674b-98a3-439a-b6a0-9622a25f496a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8537,7 +7597,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2d2d2834-9203-4e4d-a85c-7e0437b4a1f0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=96f84b05-1527-48fa-9aa5-3382be7417bf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8547,7 +7607,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=25374f87-1283-4ecd-b0a4-606fa1032dd0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c6d132b9-7ffc-4b86-81f9-4734b64d953f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8557,7 +7617,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=07375551-8280-4c98-a82d-118e509cb0af">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=10c1f108-542c-4977-8a40-a2e3103fb5ac">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8567,7 +7627,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0208c6f6-9c2a-4366-a224-a1214e1ce70d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f851b568-1814-45e6-897c-269b43aa2d99">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8577,7 +7637,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=176e2a19-f683-4755-82e2-84c91d601e9d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f312c416-f017-4504-99d9-a2c183583492">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8587,7 +7647,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9567fa62-850d-471d-a2e8-dd8c602dbb9e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2045a26b-5b3d-4589-aba0-9248e961c311">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8597,7 +7657,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9d0fdc0f-c891-462a-9c45-e1e3101504e9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9e72f6e3-a926-41ad-9842-b6ee2866090e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8607,7 +7667,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d414d728-5d23-46d2-9068-b68b0a45590d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=07da8c7c-4a6d-4cf6-8176-2c9cadbe1fae">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8617,7 +7677,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0ad1c75-5b6e-479a-a6c8-9fb1903f6d36">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8f1b34ca-6505-46d5-a0d1-8e16bc2a72f9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8627,7 +7687,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c7efc82d-ade9-4b8b-900d-42fd78433bf9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1b82e0a7-ed52-458b-9cdd-53f96833c1db">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8637,7 +7697,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c8c10ea6-d577-4cfa-aaaa-25d5b79faeeb">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=85c0f123-ce3b-43a7-a8b3-d44435faa2f5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8647,7 +7707,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eb8caeb5-0863-433b-8eb0-8c61b0eafc87">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2ac885b5-d9f9-4cd4-b952-e34fec910b58">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8657,7 +7717,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=046ce3b8-f438-4fa3-bbcf-3510acfcf94e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=88aad6ba-7873-447c-af4e-307a8ae99a76">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8667,7 +7727,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4b9d0299-ee2a-4c07-af59-5080e5e88ec1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=68a5b981-6275-4216-824c-389dbfdf2479">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8677,7 +7737,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8069c174-92e0-4a7f-9506-2325ed1673e5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d92dfbd7-789d-4793-b3cf-4f0faf5a3146">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8687,7 +7747,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=383afbdc-f72d-4b01-9ad7-a51f189cdca1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c23dc723-1400-4fbe-b060-cee933e79f61">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8697,7 +7757,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=75021042-a4d2-462d-8d36-95c3aa75a07f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2f2e8f72-f8a4-4676-a3b4-bba01f4ee068">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8707,7 +7767,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d7176b1b-f41f-467a-b2b4-b2e2cb632009">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0e776461-31f4-47e1-8315-15f8d3f3d2c8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8717,7 +7777,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=51a30c0f-2d27-42c8-9f38-c39672ee5d01">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=538cb7fc-1c75-44f9-b7bc-0fdf76e6275a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8727,7 +7787,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d4a5fb9a-92d2-4663-9511-4aa1c6bedd4e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=24141ca8-ccf1-4208-92da-ba61ab2f01c2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8737,7 +7797,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=96cc991a-d4f6-4a03-bc54-f601a14181d2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0bfc3226-e890-436d-8db4-4fb5156fce44">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8747,7 +7807,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39020232-7f8e-415b-8591-daa19cda2c29">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ddcd5d2a-829a-4831-9d93-ae3eba9e835d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8757,7 +7817,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d697540c-42d6-462e-a2b1-b9a6ff7cb612">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bb83ac02-18aa-44ba-b467-121f395bb068">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8767,7 +7827,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=946effd0-1ab6-4928-b082-1074b75c83c8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c7ad3ce4-5f02-4775-b406-f816e01d6366">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8777,107 +7837,7 @@ podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </sp
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d96128d3-eca1-4888-bb9c-3d43f70f2645">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0dc9615b-f4f5-4681-8f80-9e62324a0a2a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a8edd1bf-eeb8-4478-8835-b563999e41c5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b740558e-73b2-4ceb-a642-2077ae36c03d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4b207325-e02a-426e-b52c-799661f73f47">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1dc37f64-f620-4a09-bde9-fabcbceb456a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f74fcbf2-05d5-41a4-89cd-9ef6ed8faa2a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cf94d438-3419-4362-af79-5fdc6946e82d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ae479aff-0557-407e-9fc3-1ca5f7bcd2a0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bffb68ba-b4e8-4a5c-9f5b-d48e7e0f6142">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=390c5eb1-6713-4e23-9749-a8c7d67b7a67">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c03ad309-97e0-4a6c-9186-70e50961cb82">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

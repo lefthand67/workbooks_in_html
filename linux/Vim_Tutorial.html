@@ -7599,66 +7599,6 @@ vi /etc/vim/vimrc  # (globally for all users)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=701e8724-a7ed-4c5a-a86b-63a18c58abb2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Terminal-in-vim"><b></b>Terminal in vim<a class="anchor-link" href="#Terminal-in-vim">¶</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1dd66d82-ca2b-4751-afbc-277b1d84c8aa">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:terminal</code></td>
-<td>opens a terminal window</td>
-</tr>
-<tr>
-<td><code>:bel[ow] term[inal]</code></td>
-<td>opens a terminal in a lower half of the screen</td>
-</tr>
-<tr>
-<td><code>:bel[ow] vert[ical] term[inal]</code></td>
-<td>opens a terminal in the right half of the screen</td>
-</tr>
-<tr>
-<td><code>ctrl + w + w</code></td>
-<td>move from terminal to the doc</td>
-</tr>
-<tr>
-<td><code>ctrl + w  N</code></td>
-<td>starts a normal mode</td>
-</tr>
-<tr>
-<td><code>ctrl + w</code> :</td>
-<td>starts a command mode</td>
-</tr>
-<tr>
-<td><code>i</code></td>
-<td>starts an insert mode</td>
-</tr>
-</tbody>
-</table>
-<p><a href="https://gist.github.com/mahemoff/8967b5de067cffc67cec174cb3a9f49d">Source</a></p>
-</div>
-</div>
-</div>
-</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3eb4a2e7-04ab-48c0-a4b8-feabbcc80ce6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7766,83 +7706,6 @@ vi /etc/vim/vimrc  # (globally for all users)
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=729cdde7-4f31-4574-846d-cae83f94552e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="SSH-connections">SSH connections<a class="anchor-link" href="#SSH-connections">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=255494db-c180-4754-aefe-3193366ded6f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Configure ssh key authentication and make changes to the <code>~/.ssh/config</code> file where write the absolute path to the private key.</p>
-<div class="highlight"><pre><span></span>Host<span class="w"> </span>my-server
-<span class="w">    </span>HostName<span class="w"> </span>my_server_hostname
-<span class="w">    </span>Port<span class="w"> </span>my_port_number
-<span class="w">    </span>User<span class="w"> </span>my_username
-<span class="w">    </span>IdentityFile<span class="w"> </span>/path/to/my/private/key
-</pre></div>
-<p>When it is done, you can connect edit server's files in your client's vim editor. To open the file or directory, use this command:</p>
-<div class="highlight"><pre><span></span>:vi<span class="w"> </span>scp://my-server//tmp/test.py
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=495e4128-0645-44ea-a912-fc38520ae625">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="netrw"><code>netrw</code><a class="anchor-link" href="#netrw">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ce0d7620-7997-4279-9ee7-b491289ec30c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-<th>key</th>
-<th>desc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:e .</code></td>
-<td>open the current directory</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=66951886-aa03-4740-8c60-b683ae009ea8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a href="https://thevaluable.dev/vim-browsing-remote-netrw/">https://thevaluable.dev/vim-browsing-remote-netrw/</a></p>
 </div>
 </div>
 </div>
@@ -9170,6 +9033,183 @@ vi /etc/vim/vimrc  # (globally for all users)
 <li><code>esc esc</code> - apply to all selected lines</li>
 </ol>
 <p><a href="https://stackoverflow.com/questions/12399572/vim-how-to-insert-in-visual-block-mode">Source</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=381450c6-05c6-4881-b7ab-6510171df4a5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="netrw"><b></b><code>netrw</code><a class="anchor-link" href="#netrw">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8f9010eb-204f-4af8-8182-d82ee7a69315">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Basic commands</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ENTER</code></td>
+<td>Open a buffer with the file (or directory) under the cursor in netrw’s window.</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>Open the file (or directory) under the cursor in a new horizontally split window.</td>
+</tr>
+<tr>
+<td><code>v</code></td>
+<td>Open the file (or directory) under the cursor in a new vertically split window.</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>Open the file (or directory) under the cursor in a new tab.</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Go up one directory level.</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>Open the file in the previously focused window.</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>Open the file in the preview window.</td>
+</tr>
+<tr>
+<td><strong>Remote access</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>:e .</code></td>
+<td>open the current directory</td>
+</tr>
+<tr>
+<td><code>:e scp://user@ip[:port]//myfile</code></td>
+<td>Edit the file myfile in the current window; <code>//</code> means the absolute path.</td>
+</tr>
+<tr>
+<td><code>:r scp://user@ip[:port]//myfile</code></td>
+<td>Insert the content of myfile in the current buffer.</td>
+</tr>
+<tr>
+<td><code>:w scp://user@ip[:port]//myfile</code></td>
+<td>Write the content of the current buffer into <code>myfile</code>. Useful to copy a file from your local to your remote server</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=88205752-7b58-431d-aac5-50573e9eefbc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="SSH-connections">SSH connections<a class="anchor-link" href="#SSH-connections">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a5d8606c-cf0f-4f10-8e76-ae72c867967a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span>vim<span class="w"> </span>scp://user@myserver<span class="o">[</span>:port<span class="o">]</span>//path/to/file.txt
+</pre></div>
+<p>Configure ssh key authentication and make changes to the <code>~/.ssh/config</code> file where write the absolute path to the private key.</p>
+<div class="highlight"><pre><span></span>Host<span class="w"> </span>my-server
+<span class="w">    </span>HostName<span class="w"> </span>my_server_hostname
+<span class="w">    </span>Port<span class="w"> </span>my_port_number
+<span class="w">    </span>User<span class="w"> </span>my_username
+<span class="w">    </span>IdentityFile<span class="w"> </span>/path/to/my/private/key
+</pre></div>
+<p>When it is done, you can connect edit server's files in your client's vim editor. To open the file or directory, use this command:</p>
+<div class="highlight"><pre><span></span>:vi<span class="w"> </span>scp://my-server//tmp/test.py
+</pre></div>
+<p><a href="https://thevaluable.dev/vim-browsing-remote-netrw/">https://thevaluable.dev/vim-browsing-remote-netrw/</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ac35544f-9ad0-43f2-9937-2e42e3f64bc5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Terminal-in-vim"><b></b>Terminal in vim<a class="anchor-link" href="#Terminal-in-vim">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fb1bea5e-b77a-41db-9e88-237b2a84bf54">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:terminal</code></td>
+<td>opens a terminal window</td>
+</tr>
+<tr>
+<td><code>:bel[ow] term[inal]</code></td>
+<td>opens a terminal in a lower half of the screen</td>
+</tr>
+<tr>
+<td><code>:bel[ow] vert[ical] term[inal]</code></td>
+<td>opens a terminal in the right half of the screen</td>
+</tr>
+<tr>
+<td><code>ctrl + w + w</code></td>
+<td>move from terminal to the doc</td>
+</tr>
+<tr>
+<td><code>ctrl + w  N</code></td>
+<td>starts a normal mode</td>
+</tr>
+<tr>
+<td><code>ctrl + w</code> :</td>
+<td>starts a command mode</td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td>starts an insert mode</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://gist.github.com/mahemoff/8967b5de067cffc67cec174cb3a9f49d">Source</a></p>
 </div>
 </div>
 </div>

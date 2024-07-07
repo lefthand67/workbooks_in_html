@@ -8594,7 +8594,18 @@ HISTORY
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Migrate-the-container">Migrate the container<a class="anchor-link" href="#Migrate-the-container">¶</a></h2>
+<h2 id="Backup/Migrate-the-container">Backup/Migrate the container<a class="anchor-link" href="#Backup/Migrate-the-container">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dfe7a1e8-d4b6-4fb4-9fe0-063c25757f0d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Live-migrate">Live migrate<a class="anchor-link" href="#Live-migrate">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8611,7 +8622,6 @@ HISTORY
 <li>transferred to the destination system and then</li>
 <li>restored on the destination system.</li>
 </ul>
-<p>When transferring the checkpoint, it is possible to specify an output-file.</p>
 <p>On the source system:</p>
 <div class="highlight"><pre><span></span>sudo<span class="w"> </span>podman<span class="w"> </span>container<span class="w"> </span>checkpoint<span class="w"> </span>&lt;container_id&gt;<span class="w"> </span>-e<span class="w"> </span>/tmp/checkpoint.tar.gz
 scp<span class="w"> </span>/tmp/checkpoint.tar.gz<span class="w"> </span>&lt;destination_system&gt;:/tmp
@@ -8646,23 +8656,15 @@ scp<span class="w"> </span>/tmp/checkpoint.tar.gz<span class="w"> </span>&lt;des
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>To export a Podman container image to a USB flash drive, you can follow these general steps:</p>
 <p><strong>1. Save the Container Image as an Archive:</strong></p>
-<p>You can save the container image as a tarball using the <code>podman save</code> command. This command exports the container image to a <code>tar</code> archive.</p>
+<p>Export the container image to a <code>tar</code> archive.</p>
 <div class="highlight"><pre><span></span>podman<span class="w"> </span>save<span class="w"> </span>-o<span class="w"> </span>/path/to/usb-drive/image.tar<span class="w"> </span>&lt;image_name&gt;
 </pre></div>
-<p>Replace <code>/path/to/usb-drive/image.tar</code> with the path to your USB flash drive and <code>&lt;image_name&gt;</code> with the name of the container image you want to export.</p>
-<p><strong>2. Unmount the USB Flash Drive:</strong></p>
-<p>Once the export is complete, make sure to safely eject or unmount the USB flash drive from your system.</p>
-<p>By following these steps, you'll have exported the container image as a tarball onto your USB flash drive. You can then use this tarball to import the container image onto another system or to share it with others.</p>
-<p>To use the exported container image tarball on another machine and run it, you can follow these steps:</p>
-<p><strong>3. Transfer the Tarball to the New Machine:</strong></p>
-<p>Plug in the USB flash drive containing the exported container image tarball to the new machine. Copy the tarball from the USB flash drive to a directory on the new machine.</p>
-<p><strong>4. Load the Container Image:</strong></p>
-<p>Use the <code>podman load</code> command to load the container image tarball into Podman on the new machine.</p>
+<p><strong>2. Transfer the Tarball to the New Machine:</strong></p>
+<p>Copy the tarball from the USB flash drive to a directory on the new machine.</p>
+<p><strong>3. Load the Container Image:</strong></p>
 <div class="highlight"><pre><span></span>podman<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>/path/to/image.tar
 </pre></div>
-<p>Replace <code>/path/to/image.tar</code> with the path to the tarball file you copied to the new machine.</p>
-<p><strong>5. Run the Container:</strong></p>
-<p>Once the container image is loaded, you can run containers from it using <code>podman run</code>.</p>
+<p><strong>4. Run the Container:</strong></p>
 <div class="highlight"><pre><span></span>podman<span class="w"> </span>run<span class="w"> </span>&lt;options&gt;<span class="w"> </span>&lt;image_name&gt;
 </pre></div>
 <p>Replace <code>&lt;options&gt;</code> with any additional options you want to pass to the container, and <code>&lt;image_name&gt;</code> with the name of the container image you loaded.</p>
@@ -8671,7 +8673,247 @@ scp<span class="w"> </span>/tmp/checkpoint.tar.gz<span class="w"> </span>&lt;des
 podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>my_container
 </pre></div>
 <p>This would load the image from the tarball and run it as a detached container.</p>
-<p>Remember to replace <code>my_container</code> with the actual name of the image you exported and loaded. Additionally, ensure that Podman is installed and configured on the new machine.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=639348fe-6445-4f0e-b189-260d516a9980">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="With-volumes">With volumes<a class="anchor-link" href="#With-volumes">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=10644bbc-4999-4ba5-81cf-2ede51f45bee">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Backing up a Podman container, including its volumes, involves several steps:</p>
+<ul>
+<li>exporting the container's filesystem,</li>
+<li>saving the container's image, and</li>
+<li>backing up the volumes.</li>
+</ul>
+<p><strong>Step 1: Export the Container's Filesystem</strong></p>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>stop<span class="w"> </span>&lt;container_id_or_name&gt;
+podman<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-o<span class="w"> </span>container_backup.tar<span class="w"> </span>&lt;container_id_or_name&gt;
+</pre></div>
+<p><strong>Step 2: Save the Container's Image</strong></p>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>inspect<span class="w"> </span>&lt;container_id_or_name&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Image
+podman<span class="w"> </span>save<span class="w"> </span>-o<span class="w"> </span>image_backup.tar<span class="w"> </span>&lt;image_name_or_id&gt;
+</pre></div>
+<p><strong>Step 3: Backup the Volumes</strong></p>
+<div class="highlight"><pre><span></span><span class="nv">volumes</span><span class="o">=</span><span class="k">$(</span>podman<span class="w"> </span>inspect<span class="w"> </span>&lt;container_id_or_name&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.[0].Mounts[] | select(.Type == "volume") | .Name'</span><span class="k">)</span>
+<span class="k">for</span><span class="w"> </span>volume<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$volumes</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nv">mountpoint</span><span class="o">=</span><span class="k">$(</span>podman<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span><span class="nv">$volume</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.[0].Mountpoint'</span><span class="k">)</span>
+<span class="w">  </span>tar<span class="w"> </span>cvf<span class="w"> </span><span class="si">${</span><span class="nv">volume</span><span class="si">}</span>_backup.tar<span class="w"> </span>-C<span class="w"> </span><span class="nv">$mountpoint</span><span class="w"> </span>.<span class="w"> </span>
+<span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+<p><strong>Step 4: Transfer the Backup Files to the New Machine</strong>
+Use <code>scp</code>, <code>rsync</code>, or any other file transfer method to move <code>container_backup.tar</code>, <code>image_backup.tar</code>, and <code>volume_backup.tar</code> to the new machine.</p>
+<p><strong>Step 5: Restore the Backup on the New Machine</strong></p>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>image_backup.tar
+podman<span class="w"> </span>import<span class="w"> </span>container_backup.tar
+tar<span class="w"> </span>xvf<span class="w"> </span>volume_backup.tar<span class="w"> </span>-C<span class="w"> </span>/path/to/restore/volume
+</pre></div>
+<p><strong>Step 6: Recreate the Container</strong></p>
+<div class="highlight"><pre><span></span>podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>&lt;volume_name&gt;
+podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>&lt;new_container_name&gt;<span class="w"> </span>-v<span class="w"> </span>/path/to/volume:/path/in/container<span class="w"> </span>&lt;image_name_or_id&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5fb6172e-39b1-496c-b24f-4611029f0e04">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Scripts">Scripts<a class="anchor-link" href="#Scripts">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=df6857d3-8336-4011-bf0f-bfa6200f6247">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>To automate the backup and restoration of a Podman container and its volumes, you can create shell scripts. Below are two scripts: one for backing up the container and its volumes, and another for restoring them on a new machine.</p>
+<p><strong>Backup Script: <code>backup_podman_container.sh</code></strong></p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Variables</span>
+<span class="nv">CONTAINER_NAME</span><span class="o">=</span><span class="s2">"mycontainer"</span>
+<span class="nv">IMAGE_NAME</span><span class="o">=</span><span class="k">$(</span>podman<span class="w"> </span>inspect<span class="w"> </span><span class="nv">$CONTAINER_NAME</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'"Image":'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $2}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s1">'",'</span><span class="k">)</span>
+<span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">"/path/to/backup"</span>
+<span class="nv">CONTAINER_BACKUP</span><span class="o">=</span><span class="s2">"</span><span class="nv">$BACKUP_DIR</span><span class="s2">/</span><span class="si">${</span><span class="nv">CONTAINER_NAME</span><span class="si">}</span><span class="s2">_backup.tar"</span>
+<span class="nv">IMAGE_BACKUP</span><span class="o">=</span><span class="s2">"</span><span class="nv">$BACKUP_DIR</span><span class="s2">/</span><span class="si">${</span><span class="nv">CONTAINER_NAME</span><span class="si">}</span><span class="s2">_image_backup.tar"</span>
+<span class="nv">VOLUME_BACKUP</span><span class="o">=</span><span class="s2">"</span><span class="nv">$BACKUP_DIR</span><span class="s2">/</span><span class="si">${</span><span class="nv">CONTAINER_NAME</span><span class="si">}</span><span class="s2">_volume_backup.tar"</span>
+<span class="nv">VOLUME_PATH</span><span class="o">=</span><span class="k">$(</span>podman<span class="w"> </span>inspect<span class="w"> </span><span class="nv">$CONTAINER_NAME</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Mountpoint<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $2}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s1">'",'</span><span class="k">)</span>
+
+<span class="c1"># Create backup directory if it doesn't exist</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$BACKUP_DIR</span>
+
+<span class="c1"># Stop the container</span>
+podman<span class="w"> </span>stop<span class="w"> </span><span class="nv">$CONTAINER_NAME</span>
+
+<span class="c1"># Export the container filesystem</span>
+podman<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">$CONTAINER_BACKUP</span><span class="w"> </span><span class="nv">$CONTAINER_NAME</span>
+
+<span class="c1"># Save the container image</span>
+podman<span class="w"> </span>save<span class="w"> </span>-o<span class="w"> </span><span class="nv">$IMAGE_BACKUP</span><span class="w"> </span><span class="nv">$IMAGE_NAME</span>
+
+<span class="c1"># Backup the volume</span>
+tar<span class="w"> </span>cvf<span class="w"> </span><span class="nv">$VOLUME_BACKUP</span><span class="w"> </span>-C<span class="w"> </span><span class="nv">$VOLUME_PATH</span><span class="w"> </span>.
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Backup completed. Files saved to </span><span class="nv">$BACKUP_DIR</span><span class="s2">"</span>
+</pre></div>
+<p><strong>Restore Script: <code>restore_podman_container.sh</code></strong></p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Variables</span>
+<span class="nv">CONTAINER_NAME</span><span class="o">=</span><span class="s2">"mycontainer"</span>
+<span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">"/path/to/backup"</span>
+<span class="nv">CONTAINER_BACKUP</span><span class="o">=</span><span class="s2">"</span><span class="nv">$BACKUP_DIR</span><span class="s2">/</span><span class="si">${</span><span class="nv">CONTAINER_NAME</span><span class="si">}</span><span class="s2">_backup.tar"</span>
+<span class="nv">IMAGE_BACKUP</span><span class="o">=</span><span class="s2">"</span><span class="nv">$BACKUP_DIR</span><span class="s2">/</span><span class="si">${</span><span class="nv">CONTAINER_NAME</span><span class="si">}</span><span class="s2">_image_backup.tar"</span>
+<span class="nv">VOLUME_BACKUP</span><span class="o">=</span><span class="s2">"</span><span class="nv">$BACKUP_DIR</span><span class="s2">/</span><span class="si">${</span><span class="nv">CONTAINER_NAME</span><span class="si">}</span><span class="s2">_volume_backup.tar"</span>
+<span class="nv">VOLUME_PATH</span><span class="o">=</span><span class="s2">"/var/lib/containers/storage/volumes/</span><span class="si">${</span><span class="nv">CONTAINER_NAME</span><span class="si">}</span><span class="s2">_volume/_data"</span>
+<span class="nv">IMAGE_NAME</span><span class="o">=</span><span class="s2">"myimage"</span><span class="w">  </span><span class="c1"># Set the correct image name if needed</span>
+
+<span class="c1"># Create the volume directory if it doesn't exist</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$VOLUME_PATH</span>
+
+<span class="c1"># Load the container image</span>
+podman<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span><span class="nv">$IMAGE_BACKUP</span>
+
+<span class="c1"># Import the container filesystem</span>
+podman<span class="w"> </span>import<span class="w"> </span><span class="nv">$CONTAINER_BACKUP</span>
+
+<span class="c1"># Restore the volume</span>
+tar<span class="w"> </span>xvf<span class="w"> </span><span class="nv">$VOLUME_BACKUP</span><span class="w"> </span>-C<span class="w"> </span><span class="nv">$VOLUME_PATH</span>
+
+<span class="c1"># Create the volume</span>
+podman<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER_NAME</span><span class="si">}</span>_volume
+
+<span class="c1"># Start the container using the restored image and volume</span>
+podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span><span class="nv">$CONTAINER_NAME</span><span class="w"> </span>-v<span class="w"> </span><span class="nv">$VOLUME_PATH</span>:/path/in/container<span class="w"> </span><span class="nv">$IMAGE_NAME</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Restore completed. Container </span><span class="nv">$CONTAINER_NAME</span><span class="s2"> is running."</span>
+</pre></div>
+<p><strong>Usage</strong></p>
+<ol>
+<li><strong>Backup the Container and Volumes:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>backup_podman_container.sh
+./backup_podman_container.sh
+</pre></div>
+<ol start="2">
+<li><strong>Transfer Backup Files to the New Machine:</strong>
+Use <code>scp</code>, <code>rsync</code>, or another file transfer method to move the backup files</li>
+</ol>
+<ul>
+<li><code>${CONTAINER_NAME}_backup.tar</code>,</li>
+<li><code>${CONTAINER_NAME}_image_backup.tar</code>,</li>
+<li><code>${CONTAINER_NAME}_volume_backup.tar</code></li>
+</ul>
+<p>to the new machine.</p>
+<ol start="3">
+<li><strong>Restore the Container and Volumes on the New Machine:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>restore_podman_container.sh
+./restore_podman_container.sh
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d34bae04-7655-4b30-8e8d-52fb725a5825">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Bind-mounts-vs-Volumes">Bind mounts vs Volumes<a class="anchor-link" href="#Bind-mounts-vs-Volumes">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9a739e2b-fec8-4f4b-a58c-b8744dadb4bc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Bind Mounts</th>
+<th>Volumes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Management</strong></td>
+<td>Directly by the host filesystem</td>
+<td>Managed by the container runtime</td>
+</tr>
+<tr>
+<td><strong>Backup Process</strong></td>
+<td>Use standard filesystem tools (e.g., <code>tar</code>, <code>rsync</code>)</td>
+<td>Use container runtime commands or direct access</td>
+</tr>
+<tr>
+<td><strong>Restore Process</strong></td>
+<td>Extract backups to host directory</td>
+<td>Create volumes and extract backups using runtime commands</td>
+</tr>
+<tr>
+<td><strong>Ease of Use</strong></td>
+<td>Simple and straightforward</td>
+<td>Requires familiarity with runtime commands</td>
+</tr>
+<tr>
+<td><strong>Isolation</strong></td>
+<td>Less isolation, directly accesses host filesystem</td>
+<td>Better isolation, managed by container runtime</td>
+</tr>
+<tr>
+<td><strong>Data Persistence</strong></td>
+<td>Data persists as long as host directories are intact</td>
+<td>Data persists independently of container lifecycle</td>
+</tr>
+<tr>
+<td><strong>Shared Storage</strong></td>
+<td>Can share host directories between containers</td>
+<td>Can be easily shared between containers</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Dependent on host filesystem performance</td>
+<td>Optimized by container runtime</td>
+</tr>
+<tr>
+<td><strong>Best for</strong></td>
+<td>Development, simple use cases, specific host file access</td>
+<td>Production, stateful applications, complex use cases</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>Potential risk to host filesystem</td>
+<td>Enhanced security and consistency</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
